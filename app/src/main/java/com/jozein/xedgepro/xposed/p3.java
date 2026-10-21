@@ -25,13 +25,18 @@ class p3 {
     /* JADX INFO: renamed from: e, reason: collision with root package name */
     private static Field f209e;
 
-    static Intent a(Object obj) throws IllegalAccessException, InvocationTargetException {
+    static Intent a(Object obj) {
         Object objectField;
         if (Build.VERSION.SDK_INT >= 21) {
             if (f208d == null) {
                 f208d = p2.b(obj.getClass(), "getBaseIntent", new Class[0]);
             }
-            objectField = f208d.invoke(obj, new Object[0]);
+            try {
+                objectField = f208d.invoke(obj, new Object[0]);
+            } catch (Throwable th) {
+                p2.sneakyThrow(th);
+                objectField = null;
+            }
         } else {
             Intent intent = (Intent) XposedHelpers.getObjectField(obj, "intent");
             if (intent != null) {
@@ -46,24 +51,34 @@ class p3 {
         if (!v.f242f) {
             return 0;
         }
-        if (Build.VERSION.SDK_INT < 30) {
-            return c.a(c(obj));
-        }
-        if (f207c == null) {
-            f207c = p2.b(obj.getClass(), "getDisplayId", new Class[0]);
-        }
-        int iIntValue = ((Integer) f207c.invoke(obj, new Object[0])).intValue();
-        if (iIntValue == -1) {
+        try {
+            if (Build.VERSION.SDK_INT < 30) {
+                return c.a(c(obj));
+            }
+            if (f207c == null) {
+                f207c = p2.b(obj.getClass(), "getDisplayId", new Class[0]);
+            }
+            int iIntValue = ((Integer) f207c.invoke(obj, new Object[0])).intValue();
+            if (iIntValue == -1) {
+                return 0;
+            }
+            return iIntValue;
+        } catch (Throwable th) {
+            p2.sneakyThrow(th);
             return 0;
         }
-        return iIntValue;
     }
 
     static Object c(Object obj) {
-        if (f209e == null) {
-            f209e = XposedHelpers.findField(obj.getClass(), Build.VERSION.SDK_INT >= 26 ? "mStack" : "stack");
+        try {
+            if (f209e == null) {
+                f209e = XposedHelpers.findField(obj.getClass(), Build.VERSION.SDK_INT >= 26 ? "mStack" : "stack");
+            }
+            return f209e.get(obj);
+        } catch (Throwable th) {
+            p2.sneakyThrow(th);
+            return null;
         }
-        return f209e.get(obj);
     }
 
     static int d(Object obj) {
@@ -76,7 +91,7 @@ class p3 {
             }
             return f205a.getInt(obj);
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
             return -1;
         }
     }
@@ -89,9 +104,9 @@ class p3 {
                 }
                 return f206b.getInt(obj);
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
         }
-        return f.o0.d();
+        return pkg_f.o0.d();
     }
 }

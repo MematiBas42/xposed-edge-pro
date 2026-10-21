@@ -20,9 +20,9 @@ class m3 implements Runnable, b0.a {
     private volatile long N = 0;
     private volatile boolean O = false;
     private long P = 0;
-    private final a.b[] z;
+    private final pkg_a.b[] z;
 
-    m3(a.b.h3 h3Var, w1 w1Var, int i, long j, float f2, boolean z) {
+    m3(pkg_a.b.h3 h3Var, w1 w1Var, int i, long j, float f2, boolean z) {
         this.z = h3Var.I;
         this.A = w1Var;
         this.B = w1Var.U1();
@@ -161,7 +161,7 @@ class m3 implements Runnable, b0.a {
             this.B.post(new Runnable() { // from class: com.jozein.xedgepro.xposed.l3
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.z.i(i);
+                    m3.this.i(i);
                 }
             });
         }

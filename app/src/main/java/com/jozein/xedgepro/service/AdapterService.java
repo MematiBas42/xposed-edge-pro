@@ -2,7 +2,7 @@ package com.jozein.xedgepro.service;
 
 import android.content.Intent;
 import android.os.Handler;
-import f.h0;
+import pkg_f.h0;
 
 /* JADX INFO: loaded from: classes.dex */
 public class AdapterService extends a implements Runnable {

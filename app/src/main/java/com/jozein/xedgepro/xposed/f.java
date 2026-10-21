@@ -88,10 +88,10 @@ abstract class f {
     private static class b extends f {
 
         /* JADX INFO: renamed from: f, reason: collision with root package name */
-        private static final int f101f = f.g.f434a;
+        private static final int f101f = pkg_f.g.f434a;
 
         /* JADX INFO: renamed from: g, reason: collision with root package name */
-        private static final int f102g = f.g.f435b;
+        private static final int f102g = pkg_f.g.f435b;
 
         /* JADX INFO: renamed from: e, reason: collision with root package name */
         private final int[] f103e;
@@ -191,21 +191,21 @@ abstract class f {
             this.f105g = XposedHelpers.findMethodExact(DisplayManager.class, "setBrightness", new Class[]{cls, Float.TYPE});
         }
 
-        @Override // com.jozein.xedgepro.xposed.f.a
+        @Override // com.jozein.xedgepro.xposed.pkg_f.a
         protected float m(Context context) {
             DisplayManager displayManager = (DisplayManager) context.getSystemService("display");
             if (displayManager != null) {
                 try {
                     return ((Float) this.f104f.invoke(displayManager, 0)).floatValue();
                 } catch (Throwable th) {
-                    f.v.d(th);
+                    pkg_f.v.d(th);
                 }
             }
-            f.d();
+            d();
             return 0.5f;
         }
 
-        @Override // com.jozein.xedgepro.xposed.f.a
+        @Override // com.jozein.xedgepro.xposed.pkg_f.a
         protected void o(Context context, float f2) {
             DisplayManager displayManager = (DisplayManager) context.getSystemService("display");
             if (displayManager != null) {
@@ -213,16 +213,16 @@ abstract class f {
                     this.f105g.invoke(displayManager, 0, Float.valueOf(f2));
                     float fM = m(context);
                     if (fM != f2) {
-                        f.d();
-                        f.v.c("Failed to set brightness to " + f2 + ", brightness: " + fM);
+                        d();
+                        pkg_f.v.c("Failed to set brightness to " + f2 + ", brightness: " + fM);
                         return;
                     }
                     return;
                 } catch (Throwable th) {
-                    f.v.d(th);
+                    pkg_f.v.d(th);
                 }
             }
-            f.d();
+            d();
         }
     }
 
@@ -275,10 +275,10 @@ abstract class f {
                 if (fM <= 1.0f) {
                     return cVar;
                 }
-                f.v.c("Invalid brightness float: " + fM);
+                pkg_f.v.c("Invalid brightness float: " + fM);
                 d();
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
                 d();
             }
         }

@@ -6,16 +6,16 @@ import de.robv.android.xposed.services.BaseService;
 import java.io.FileNotFoundException;
 
 /* JADX INFO: loaded from: classes.dex */
-class x3 extends f.q {
+class x3 extends pkg_f.q {
     private final BaseService E;
     private final String F;
 
-    private static class b extends f.q.a {
+    private static class b extends pkg_f.q.a {
         private b() {
         }
 
-        @Override // f.q.a
-        public f.q a(String str) {
+        @Override // pkg_f.q.a
+        public pkg_f.q a(String str) {
             return new x3(str);
         }
     }
@@ -30,13 +30,13 @@ class x3 extends f.q {
             if (Build.VERSION.SDK_INT >= 28 || !SELinuxHelper.isSELinuxEnforced()) {
                 return;
             }
-            f.q.k(new b());
+            pkg_f.q.k(new b());
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
     }
 
-    @Override // f.q
+    @Override // pkg_f.q
     public boolean d() {
         try {
             return this.E.checkFileExists(this.F);
@@ -45,7 +45,7 @@ class x3 extends f.q {
         }
     }
 
-    @Override // f.q
+    @Override // pkg_f.q
     public long f() {
         try {
             return this.E.getFileModificationTime(this.F);
@@ -54,15 +54,15 @@ class x3 extends f.q {
         }
     }
 
-    @Override // f.q
+    @Override // pkg_f.q
     public byte[] j() {
         try {
             return this.E.readFile(this.F);
         } catch (FileNotFoundException e2) {
-            f.v.c(e2.toString());
-            return f.q.z;
+            pkg_f.v.c(e2.toString());
+            return pkg_f.q.z;
         } catch (Throwable unused) {
-            return f.q.z;
+            return pkg_f.q.z;
         }
     }
 }

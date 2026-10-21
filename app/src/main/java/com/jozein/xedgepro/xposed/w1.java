@@ -88,7 +88,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /* JADX INFO: loaded from: classes.dex */
 class w1 extends j2 {
     private static final AtomicInteger S0 = new AtomicInteger(0);
-    private static final String T0 = f.l.k + "NOTIFICATION.";
+    private static final String T0 = pkg_f.l.CONST_PREFIX + "NOTIFICATION.";
     private r3 A0;
     private Toast B0;
     private volatile boolean C0;
@@ -96,31 +96,31 @@ class w1 extends j2 {
     private final Runnable E0;
     private final Runnable F0;
     private t2 G0;
-    private final a.p H;
+    private final pkg_a.p H;
     private final q0[] H0;
-    private final a.k I;
+    private final pkg_a.k I;
     private PowerManager.WakeLock I0;
-    private final a.f J;
-    private f.n0 J0;
-    private final a.s.e K;
+    private final pkg_a.AppTriggerManager J;
+    private pkg_f.n0 J0;
+    private final pkg_a.s.e K;
     private View K0;
-    private final a.v L;
+    private final pkg_a.v L;
     private boolean L0;
-    private final f.i.f M;
+    private final pkg_f.i.f M;
     private final p0 M0;
-    private final f.i.f N;
-    private f.m0 N0;
+    private final pkg_f.i.f N;
+    private pkg_f.m0 N0;
     private final y0 O;
     private int O0;
     private final com.jozein.xedgepro.xposed.l0 P;
-    private f.w P0;
+    private pkg_f.w P0;
     private final com.jozein.xedgepro.xposed.n0 Q;
     private final n0 Q0;
-    private final com.jozein.xedgepro.xposed.p0 R;
+    private final com.jozein.xedgepro.xposed.p0 mP0R;
     private int R0;
     private final com.jozein.xedgepro.xposed.v S;
     private i3 T;
-    private a.t U;
+    private pkg_a.t U;
     private com.jozein.xedgepro.xposed.e V;
     private v3 W;
     private y2 X;
@@ -140,7 +140,7 @@ class w1 extends j2 {
     private boolean l0;
     private boolean m0;
     private boolean n0;
-    private f.g0 o0;
+    private pkg_f.g0 o0;
     private float p0;
     private boolean q0;
     private long r0;
@@ -182,19 +182,19 @@ class w1 extends j2 {
         public void onReceive(Context context, Intent intent) {
             try {
                 String action = intent.getAction();
-                if (a.j.E.equals(action)) {
+                if (pkg_a.j.E.equals(action)) {
                     w1.this.e3(intent);
-                } else if (a.b.C.equals(action)) {
-                    w1.this.w3(f.m.m(intent));
-                } else if (a.b.D.equals(action)) {
+                } else if (pkg_a.b.C.equals(action)) {
+                    w1.this.w3(pkg_f.m.m(intent));
+                } else if (pkg_a.b.D.equals(action)) {
                     if (w1.this.H.o(32)) {
-                        w1.this.w3(a.b.f(intent.getStringExtra("data")));
+                        w1.this.w3(pkg_a.b.f(intent.getStringExtra("data")));
                     } else {
                         w1.this.K4(R.string.perform_by_broadcast_not_allowed);
                     }
                 }
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
         }
     }
@@ -240,7 +240,7 @@ class w1 extends j2 {
             try {
                 w1.this.e5(1);
             } catch (Throwable th) {
-                f.v.c(th.toString());
+                pkg_f.v.c(th.toString());
             }
         }
 
@@ -256,7 +256,7 @@ class w1 extends j2 {
                 w1.this.c0.postDelayed(new Runnable() { // from class: com.jozein.xedgepro.xposed.x1
                     @Override // java.lang.Runnable
                     public final void run() {
-                        this.z.d();
+                        d();
                     }
                 }, 200L);
             }
@@ -273,17 +273,17 @@ class w1 extends j2 {
         }
 
         @Override // com.jozein.xedgepro.xposed.w1.n0
-        public a.b b() {
+        public pkg_a.b b() {
             return null;
         }
     }
 
-    class d extends f.g0 {
+    class d extends pkg_f.g0 {
         d(Handler handler, int i, long j) {
             super(handler, i, j);
         }
 
-        @Override // f.g0
+        @Override // pkg_f.g0
         protected boolean a(int i) {
             if (w1.this.n0) {
                 return false;
@@ -293,13 +293,13 @@ class w1 extends j2 {
             }
             boolean zF0 = w1.this.P.F0(AdapterService.class.getName());
             if (!zF0) {
-                f.v.d(new Throwable("Service was prevented!"));
+                pkg_f.v.d(new Throwable("Service was prevented!"));
             }
             w1.this.d3(zF0);
             return false;
         }
 
-        @Override // f.g0
+        @Override // pkg_f.g0
         protected void b() {
             if (w1.this.n0) {
                 return;
@@ -316,7 +316,7 @@ class w1 extends j2 {
 
         protected void afterHookedMethod(XC_MethodHook.MethodHookParam methodHookParam) {
             w1.this.A(methodHookParam.thisObject);
-            f.v.c("Initializing...");
+            pkg_f.v.c("Initializing...");
             try {
                 w1.this.a0 = (Context) methodHookParam.args[0];
                 w1 w1Var = w1.this;
@@ -327,7 +327,7 @@ class w1 extends j2 {
                 n0Var.e0(handler, objArr[1] != null ? objArr[1] : objArr[2]);
                 w1.this.i2();
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
         }
     }
@@ -343,7 +343,7 @@ class w1 extends j2 {
             super(context);
             this.B = paint;
             this.C = paint2;
-            this.z = w1.this.c2() * g.a0.j();
+            this.z = w1.this.c2() * pkg_g.a0.j();
             this.A = new RectF();
         }
 
@@ -375,7 +375,7 @@ class w1 extends j2 {
                         objU = w1.this.u("mWindowManagerFuncs");
                     }
                 } catch (Throwable th) {
-                    f.v.d(th);
+                    pkg_f.v.d(th);
                 }
                 w1.this.Q.e0(w1.this.c0, objU);
             }
@@ -384,7 +384,7 @@ class w1 extends j2 {
 
         protected void afterHookedMethod(XC_MethodHook.MethodHookParam methodHookParam) {
             w1.this.A(methodHookParam.thisObject);
-            f.v.c("System booted.");
+            pkg_f.v.c("System booted.");
             if (w1.this.c0 == null) {
                 w1 w1Var = w1.this;
                 w1Var.c0 = w1Var.L1();
@@ -392,23 +392,23 @@ class w1 extends j2 {
             w1.this.c0.post(new Runnable() { // from class: com.jozein.xedgepro.xposed.b2
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.z.b();
+                    e0.this.b();
                 }
             });
         }
     }
 
-    class f extends v0 {
+    class f extends SliderBase {
         f(CharSequence charSequence) {
             super(w1.this, charSequence, null);
         }
 
-        @Override // com.jozein.xedgepro.xposed.w1.v0
+        @Override // com.jozein.xedgepro.xposed.w1.SliderBase
         protected int m() {
             return 14;
         }
 
-        @Override // com.jozein.xedgepro.xposed.w1.v0
+        @Override // com.jozein.xedgepro.xposed.w1.SliderBase
         protected void r(int i) {
             int i2 = i + 1;
             w1.this.H.c0(w1.this.a0, i2 >= 1 ? i2 : 1);
@@ -432,13 +432,13 @@ class w1 extends j2 {
                 try {
                     w1.this.Q.d0().T(methodHookParam.args[this.f260a]);
                 } catch (Throwable th) {
-                    f.v.d(th);
+                    pkg_f.v.d(th);
                 }
             }
         }
     }
 
-    class g extends v0 {
+    class g extends SliderBase {
         final ContentResolver K;
         final com.jozein.xedgepro.xposed.f L;
 
@@ -448,7 +448,7 @@ class w1 extends j2 {
             this.L = com.jozein.xedgepro.xposed.f.e(w1.this.a0, true);
         }
 
-        @Override // com.jozein.xedgepro.xposed.w1.v0
+        @Override // com.jozein.xedgepro.xposed.w1.SliderBase
         protected int m() {
             if (!w1.this.H.o(34) && h3.c.a(this.K, "screen_brightness_mode", 0) != 0) {
                 h3.c.b(this.K, "screen_brightness_mode", 0);
@@ -456,7 +456,7 @@ class w1 extends j2 {
             return this.L.f();
         }
 
-        @Override // com.jozein.xedgepro.xposed.w1.v0
+        @Override // com.jozein.xedgepro.xposed.w1.SliderBase
         protected void r(int i) {
             this.L.k(w1.this.a0, i);
         }
@@ -490,7 +490,7 @@ class w1 extends j2 {
                 XposedBridge.invokeOriginalMethod(methodHookParam.method, methodHookParam.thisObject, methodHookParam.args);
                 w1.this.c0.postDelayed(this.f262a, j);
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
         }
 
@@ -504,7 +504,7 @@ class w1 extends j2 {
             w1.this.c0.postDelayed(new Runnable() { // from class: com.jozein.xedgepro.xposed.c2
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.z.c(methodHookParam, j);
+                    c(methodHookParam, j);
                 }
             }, 700L);
         }
@@ -514,26 +514,27 @@ class w1 extends j2 {
             if (w1.this.K0 == null) {
                 return;
             }
-            final long j = 6000;
+            long j2 = 6000;
             if ("takeScreenshot".equals(methodHookParam.method.getName())) {
                 Object[] objArr = methodHookParam.args;
                 if (objArr.length <= 0 || ((Integer) objArr[0]).intValue() != 2) {
-                    j = 2000;
+                    j2 = 2000;
                 }
             } else if (XposedHelpers.getIntField(methodHookParam.thisObject, "mScreenshotType") != 2) {
-                j = 2000;
+                j2 = 2000;
             }
+            final long jFinal = j2;
             w1.this.c0.post(new Runnable() { // from class: com.jozein.xedgepro.xposed.d2
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.z.d(methodHookParam, j);
+                    d(methodHookParam, jFinal);
                 }
             });
             methodHookParam.setResult((Object) null);
         }
     }
 
-    class h extends v0 {
+    class h extends SliderBase {
         int K;
         int L;
 
@@ -543,12 +544,12 @@ class w1 extends j2 {
             this.L = 0;
         }
 
-        @Override // com.jozein.xedgepro.xposed.w1.v0
+        @Override // com.jozein.xedgepro.xposed.w1.SliderBase
         protected int m() {
             return 32;
         }
 
-        @Override // com.jozein.xedgepro.xposed.w1.v0
+        @Override // com.jozein.xedgepro.xposed.w1.SliderBase
         protected void r(int i) {
             if (this.K == -1) {
                 this.K = i;
@@ -576,12 +577,12 @@ class w1 extends j2 {
                     w1Var.o5(w1Var.w0 ? w1.this.Q.d0().E() : null);
                 }
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
         }
     }
 
-    class i extends v0 {
+    class i extends SliderBase {
         final /* synthetic */ int K;
 
         /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
@@ -590,12 +591,12 @@ class w1 extends j2 {
             this.K = i;
         }
 
-        @Override // com.jozein.xedgepro.xposed.w1.v0
+        @Override // com.jozein.xedgepro.xposed.w1.SliderBase
         protected int m() {
             return w1.this.V.e(this.K);
         }
 
-        @Override // com.jozein.xedgepro.xposed.w1.v0
+        @Override // com.jozein.xedgepro.xposed.w1.SliderBase
         protected void r(int i) {
             w1.this.V.k(this.K, i, 0);
         }
@@ -620,13 +621,13 @@ class w1 extends j2 {
                         try {
                             u3.e(obj, this.f265a).getBounds(this.f266b);
                         } catch (Throwable th) {
-                            f.v.d(th);
+                            pkg_f.v.d(th);
                             u3.g(obj, this.f266b);
                         }
                         w1.this.o5(this.f266b);
                     }
                 } catch (Throwable th2) {
-                    f.v.d(th2);
+                    pkg_f.v.d(th2);
                 }
             }
         }
@@ -635,10 +636,10 @@ class w1 extends j2 {
     class j extends w0 {
         final float C;
         final Point D;
-        final /* synthetic */ a.b.i3 E;
+        final /* synthetic */ pkg_a.b.i3 E;
 
         /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-        j(Handler handler, a.b.i3 i3Var) {
+        j(Handler handler, pkg_a.b.i3 i3Var) {
             super(handler, null);
             this.E = i3Var;
             this.C = w1.this.H.v(17, 100) / 100.0f;
@@ -663,17 +664,17 @@ class w1 extends j2 {
         }
     }
 
-    class k implements f.i.f {
+    class k implements pkg_f.i.f {
         k() {
         }
 
-        @Override // f.i.f
+        @Override // pkg_f.i.f
         public int a(String str) {
             return w1.this.L.g(str).f485a;
         }
 
-        @Override // f.i.f
-        public f.t b(String str) {
+        @Override // pkg_f.i.f
+        public pkg_f.t b(String str) {
             return w1.this.L.g(str);
         }
     }
@@ -693,14 +694,14 @@ class w1 extends j2 {
         k0(com.jozein.xedgepro.xposed.l0.f fVar) {
             int i;
             this.G = fVar;
-            if (g.a0.r(w1.this.H.v(33, -16764873))) {
+            if (pkg_g.a0.r(w1.this.H.v(33, -16764873))) {
                 this.z = -1;
                 this.E = null;
             } else {
                 this.z = -16777216;
                 this.E = new PorterDuffColorFilter(-16777216, PorterDuff.Mode.SRC_ATOP);
             }
-            g.x xVarC = g.x.c(w1.this.a0);
+            pkg_g.x xVarC = pkg_g.x.c(w1.this.a0);
             int i2 = xVarC.f633a;
             this.A = i2;
             this.B = xVarC.f634b;
@@ -715,16 +716,11 @@ class w1 extends j2 {
             if (fVar.u()) {
                 arrayList.add(2);
             }
-            if (!fVar.C()) {
-                i = fVar.s() ? 4 : 3;
-                if (fVar.x() != null) {
-                    arrayList.add(6);
-                }
-                arrayList.add(7);
-                arrayList.add(5);
-                this.F = d(arrayList);
+            if (fVar.C()) {
+                arrayList.add(3);
+            } else if (fVar.s()) {
+                arrayList.add(4);
             }
-            arrayList.add(Integer.valueOf(i));
             if (fVar.x() != null) {
                 arrayList.add(6);
             }
@@ -733,7 +729,7 @@ class w1 extends j2 {
             this.F = d(arrayList);
         }
 
-        private void b(a.b bVar) {
+        private void b(pkg_a.b bVar) {
             if (bVar != null) {
                 BinderService.h(w1.this.a0, bVar);
             }
@@ -741,7 +737,7 @@ class w1 extends j2 {
 
         private Drawable c(int i) {
             Drawable drawable = this.H.getDrawable(i);
-            g.h.a().b(drawable);
+            pkg_g.h.a().b(drawable);
             return drawable;
         }
 
@@ -823,7 +819,7 @@ class w1 extends j2 {
                 listView.jumpDrawablesToCurrentState();
                 listView.setSelectionFromTop(0, 0);
             }
-            g.a0.z(adapterView, new TranslateAnimation(0.0f, 0.0f, this.A * this.F.length, 0.0f), ((((long) this.F.length) * 66) * 3) / 4);
+            pkg_g.a0.z(adapterView, new TranslateAnimation(0.0f, 0.0f, this.A * this.F.length, 0.0f), ((((long) this.F.length) * 66) * 3) / 4);
         }
 
         @Override // android.widget.BaseAdapter, android.widget.ListAdapter
@@ -884,7 +880,7 @@ class w1 extends j2 {
                         return f(c(R.drawable.ic_app), "Install exists");
                 }
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
             return new View(w1.this.a0);
         }
@@ -896,7 +892,7 @@ class w1 extends j2 {
 
         @Override // android.widget.AdapterView.OnItemClickListener
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long j) {
-            a.b bVarQ;
+            pkg_a.b bVarQ;
             try {
                 switch (this.F[i]) {
                     case 0:
@@ -907,7 +903,7 @@ class w1 extends j2 {
                         try {
                             t3.n().t(19);
                         } catch (Throwable th) {
-                            f.v.d(th);
+                            pkg_f.v.d(th);
                         }
                         break;
                     case 2:
@@ -921,7 +917,7 @@ class w1 extends j2 {
                     case 4:
                         this.F = new int[]{0, 8};
                         notifyDataSetChanged();
-                        g.a0.z(adapterView, new TranslateAnimation(0.0f, 0.0f, this.A * this.F.length, 0.0f), ((((long) this.F.length) * 66) * 3) / 4);
+                        pkg_g.a0.z(adapterView, new TranslateAnimation(0.0f, 0.0f, this.A * this.F.length, 0.0f), ((((long) this.F.length) * 66) * 3) / 4);
                         break;
                     case 5:
                         this.G.G();
@@ -962,16 +958,16 @@ class w1 extends j2 {
                 }
             } catch (Throwable th2) {
                 w1.this.G4(th2.getMessage());
-                f.v.d(th2);
+                pkg_f.v.d(th2);
             }
         }
     }
 
     class l extends w0 {
-        final /* synthetic */ a.b.i3 C;
+        final /* synthetic */ pkg_a.b.i3 C;
 
         /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-        l(Handler handler, a.b.i3 i3Var) {
+        l(Handler handler, pkg_a.b.i3 i3Var) {
             super(handler, null);
             this.C = i3Var;
         }
@@ -985,12 +981,12 @@ class w1 extends j2 {
     private class l0 implements n0 {
 
         /* JADX INFO: renamed from: a, reason: collision with root package name */
-        private final a.b.d0 f270a;
+        private final pkg_a.b.d0 f270a;
 
         /* JADX INFO: renamed from: b, reason: collision with root package name */
         private n0 f271b = null;
 
-        l0(a.b.d0 d0Var) {
+        l0(pkg_a.b.d0 d0Var) {
             this.f270a = d0Var;
         }
 
@@ -1001,9 +997,9 @@ class w1 extends j2 {
         }
 
         @Override // com.jozein.xedgepro.xposed.w1.n0
-        public a.b b() {
+        public pkg_a.b b() {
             w1 w1Var;
-            a.b bVar;
+            pkg_a.b bVar;
             if (this.f271b == null) {
                 if (w1.this.l1(this.f270a.I, false)) {
                     w1Var = w1.this;
@@ -1019,10 +1015,10 @@ class w1 extends j2 {
     }
 
     class m extends w0 {
-        final /* synthetic */ a.b.i3 C;
+        final /* synthetic */ pkg_a.b.i3 C;
 
         /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-        m(Handler handler, a.b.i3 i3Var) {
+        m(Handler handler, pkg_a.b.i3 i3Var) {
             super(handler, null);
             this.C = i3Var;
         }
@@ -1104,10 +1100,10 @@ class w1 extends j2 {
     }
 
     class n extends w0 {
-        final /* synthetic */ a.b.i3 C;
+        final /* synthetic */ pkg_a.b.i3 C;
 
         /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-        n(Handler handler, a.b.i3 i3Var) {
+        n(Handler handler, pkg_a.b.i3 i3Var) {
             super(handler, null);
             this.C = i3Var;
         }
@@ -1121,17 +1117,17 @@ class w1 extends j2 {
     private interface n0 {
         boolean a();
 
-        a.b b();
+        pkg_a.b b();
     }
 
     class o extends w0 {
         final int C;
         final int D;
         final int E;
-        final /* synthetic */ a.b.i3 F;
+        final /* synthetic */ pkg_a.b.i3 F;
 
         /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-        o(Handler handler, a.b.i3 i3Var) {
+        o(Handler handler, pkg_a.b.i3 i3Var) {
             super(handler, null);
             this.F = i3Var;
             this.C = i3Var.J ? 1 : -1;
@@ -1153,7 +1149,7 @@ class w1 extends j2 {
     private class o0 implements n0 {
 
         /* JADX INFO: renamed from: a, reason: collision with root package name */
-        private final a.b[] f273a;
+        private final pkg_a.b[] f273a;
 
         /* JADX INFO: renamed from: b, reason: collision with root package name */
         private int f274b = 0;
@@ -1161,7 +1157,7 @@ class w1 extends j2 {
         /* JADX INFO: renamed from: c, reason: collision with root package name */
         private final n0[] f275c;
 
-        o0(a.b[] bVarArr) {
+        o0(pkg_a.b[] bVarArr) {
             this.f273a = bVarArr;
             this.f275c = new n0[bVarArr.length];
         }
@@ -1178,7 +1174,7 @@ class w1 extends j2 {
         }
 
         @Override // com.jozein.xedgepro.xposed.w1.n0
-        public a.b b() {
+        public pkg_a.b b() {
             int i = this.f274b;
             n0[] n0VarArr = this.f275c;
             if (i >= n0VarArr.length) {
@@ -1187,7 +1183,7 @@ class w1 extends j2 {
             if (n0VarArr[i] == null) {
                 n0VarArr[i] = w1.this.X2(this.f273a[i]);
             }
-            a.b bVarB = this.f275c[this.f274b].b();
+            pkg_a.b bVarB = this.f275c[this.f274b].b();
             if (bVarB != null) {
                 return bVarB;
             }
@@ -1237,7 +1233,7 @@ class w1 extends j2 {
             try {
                 mediaPlayer.setDataSource(w1.this.a0, uri);
             } catch (IOException unused) {
-                f.v.c("Error playing " + uri + ". Using default " + c(i) + " instead.");
+                pkg_f.v.c("Error playing " + uri + ". Using default " + c(i) + " instead.");
                 mediaPlayer.setDataSource(w1.this.a0, RingtoneManager.getDefaultUri(d(i)));
             }
             mediaPlayer.setAudioStreamType(i);
@@ -1266,7 +1262,7 @@ class w1 extends j2 {
                     w1.this.c0.removeCallbacks(this);
                 }
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
         }
 
@@ -1284,7 +1280,7 @@ class w1 extends j2 {
                     w1.this.c0.postDelayed(this, 600000L);
                 }
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
         }
 
@@ -1334,7 +1330,7 @@ class w1 extends j2 {
                 List list = this.D;
                 int i = this.A;
                 this.A = i + 1;
-                g.q qVar = (g.q) list.get(i);
+                pkg_g.q qVar = (pkg_g.q) list.get(i);
                 if (j == 0) {
                     j = this.z + ((long) qVar.z);
                 }
@@ -1346,11 +1342,11 @@ class w1 extends j2 {
                     }
                     int i2 = this.A;
                     if (i2 < this.B && (qVar.A & 255) == 1) {
-                        this.E.postAtTime(this, this.z + ((long) ((g.q) this.D.get(i2)).z));
+                        this.E.postAtTime(this, this.z + ((long) ((pkg_g.q) this.D.get(i2)).z));
                         break;
                     }
                 } catch (Throwable th) {
-                    f.v.d(th);
+                    pkg_f.v.d(th);
                     a();
                     return;
                 }
@@ -1375,9 +1371,9 @@ class w1 extends j2 {
         class a extends BroadcastReceiver {
 
             /* JADX INFO: renamed from: a, reason: collision with root package name */
-            final /* synthetic */ a.b f281a;
+            final /* synthetic */ pkg_a.b f281a;
 
-            a(a.b bVar) {
+            a(pkg_a.b bVar) {
                 this.f281a = bVar;
             }
 
@@ -1385,12 +1381,12 @@ class w1 extends j2 {
             public void onReceive(Context context, Intent intent) {
                 try {
                     q0.this.a();
-                    a.b bVar = this.f281a;
+                    pkg_a.b bVar = this.f281a;
                     if (bVar != null) {
                         w1.this.w3(bVar);
                     }
                 } catch (Throwable th) {
-                    f.v.d(th);
+                    pkg_f.v.d(th);
                 }
             }
         }
@@ -1406,26 +1402,26 @@ class w1 extends j2 {
             }
         }
 
-        void b(CharSequence charSequence, int i, a.b bVar) {
+        void b(CharSequence charSequence, int i, pkg_a.b bVar) {
             c(charSequence, null, i, 0, false, true, bVar);
         }
 
-        void c(CharSequence charSequence, CharSequence charSequence2, int i, int i2, boolean z, boolean z2, a.b bVar) {
+        void c(CharSequence charSequence, CharSequence charSequence2, int i, int i2, boolean z, boolean z2, pkg_a.b bVar) {
             Context context = w1.this.b0;
             int i3 = Build.VERSION.SDK_INT;
             Context context2 = i3 >= 29 ? w1.this.a0 : context;
             this.f279c = w1.M0(w1.this);
             String str = w1.T0 + this.f279c;
-            CharSequence text = context.getText(f.l.y);
+            CharSequence text = context.getText(pkg_f.l.CONST_APP_NAME);
             Intent intent = new Intent(str);
             intent.setPackage("android");
             PendingIntent broadcast = PendingIntent.getBroadcast(w1.this.a0, 0, intent, i3 >= 31 ? 67108864 : 0);
             if (w1.this.P0 == null) {
-                w1.this.P0 = f.w.a(f.l.x, text);
+                w1.this.P0 = pkg_f.w.a(pkg_f.l.CONST_APP_TAG, text);
             }
             w1.this.P0.c(i2);
             if (z2) {
-                w1.this.P0.d(f.w.D);
+                w1.this.P0.d(pkg_f.w.D);
             }
             Notification.Builder deleteIntent = w1.this.P0.b(context2).setContentTitle(text).setContentText(charSequence).setContentIntent(broadcast).setDeleteIntent(broadcast);
             if (i3 >= 29) {
@@ -1467,7 +1463,7 @@ class w1 extends j2 {
         public void a() {
             if (this.Q) {
                 this.Q = false;
-                w1.this.S4(new a.b.p0(1));
+                w1.this.S4(new pkg_a.b.p0(1));
             }
         }
 
@@ -1483,19 +1479,19 @@ class w1 extends j2 {
 
         @Override // com.jozein.xedgepro.xposed.r2
         protected void x(boolean z) {
-            w1.this.S4(new a.b.p0(z ? 1 : 2));
+            w1.this.S4(new pkg_a.b.p0(z ? 1 : 2));
             this.Q = !z;
         }
     }
 
-    private class r0 implements Runnable, f.a.c {
+    private class r0 implements Runnable, pkg_f.a.c {
         private final long A;
         private final PowerManager.WakeLock B;
         private final String C;
-        private f.a D = null;
+        private pkg_f.a D = null;
         private final n0 z;
 
-        r0(a.b bVar, long j) {
+        r0(pkg_a.b bVar, long j) {
             this.z = w1.this.X2(bVar);
             this.A = j;
             String str = "Queue-" + w1.T0(w1.this);
@@ -1511,16 +1507,16 @@ class w1 extends j2 {
 
         private void d() {
             try {
-                a.b bVarB = this.z.b();
+                pkg_a.b bVarB = this.z.b();
                 if (bVarB != null && bVarB.z != 102 && !w1.this.s2(this.A)) {
                     long j = 0;
                     if (bVarB.z == 54) {
-                        j = ((a.b.g0) bVarB).I;
+                        j = ((pkg_a.b.g0) bVarB).I;
                     } else {
                         try {
                             w1.this.y3(bVarB, -1, null);
                         } catch (Throwable th) {
-                            f.v.d(th);
+                            pkg_f.v.d(th);
                             w1.this.F4(bVarB, th);
                             e();
                             return;
@@ -1536,7 +1532,7 @@ class w1 extends j2 {
                 }
                 e();
             } catch (Throwable th2) {
-                f.v.d(th2);
+                pkg_f.v.d(th2);
                 e();
             }
         }
@@ -1551,19 +1547,19 @@ class w1 extends j2 {
                 w1.this.c0.postDelayed(this, j);
             } else {
                 if (this.D == null) {
-                    this.D = f.a.c(w1.this.a0, w1.this.c0, this, 2);
+                    this.D = pkg_f.a.c(w1.this.a0, w1.this.c0, this, 2);
                 }
                 this.D.d(SystemClock.elapsedRealtime() + j);
                 e();
             }
         }
 
-        @Override // f.a.c
-        public void a(f.a aVar, long j) {
+        @Override // pkg_f.a.c
+        public void a(pkg_f.a aVar, long j) {
             try {
                 c();
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
         }
 
@@ -1575,7 +1571,7 @@ class w1 extends j2 {
         protected void finalize() {
             if (this.B.isHeld()) {
                 this.B.release();
-                f.v.c("WakeLock finalized while still held " + this.C);
+                pkg_f.v.c("WakeLock finalized while still held " + this.C);
             }
         }
 
@@ -1584,7 +1580,7 @@ class w1 extends j2 {
             try {
                 d();
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
         }
     }
@@ -1592,7 +1588,7 @@ class w1 extends j2 {
     class s implements t2.e {
 
         /* JADX INFO: renamed from: a, reason: collision with root package name */
-        List<f.c0.e> f283a;
+        List<pkg_f.c0.e> f283a;
 
         /* JADX INFO: renamed from: b, reason: collision with root package name */
         final /* synthetic */ int f284b;
@@ -1616,7 +1612,7 @@ class w1 extends j2 {
             w1.this.c0.post(new Runnable() { // from class: com.jozein.xedgepro.xposed.y1
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.z.h(i);
+                    h(i);
                 }
             });
             return true;
@@ -1643,10 +1639,10 @@ class w1 extends j2 {
 
         @Override // com.jozein.xedgepro.xposed.t2.e
         public int getCount() {
-            f.c0.c cVar = new f.c0.c();
+            pkg_f.c0.c cVar = new pkg_f.c0.c();
             cVar.b(w1.this.I.i(), -1);
             w1.this.P.U(cVar);
-            List<f.c0.e> listN = f.z.K(w1.this.a0).N(cVar, this.f284b | 65536);
+            List<pkg_f.c0.e> listN = pkg_f.z.K(w1.this.a0).N(cVar, this.f284b | 65536);
             this.f283a = listN;
             return listN.size();
         }
@@ -1655,7 +1651,7 @@ class w1 extends j2 {
     private class s0 implements n0 {
 
         /* JADX INFO: renamed from: a, reason: collision with root package name */
-        private final a.b f286a;
+        private final pkg_a.b f286a;
 
         /* JADX INFO: renamed from: b, reason: collision with root package name */
         private int f287b;
@@ -1663,8 +1659,8 @@ class w1 extends j2 {
         /* JADX INFO: renamed from: c, reason: collision with root package name */
         private n0 f288c;
 
-        s0(a.b.f2 f2Var) {
-            a.b bVar = f2Var.J;
+        s0(pkg_a.b.f2 f2Var) {
+            pkg_a.b bVar = f2Var.J;
             this.f286a = bVar;
             this.f287b = f2Var.I;
             this.f288c = w1.this.X2(bVar);
@@ -1680,11 +1676,11 @@ class w1 extends j2 {
         }
 
         @Override // com.jozein.xedgepro.xposed.w1.n0
-        public a.b b() {
+        public pkg_a.b b() {
             if (this.f287b <= 0) {
                 return null;
             }
-            a.b bVarB = this.f288c.b();
+            pkg_a.b bVarB = this.f288c.b();
             if (bVarB != null) {
                 return bVarB;
             }
@@ -1705,7 +1701,7 @@ class w1 extends j2 {
         List<com.jozein.xedgepro.xposed.l0.f> f290a;
 
         /* JADX INFO: renamed from: b, reason: collision with root package name */
-        List<f.c0.e> f291b;
+        List<pkg_f.c0.e> f291b;
 
         t() {
         }
@@ -1734,7 +1730,7 @@ class w1 extends j2 {
             w1.this.c0.post(new Runnable() { // from class: com.jozein.xedgepro.xposed.z1
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.z.h(i);
+                    h(i);
                 }
             });
             return true;
@@ -1750,27 +1746,27 @@ class w1 extends j2 {
                 }
                 i -= size;
             }
-            g.g gVarD = this.f291b.get(i).d();
-            g.a0.v(gVarD, true);
+            pkg_g.g gVarD = this.f291b.get(i).d();
+            pkg_g.a0.v(gVarD, true);
             return gVarD;
         }
 
         @Override // com.jozein.xedgepro.xposed.t2.e
         public CharSequence d(int i) {
-            f.c0.e eVar;
+            pkg_f.c0.b bVar;
             List<com.jozein.xedgepro.xposed.l0.f> list = this.f290a;
             if (list == null) {
-                eVar = this.f291b.get(i);
+                bVar = this.f291b.get(i);
             } else {
                 int size = list.size();
                 if (i < size) {
-                    eVar = this.f290a.get(i);
+                    bVar = this.f290a.get(i);
                 } else {
                     i -= size;
-                    eVar = this.f291b.get(i);
+                    bVar = this.f291b.get(i);
                 }
             }
-            return eVar.f();
+            return bVar.f();
         }
 
         @Override // com.jozein.xedgepro.xposed.t2.e
@@ -1795,12 +1791,12 @@ class w1 extends j2 {
         @Override // com.jozein.xedgepro.xposed.t2.e
         public int getCount() {
             this.f290a = w1.this.P.u0();
-            f.c0.c cVar = new f.c0.c();
+            pkg_f.c0.c cVar = new pkg_f.c0.c();
             cVar.b(w1.this.I.i(), -1);
             for (com.jozein.xedgepro.xposed.l0.f fVar : this.f290a) {
                 cVar.a(fVar.i(), fVar.k());
             }
-            List<f.c0.e> listN = f.z.K(w1.this.a0).N(cVar, 131072);
+            List<pkg_f.c0.e> listN = pkg_f.z.K(w1.this.a0).N(cVar, 131072);
             this.f291b = listN;
             return listN.size() + this.f290a.size();
         }
@@ -1809,10 +1805,10 @@ class w1 extends j2 {
     private class t0 implements t2.e {
 
         /* JADX INFO: renamed from: a, reason: collision with root package name */
-        final g.o f293a;
+        final pkg_g.o f293a;
 
         /* JADX INFO: renamed from: b, reason: collision with root package name */
-        final a.b[] f294b;
+        final pkg_a.b[] f294b;
 
         /* JADX INFO: renamed from: c, reason: collision with root package name */
         final boolean f295c;
@@ -1820,13 +1816,13 @@ class w1 extends j2 {
         /* JADX INFO: renamed from: d, reason: collision with root package name */
         w0 f296d = null;
 
-        t0(a.b[] bVarArr, boolean z) {
-            this.f293a = new g.o.b(w1.this.H, w1.this.b0.getResources());
+        t0(pkg_a.b[] bVarArr, boolean z) {
+            this.f293a = new pkg_g.o.b(w1.this.H, w1.this.b0.getResources());
             this.f294b = bVarArr;
             this.f295c = z;
         }
 
-        private Drawable g(a.b bVar) {
+        private Drawable g(pkg_a.b bVar) {
             int i = bVar.z;
             if (i == 0) {
                 return null;
@@ -1837,29 +1833,29 @@ class w1 extends j2 {
             }
             if (i != 70) {
                 if (i == 72) {
-                    a.b.d dVar = (a.b.d) bVar;
+                    pkg_a.b.d dVar = (pkg_a.b.d) bVar;
                     if (!dVar.B()) {
                         return g(dVar.K);
                     }
                 }
-            } else if (((a.b.g2) bVar).I == 0) {
+            } else if (((pkg_a.b.g2) bVar).I == 0) {
                 int iD = w1.this.V.d();
                 if (iD == 0) {
-                    return this.f293a.a(R.drawable.ic_ringer_mode_silent);
+                    return this.f293a.a(com.jozein.xedgepro.R.drawable.ic_ringer_mode_silent);
                 }
                 if (iD == 1) {
-                    return this.f293a.a(R.drawable.ic_ringer_mode_vibrate);
+                    return this.f293a.a(com.jozein.xedgepro.R.drawable.ic_ringer_mode_vibrate);
                 }
             }
-            g.o oVar = this.f293a;
+            pkg_g.o oVar = this.f293a;
             Drawable drawableM = bVar.m(w1.this.b0);
-            if ((bVar instanceof a.b.k3) && !w1.this.Q1(bVar)) {
+            if ((bVar instanceof pkg_a.b.k3) && !w1.this.Q1(bVar)) {
                 z = false;
             }
             return oVar.e(drawableM, z);
         }
 
-        private CharSequence h(a.b bVar) {
+        private CharSequence h(pkg_a.b bVar) {
             WifiManager wifiManager;
             int i = bVar.z;
             if (i == 0 || i == 1) {
@@ -1868,12 +1864,12 @@ class w1 extends j2 {
             if (i != 21) {
                 if (i != 70) {
                     if (i == 72) {
-                        a.b.d dVar = (a.b.d) bVar;
+                        pkg_a.b.d dVar = (pkg_a.b.d) bVar;
                         if (!dVar.C()) {
                             return h(dVar.K);
                         }
                     }
-                } else if (((a.b.g2) bVar).I == 0) {
+                } else if (((pkg_a.b.g2) bVar).I == 0) {
                     int iD = w1.this.V.d();
                     if (iD == 0) {
                         return w1.this.b0.getText(R.string.ringer_mode_silent);
@@ -1892,12 +1888,12 @@ class w1 extends j2 {
                     try {
                         return Html.fromHtml("<font color=\"#888888\">" + strSubstring + "</font>");
                     } catch (Throwable th) {
-                        f.v.d(th);
+                        pkg_f.v.d(th);
                     }
                 }
                 return strSubstring;
             }
-            return bVar instanceof a.b.k3 ? bVar.p(w1.this.b0) : bVar.n(w1.this.b0);
+            return bVar instanceof pkg_a.b.k3 ? bVar.p(w1.this.b0) : bVar.n(w1.this.b0);
         }
 
         @Override // com.jozein.xedgepro.xposed.t2.e
@@ -1907,11 +1903,11 @@ class w1 extends j2 {
 
         @Override // com.jozein.xedgepro.xposed.t2.e
         public boolean b(int i) {
-            a.b bVarY4 = w1.this.y4(this.f294b[i], true);
+            pkg_a.b bVarY4 = w1.this.y4(this.f294b[i], true);
             if (bVarY4.z != 86) {
                 return false;
             }
-            w0 w0VarF2 = w1.this.f2((a.b.i3) bVarY4);
+            w0 w0VarF2 = w1.this.f2((pkg_a.b.i3) bVarY4);
             this.f296d = w0VarF2;
             w0VarF2.a();
             w1.this.y4(this.f294b[i], false);
@@ -1962,7 +1958,7 @@ class w1 extends j2 {
             try {
                 w1.this.Y3(this.f298a.get(i).t());
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
         }
 
@@ -1976,7 +1972,7 @@ class w1 extends j2 {
             w1.this.c0.post(new Runnable() { // from class: com.jozein.xedgepro.xposed.a2
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.z.h(i);
+                    h(i);
                 }
             });
             return true;
@@ -1985,8 +1981,8 @@ class w1 extends j2 {
         @Override // com.jozein.xedgepro.xposed.t2.e
         public Drawable c(int i) {
             com.jozein.xedgepro.xposed.l0.j jVar = this.f298a.get(i);
-            g.g gVarD = jVar.d();
-            g.a0.v(gVarD, w1.this.P.I0(jVar.i(), jVar.k()));
+            pkg_g.g gVarD = jVar.d();
+            pkg_g.a0.v(gVarD, w1.this.P.I0(jVar.i(), jVar.k()));
             return gVarD;
         }
 
@@ -2013,9 +2009,9 @@ class w1 extends j2 {
     private static class u0 implements n0 {
 
         /* JADX INFO: renamed from: a, reason: collision with root package name */
-        private a.b f300a;
+        private pkg_a.b f300a;
 
-        u0(a.b bVar) {
+        u0(pkg_a.b bVar) {
             this.f300a = bVar;
         }
 
@@ -2025,34 +2021,34 @@ class w1 extends j2 {
         }
 
         @Override // com.jozein.xedgepro.xposed.w1.n0
-        public a.b b() {
-            a.b bVar = this.f300a;
+        public pkg_a.b b() {
+            pkg_a.b bVar = this.f300a;
             this.f300a = null;
             return bVar;
         }
     }
 
-    class v implements f.i.f {
+    class v implements pkg_f.i.f {
         v() {
         }
 
-        @Override // f.i.f
+        @Override // pkg_f.i.f
         public int a(String str) {
             return w1.this.L.g(str).f485a;
         }
 
-        @Override // f.i.f
-        public f.t b(String str) {
-            f.t tVarG = w1.this.L.g(str);
+        @Override // pkg_f.i.f
+        public pkg_f.t b(String str) {
+            pkg_f.t tVarG = w1.this.L.g(str);
             if (tVarG != null) {
-                return new f.t(tVarG.f485a);
+                return new pkg_f.t(tVarG.f485a);
             }
             return null;
         }
     }
 
     /* JADX INFO: Access modifiers changed from: private */
-    abstract class v0 implements com.jozein.xedgepro.xposed.b0.a {
+    abstract class SliderBase implements com.jozein.xedgepro.xposed.b0.a {
         private final CharSequence A;
         private final int B;
         private boolean C;
@@ -2075,32 +2071,32 @@ class w1 extends j2 {
             @Override // android.view.View
             protected void onDraw(Canvas canvas) {
                 canvas.getClipBounds(this.z);
-                if (v0.this.H == v0.this.G) {
-                    canvas.drawRect(this.z, v0.this.z);
+                if (SliderBase.this.H == SliderBase.this.G) {
+                    canvas.drawRect(this.z, SliderBase.this.z);
                     return;
                 }
-                if (v0.this.H != 0) {
-                    if (v0.this.C) {
-                        canvas.drawRect(0.0f, 0.0f, (v0.this.H * this.z.right) / v0.this.G, this.z.bottom, v0.this.z);
+                if (SliderBase.this.H != 0) {
+                    if (SliderBase.this.C) {
+                        canvas.drawRect(0.0f, 0.0f, (SliderBase.this.H * this.z.right) / SliderBase.this.G, this.z.bottom, SliderBase.this.z);
                         return;
                     }
-                    float f2 = ((v0.this.G - v0.this.H) * this.z.bottom) / v0.this.G;
+                    float f2 = ((SliderBase.this.G - SliderBase.this.H) * this.z.bottom) / SliderBase.this.G;
                     Rect rect = this.z;
-                    canvas.drawRect(0.0f, f2, rect.right, rect.bottom, v0.this.z);
+                    canvas.drawRect(0.0f, f2, rect.right, rect.bottom, SliderBase.this.z);
                 }
             }
         }
 
-        private v0(CharSequence charSequence) {
+        private SliderBase(CharSequence charSequence) {
             this.H = -1;
             Paint paint = new Paint(1);
             this.z = paint;
             paint.setColor(w1.this.H.v(22, 2130739111));
             this.A = charSequence;
-            this.B = (int) (g.a0.j() * 0.1f);
+            this.B = (int) (pkg_g.a0.j() * 0.1f);
         }
 
-        /* synthetic */ v0(w1 w1Var, CharSequence charSequence, k kVar) {
+        /* synthetic */ SliderBase(w1 w1Var, CharSequence charSequence, k kVar) {
             this(charSequence);
         }
 
@@ -2149,7 +2145,7 @@ class w1 extends j2 {
             w1.this.c0.post(new Runnable() { // from class: com.jozein.xedgepro.xposed.e2
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.z.o();
+                    o();
                 }
             });
         }
@@ -2157,7 +2153,7 @@ class w1 extends j2 {
         /* JADX WARN: Code duplicated, block: B:13:0x0024  */
         @Override // com.jozein.xedgepro.xposed.b0.a
         public final void d(float f2, float f3, long j) {
-            final int i = 0;
+            int i = 0;
             if (this.C) {
                 float f4 = this.D;
                 if (f2 > f4) {
@@ -2180,10 +2176,11 @@ class w1 extends j2 {
             }
             if (this.H != i) {
                 this.H = i;
+                final int finalI = i;
                 w1.this.c0.post(new Runnable() { // from class: com.jozein.xedgepro.xposed.f2
                     @Override // java.lang.Runnable
                     public final void run() {
-                        this.z.p(i);
+                        p(finalI);
                     }
                 });
             }
@@ -2192,7 +2189,7 @@ class w1 extends j2 {
         @Override // com.jozein.xedgepro.xposed.b0.a
         public final void e(int i, float f2, float f3, long j) {
             final FrameLayout.LayoutParams layoutParams;
-            int iQ = g.a0.q();
+            int iQ = pkg_g.a0.q();
             if (i == 0) {
                 this.C = false;
                 layoutParams = new FrameLayout.LayoutParams(iQ, -1, 3);
@@ -2213,7 +2210,7 @@ class w1 extends j2 {
             w1.this.c0.post(new Runnable() { // from class: com.jozein.xedgepro.xposed.g2
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.z.q(layoutParams);
+                    q(layoutParams);
                 }
             });
             d(f2, f3, j);
@@ -2225,7 +2222,7 @@ class w1 extends j2 {
                 view.post(new Runnable() { // from class: com.jozein.xedgepro.xposed.h2
                     @Override // java.lang.Runnable
                     public final void run() {
-                        w1.v0.n();
+                        SliderBase.n();
                     }
                 });
             }
@@ -2236,11 +2233,11 @@ class w1 extends j2 {
         protected abstract void r(int i);
     }
 
-    class w extends f.f0.d {
+    class w extends pkg_f.f0.d {
         w() {
         }
 
-        @Override // f.f0.d
+        @Override // pkg_f.f0.d
         protected Object a(String str, Object[] objArr) {
             return null;
         }
@@ -2302,16 +2299,16 @@ class w1 extends j2 {
                 g();
                 this.A.postDelayed(this, this.z);
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
         }
     }
 
     class x extends ResultReceiver {
-        final /* synthetic */ a.b.k3 z;
+        final /* synthetic */ pkg_a.b.k3 z;
 
         /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-        x(Handler handler, a.b.k3 k3Var) {
+        x(Handler handler, pkg_a.b.k3 k3Var) {
             super(handler);
             this.z = k3Var;
         }
@@ -2324,38 +2321,38 @@ class w1 extends j2 {
                 } catch (Throwable unused) {
                 }
             } else {
-                f.v.c("Failed to turn on Wifi hotspot with error code : " + i);
+                pkg_f.v.c("Failed to turn on Wifi hotspot with error code : " + i);
             }
         }
     }
 
-    class y implements f.n0.b {
+    class y implements pkg_f.n0.b {
         y() {
         }
 
-        @Override // f.n0.b
+        @Override // pkg_f.n0.b
         public void a() {
             w1.this.j1(1);
             w1.this.U.l(32, false);
         }
 
-        @Override // f.n0.b
+        @Override // pkg_f.n0.b
         public void b() {
-            w1.this.d4(1, new a.b.l3(2), R.drawable.ic_torch);
+            w1.this.d4(1, new pkg_a.b.l3(2), R.drawable.ic_torch);
             w1.this.U.l(32, true);
         }
     }
 
-    class z implements g.l.e {
+    class z implements pkg_g.l.e {
         z() {
         }
 
-        @Override // g.l.e
+        @Override // pkg_g.l.e
         public void a(Intent intent) {
             w1.this.n4(intent);
         }
 
-        @Override // g.l.e
+        @Override // pkg_g.l.e
         public boolean b(CharSequence charSequence) {
             ClipboardManager clipboardManager;
             if (charSequence.length() != 0 && (clipboardManager = (ClipboardManager) w1.this.a0.getSystemService("clipboard")) != null) {
@@ -2368,7 +2365,7 @@ class w1 extends j2 {
         }
     }
 
-    public w1(ClassLoader classLoader, a.p pVar, a.f fVar, a.k kVar, a.s.e eVar, a.v vVar) {
+    public w1(ClassLoader classLoader, pkg_a.p pVar, pkg_a.AppTriggerManager fVar, pkg_a.k kVar, pkg_a.s.e eVar, pkg_a.v vVar) {
         super(Build.VERSION.SDK_INT < 23 ? "com.android.internal.policy.impl.PhoneWindowManager" : "com.android.server.policy.PhoneWindowManager", classLoader);
         this.M = new k();
         this.N = new v();
@@ -2404,13 +2401,13 @@ class w1 extends j2 {
         this.E0 = new Runnable() { // from class: com.jozein.xedgepro.xposed.u1
             @Override // java.lang.Runnable
             public final void run() {
-                this.z.G1();
+                w1.this.G1();
             }
         };
         this.F0 = new Runnable() { // from class: com.jozein.xedgepro.xposed.b1
             @Override // java.lang.Runnable
             public final void run() {
-                this.z.I1();
+                w1.this.I1();
             }
         };
         this.G0 = null;
@@ -2480,7 +2477,7 @@ class w1 extends j2 {
                 p2.g(th4);
             }
         }
-        this.R = new com.jozein.xedgepro.xposed.p0(classLoader, this);
+        this.mP0R = new com.jozein.xedgepro.xposed.p0(classLoader, this);
         try {
             int i3 = Build.VERSION.SDK_INT;
             if (i3 < 29) {
@@ -2537,14 +2534,14 @@ class w1 extends j2 {
             i3 = android.R.id.selectAll;
             i4 = 29;
         }
-        if (this.R.N(i3)) {
+        if (this.mP0R.N(i3)) {
             return;
         }
         this.O.Z(i4, 4096);
     }
 
     /* JADX INFO: Access modifiers changed from: private */
-    public /* synthetic */ void A2(a.b.i3 i3Var) {
+    public /* synthetic */ void A2(pkg_a.b.i3 i3Var) {
         G4(i3Var.n(this.b0));
     }
 
@@ -2566,20 +2563,20 @@ class w1 extends j2 {
             this.O.v0(this.a0);
             this.b0 = p2.d(this.a0);
             if (this.H.p(2)) {
-                d5(new a.b.m2(1));
+                d5(new pkg_a.b.m2(1));
             }
             u3(this.H.k(0));
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
         if (this.n0) {
             this.o0 = null;
         }
         this.P.n1();
-        f.v.c("Perform boot completed.");
+        pkg_f.v.c("Perform boot completed.");
     }
 
-    private void B1(a.b.s0 s0Var) {
+    private void B1(pkg_a.b.s0 s0Var) {
         String str;
         switch (s0Var.I) {
             case 1:
@@ -2660,15 +2657,15 @@ class w1 extends j2 {
                 this.P.t1(s0Var.J, s0Var.K);
                 return;
         }
-        f.v.c(str);
+        pkg_f.v.c(str);
     }
 
     /* JADX INFO: Access modifiers changed from: private */
-    public /* synthetic */ void B2(a.b.y0 y0Var) {
+    public /* synthetic */ void B2(pkg_a.b.y0 y0Var) {
         k2(y0Var, true);
     }
 
-    private void B3(a.b.y1 y1Var) throws IOException {
+    private void B3(pkg_a.b.y1 y1Var) throws IOException {
         String str = y1Var.I;
         if (str == null) {
             return;
@@ -2743,7 +2740,7 @@ class w1 extends j2 {
         }
     }
 
-    private void D1(a.b.i3 i3Var) {
+    private void D1(pkg_a.b.i3 i3Var) {
         int i2 = i3Var.I;
         if (i2 == 0) {
             e1(i3Var.J);
@@ -2813,7 +2810,7 @@ class w1 extends j2 {
     }
 
     private void E1(String str, int i2) {
-        CharSequence charSequenceG = f.z.K(this.a0).G(str);
+        CharSequence charSequenceG = pkg_f.z.K(this.a0).G(str);
         if (this.P.l1(str, i2, false)) {
             J4(this.b0.getString(R.string.app_thawed_f, charSequenceG));
         } else {
@@ -2826,7 +2823,7 @@ class w1 extends j2 {
         t3.q();
         this.Z.R();
         x4();
-        T4(new a.b.r0(2));
+        T4(new pkg_a.b.r0(2));
         u3(this.H.k(19));
         u3(this.H.k(z2 ? 21 : 20));
     }
@@ -2835,7 +2832,7 @@ class w1 extends j2 {
         this.c0.postDelayed(new Runnable() { // from class: com.jozein.xedgepro.xposed.q1
             @Override // java.lang.Runnable
             public final void run() {
-                this.z.H2();
+                w1.this.H2();
             }
         }, m3());
     }
@@ -2857,9 +2854,9 @@ class w1 extends j2 {
     /* JADX INFO: Access modifiers changed from: private */
     public /* synthetic */ void F2() {
         y1();
-        W4(new a.b.d1(2));
-        T4(new a.b.r0(2));
-        f.m0 m0Var = this.N0;
+        W4(new pkg_a.b.d1(2));
+        T4(new pkg_a.b.r0(2));
+        pkg_f.m0 m0Var = this.N0;
         if (m0Var != null && !m0Var.m()) {
             m0Var.n();
             this.N0 = null;
@@ -2872,7 +2869,7 @@ class w1 extends j2 {
     }
 
     /* JADX INFO: Access modifiers changed from: private */
-    public void F4(a.b bVar, Throwable th) {
+    public void F4(pkg_a.b bVar, Throwable th) {
         String message;
         if (bVar.z != 65535) {
             Context context = this.b0;
@@ -2898,7 +2895,7 @@ class w1 extends j2 {
     }
 
     private void G3() {
-        f.v.c("Start reload settings.");
+        pkg_f.v.c("Start reload settings.");
         this.H.g();
         com.jozein.xedgepro.xposed.w.c();
         H3();
@@ -2925,7 +2922,7 @@ class w1 extends j2 {
                 this.Q.d0().V();
                 return;
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
         }
         this.d0.reboot(null);
@@ -2948,18 +2945,18 @@ class w1 extends j2 {
     /* JADX INFO: Access modifiers changed from: private */
     public /* synthetic */ void I2() {
         String[] strArrA = n2.a(this.a0);
-        Intent intent = new Intent(a.b.s0.M);
+        Intent intent = new Intent(pkg_a.b.s0.M);
         intent.putExtra("list", strArrA);
-        intent.setPackage(f.l.j);
+        intent.setPackage(pkg_f.l.CONST_PKG);
         try {
             this.P.W(intent, 0);
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
     }
 
     /* JADX INFO: Access modifiers changed from: private */
-    public void I4(a.b.k3 k3Var, boolean z2) {
+    public void I4(pkg_a.b.k3 k3Var, boolean z2) {
         if (this.k0 && this.f0 && this.H.o(24)) {
             Context context = this.b0;
             G4(context.getString(z2 ? R.string.on_f : R.string.off_f, k3Var.p(context)));
@@ -2983,7 +2980,7 @@ class w1 extends j2 {
         try {
             runnable.run();
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
         runnable.run();
     }
@@ -3004,9 +3001,9 @@ class w1 extends j2 {
         }
     }
 
-    private void K3(a.b.a0 a0Var) {
+    private void K3(pkg_a.b.a0 a0Var) {
         long j2;
-        if (!f.l.r) {
+        if (!pkg_f.l.CONST_IS_PRO) {
             throw new RuntimeException("!");
         }
         if (a0Var.z() == null) {
@@ -3015,7 +3012,7 @@ class w1 extends j2 {
         boolean zO = this.H.o(25);
         boolean zO2 = this.H.o(36);
         if (a0Var.I) {
-            f.i0.c(a0Var, this.b0, this.c0, zO, zO2);
+            pkg_f.i0.c(a0Var, this.b0, this.c0, zO, zO2);
             j2 = 4000;
         } else {
             BinderService.k(this.a0, a0Var, zO, zO2);
@@ -3036,13 +3033,13 @@ class w1 extends j2 {
         Handler h0Var;
         Handler handler;
         Throwable th;
-        f.h0 h0Var2;
+        pkg_f.h0 h0Var2;
         Looper looperMyLooper = Looper.myLooper();
         if (looperMyLooper == null || !Thread.currentThread().getName().equals("android.ui")) {
             try {
                 h0Var = (Handler) u("mHandler");
             } catch (Throwable th2) {
-                f.v.d(th2);
+                pkg_f.v.d(th2);
                 h0Var = null;
             }
             if (h0Var == null) {
@@ -3050,10 +3047,10 @@ class w1 extends j2 {
                     handler = (Handler) XposedHelpers.callStaticMethod(XposedHelpers.findClass("com.android.server.UiThread", m().getClassLoader()), "getHandler", new Object[0]);
                     if (handler != null) {
                         try {
-                            h0Var = new f.h0(handler.getLooper());
+                            h0Var = new pkg_f.h0(handler.getLooper());
                         } catch (Throwable th3) {
                             th = th3;
-                            f.v.d(th);
+                            pkg_f.v.d(th);
                             h0Var = handler;
                         }
                     } else {
@@ -3064,11 +3061,11 @@ class w1 extends j2 {
                     th = th4;
                 }
             }
-            h0Var2 = (h0Var != null || looperMyLooper == null) ? new f.h0(Looper.getMainLooper()) : new f.h0(looperMyLooper);
+            h0Var2 = (h0Var != null || looperMyLooper == null) ? new pkg_f.h0(Looper.getMainLooper()) : new pkg_f.h0(looperMyLooper);
         } else {
-            h0Var2 = new f.h0(looperMyLooper);
+            h0Var2 = new pkg_f.h0(looperMyLooper);
         }
-        f.h0.g(h0Var2);
+        pkg_f.h0.g(h0Var2);
         return h0Var2;
     }
 
@@ -3095,7 +3092,7 @@ class w1 extends j2 {
                 this.B0 = null;
             }
             Toast toastMakeText = Toast.makeText(this.a0, charSequence, 1);
-            if (f.o0.d() != 0) {
+            if (pkg_f.o0.d() != 0) {
                 S3(toastMakeText);
             }
             toastMakeText.show();
@@ -3119,9 +3116,9 @@ class w1 extends j2 {
     /* JADX INFO: Access modifiers changed from: private */
     public /* synthetic */ void M2(Intent intent) {
         try {
-            this.P.q1(intent, false, null, f.o0.d());
+            this.P.q1(intent, false, null, pkg_f.o0.d());
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
             L4(th.getMessage());
         }
     }
@@ -3131,7 +3128,7 @@ class w1 extends j2 {
         this.O.g0(f2, pointZ.x, pointZ.y);
     }
 
-    private void M4(a.b bVar) {
+    private void M4(pkg_a.b bVar) {
         if (this.k0 && this.f0 && this.H.o(25)) {
             G4(bVar.n(this.b0));
         }
@@ -3153,18 +3150,18 @@ class w1 extends j2 {
         try {
             this.O.g0(l2.E, f2, f3);
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
     }
 
     private void N3() {
-        Intent intent = new Intent(a.b.s0.O);
-        intent.putExtra("logs", f.v.b());
-        intent.setPackage(f.l.j);
+        Intent intent = new Intent(pkg_a.b.s0.O);
+        intent.putExtra("logs", pkg_f.v.b());
+        intent.setPackage(pkg_f.l.CONST_PKG);
         this.P.W(intent, 0);
     }
 
-    private void N4(a.b.k3 k3Var) {
+    private void N4(pkg_a.b.k3 k3Var) {
         ContentResolver contentResolver = this.a0.getContentResolver();
         int iA = h3.a.a(contentResolver, "airplane_mode_on", 0);
         int iS2 = S2(k3Var.I, iA);
@@ -3192,7 +3189,7 @@ class w1 extends j2 {
         P1().c(f2, f3, new v3.d() { // from class: com.jozein.xedgepro.xposed.l1
             @Override // com.jozein.xedgepro.xposed.v3.d
             public final void a(boolean z2, String str) {
-                this.f148a.N2(f2, f3, z2, str);
+                w1.this.N2(f2, f3, z2, str);
             }
         });
     }
@@ -3201,7 +3198,7 @@ class w1 extends j2 {
         this.V.b(i2);
     }
 
-    private void O4(a.b.k3 k3Var) {
+    private void O4(pkg_a.b.k3 k3Var) {
         int i2 = k3Var.I;
         ContentResolver contentResolver = this.a0.getContentResolver();
         int iA = h3.c.a(contentResolver, "screen_brightness_mode", 0);
@@ -3228,14 +3225,14 @@ class w1 extends j2 {
     }
 
     private void P3() {
-        Intent intentPutExtra = new Intent(a.b.s0.N).setPackage(f.l.j).putExtra("alias", f.q0.c()).putExtra("time", f.l.s).putExtra("build_time", f.l.t);
+        Intent intentPutExtra = new Intent(pkg_a.b.s0.N).setPackage(pkg_f.l.CONST_PKG).putExtra("alias", pkg_f.q0.c()).putExtra("time", pkg_f.l.CONST_EMAIL).putExtra("build_time", pkg_f.l.CONST_VERSION);
         if (W2()) {
             intentPutExtra.putExtra("send_files", true);
         }
         this.P.W(intentPutExtra, 0);
     }
 
-    private void P4(a.b.k3 k3Var) {
+    private void P4(pkg_a.b.k3 k3Var) {
         int i2 = k3Var.I;
         ContentResolver contentResolver = this.a0.getContentResolver();
         int iA = h3.c.a(contentResolver, "accelerometer_rotation", 0);
@@ -3248,7 +3245,7 @@ class w1 extends j2 {
     }
 
     /* JADX INFO: Access modifiers changed from: private */
-    public boolean Q1(a.b bVar) {
+    public boolean Q1(pkg_a.b bVar) {
         int i2 = bVar.z;
         if (i2 == 73) {
             return this.Q.i0();
@@ -3305,15 +3302,15 @@ class w1 extends j2 {
     }
 
     private void Q3() {
-        f.d.b(new Runnable() { // from class: com.jozein.xedgepro.xposed.t1
+        pkg_f.d.b(new Runnable() { // from class: com.jozein.xedgepro.xposed.t1
             @Override // java.lang.Runnable
             public final void run() {
-                this.z.I2();
+                w1.this.I2();
             }
         });
     }
 
-    private void Q4(a.b.k3 k3Var) {
+    private void Q4(pkg_a.b.k3 k3Var) {
         int i2 = k3Var.I;
         BluetoothAdapter defaultAdapter = BluetoothAdapter.getDefaultAdapter();
         switch (defaultAdapter.getState()) {
@@ -3349,13 +3346,13 @@ class w1 extends j2 {
         com.jozein.xedgepro.xposed.f.j(this.a0, i2);
     }
 
-    private void R4(a.b.k3 k3Var) {
+    private void R4(pkg_a.b.k3 k3Var) {
         boolean z2 = this.L0;
         boolean zT2 = T2(k3Var.I, z2);
         if (z2 != zT2) {
             this.L0 = zT2;
             if (zT2) {
-                d4(6, new a.b.o0(2), R.drawable.ic_game_mode);
+                d4(6, new pkg_a.b.o0(2), R.drawable.ic_game_mode);
             } else {
                 j1(6);
             }
@@ -3372,12 +3369,12 @@ class w1 extends j2 {
         try {
             t3.i((WindowManager.LayoutParams) XposedHelpers.getObjectField(XposedHelpers.getObjectField(toast, "mTN"), "mParams"), 16);
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
     }
 
     /* JADX INFO: Access modifiers changed from: private */
-    public void S4(a.b.k3 k3Var) {
+    public void S4(pkg_a.b.k3 k3Var) {
         boolean z2 = true;
         boolean zP = this.H.p(1);
         boolean zT2 = T2(k3Var.I, zP);
@@ -3392,7 +3389,7 @@ class w1 extends j2 {
                 this.O.C0();
             }
             if (zT2) {
-                d4(4, new a.b.p0(2), R.drawable.ic_gesture_enabled);
+                d4(4, new pkg_a.b.p0(2), R.drawable.ic_gesture_enabled);
             } else {
                 j1(4);
             }
@@ -3414,14 +3411,17 @@ class w1 extends j2 {
         return true;
     }
 
-    private void T4(a.b.k3 k3Var) {
-        boolean zK0;
-        boolean zT2;
-        if (this.f0 && zK0 != (zT2 = T2(k3Var.I, (zK0 = this.O.k0())))) {
+    private void T4(pkg_a.b.k3 k3Var) {
+        if (!this.f0) {
+            return;
+        }
+        boolean zK0 = this.O.k0();
+        boolean zT2 = T2(k3Var.I, zK0);
+        if (zK0 != zT2) {
             y0 y0Var = this.O;
             if (zT2) {
                 y0Var.A0(true);
-                d4(3, new a.b.r0(2), R.drawable.ic_gesture_record);
+                d4(3, new pkg_a.b.r0(2), R.drawable.ic_gesture_record);
             } else {
                 y0Var.A0(false);
                 j1(3);
@@ -3441,7 +3441,7 @@ class w1 extends j2 {
         }
     }
 
-    private void U3(a.b.p2 p2Var) {
+    private void U3(pkg_a.b.p2 p2Var) {
         int iA;
         synchronized (this.M) {
             iA = p2Var.A(this.M);
@@ -3449,7 +3449,7 @@ class w1 extends j2 {
         J4(((Object) p2Var.n(this.b0)) + ", " + iA);
     }
 
-    private void U4(a.b.k3 k3Var) {
+    private void U4(pkg_a.b.k3 k3Var) {
         boolean zH0 = this.Q.h0();
         boolean zT2 = T2(k3Var.I, zH0);
         if (zT2 != zH0) {
@@ -3462,13 +3462,13 @@ class w1 extends j2 {
     /* JADX INFO: Access modifiers changed from: private */
     public void V2(boolean z2) {
         int i2 = z2 ? 21 : 22;
-        if (this.R.K(i2)) {
+        if (this.mP0R.K(i2)) {
             return;
         }
         this.O.Y(i2);
     }
 
-    private void V3(a.b.k3 k3Var, boolean z2) {
+    private void V3(pkg_a.b.k3 k3Var, boolean z2) {
         int i2 = Build.VERSION.SDK_INT;
         if (i2 <= 29 || !z2) {
             if (i2 >= 26) {
@@ -3499,7 +3499,7 @@ class w1 extends j2 {
             }
         } else {
             Object systemService = this.a0.getSystemService("tethering");
-            n1 n1Var = new Executor() { // from class: com.jozein.xedgepro.xposed.n1
+            java.util.concurrent.Executor n1Var = new java.util.concurrent.Executor() { // from class: com.jozein.xedgepro.xposed.n1
                 @Override // java.util.concurrent.Executor
                 public final void execute(Runnable runnable) {
                     w1.J2(runnable);
@@ -3511,7 +3511,7 @@ class w1 extends j2 {
         I4(k3Var, z2);
     }
 
-    private void V4(a.b.k3 k3Var) {
+    private void V4(pkg_a.b.k3 k3Var) {
         boolean zI0 = this.Q.i0();
         boolean zT2 = T2(k3Var.I, zI0);
         if (zT2 != zI0) {
@@ -3522,7 +3522,7 @@ class w1 extends j2 {
     }
 
     private boolean W2() {
-        return !this.H.J() || (!com.jozein.xedgepro.xposed.w.g() && a.p.q(this.a0, 8));
+        return !this.H.J() || (!com.jozein.xedgepro.xposed.w.g() && pkg_a.p.q(this.a0, 8));
     }
 
     private void W3(boolean z2) {
@@ -3531,18 +3531,18 @@ class w1 extends j2 {
         }
     }
 
-    private void W4(a.b.k3 k3Var) {
+    private void W4(pkg_a.b.k3 k3Var) {
         boolean z2 = this.I0 != null;
         boolean zT2 = T2(k3Var.I, z2);
         if (z2 == zT2) {
             return;
         }
         if (zT2) {
-            PowerManager.WakeLock wakeLockNewWakeLock = this.d0.newWakeLock(10, f.l.x + ":awake");
+            PowerManager.WakeLock wakeLockNewWakeLock = this.d0.newWakeLock(10, pkg_f.l.CONST_APP_TAG + ":awake");
             this.I0 = wakeLockNewWakeLock;
             wakeLockNewWakeLock.setReferenceCounted(false);
             this.I0.acquire();
-            d4(0, new a.b.d1(2), R.drawable.ic_keep_screen_on);
+            d4(0, new pkg_a.b.d1(2), R.drawable.ic_keep_screen_on);
         } else {
             this.I0.release();
             this.I0 = null;
@@ -3553,24 +3553,24 @@ class w1 extends j2 {
     }
 
     /* JADX INFO: Access modifiers changed from: private */
-    public n0 X2(a.b bVar) {
+    public n0 X2(pkg_a.b bVar) {
         int i2 = bVar.z;
         if (i2 == 0 || i2 == 1) {
             return this.Q0;
         }
         if (i2 == 62) {
-            return new l0((a.b.d0) bVar);
+            return new l0((pkg_a.b.d0) bVar);
         }
         if (i2 == 63) {
-            return new o0(((a.b.q1) bVar).I);
+            return new o0(((pkg_a.b.q1) bVar).I);
         }
         if (i2 == 72) {
-            return X2(((a.b.d) bVar).K);
+            return X2(((pkg_a.b.d) bVar).K);
         }
         if (i2 != 84) {
-            return i2 != 101 ? new u0(bVar) : new s0((a.b.f2) bVar);
+            return i2 != 101 ? new u0(bVar) : new s0((pkg_a.b.f2) bVar);
         }
-        return new o0(((a.b.k2) bVar).z());
+        return new o0(((pkg_a.b.k2) bVar).z());
     }
 
     private void X3() {
@@ -3598,7 +3598,7 @@ class w1 extends j2 {
             }
             int i7 = i2 + 1;
             int i8 = i3 + 1;
-            a.b[] bVarArr = new a.b[i8 * i7];
+            pkg_a.b[] bVarArr = new pkg_a.b[i8 * i7];
             int i9 = 0;
             for (int i10 = 0; i10 < i8; i10++) {
                 int i11 = 0;
@@ -3612,7 +3612,7 @@ class w1 extends j2 {
         }
     }
 
-    private void X4(a.b.k3 k3Var) {
+    private void X4(pkg_a.b.k3 k3Var) {
         boolean zP = this.H.p(0);
         boolean zT2 = T2(k3Var.I, zP);
         if (zP != zT2) {
@@ -3622,7 +3622,7 @@ class w1 extends j2 {
                 this.O.C0();
             }
             if (zT2) {
-                d4(5, new a.b.e1(2), R.drawable.ic_key_enabled);
+                d4(5, new pkg_a.b.e1(2), R.drawable.ic_key_enabled);
             } else {
                 j1(5);
             }
@@ -3647,7 +3647,7 @@ class w1 extends j2 {
         b0 b0Var = new b0(this.a0, o2Var);
         o2Var.a(b0Var);
         b0Var.setBackgroundColor(this.H.v(33, -16764873));
-        b0Var.setSelector(g.a0.l());
+        b0Var.setSelector(pkg_g.a0.l());
         k0 k0Var = new k0(fVar);
         b0Var.setAdapter((ListAdapter) k0Var);
         b0Var.setOnItemClickListener(k0Var);
@@ -3662,10 +3662,10 @@ class w1 extends j2 {
         AnimationSet animationSet = new AnimationSet(true);
         animationSet.addAnimation(new TranslateAnimation(0.0f, 0.0f, i2 / 2.0f, 0.0f));
         animationSet.addAnimation(new AlphaAnimation(0.0f, 1.0f));
-        g.a0.z(b0Var, animationSet, (long) (((count * 66.0f) * 2.0f) / 3.0f));
+        pkg_g.a0.z(b0Var, animationSet, (long) (((count * 66.0f) * 2.0f) / 3.0f));
     }
 
-    private void Y4(a.b.k3 k3Var) {
+    private void Y4(pkg_a.b.k3 k3Var) {
         ContentResolver contentResolver = this.a0.getContentResolver();
         int iA = h3.b.a(contentResolver, "location_mode", 0);
         int iS2 = S2(k3Var.I, iA);
@@ -3679,21 +3679,21 @@ class w1 extends j2 {
         }
     }
 
-    private void Z2(a.b.u1 u1Var) {
-        String strI = f.m0.i(N1(u1Var.J), this.a0);
+    private void Z2(pkg_a.b.u1 u1Var) {
+        String strI = pkg_f.m0.i(N1(u1Var.J), this.a0);
         new q0().c(strI, strI, R.drawable.ic_launcher, u1Var.I, true, false, null);
     }
 
     /* JADX INFO: Access modifiers changed from: private */
-    public void Z3(f.c0.e eVar) {
+    public void Z3(pkg_f.c0.e eVar) {
         try {
             Y3(new com.jozein.xedgepro.xposed.l0.f(this.P, eVar.i(), eVar.k()));
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
     }
 
-    private void Z4(a.b.k3 k3Var) {
+    private void Z4(pkg_a.b.k3 k3Var) {
         boolean zT2;
         int i2 = k3Var.I;
         if (Build.VERSION.SDK_INT < 21) {
@@ -3718,7 +3718,7 @@ class w1 extends j2 {
         I4(k3Var, zT2);
     }
 
-    private void a5(a.b.k3 k3Var) {
+    private void a5(pkg_a.b.k3 k3Var) {
         int i2 = k3Var.I;
         NfcAdapter defaultAdapter = NfcAdapter.getDefaultAdapter(this.a0);
         if (defaultAdapter == null) {
@@ -3744,8 +3744,8 @@ class w1 extends j2 {
         }
     }
 
-    private void b4(a.b.m0 m0Var) {
-        if (f.o0.d() == 0) {
+    private void b4(pkg_a.b.m0 m0Var) {
+        if (pkg_f.o0.d() == 0) {
             BinderService.p(this.a0, ServiceWidget.f(m0Var.I, this.H.u(27)));
         }
     }
@@ -3761,7 +3761,7 @@ class w1 extends j2 {
         }
     }
 
-    private void c1(a.b.i iVar) {
+    private void c1(pkg_a.b.i iVar) {
         int i2 = iVar.I;
         if (i2 == 0) {
             int i3 = iVar.J;
@@ -3825,7 +3825,7 @@ class w1 extends j2 {
                             return fS1;
                         }
                     } catch (Throwable th) {
-                        f.v.c(th.toString());
+                        pkg_f.v.c(th.toString());
                     }
                 }
                 if (Build.VERSION.SDK_INT >= 31 && (display = this.a0.getDisplay()) != null) {
@@ -3879,7 +3879,7 @@ class w1 extends j2 {
             if (P1().performGlobalAction(3)) {
                 throw th;
             }
-            f.v.d(th);
+            pkg_f.v.d(th);
             m2(187);
         }
     }
@@ -3893,9 +3893,9 @@ class w1 extends j2 {
         fVarE.b(this.a0, z2);
     }
 
-    private f.m0 d2() {
+    private pkg_f.m0 d2() {
         if (this.N0 == null) {
-            this.N0 = new f.m0(this.a0);
+            this.N0 = new pkg_f.m0(this.a0);
         }
         return this.N0;
     }
@@ -3908,7 +3908,7 @@ class w1 extends j2 {
         this.n0 = true;
         this.o0 = null;
         if (!z2) {
-            f.v.c("Cannot start service!");
+            pkg_f.v.c("Cannot start service!");
         }
         BinderService.B(z2);
         if (W2()) {
@@ -3916,7 +3916,7 @@ class w1 extends j2 {
             this.c0.postDelayed(new Runnable() { // from class: com.jozein.xedgepro.xposed.o1
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.z.A3();
+                    w1.this.A3();
                 }
             }, 6000L);
         } else if (this.H.J()) {
@@ -3925,14 +3925,14 @@ class w1 extends j2 {
     }
 
     /* JADX INFO: Access modifiers changed from: private */
-    public void d4(int i2, a.b.k3 k3Var, int i3) {
+    public void d4(int i2, pkg_a.b.k3 k3Var, int i3) {
         if (i2 <= this.H0.length && (this.H.u(7) & (1 << i2)) != 0) {
             this.H0[i2] = new q0();
             this.H0[i2].b(k3Var.n(this.b0), i3, k3Var);
         }
     }
 
-    private void d5(a.b.k3 k3Var) {
+    private void d5(pkg_a.b.k3 k3Var) {
         if (this.K0 != null) {
             if (k3Var.I != 1) {
                 t3.n().u(257, 1000L);
@@ -3956,7 +3956,7 @@ class w1 extends j2 {
             alphaAnimation.setDuration(1000L);
             this.K0.startAnimation(alphaAnimation);
             this.H.X(this.a0, 2, true);
-            d4(2, new a.b.m2(2), R.drawable.ic_screen_filter);
+            d4(2, new pkg_a.b.m2(2), R.drawable.ic_screen_filter);
             this.U.l(k3Var.z, true);
             I4(k3Var, true);
         }
@@ -3979,7 +3979,7 @@ class w1 extends j2 {
             try {
                 objS = r("getStatusBarService", new Object[0]);
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
                 objS = g3.s();
             }
             this.D0 = new k3(objS, this);
@@ -3996,7 +3996,7 @@ class w1 extends j2 {
                 if (Build.VERSION.SDK_INT < 21) {
                     throw th;
                 }
-                f.v.d(th);
+                pkg_f.v.d(th);
                 P1().performGlobalAction(6);
             }
         }
@@ -4007,7 +4007,7 @@ class w1 extends j2 {
         if (i2 == 3) {
             if (this.w0) {
                 try {
-                    this.R.P();
+                    this.mP0R.P();
                     return;
                 } catch (Throwable unused) {
                     ((InputMethodManager) this.a0.getSystemService("input_method")).showInputMethodPicker();
@@ -4017,28 +4017,28 @@ class w1 extends j2 {
             return;
         }
         if (i2 == 4) {
-            this.R.R();
+            this.mP0R.R();
             return;
         }
         try {
             if (this.w0) {
                 if (i2 == 1) {
                 } else {
-                    this.R.J();
+                    this.mP0R.J();
                 }
             } else if (i2 == 2) {
             } else {
-                this.R.Q();
+                this.mP0R.Q();
             }
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
     }
 
     private void f4(int i2) {
         if (this.f0) {
             t3();
-            a.b[] bVarArr = this.H.n(i2).I;
+            pkg_a.b[] bVarArr = this.H.n(i2).I;
             if (bVarArr == null) {
                 return;
             }
@@ -4065,7 +4065,7 @@ class w1 extends j2 {
                     XposedHelpers.callMethod(r("getStatusBarManagerInternal", new Object[0]), "toggleSplitScreen", new Object[0]);
                     return;
                 } catch (Throwable th) {
-                    f.v.c(th.toString());
+                    pkg_f.v.c(th.toString());
                     P1().performGlobalAction(7);
                     return;
                 }
@@ -4114,10 +4114,10 @@ class w1 extends j2 {
         if (str == null) {
             return;
         }
-        L4(f.m0.i(N1(str), this.a0));
+        L4(pkg_f.m0.i(N1(str), this.a0));
     }
 
-    private void g5(a.b.k3 k3Var) {
+    private void g5(pkg_a.b.k3 k3Var) {
         boolean masterSyncAutomatically = ContentResolver.getMasterSyncAutomatically();
         boolean zT2 = T2(k3Var.I, masterSyncAutomatically);
         if (masterSyncAutomatically != zT2) {
@@ -4159,9 +4159,9 @@ class w1 extends j2 {
             intent.addFlags(270532608);
         }
         try {
-            this.P.q1(intent, false, null, f.o0.d());
+            this.P.q1(intent, false, null, pkg_f.o0.d());
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
             m2(3);
         }
     }
@@ -4170,12 +4170,12 @@ class w1 extends j2 {
         this.c0.postDelayed(new Runnable() { // from class: com.jozein.xedgepro.xposed.s1
             @Override // java.lang.Runnable
             public final void run() {
-                this.z.L2();
+                w1.this.L2();
             }
         }, m3());
     }
 
-    private void h5(a.b.l3 l3Var) {
+    private void h5(pkg_a.b.l3 l3Var) {
         if (Build.VERSION.SDK_INT >= 23) {
             j5(l3Var);
         } else {
@@ -4207,22 +4207,22 @@ class w1 extends j2 {
             }
         }
         this.j0 = true;
-        Point pointK = g.a0.k(this.a0, new Point());
+        Point pointK = pkg_g.a0.k(this.a0, new Point());
         this.g0 = (pointK.x << 16) | pointK.y;
-        f.v.c("Screen size: " + pointK.x + ", " + pointK.y);
+        pkg_f.v.c("Screen size: " + pointK.x + ", " + pointK.y);
         this.P.C0(this.a0, this.c0);
         this.T = new i3(this.H, this, this.a0, this.c0);
-        this.U = new a.t(this.a0);
+        this.U = new pkg_a.t(this.a0);
         this.S.e();
         IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction(a.b.C);
-        intentFilter.addAction(a.j.E);
-        intentFilter.addAction(a.b.D);
+        intentFilter.addAction(pkg_a.b.C);
+        intentFilter.addAction(pkg_a.j.E);
+        intentFilter.addAction(pkg_a.b.D);
         this.a0.registerReceiver(new b(), intentFilter, null, this.c0, 2);
         W3(Build.VERSION.SDK_INT >= 28 && this.i0);
     }
 
-    private void i4(a.b.y2 y2Var) {
+    private void i4(pkg_a.b.y2 y2Var) {
         boolean z2 = this.f0;
         int i2 = y2Var.I;
         if (!z2) {
@@ -4240,14 +4240,14 @@ class w1 extends j2 {
                 if (Build.VERSION.SDK_INT < 28) {
                     throw th;
                 }
-                f.v.d(th);
+                pkg_f.v.d(th);
                 P1().performGlobalAction(8);
             }
         }
     }
 
-    private void i5(a.b.l3 l3Var) {
-        if (f.o0.d() != 0) {
+    private void i5(pkg_a.b.l3 l3Var) {
+        if (pkg_f.o0.d() != 0) {
             return;
         }
         boolean zX2 = x2();
@@ -4268,7 +4268,7 @@ class w1 extends j2 {
 
     private void j2() {
         if (this.J0 == null) {
-            this.J0 = f.n0.b(this.c0, new com.jozein.xedgepro.xposed.u(this.a0, this.P), new y());
+            this.J0 = pkg_f.n0.b(this.c0, new com.jozein.xedgepro.xposed.u(this.a0, this.P), new y());
         }
     }
 
@@ -4276,25 +4276,25 @@ class w1 extends j2 {
         try {
             XposedHelpers.callMethod(XposedHelpers.getObjectField(this.d0, "mService"), "crash", new Object[]{"Soft reboot"});
         } catch (Throwable th) {
-            f.v.c(th.toString());
+            pkg_f.v.c(th.toString());
             o3.b("ctl.restart", "zygote");
         }
     }
 
-    private void j5(a.b.l3 l3Var) {
-        f.n0 n0Var = this.J0;
+    private void j5(pkg_a.b.l3 l3Var) {
+        pkg_f.n0 n0Var = this.J0;
         if (T2(l3Var.I, n0Var != null && n0Var.a())) {
             j2();
             this.J0.g();
         } else {
-            f.n0 n0Var2 = this.J0;
+            pkg_f.n0 n0Var2 = this.J0;
             if (n0Var2 != null) {
                 n0Var2.e();
             }
         }
     }
 
-    private boolean k1(a.h.g gVar) {
+    private boolean k1(pkg_a.h.g gVar) {
         int iQ = this.T.q();
         int i2 = gVar.C;
         if (i2 == 0) {
@@ -4318,7 +4318,7 @@ class w1 extends j2 {
         throw new RuntimeException("Invalid check battery level.");
     }
 
-    private void k2(final a.b.y0 y0Var, boolean z2) {
+    private void k2(final pkg_a.b.y0 y0Var, boolean z2) {
         if (this.f0) {
             if (this.Q.j0() != y0Var.F()) {
                 StringBuilder sb = new StringBuilder();
@@ -4326,36 +4326,36 @@ class w1 extends j2 {
                 sb.append(y0Var.F() ? "landscape" : "portrait");
                 throw new UnsupportedOperationException(sb.toString());
             }
-            List<g.q> listD = y0Var.D();
+            List<pkg_g.q> listD = y0Var.D();
             if (listD != null && listD.size() >= 2) {
                 l2(listD);
             } else if (z2) {
-                f.v.c("Invalid gesture!");
+                pkg_f.v.c("Invalid gesture!");
             } else {
                 this.c0.postDelayed(new Runnable() { // from class: com.jozein.xedgepro.xposed.f1
                     @Override // java.lang.Runnable
                     public final void run() {
-                        this.z.B2(y0Var);
+                        w1.this.B2(y0Var);
                     }
                 }, 500L);
             }
         }
     }
 
-    private void k4(a.b.c3 c3Var) {
+    private void k4(pkg_a.b.c3 c3Var) {
         String str;
         if (c3Var != null && (str = c3Var.I) != null && str.length() != 0) {
             d2().o(N1(c3Var.I), true, true);
             return;
         }
-        f.m0 m0Var = this.N0;
+        pkg_f.m0 m0Var = this.N0;
         if (m0Var != null) {
             m0Var.n();
             this.N0 = null;
         }
     }
 
-    private void k5(a.b.k3 k3Var) {
+    private void k5(pkg_a.b.k3 k3Var) {
         int i2 = k3Var.I;
         WifiManager wifiManager = (WifiManager) this.a0.getSystemService("wifi");
         int wifiState = wifiManager.getWifiState();
@@ -4376,22 +4376,22 @@ class w1 extends j2 {
     }
 
     /* JADX INFO: Access modifiers changed from: private */
-    public boolean l1(a.h hVar, boolean z2) {
-        if (!f.l.r) {
+    public boolean l1(pkg_a.h hVar, boolean z2) {
+        if (!pkg_f.l.CONST_IS_PRO) {
             throw new RuntimeException("!");
         }
         switch (hVar.z) {
             case 1:
-                a.h.c cVar = (a.h.c) hVar;
+                pkg_a.h.c cVar = (pkg_a.h.c) hVar;
                 if (l1(cVar.C, z2)) {
                     return l1(cVar.D, z2);
                 }
                 return false;
             case 2:
-                a.h.z zVar = (a.h.z) hVar;
+                pkg_a.h.z zVar = (pkg_a.h.z) hVar;
                 return l1(zVar.C, z2) || l1(zVar.D, z2);
             case 3:
-                return !l1(((a.h.x) hVar).C, z2);
+                return !l1(((pkg_a.h.x) hVar).C, z2);
             case 4:
                 return this.f0;
             case 5:
@@ -4437,21 +4437,21 @@ class w1 extends j2 {
             case 25:
                 return this.T.B();
             case 26:
-                return k1((a.h.g) hVar);
+                return k1((pkg_a.h.g) hVar);
             case 27:
-                return p1((a.h.n) hVar);
+                return p1((pkg_a.h.n) hVar);
             case 28:
-                return m1((a.h.l) hVar);
+                return m1((pkg_a.h.l) hVar);
             case 29:
-                return n1((a.h.k) hVar);
+                return n1((pkg_a.h.k) hVar);
             case 30:
-                return o1((a.h.m) hVar);
+                return o1((pkg_a.h.m) hVar);
             case 31:
-                return r1(((a.h.m0) hVar).C);
+                return r1(((pkg_a.h.m0) hVar).C);
             case 32:
-                return p2(((a.h.d) hVar).C);
+                return p2(((pkg_a.h.d) hVar).C);
             case 33:
-                return this.Q.j0() == ((a.h.a0) hVar).C;
+                return this.Q.j0() == ((pkg_a.h.a0) hVar).C;
             case 34:
                 return this.w0;
             case 35:
@@ -4459,15 +4459,15 @@ class w1 extends j2 {
             case 36:
                 return this.Q.k0();
             case 37:
-                return q1((a.h.i0) hVar, z2);
+                return q1((pkg_a.h.i0) hVar, z2);
             case 38:
-                return r1(((a.h.l0) hVar).C);
+                return r1(((pkg_a.h.l0) hVar).C);
             default:
                 throw new RuntimeException("Unknown condition id: " + hVar.z);
         }
     }
 
-    private void l2(List<g.q> list) {
+    private void l2(List<pkg_g.q> list) {
         Handler handlerW = this.O.W();
         this.C0 = false;
         handlerW.post(new q(list, handlerW));
@@ -4477,7 +4477,7 @@ class w1 extends j2 {
         this.P.o1(intent, bundle, i2, true);
     }
 
-    private void l5(a.b.k3 k3Var) {
+    private void l5(pkg_a.b.k3 k3Var) {
         int i2 = k3Var.I;
         switch (((Integer) XposedHelpers.callMethod((WifiManager) this.a0.getSystemService("wifi"), "getWifiApState", new Object[0])).intValue()) {
             case 10:
@@ -4495,8 +4495,8 @@ class w1 extends j2 {
         }
     }
 
-    private boolean m1(a.h.l lVar) {
-        return (lVar.C & (1 << new f.j().d())) != 0;
+    private boolean m1(pkg_a.h.l lVar) {
+        return (lVar.C & (1 << new pkg_f.j().d())) != 0;
     }
 
     private void m2(int i2) {
@@ -4518,8 +4518,8 @@ class w1 extends j2 {
         }
     }
 
-    private boolean n1(a.h.k kVar) {
-        f.j jVar = new f.j();
+    private boolean n1(pkg_a.h.k kVar) {
+        pkg_f.j jVar = new pkg_f.j();
         int iC = jVar.c();
         int i2 = kVar.C;
         if (((1 << iC) & i2) == 0) {
@@ -4528,7 +4528,7 @@ class w1 extends j2 {
         return true;
     }
 
-    private void n2(a.b.z0 z0Var) {
+    private void n2(pkg_a.b.z0 z0Var) {
         int i2 = z0Var.J;
         if (i2 == 0) {
             this.O.Z(z0Var.I, z0Var.K);
@@ -4537,7 +4537,7 @@ class w1 extends j2 {
         if (i2 == 1) {
             this.O.a0(z0Var.I, z0Var.K);
         } else if (i2 != 2) {
-            f.v.c("Unknown key action.");
+            pkg_f.v.c("Unknown key action.");
         } else {
             this.O.c0(z0Var.I, z0Var.K);
         }
@@ -4550,14 +4550,14 @@ class w1 extends j2 {
         }
     }
 
-    private boolean o1(a.h.m mVar) {
-        return (mVar.C & (1 << new f.j().i())) != 0;
+    private boolean o1(pkg_a.h.m mVar) {
+        return (mVar.C & (1 << new pkg_f.j().i())) != 0;
     }
 
-    private void o4(a.b.l lVar, Bundle bundle) {
+    private void o4(pkg_a.b.l lVar, Bundle bundle) {
         if (lVar.L != null) {
             try {
-                l4(f.c0.a().setClassName(lVar.K, lVar.L), bundle, lVar.B());
+                l4(pkg_f.c0.a().setClassName(lVar.K, lVar.L), bundle, lVar.B());
                 return;
             } catch (Throwable unused) {
             }
@@ -4585,15 +4585,15 @@ class w1 extends j2 {
         this.c0.post(new Runnable() { // from class: com.jozein.xedgepro.xposed.e1
             @Override // java.lang.Runnable
             public final void run() {
-                this.z.Q2(i2);
+                w1.this.Q2(i2);
             }
         });
     }
 
-    private boolean p1(a.h.n nVar) {
+    private boolean p1(pkg_a.h.n nVar) {
         int i2 = (nVar.C << 16) | nVar.D;
         int i3 = nVar.F | (nVar.E << 16);
-        f.j jVar = new f.j();
+        pkg_f.j jVar = new pkg_f.j();
         int iH = jVar.h() | (jVar.g() << 16);
         if (i2 == i3) {
             return false;
@@ -4609,11 +4609,11 @@ class w1 extends j2 {
     }
 
     /* JADX INFO: Access modifiers changed from: private */
-    public void p4(f.c0.e eVar, Bundle bundle) {
+    public void p4(pkg_f.c0.e eVar, Bundle bundle) {
         l4(eVar.v(), bundle, eVar.k());
     }
 
-    private boolean q1(a.h.i0 i0Var, boolean z2) {
+    private boolean q1(pkg_a.h.i0 i0Var, boolean z2) {
         boolean zH;
         if (z2) {
             return i0Var.h(this.N);
@@ -4647,7 +4647,7 @@ class w1 extends j2 {
         if (this.n0) {
             return;
         }
-        f.g0 g0Var = this.o0;
+        pkg_f.g0 g0Var = this.o0;
         if (g0Var != null) {
             g0Var.d();
             return;
@@ -4659,13 +4659,13 @@ class w1 extends j2 {
 
     private float s1(float f2) {
         if (f2 > 0.0f) {
-            float fJ = f2 / g.a0.j();
+            float fJ = f2 / pkg_g.a0.j();
             if (fJ < 0.39370078f) {
                 return fJ;
             }
             Resources resources = this.a0.getResources();
             int identifier = resources.getIdentifier("config_supportsRoundedCornersOnWindows", "bool", "android");
-            f.v.c("Ignored rounded corner radius: " + fJ + ", supports rounded corners: " + (identifier > 0 && resources.getBoolean(identifier)));
+            pkg_f.v.c("Ignored rounded corner radius: " + fJ + ", supports rounded corners: " + (identifier > 0 && resources.getBoolean(identifier)));
         }
         return 0.0f;
     }
@@ -4693,9 +4693,9 @@ class w1 extends j2 {
 
     private boolean u2() {
         try {
-            return Build.VERSION.SDK_INT < 24 ? ((Boolean) r("isKeyguardSecure", new Object[0])).booleanValue() : ((Boolean) r("isKeyguardSecure", Integer.valueOf(f.o0.d()))).booleanValue();
+            return Build.VERSION.SDK_INT < 24 ? ((Boolean) r("isKeyguardSecure", new Object[0])).booleanValue() : ((Boolean) r("isKeyguardSecure", Integer.valueOf(pkg_f.o0.d()))).booleanValue();
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
             return true;
         }
     }
@@ -4710,18 +4710,18 @@ class w1 extends j2 {
             this.q0 = true;
             this.O.V().Q(true);
             Paint paint = new Paint(1);
-            paint.setStrokeWidth(g.a0.j() * 0.08f);
+            paint.setStrokeWidth(pkg_g.a0.j() * 0.08f);
             paint.setStyle(Paint.Style.STROKE);
             paint.setColor(2144128204);
             Paint paint2 = new Paint(1);
-            paint2.setStrokeWidth(g.a0.j() * 0.06f);
+            paint2.setStrokeWidth(pkg_g.a0.j() * 0.06f);
             paint2.setStyle(Paint.Style.STROKE);
             paint2.setColor(-16738393);
             t3.n().j(new e(this.a0, paint, paint2), 8);
         }
     }
 
-    private void v1(a.b.f0 f0Var) {
+    private void v1(pkg_a.b.f0 f0Var) {
         int i2;
         if (this.f0) {
             t3();
@@ -4730,9 +4730,9 @@ class w1 extends j2 {
                 t2VarY1.j();
                 return;
             }
-            a.b[] bVarArrZ = f0Var.z();
+            pkg_a.b[] bVarArrZ = f0Var.z();
             if (bVarArrZ == null) {
-                f.v.c("Custom panel not exists!");
+                pkg_f.v.c("Custom panel not exists!");
                 return;
             }
             int length = bVarArrZ.length;
@@ -4750,7 +4750,7 @@ class w1 extends j2 {
                 }
             }
             if (i2 != length) {
-                a.b[] bVarArr = new a.b[i2];
+                pkg_a.b[] bVarArr = new pkg_a.b[i2];
                 System.arraycopy(bVarArrZ, 0, bVarArr, 0, i2);
                 bVarArrZ = bVarArr;
             }
@@ -4766,22 +4766,22 @@ class w1 extends j2 {
     private void v4() {
         this.h0 = SystemClock.uptimeMillis();
         this.M0.b();
-        k4(new a.b.c3(""));
+        k4(new pkg_a.b.c3(""));
         y1();
         x4();
-        T4(new a.b.r0(2));
-        h5(new a.b.l3(2));
-        if (f.l.r) {
-            f.i0.g();
+        T4(new pkg_a.b.r0(2));
+        h5(new pkg_a.b.l3(2));
+        if (pkg_f.l.CONST_IS_PRO) {
+            pkg_f.i0.g();
             BinderService.D(this.a0);
         }
         Intent intent = new Intent(com.jozein.xedgepro.service.a.C);
-        intent.setPackage(f.l.j);
+        intent.setPackage(pkg_f.l.CONST_PKG);
         this.P.W(intent, 0);
     }
 
     private void w1(String str, int i2) {
-        CharSequence charSequenceG = f.z.K(this.a0).G(str);
+        CharSequence charSequenceG = pkg_f.z.K(this.a0).G(str);
         if (this.P.l1(str, i2, true)) {
             J4(this.b0.getString(R.string.app_frozen_f, charSequenceG));
         } else {
@@ -4804,11 +4804,11 @@ class w1 extends j2 {
 
     private boolean x2() {
         if (Build.VERSION.SDK_INT >= 23) {
-            f.n0 n0Var = this.J0;
+            pkg_f.n0 n0Var = this.J0;
             if (n0Var != null && n0Var.a()) {
                 return true;
             }
-        } else if (f.o0.d() == 0 && this.P.F0(ServiceTorch.class.getName())) {
+        } else if (pkg_f.o0.d() == 0 && this.P.F0(ServiceTorch.class.getName())) {
             return true;
         }
         return false;
@@ -4816,7 +4816,7 @@ class w1 extends j2 {
 
     /* JADX INFO: Access modifiers changed from: private */
     /* JADX INFO: renamed from: x3, reason: merged with bridge method [inline-methods] */
-    public void G2(a.b bVar, int i2, Bundle bundle) {
+    public void G2(pkg_a.b bVar, int i2, Bundle bundle) {
         String string;
         if (g1(bVar)) {
             try {
@@ -4834,10 +4834,10 @@ class w1 extends j2 {
                 } else {
                     string = e2.toString();
                 }
-                f.v.c(string);
+                pkg_f.v.c(string);
                 G4(string);
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
                 F4(bVar, th);
             }
         }
@@ -4851,19 +4851,19 @@ class w1 extends j2 {
             t3();
             this.Z.R();
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
     }
 
     private void y2(String str) {
-        this.P.i0(str, f.o0.d());
+        this.P.i0(str, pkg_f.o0.d());
     }
 
     /* JADX INFO: Access modifiers changed from: private */
     /* JADX WARN: Can't fix incorrect switch cases order, some code will duplicate */
     /* JADX WARN: Code duplicated, block: B:148:0x02bd A[RETURN] */
     /* JADX WARN: Code duplicated, block: B:87:0x0194  */
-    public boolean y3(a.b bVar, int i2, Bundle bundle) throws IOException {
+    public boolean y3(pkg_a.b bVar, int i2, Bundle bundle) throws IOException, PackageManager.NameNotFoundException {
         int i3;
         if (!g1(bVar)) {
             return false;
@@ -4872,7 +4872,7 @@ class w1 extends j2 {
         int i4 = bVar.z;
         if (i4 != 51) {
             if (i4 == 53) {
-                k2((a.b.y0) bVar, false);
+                k2((pkg_a.b.y0) bVar, false);
             } else {
                 if (i4 == 55) {
                     L3();
@@ -4883,7 +4883,7 @@ class w1 extends j2 {
                     return false;
                 }
                 if (i4 == 65535) {
-                    B1((a.b.s0) bVar);
+                    B1((pkg_a.b.s0) bVar);
                     return false;
                 }
                 switch (i4) {
@@ -4903,7 +4903,7 @@ class w1 extends j2 {
                         m2(82);
                         break;
                     case 6:
-                        i4((a.b.y2) bVar);
+                        i4((pkg_a.b.y2) bVar);
                         return true;
                     default:
                         switch (i4) {
@@ -4942,55 +4942,55 @@ class w1 extends j2 {
                                 z4(0);
                                 break;
                             case 19:
-                                O4((a.b.k3) bVar);
+                                O4((pkg_a.b.k3) bVar);
                                 break;
                             case 20:
-                                P4((a.b.k3) bVar);
+                                P4((pkg_a.b.k3) bVar);
                                 break;
                             case 21:
-                                k5((a.b.k3) bVar);
+                                k5((pkg_a.b.k3) bVar);
                                 break;
                             case 22:
-                                Z4((a.b.k3) bVar);
+                                Z4((pkg_a.b.k3) bVar);
                                 break;
                             case 23:
-                                Y4((a.b.k3) bVar);
+                                Y4((pkg_a.b.k3) bVar);
                                 break;
                             case 24:
-                                Q4((a.b.k3) bVar);
+                                Q4((pkg_a.b.k3) bVar);
                                 break;
                             case 25:
-                                a5((a.b.k3) bVar);
+                                a5((pkg_a.b.k3) bVar);
                                 break;
                             case 26:
-                                g5((a.b.k3) bVar);
+                                g5((pkg_a.b.k3) bVar);
                                 break;
                             case 27:
-                                l5((a.b.k3) bVar);
+                                l5((pkg_a.b.k3) bVar);
                                 break;
                             case 28:
-                                N4((a.b.k3) bVar);
+                                N4((pkg_a.b.k3) bVar);
                                 break;
                             case 29:
-                                U4((a.b.k3) bVar);
+                                U4((pkg_a.b.k3) bVar);
                                 break;
                             case 30:
-                                W4((a.b.k3) bVar);
+                                W4((pkg_a.b.k3) bVar);
                                 break;
                             case 31:
-                                T4((a.b.k3) bVar);
+                                T4((pkg_a.b.k3) bVar);
                                 break;
                             case 32:
-                                h5((a.b.l3) bVar);
+                                h5((pkg_a.b.l3) bVar);
                                 break;
                             case 33:
-                                d5((a.b.k3) bVar);
+                                d5((pkg_a.b.k3) bVar);
                                 break;
                             case 34:
-                                S4((a.b.k3) bVar);
+                                S4((pkg_a.b.k3) bVar);
                                 break;
                             case 35:
-                                X4((a.b.k3) bVar);
+                                X4((pkg_a.b.k3) bVar);
                                 break;
                             case 36:
                                 R2(i2);
@@ -5021,28 +5021,28 @@ class w1 extends j2 {
                                         z3(i4);
                                         return true;
                                     case 47:
-                                        q4(((a.b.m) bVar).K, bundle, f.o0.d());
+                                        q4(((pkg_a.b.m) bVar).K, bundle, pkg_f.o0.d());
                                         break;
                                     case 48:
-                                        a.b.e eVar = (a.b.e) bVar;
-                                        m4(eVar.K, eVar.L, bundle, f.o0.d());
+                                        pkg_a.b.e eVar = (pkg_a.b.e) bVar;
+                                        m4(eVar.K, eVar.L, bundle, pkg_f.o0.d());
                                         break;
                                     default:
                                         switch (i4) {
                                             case 61:
-                                                K3(((a.b.b0) bVar).A());
+                                                K3(((pkg_a.b.b0) bVar).A());
                                                 return true;
                                             case 62:
-                                                a.b.d0 d0Var = (a.b.d0) bVar;
+                                                pkg_a.b.d0 d0Var = (pkg_a.b.d0) bVar;
                                                 return y3(l1(d0Var.I, false) ? d0Var.J : d0Var.K, i2, bundle);
                                             case 63:
                                                 z1(bVar);
                                                 break;
                                             case 64:
-                                                J1(((a.b.k0) bVar).I);
+                                                J1(((pkg_a.b.k0) bVar).I);
                                                 break;
                                             case 65:
-                                                f4(((a.b.x2) bVar).I);
+                                                f4(((pkg_a.b.x2) bVar).I);
                                                 return true;
                                             case 66:
                                                 C3(i2);
@@ -5055,31 +5055,31 @@ class w1 extends j2 {
                                             default:
                                                 switch (i4) {
                                                     case 70:
-                                                        z4(((a.b.g2) bVar).I);
+                                                        z4(((pkg_a.b.g2) bVar).I);
                                                         break;
                                                     case 71:
                                                         c4();
                                                         return true;
                                                     case 72:
-                                                        a.b bVar2 = ((a.b.d) bVar).K;
+                                                        pkg_a.b bVar2 = ((pkg_a.b.d) bVar).K;
                                                         return bVar2 != null && y3(bVar2, i2, bundle);
                                                     case 73:
-                                                        V4((a.b.k3) bVar);
+                                                        V4((pkg_a.b.k3) bVar);
                                                         break;
                                                     case 74:
-                                                        J3(((a.b.h2) bVar).I);
+                                                        J3(((pkg_a.b.h2) bVar).I);
                                                         break;
                                                     case 75:
                                                         x1();
                                                         return true;
                                                     case 76:
-                                                        l4(((a.b.g) bVar).K, bundle, f.o0.d());
+                                                        l4(((pkg_a.b.g) bVar).K, bundle, pkg_f.o0.d());
                                                         break;
                                                     case 77:
-                                                        y2(((a.b.f1) bVar).I);
+                                                        y2(((pkg_a.b.f1) bVar).I);
                                                         break;
                                                     case 78:
-                                                        s4(((a.b.s2) bVar).K, bundle);
+                                                        s4(((pkg_a.b.s2) bVar).K, bundle);
                                                         break;
                                                     default:
                                                         switch (i4) {
@@ -5087,28 +5087,28 @@ class w1 extends j2 {
                                                                 F3();
                                                                 break;
                                                             case 82:
-                                                                h1(((a.b.o) bVar).I);
+                                                                h1(((pkg_a.b.o) bVar).I);
                                                                 return true;
                                                             case 83:
-                                                                v1((a.b.f0) bVar);
+                                                                v1((pkg_a.b.f0) bVar);
                                                                 return true;
                                                             case 84:
                                                                 z1(bVar);
                                                                 break;
                                                             case 85:
-                                                                e5(((a.b.a3) bVar).I);
+                                                                e5(((pkg_a.b.a3) bVar).I);
                                                                 break;
                                                             case 86:
-                                                                D1((a.b.i3) bVar);
+                                                                D1((pkg_a.b.i3) bVar);
                                                                 break;
                                                             case 87:
-                                                                A1(((a.b.e0) bVar).I);
+                                                                A1(((pkg_a.b.e0) bVar).I);
                                                                 break;
                                                             case 88:
-                                                                U3((a.b.p2) bVar);
+                                                                U3((pkg_a.b.p2) bVar);
                                                                 return true;
                                                             case 89:
-                                                                c1((a.b.i) bVar);
+                                                                c1((pkg_a.b.i) bVar);
                                                                 break;
                                                             case 90:
                                                                 this.Z.p0();
@@ -5116,22 +5116,22 @@ class w1 extends j2 {
                                                             default:
                                                                 switch (i4) {
                                                                     case 92:
-                                                                        q5(((a.b.n3) bVar).I);
+                                                                        q5(((pkg_a.b.n3) bVar).I);
                                                                         return false;
                                                                     case 93:
-                                                                        B3((a.b.y1) bVar);
+                                                                        B3((pkg_a.b.y1) bVar);
                                                                         return false;
                                                                     case 94:
-                                                                        b4((a.b.m0) bVar);
+                                                                        b4((pkg_a.b.m0) bVar);
                                                                         return true;
                                                                     case 95:
-                                                                        C4(((a.b.n2) bVar).I);
+                                                                        C4(((pkg_a.b.n2) bVar).I);
                                                                         return true;
                                                                     case 96:
                                                                         f5();
                                                                         return true;
                                                                     case 97:
-                                                                        R4((a.b.k3) bVar);
+                                                                        R4((pkg_a.b.k3) bVar);
                                                                         break;
                                                                     case 98:
                                                                         u4();
@@ -5140,7 +5140,7 @@ class w1 extends j2 {
                                                                         M1();
                                                                         break;
                                                                     case 100:
-                                                                        K3((a.b.a0) bVar);
+                                                                        K3((pkg_a.b.a0) bVar);
                                                                         return true;
                                                                     case 101:
                                                                         z1(bVar);
@@ -5150,42 +5150,42 @@ class w1 extends j2 {
                                                                     default:
                                                                         switch (i4) {
                                                                             case 104:
-                                                                                C1(((a.b.j1) bVar).I);
+                                                                                C1(((pkg_a.b.j1) bVar).I);
                                                                                 break;
                                                                             case 105:
-                                                                                n2((a.b.z0) bVar);
+                                                                                n2((pkg_a.b.z0) bVar);
                                                                                 break;
                                                                             case 106:
                                                                             case 107:
                                                                                 break;
                                                                             case 108:
-                                                                                o2(((a.b.b1) bVar).I, true);
+                                                                                o2(((pkg_a.b.b1) bVar).I, true);
                                                                                 break;
                                                                             case 109:
-                                                                                Z2((a.b.u1) bVar);
+                                                                                Z2((pkg_a.b.u1) bVar);
                                                                                 return false;
                                                                             case 110:
-                                                                                k4((a.b.c3) bVar);
+                                                                                k4((pkg_a.b.c3) bVar);
                                                                                 return false;
                                                                             case 111:
-                                                                                g4(((a.b.u2) bVar).I);
+                                                                                g4(((pkg_a.b.u2) bVar).I);
                                                                                 return false;
                                                                             case 112:
                                                                                 v4();
                                                                                 break;
                                                                             case 113:
-                                                                                a.b.f fVar = (a.b.f) bVar;
+                                                                                pkg_a.b.f_launch fVar = (pkg_a.b.f_launch) bVar;
                                                                                 m4(fVar.K, fVar.L, bundle, fVar.M);
                                                                                 break;
                                                                             case 114:
-                                                                                a.b.h hVar = (a.b.h) bVar;
+                                                                                pkg_a.b.h hVar = (pkg_a.b.h) bVar;
                                                                                 l4(hVar.K, bundle, hVar.L);
                                                                                 break;
                                                                             case 115:
-                                                                                o4((a.b.l) bVar, bundle);
+                                                                                o4((pkg_a.b.l) bVar, bundle);
                                                                                 break;
                                                                             default:
-                                                                                f.v.c("Unknown action: " + bVar);
+                                                                                pkg_f.v.c("Unknown action: " + bVar);
                                                                                 return false;
                                                                         }
                                                                         break;
@@ -5203,18 +5203,18 @@ class w1 extends j2 {
                         break;
                 }
             }
-            if (!(bVar instanceof a.b.k3)) {
+            if (!(bVar instanceof pkg_a.b.k3)) {
                 M4(bVar);
             }
             return true;
         }
-        f.v.c("Pie/slide adjust/gesture pointer... not supports this trigger.");
+        pkg_f.v.c("Pie/slide adjust/gesture pointer... not supports this trigger.");
         K4(R.string.pie_slide_adjust_support);
         return false;
     }
 
-    private void z1(a.b bVar) {
-        if (!f.l.r) {
+    private void z1(pkg_a.b bVar) {
+        if (!pkg_f.l.CONST_IS_PRO) {
             throw new RuntimeException("!");
         }
         new r0(bVar, SystemClock.uptimeMillis()).c();
@@ -5240,7 +5240,7 @@ class w1 extends j2 {
                 h4();
                 break;
             default:
-                f.v.c("Unknown id: " + i2);
+                pkg_f.v.c("Unknown id: " + i2);
                 break;
         }
     }
@@ -5257,7 +5257,7 @@ class w1 extends j2 {
                     i3 = i4 <= 2 ? i4 : 0;
                     this.V.j(i3);
                     if (i3 == 1 && this.V.d() == iD) {
-                        f.v.c("Can not set ringer mode to vibrate. Skip it.");
+                        pkg_f.v.c("Can not set ringer mode to vibrate. Skip it.");
                         this.V.j(2);
                         return;
                     }
@@ -5272,7 +5272,7 @@ class w1 extends j2 {
     }
 
     void A4(int i2) {
-        f.o0.o(i2);
+        pkg_f.o0.o(i2);
         this.P.m1(i2);
     }
 
@@ -5288,7 +5288,7 @@ class w1 extends j2 {
                 toast.cancel();
             }
             this.B0 = Toast.makeText(this.a0, charSequence, 0);
-            if (f.o0.d() != 0) {
+            if (pkg_f.o0.d() != 0) {
                 toastMakeText = this.B0;
                 S3(toastMakeText);
             }
@@ -5312,17 +5312,17 @@ class w1 extends j2 {
                 v4();
             }
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
         if (this.H.L()) {
             this.I.l();
             this.J.m();
             this.K.e();
             this.L.h();
-            a.b.f0.A().o();
-            a.b.k2.A().o();
-            a.b.y0.L();
-            if (f.l.r) {
+            pkg_a.b.f0.A().o();
+            pkg_a.b.k2.A().o();
+            pkg_a.b.y0.L();
+            if (pkg_f.l.CONST_IS_PRO) {
                 this.K.n(false);
             }
             this.Q.x0();
@@ -5330,7 +5330,7 @@ class w1 extends j2 {
         } else {
             str = "Failed to reload settings!";
         }
-        f.v.c(str);
+        pkg_f.v.c(str);
     }
 
     void I3() {
@@ -5347,7 +5347,7 @@ class w1 extends j2 {
         return this.P;
     }
 
-    v0 S1(a.b.z2 z2Var) {
+    SliderBase S1(pkg_a.b.z2 z2Var) {
         CharSequence charSequenceN = this.H.o(24) ? z2Var.n(this.b0) : null;
         int i2 = z2Var.I;
         if (i2 == 0) {
@@ -5395,7 +5395,7 @@ class w1 extends j2 {
                 return rectE.top;
             }
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
         return -1;
     }
@@ -5426,13 +5426,12 @@ class w1 extends j2 {
         this.c0.post(new Runnable() { // from class: com.jozein.xedgepro.xposed.p1
             @Override // java.lang.Runnable
             public final void run() {
-                this.z.C2();
+                w1.this.C2();
             }
         });
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
-    void a4(int i2) {
+        void a4(int i2) {
         FrameLayout.LayoutParams layoutParams;
         m0 m0Var;
         Point pointI = g2().I(new Point());
@@ -5442,109 +5441,77 @@ class w1 extends j2 {
         int i5 = pointI.y - (i4 * 2);
         int i6 = pointI.x - (i3 * 2);
         FrameLayout frameLayout = new FrameLayout(this.a0);
-        int i7 = 4;
-        int i8 = 2;
-        boolean z2 = false;
-        Object[] objArr = 0;
-        Object[] objArr2 = 0;
-        Object[] objArr3 = 0;
-        Object[] objArr4 = 0;
-        Object[] objArr5 = 0;
-        Object[] objArr6 = 0;
-        Object[] objArr7 = 0;
-        Object[] objArr8 = 0;
-        Object[] objArr9 = 0;
-        Object[] objArr10 = 0;
-        Object[] objArr11 = 0;
-        Object[] objArr12 = 0;
-        Object[] objArr13 = 0;
-        boolean z3 = true;
-        char c2 = 1;
-        char c3 = 1;
-        char c4 = 1;
-        char c5 = 1;
-        char c6 = 1;
-        char c7 = 1;
-        char c8 = 1;
-        char c9 = 1;
-        char c10 = 1;
-        char c11 = 1;
-        char c12 = 1;
-        char c13 = 1;
-        char c14 = 1;
-        k kVar = null;
         switch (i2) {
             case 0:
                 layoutParams = new FrameLayout.LayoutParams(i3, i5, 19);
-                m0Var = new m0(this, c2 == true ? 1 : 0, objArr == true ? 1 : 0, kVar);
+                m0Var = new m0(this, true, 0, null);
                 break;
             case 1:
                 layoutParams = new FrameLayout.LayoutParams(i3, i5, 21);
-                m0Var = new m0(this, c3 == true ? 1 : 0, objArr2 == true ? 1 : 0, kVar);
+                m0Var = new m0(this, true, 0, null);
                 break;
             case 2:
                 layoutParams = new FrameLayout.LayoutParams(i6, i4, 49);
-                m0Var = new m0(this, objArr4 == true ? 1 : 0, objArr3 == true ? 1 : 0, kVar);
+                m0Var = new m0(this, false, 0, null);
                 break;
             case 3:
                 layoutParams = new FrameLayout.LayoutParams(i6, i4, 81);
-                m0Var = new m0(this, objArr6 == true ? 1 : 0, objArr5 == true ? 1 : 0, kVar);
+                m0Var = new m0(this, false, 0, null);
                 break;
             case 4:
                 layoutParams = new FrameLayout.LayoutParams(i3, i5, 19);
-                m0Var = new m0(this, c5 == true ? 1 : 0, c4 == true ? 1 : 0, kVar);
+                m0Var = new m0(this, true, 1, null);
                 break;
             case 5:
                 layoutParams = new FrameLayout.LayoutParams(i3, i5, 19);
-                m0Var = new m0(this, c6 == true ? 1 : 0, i8, kVar);
+                m0Var = new m0(this, true, 2, null);
                 break;
             case 6:
                 layoutParams = new FrameLayout.LayoutParams(i3, i5, 19);
-                m0Var = new m0(this, c7 == true ? 1 : 0, i7, kVar);
+                m0Var = new m0(this, true, 4, null);
                 break;
             case 7:
                 layoutParams = new FrameLayout.LayoutParams(i3, i5, 21);
-                m0Var = new m0(this, c9 == true ? 1 : 0, c8 == true ? 1 : 0, kVar);
+                m0Var = new m0(this, true, 1, null);
                 break;
             case 8:
                 layoutParams = new FrameLayout.LayoutParams(i3, i5, 21);
-                m0Var = new m0(this, c10 == true ? 1 : 0, i8, kVar);
+                m0Var = new m0(this, true, 2, null);
                 break;
             case 9:
                 layoutParams = new FrameLayout.LayoutParams(i3, i5, 21);
-                m0Var = new m0(this, c11 == true ? 1 : 0, i7, kVar);
+                m0Var = new m0(this, true, 4, null);
                 break;
             case 10:
                 layoutParams = new FrameLayout.LayoutParams(i6, i4, 49);
-                m0Var = new m0(this, objArr7 == true ? 1 : 0, c12 == true ? 1 : 0, kVar);
+                m0Var = new m0(this, false, 1, null);
                 break;
             case 11:
                 layoutParams = new FrameLayout.LayoutParams(i6, i4, 49);
-                m0Var = new m0(this, objArr8 == true ? 1 : 0, i8, kVar);
+                m0Var = new m0(this, false, 2, null);
                 break;
             case 12:
                 layoutParams = new FrameLayout.LayoutParams(i6, i4, 49);
-                m0Var = new m0(this, objArr9 == true ? 1 : 0, i7, kVar);
+                m0Var = new m0(this, false, 4, null);
                 break;
             case 13:
                 layoutParams = new FrameLayout.LayoutParams(i6, i4, 81);
-                m0Var = new m0(this, objArr10 == true ? 1 : 0, c13 == true ? 1 : 0, kVar);
+                m0Var = new m0(this, false, 1, null);
                 break;
             case 14:
                 layoutParams = new FrameLayout.LayoutParams(i6, i4, 81);
-                m0Var = new m0(this, objArr11 == true ? 1 : 0, i8, kVar);
+                m0Var = new m0(this, false, 2, null);
                 break;
             case 15:
                 layoutParams = new FrameLayout.LayoutParams(i6, i4, 81);
-                m0Var = new m0(this, objArr12 == true ? 1 : 0, i7, kVar);
+                m0Var = new m0(this, false, 4, null);
                 break;
             default:
-                int i9 = 7;
-                frameLayout.addView(new m0(this, z3, i9, kVar), new FrameLayout.LayoutParams(i3, i5, 19));
-                frameLayout.addView(new m0(this, c14 == true ? 1 : 0, i9, kVar), new FrameLayout.LayoutParams(i3, i5, 21));
-                frameLayout.addView(new m0(this, z2, i9, kVar), new FrameLayout.LayoutParams(i6, i4, 49));
+                frameLayout.addView(new m0(this, true, 7, null), new FrameLayout.LayoutParams(i3, i5, 19));
+                frameLayout.addView(new m0(this, true, 7, null), new FrameLayout.LayoutParams(i3, i5, 21));
+                frameLayout.addView(new m0(this, false, 7, null), new FrameLayout.LayoutParams(i6, i4, 49));
                 layoutParams = new FrameLayout.LayoutParams(i6, i4, 81);
-                m0Var = new m0(this, objArr13 == true ? 1 : 0, i9, kVar);
+                m0Var = new m0(this, false, 7, null);
                 break;
         }
         frameLayout.addView(m0Var, layoutParams);
@@ -5566,11 +5533,11 @@ class w1 extends j2 {
         try {
             wakeLock.acquire(j2);
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
     }
 
-    a.p b2() {
+    pkg_a.p b2() {
         return this.H;
     }
 
@@ -5610,7 +5577,7 @@ class w1 extends j2 {
         return this.l0;
     }
 
-    w0 f2(final a.b.i3 i3Var) {
+    w0 f2(final pkg_a.b.i3 i3Var) {
         w0 mVar;
         try {
             switch (i3Var.I) {
@@ -5646,13 +5613,13 @@ class w1 extends j2 {
                 this.c0.post(new Runnable() { // from class: com.jozein.xedgepro.xposed.g1
                     @Override // java.lang.Runnable
                     public final void run() {
-                        this.z.A2(i3Var);
+                        w1.this.A2(i3Var);
                     }
                 });
             }
             return mVar;
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
             return null;
         }
     }
@@ -5668,7 +5635,7 @@ class w1 extends j2 {
         }
     }
 
-    boolean g1(a.b bVar) {
+    boolean g1(pkg_a.b bVar) {
         return bVar != null && (bVar.z == 65535 || f1());
     }
 
@@ -5685,13 +5652,13 @@ class w1 extends j2 {
             return;
         }
         this.m0 = true;
-        f.v.c("First unlocked.");
+        pkg_f.v.c("First unlocked.");
         W3(false);
         r4();
         this.c0.postDelayed(new Runnable() { // from class: com.jozein.xedgepro.xposed.c1
             @Override // java.lang.Runnable
             public final void run() {
-                this.z.D2();
+                w1.this.D2();
             }
         }, 8000L);
     }
@@ -5707,7 +5674,7 @@ class w1 extends j2 {
             this.c0.post(new Runnable() { // from class: com.jozein.xedgepro.xposed.j1
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.z.E2(z2);
+                    w1.this.E2(z2);
                 }
             });
         }
@@ -5720,7 +5687,7 @@ class w1 extends j2 {
             this.c0.post(new Runnable() { // from class: com.jozein.xedgepro.xposed.v1
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.z.F2();
+                    w1.this.F2();
                 }
             });
         }
@@ -5736,7 +5703,7 @@ class w1 extends j2 {
             return 500L;
         }
         this.s0 = true;
-        f.v.c("Shutting down");
+        pkg_f.v.c("Shutting down");
         return (this.Z.m0() || this.P.i1()) ? 2000L : 500L;
     }
 
@@ -5752,20 +5719,20 @@ class w1 extends j2 {
         this.c0.postDelayed(new Runnable() { // from class: com.jozein.xedgepro.xposed.i1
             @Override // java.lang.Runnable
             public final void run() {
-                this.z.M2(intent);
+                w1.this.M2(intent);
             }
         }, 200L);
     }
 
     void o2(String str, boolean z2) {
         if (str == null || str.length() == 0) {
-            f.v.c("Inject empty text.");
+            pkg_f.v.c("Inject empty text.");
             return;
         }
         if (z2) {
-            str = f.m0.i(N1(str), this.a0);
+            str = pkg_f.m0.i(N1(str), this.a0);
         }
-        if (this.Z.U(str) || this.R.L(str)) {
+        if (this.Z.U(str) || this.mP0R.L(str)) {
             return;
         }
         this.O.i0(str);
@@ -5788,11 +5755,11 @@ class w1 extends j2 {
         this.U.l(35, this.H.p(0));
         this.Q.p0();
         this.S.e();
-        if (f.l.r) {
-            this.K.j(new a.s.e.a() { // from class: com.jozein.xedgepro.xposed.a1
-                @Override // a.s.e.a
-                public final void a(a.b bVar) {
-                    this.f83a.w3(bVar);
+        if (pkg_f.l.CONST_IS_PRO) {
+            this.K.j(new pkg_a.s.e.a() { // from class: com.jozein.xedgepro.xposed.a1
+                @Override // pkg_a.s.e.a
+                public final void a(pkg_a.b bVar) {
+                    w1.this.w3(bVar);
                 }
             });
             this.K.d(this.a0, this.c0);
@@ -5801,37 +5768,37 @@ class w1 extends j2 {
             this.V = new com.jozein.xedgepro.xposed.e(this);
             PowerManager powerManager = (PowerManager) this.a0.getSystemService("power");
             this.d0 = powerManager;
-            PowerManager.WakeLock wakeLockNewWakeLock = powerManager.newWakeLock(1, f.l.x + ":job");
+            PowerManager.WakeLock wakeLockNewWakeLock = powerManager.newWakeLock(1, pkg_f.l.CONST_APP_TAG + ":job");
             this.e0 = wakeLockNewWakeLock;
             wakeLockNewWakeLock.setReferenceCounted(true);
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
-        a.b.f0.A().d(this.a0, this.c0);
+        pkg_a.b.f0.A().d(this.a0, this.c0);
         this.I.d(this.a0, this.c0);
-        if (f.l.r) {
+        if (pkg_f.l.CONST_IS_PRO) {
             this.J.d(this.a0, this.c0);
             this.L.d(this.a0, this.c0);
-            a.b.k2.A().d(this.a0, this.c0);
+            pkg_a.b.k2.A().d(this.a0, this.c0);
         }
-        f.q0.e(this.V.f());
+        pkg_f.q0.e(this.V.f());
         if (Build.VERSION.SDK_INT >= 23) {
             j2();
         }
-        boolean z2 = !a.p.f();
+        boolean z2 = !pkg_a.p.f();
         if (this.H.p(8) != z2) {
             this.H.X(this.a0, 8, z2);
         }
         if (z2) {
-            f.v.c("Cannot read settings!");
+            pkg_f.v.c("Cannot read settings!");
             com.jozein.xedgepro.xposed.w.h(this.a0);
         } else {
-            f.v.c("Can read settings.");
+            pkg_f.v.c("Can read settings.");
             if (!this.H.J()) {
                 H3();
             }
         }
-        n2.d(this.a0, f.l.j, true);
+        n2.d(this.a0, pkg_f.l.CONST_PKG, true);
         if (this.n0) {
             return;
         }
@@ -5846,7 +5813,7 @@ class w1 extends j2 {
                 }
                 this.z0.invoke(this.d0, Long.valueOf(SystemClock.uptimeMillis()), Boolean.FALSE);
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
         }
     }
@@ -5856,7 +5823,7 @@ class w1 extends j2 {
     }
 
     void q3() {
-        if (this.k0 && f.l.r) {
+        if (this.k0 && pkg_f.l.CONST_IS_PRO) {
             this.K.n(false);
         }
     }
@@ -5880,7 +5847,7 @@ class w1 extends j2 {
             }
             return ((Boolean) this.t0.invoke(v(), new Object[0])).booleanValue();
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
             return this.T.w();
         }
     }
@@ -5889,7 +5856,7 @@ class w1 extends j2 {
         this.c0.post(new Runnable() { // from class: com.jozein.xedgepro.xposed.d1
             @Override // java.lang.Runnable
             public final void run() {
-                this.z.O2(f2, f3);
+                w1.this.O2(f2, f3);
             }
         });
     }
@@ -5898,7 +5865,7 @@ class w1 extends j2 {
         this.v0 = false;
     }
 
-    void u3(a.b bVar) {
+    void u3(pkg_a.b bVar) {
         v3(bVar, -1, null);
     }
 
@@ -5911,26 +5878,26 @@ class w1 extends j2 {
                 Region regionF = this.Q.d0().F();
                 return regionF != null && regionF.contains(i2, i3);
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
         }
         Rect rect = this.x0;
         return rect != null && !t2() && i2 >= rect.left && i2 <= rect.right && i3 >= rect.top && i3 <= rect.bottom;
     }
 
-    void v3(final a.b bVar, final int i2, final Bundle bundle) {
+    void v3(final pkg_a.b bVar, final int i2, final Bundle bundle) {
         int i3;
         if (!g1(bVar) || (i3 = bVar.z) == 0 || i3 == 1) {
             return;
         }
         if (i3 == 51 || i3 == 68 || i3 == 102 || i3 == 106 || i3 == 107) {
-            f.v.d(new Throwable("Invalid action: " + bVar));
+            pkg_f.v.d(new Throwable("Invalid action: " + bVar));
         }
         b1(500L);
         this.c0.postDelayed(new Runnable() { // from class: com.jozein.xedgepro.xposed.h1
             @Override // java.lang.Runnable
             public final void run() {
-                this.z.G2(bVar, i2, bundle);
+                w1.this.G2(bVar, i2, bundle);
             }
         }, 0L);
     }
@@ -5939,7 +5906,7 @@ class w1 extends j2 {
         return this.f0;
     }
 
-    void w3(a.b bVar) {
+    void w3(pkg_a.b bVar) {
         G2(bVar, -1, null);
     }
 
@@ -5970,22 +5937,22 @@ class w1 extends j2 {
                     }
                 });
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
         }
     }
 
-    a.b y4(a.b bVar, boolean z2) {
+    pkg_a.b y4(pkg_a.b bVar, boolean z2) {
         try {
             int i2 = bVar.z;
             if (i2 != 62) {
-                return i2 != 72 ? bVar : y4(((a.b.d) bVar).K, z2);
+                return i2 != 72 ? bVar : y4(((pkg_a.b.d) bVar).K, z2);
             }
-            a.b.d0 d0Var = (a.b.d0) bVar;
+            pkg_a.b.d0 d0Var = (pkg_a.b.d0) bVar;
             return y4(l1(d0Var.I, z2) ? d0Var.J : d0Var.K, z2);
         } catch (Throwable th) {
-            f.v.d(th);
-            return a.b.e();
+            pkg_f.v.d(th);
+            return pkg_a.b.e();
         }
     }
 }

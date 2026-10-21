@@ -7,7 +7,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 
 /* JADX INFO: loaded from: classes.dex */
-public class u extends ContextWrapper implements f.l {
+public class u extends ContextWrapper implements pkg_f.l {
     private final l0 A;
     private final Context z;
 
@@ -36,9 +36,9 @@ public class u extends ContextWrapper implements f.l {
     public void startActivity(Intent intent, Bundle bundle) {
         intent.addFlags(268435456);
         try {
-            this.A.q1(intent, false, bundle, f.o0.d());
+            this.A.q1(intent, false, bundle, pkg_f.o0.d());
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
     }
 }

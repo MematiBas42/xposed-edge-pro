@@ -11,13 +11,13 @@ import java.lang.reflect.Method;
 /* JADX INFO: loaded from: classes.dex */
 class r3 extends g {
     private final Object G;
-    private final a.p H;
+    private final pkg_a.p H;
     private final Vibrator I;
     private final AudioAttributes J;
     private Method K;
     private Method L;
 
-    r3(Object obj, Class<?> cls, Context context, a.p pVar) {
+    r3(Object obj, Class<?> cls, Context context, pkg_a.p pVar) {
         super(cls);
         this.K = null;
         this.L = null;
@@ -27,7 +27,7 @@ class r3 extends g {
         if (vibrator == null || !vibrator.hasVibrator()) {
             this.I = null;
             this.J = null;
-            f.v.c("No vibrator.");
+            pkg_f.v.c("No vibrator.");
         } else {
             this.I = vibrator;
             if (Build.VERSION.SDK_INT >= 21) {
@@ -61,14 +61,14 @@ class r3 extends g {
                 if (this.K == null) {
                     this.K = j("performHapticFeedback", Integer.TYPE, Boolean.TYPE, String.class);
                 }
-                return ((Boolean) this.K.invoke(this.G, Integer.valueOf(i2), Boolean.TRUE, f.l.x)).booleanValue();
+                return ((Boolean) this.K.invoke(this.G, Integer.valueOf(i2), Boolean.TRUE, pkg_f.l.CONST_APP_TAG)).booleanValue();
             }
             if (this.K == null) {
                 this.K = i("performHapticFeedbackLw");
             }
             return ((Boolean) this.K.invoke(this.G, null, Integer.valueOf(i2), Boolean.TRUE)).booleanValue();
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
             return false;
         }
     }
@@ -111,7 +111,12 @@ class r3 extends g {
             if (this.L == null) {
                 this.L = XposedHelpers.findMethodExact(VibrationEffect.class, "get", new Class[]{Integer.TYPE});
             }
-            vibrationEffectCreatePredefined = (VibrationEffect) this.L.invoke(null, Integer.valueOf(i2));
+            try {
+                vibrationEffectCreatePredefined = (VibrationEffect) this.L.invoke(null, Integer.valueOf(i2));
+            } catch (Throwable th) {
+                pkg_f.v.d(th);
+                return;
+            }
         }
         this.I.vibrate(vibrationEffectCreatePredefined, this.J);
     }

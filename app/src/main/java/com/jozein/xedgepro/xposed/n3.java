@@ -7,7 +7,7 @@ class n3 {
     private static final String f192c;
 
     /* JADX INFO: renamed from: a, reason: collision with root package name */
-    private final f.p f193a;
+    private final pkg_f.p f193a;
 
     /* JADX INFO: renamed from: b, reason: collision with root package name */
     private final int[] f194b;
@@ -15,12 +15,12 @@ class n3 {
     static {
         StringBuilder sb = new StringBuilder();
         sb.append(p2.A);
-        sb.append(f.l.r ? "sys_prefs_pro" : "sys_prefs");
+        sb.append(pkg_f.l.CONST_IS_PRO ? "sys_prefs_pro" : "sys_prefs");
         f192c = sb.toString();
     }
 
     n3() {
-        f.p pVar = new f.p(f192c);
+        pkg_f.p pVar = new pkg_f.p(f192c);
         this.f193a = pVar;
         this.f194b = new int[1];
         if (pVar.E()) {
@@ -51,7 +51,7 @@ class n3 {
                 this.f193a.H().delete();
                 return;
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
         }
         this.f193a.j();

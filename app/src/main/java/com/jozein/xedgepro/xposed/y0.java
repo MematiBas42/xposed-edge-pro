@@ -20,10 +20,15 @@ import java.util.concurrent.ExecutorService;
 
 /* JADX INFO: loaded from: classes.dex */
 class y0 extends j2 {
+
+    @SuppressWarnings("unchecked")
+    static <E extends Throwable> void sneakyThrow(Throwable e) throws E {
+        throw (E) e;
+    }
     private static final boolean g0;
     private static final boolean h0;
     private final w1 H;
-    private final a.p I;
+    private final pkg_a.p I;
     private Handler J;
     private a0 K;
     private b0 L;
@@ -66,7 +71,7 @@ class y0 extends j2 {
                     y0.this.U(methodHookParam, (MotionEvent) obj);
                 }
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
         }
     }
@@ -89,7 +94,7 @@ class y0 extends j2 {
                     y0.this.P();
                 }
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
         }
     }
@@ -102,7 +107,7 @@ class y0 extends j2 {
         /* JADX INFO: renamed from: b, reason: collision with root package name */
         Method f309b;
 
-        c(Object obj) {
+        c(Object obj) throws Throwable {
             Class clsFindClass = XposedHelpers.findClass("com.android.server.input.InputManagerService$InputFilterHost", obj.getClass().getClassLoader());
             Constructor<?> constructor = clsFindClass.getDeclaredConstructors()[0];
             constructor.setAccessible(true);
@@ -133,7 +138,7 @@ class y0 extends j2 {
                     }
                     y0.this.P();
                 } catch (Throwable th) {
-                    f.v.d(th);
+                    pkg_f.v.d(th);
                 }
             }
         }
@@ -150,7 +155,7 @@ class y0 extends j2 {
                 try {
                     y0.this.o("setInputFilter", new a());
                 } catch (Throwable th) {
-                    f.v.d(th);
+                    pkg_f.v.d(th);
                 }
             }
             return this;
@@ -175,14 +180,14 @@ class y0 extends j2 {
                     methodHookParam.args[length] = Boolean.valueOf(z);
                 }
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
         }
 
         boolean c() {
             StackTraceElement[] stackTrace = new Throwable().getStackTrace();
             for (int i = 2; i < stackTrace.length; i++) {
-                if (stackTrace[i].getClassName().startsWith(f.l.v)) {
+                if (stackTrace[i].getClassName().startsWith(pkg_f.l.CONST_FEEDBACK)) {
                     return true;
                 }
             }
@@ -221,16 +226,21 @@ class y0 extends j2 {
             try {
                 y0.this.o("nativeSetInputFilterEnabled", this);
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
             return super.a(classLoader);
         }
 
         @Override // com.jozein.xedgepro.xposed.y0.d
-        public int b(InputEvent inputEvent, int i, int i2) throws IllegalAccessException, InvocationTargetException {
-            int i3 = Build.VERSION.SDK_INT;
-            Object objInvoke = (i3 < 29 && i3 >= 21) ? this.f312b.invoke(null, e(), inputEvent, 0, 0, 0, Integer.valueOf(i), 5000, Integer.valueOf(i2)) : this.f312b.invoke(null, e(), inputEvent, 0, 0, Integer.valueOf(i), 5000, Integer.valueOf(i2));
-            return ((Integer) objInvoke).intValue();
+        public int b(InputEvent inputEvent, int i, int i2) {
+            try {
+                int i3 = Build.VERSION.SDK_INT;
+                Object objInvoke = (i3 < 29 && i3 >= 21) ? this.f312b.invoke(null, e(), inputEvent, 0, 0, 0, Integer.valueOf(i), 5000, Integer.valueOf(i2)) : this.f312b.invoke(null, e(), inputEvent, 0, 0, Integer.valueOf(i), 5000, Integer.valueOf(i2));
+                return ((Integer) objInvoke).intValue();
+            } catch (Throwable th) {
+                pkg_f.v.d(th);
+                return 0;
+            }
         }
 
         @Override // com.jozein.xedgepro.xposed.y0.d
@@ -263,7 +273,7 @@ class y0 extends j2 {
             try {
                 return XposedHelpers.findClass(XposedHelpers.findField(y0.this.m(), "mNative").getType().getName() + "$NativeImpl", classLoader);
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
                 return XposedHelpers.findClass("com.android.server.input.NativeInputManagerService$NativeImpl", classLoader);
             }
         }
@@ -284,14 +294,19 @@ class y0 extends j2 {
             try {
                 XposedHelpers.findAndHookMethod(clsE, "setInputFilterEnabled", new Object[]{cls, this});
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
             return super.a(classLoader);
         }
 
         @Override // com.jozein.xedgepro.xposed.y0.d
         public int b(InputEvent inputEvent, int i, int i2) {
-            return ((Integer) this.f316c.invoke(f(), inputEvent, Boolean.FALSE, -1, Integer.valueOf(i), 5000, Integer.valueOf(i2))).intValue();
+            try {
+                return ((Integer) this.f316c.invoke(f(), inputEvent, Boolean.FALSE, -1, Integer.valueOf(i), 5000, Integer.valueOf(i2))).intValue();
+            } catch (Throwable th) {
+                y0.sneakyThrow(th);
+                return 0;
+            }
         }
 
         @Override // com.jozein.xedgepro.xposed.y0.d
@@ -310,7 +325,7 @@ class y0 extends j2 {
         h0 = z;
     }
 
-    y0(w1 w1Var, a.p pVar, ClassLoader classLoader) {
+    y0(w1 w1Var, pkg_a.p pVar, ClassLoader classLoader) {
         super("com.android.server.input.InputManagerService", classLoader);
         a aVar = null;
         this.K = null;
@@ -341,9 +356,9 @@ class y0 extends j2 {
             Object[] objArr = new Object[3];
             objArr[0] = InputEvent.class;
             objArr[1] = Integer.TYPE;
-            objArr[2] = new a(f.l.r ? 10000 : 50);
+            objArr[2] = new a(pkg_f.l.CONST_IS_PRO ? 10000 : 50);
             p("filterInputEvent", objArr);
-            this.M = Build.VERSION.SDK_INT >= 33 ? new f(this, aVar).a(classLoader) : new e(this, aVar).a(classLoader);
+            this.M = Build.VERSION.SDK_INT >= 33 ? new f().a(classLoader) : new e().a(classLoader);
         } catch (Throwable th) {
             p2.g(th);
         }
@@ -380,12 +395,12 @@ class y0 extends j2 {
             long jUptimeMillis = SystemClock.uptimeMillis();
             f0(t0(jUptimeMillis, jUptimeMillis, 0, f2, f3));
             f0(t0(jUptimeMillis, jUptimeMillis + 5, 1, f2, f3));
-            f.d.f(60L);
+            pkg_f.d.f(60L);
             long jUptimeMillis2 = SystemClock.uptimeMillis();
             f0(t0(jUptimeMillis2, jUptimeMillis2, 0, f2, f3));
             f0(t0(jUptimeMillis2, jUptimeMillis2 + 5, 1, f2, f3));
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
     }
 
@@ -396,7 +411,7 @@ class y0 extends j2 {
             b0(new KeyEvent(jUptimeMillis, jUptimeMillis, 0, i, 0, 0, -1, 0, 6));
             b0(new KeyEvent(jUptimeMillis, jUptimeMillis + 5, 1, i, 0, 0, -1, 0, 6));
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
     }
 
@@ -407,7 +422,7 @@ class y0 extends j2 {
             b0(new KeyEvent(jUptimeMillis, jUptimeMillis, 0, i, 0, i2));
             b0(new KeyEvent(jUptimeMillis, jUptimeMillis + 5, 1, i, 0, i2));
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
     }
 
@@ -417,12 +432,12 @@ class y0 extends j2 {
             long jUptimeMillis = SystemClock.uptimeMillis();
             b0(new KeyEvent(jUptimeMillis, jUptimeMillis, 0, i, 0, i2));
             b0(new KeyEvent(jUptimeMillis, jUptimeMillis + 5, 1, i, 0, i2));
-            f.d.f(60L);
+            pkg_f.d.f(60L);
             long jUptimeMillis2 = SystemClock.uptimeMillis();
             b0(new KeyEvent(jUptimeMillis2, jUptimeMillis2, 0, i, 0, i2));
             b0(new KeyEvent(jUptimeMillis2, jUptimeMillis2 + 5, 1, i, 0, i2));
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
     }
 
@@ -432,10 +447,10 @@ class y0 extends j2 {
             long jUptimeMillis = SystemClock.uptimeMillis();
             b0(new KeyEvent(jUptimeMillis, jUptimeMillis, 0, i, 0, i2));
             long longPressTimeout = ViewConfiguration.getLongPressTimeout() + 300;
-            f.d.f(longPressTimeout);
+            pkg_f.d.f(longPressTimeout);
             b0(new KeyEvent(jUptimeMillis, jUptimeMillis + longPressTimeout, 1, i, 0, i2));
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
     }
 
@@ -450,7 +465,7 @@ class y0 extends j2 {
             }
             f0(t0(jUptimeMillis, jUptimeMillis + longPressTimeout, 1, f2, f3));
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
     }
 
@@ -461,7 +476,7 @@ class y0 extends j2 {
             f0(t0(jUptimeMillis, jUptimeMillis, 0, f2, f3));
             f0(t0(jUptimeMillis, jUptimeMillis + 5, 1, f2, f3));
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
     }
 
@@ -472,7 +487,7 @@ class y0 extends j2 {
                 b0(KeyEvent.changeTimeRepeat(keyEvent, SystemClock.uptimeMillis(), 0));
             }
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
     }
 
@@ -516,7 +531,7 @@ class y0 extends j2 {
                 }
             }
         } catch (Throwable th2) {
-            f.v.d(th2);
+            pkg_f.v.d(th2);
         }
     }
 
@@ -534,7 +549,7 @@ class y0 extends j2 {
         if (this.a0 == null) {
             synchronized (this) {
                 if (this.a0 == null) {
-                    this.a0 = f.d.e("Async #key");
+                    this.a0 = pkg_f.d.e("Async #key");
                 }
             }
         }
@@ -570,7 +585,7 @@ class y0 extends j2 {
                     return;
                 }
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
         }
         int actionMasked = motionEvent.getActionMasked();
@@ -657,7 +672,7 @@ class y0 extends j2 {
         if (this.d0 == null) {
             synchronized (this) {
                 if (this.d0 == null) {
-                    this.d0 = f.h0.e("Async #gesture");
+                    this.d0 = pkg_f.h0.e("Async #gesture");
                 }
             }
         }
@@ -668,7 +683,7 @@ class y0 extends j2 {
         R(new Runnable() { // from class: com.jozein.xedgepro.xposed.q0
             @Override // java.lang.Runnable
             public final void run() {
-                this.z.l0(f2, f3);
+                l0(f2, f3);
             }
         });
     }
@@ -677,7 +692,7 @@ class y0 extends j2 {
         Q(new Runnable() { // from class: com.jozein.xedgepro.xposed.t0
             @Override // java.lang.Runnable
             public final void run() {
-                this.z.m0(i);
+                m0(i);
             }
         });
     }
@@ -686,7 +701,7 @@ class y0 extends j2 {
         Q(new Runnable() { // from class: com.jozein.xedgepro.xposed.v0
             @Override // java.lang.Runnable
             public final void run() {
-                this.z.n0(i, i2);
+                n0(i, i2);
             }
         });
     }
@@ -695,7 +710,7 @@ class y0 extends j2 {
         Q(new Runnable() { // from class: com.jozein.xedgepro.xposed.u0
             @Override // java.lang.Runnable
             public final void run() {
-                this.z.o0(i, i2);
+                o0(i, i2);
             }
         });
     }
@@ -704,7 +719,7 @@ class y0 extends j2 {
         Q(new Runnable() { // from class: com.jozein.xedgepro.xposed.w0
             @Override // java.lang.Runnable
             public final void run() {
-                this.z.p0(i, i2);
+                p0(i, i2);
             }
         });
     }
@@ -713,7 +728,7 @@ class y0 extends j2 {
         R(new Runnable() { // from class: com.jozein.xedgepro.xposed.s0
             @Override // java.lang.Runnable
             public final void run() {
-                this.z.q0(f2, f3);
+                q0(f2, f3);
             }
         });
     }
@@ -742,7 +757,7 @@ class y0 extends j2 {
         R(new Runnable() { // from class: com.jozein.xedgepro.xposed.r0
             @Override // java.lang.Runnable
             public final void run() {
-                this.z.r0(f2, f3);
+                r0(f2, f3);
             }
         });
     }
@@ -758,7 +773,7 @@ class y0 extends j2 {
         Q(new Runnable() { // from class: com.jozein.xedgepro.xposed.x0
             @Override // java.lang.Runnable
             public final void run() {
-                this.z.s0(events);
+                s0(events);
             }
         });
         return true;
@@ -809,7 +824,7 @@ class y0 extends j2 {
                     return objectField;
                 }
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
         }
         return g3.l();
@@ -830,10 +845,10 @@ class y0 extends j2 {
         try {
             Handler handler = (Handler) u("mHandler");
             if (handler != null) {
-                this.J = new f.h0(handler.getLooper());
+                this.J = new pkg_f.h0(handler.getLooper());
             }
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
         if (this.J == null) {
             this.J = w1Var.U1();
@@ -843,7 +858,7 @@ class y0 extends j2 {
         try {
             this.P = new c(v());
         } catch (Throwable th2) {
-            f.v.d(th2);
+            pkg_f.v.d(th2);
         }
     }
 }

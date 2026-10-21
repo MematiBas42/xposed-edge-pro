@@ -28,10 +28,15 @@ class b {
     private static Field f89f;
 
     static Object a(Object obj) {
-        if (f89f == null) {
-            f89f = XposedHelpers.findField(obj.getClass(), Build.VERSION.SDK_INT >= 33 ? "token" : "appToken");
+        try {
+            if (f89f == null) {
+                f89f = XposedHelpers.findField(obj.getClass(), Build.VERSION.SDK_INT >= 33 ? "token" : "appToken");
+            }
+            return f89f.get(obj);
+        } catch (Throwable th) {
+            p2.sneakyThrow(th);
+            return null;
         }
-        return f89f.get(obj);
     }
 
     static int b(Object obj) {
@@ -46,17 +51,22 @@ class b {
                 }
                 return iIntValue;
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
         }
         return 0;
     }
 
     static Intent c(Object obj) {
-        if (f87d == null) {
-            f87d = XposedHelpers.findField(obj.getClass(), "intent");
+        try {
+            if (f87d == null) {
+                f87d = XposedHelpers.findField(obj.getClass(), "intent");
+            }
+            return (Intent) f87d.get(obj);
+        } catch (Throwable th) {
+            p2.sneakyThrow(th);
+            return null;
         }
-        return (Intent) f87d.get(obj);
     }
 
     static String d(Object obj) {
@@ -66,11 +76,11 @@ class b {
             }
             return (String) f88e.get(obj);
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
             try {
-                return f.c0.f(c(obj));
+                return pkg_f.c0.f(c(obj));
             } catch (Throwable th2) {
-                f.v.d(th2);
+                pkg_f.v.d(th2);
                 return null;
             }
         }
@@ -83,7 +93,7 @@ class b {
             }
             return f86c.get(obj);
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
             return null;
         }
     }
@@ -99,7 +109,7 @@ class b {
             }
             return f84a.getInt(obj);
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
             return 0;
         }
     }

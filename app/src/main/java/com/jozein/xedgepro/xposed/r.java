@@ -25,25 +25,25 @@ import java.util.Objects;
 
 /* JADX INFO: loaded from: classes.dex */
 class r extends g {
-    private static final String X = p2.z + f.l.x + "_clipboard";
+    private static final String X = p2.z + pkg_f.l.CONST_APP_TAG + "_clipboard";
     private static final String Y;
     private final List<String> G;
     private final List<String> H;
     private final w1 I;
     private final l0 J;
-    private final a.p K;
+    private final pkg_a.p K;
     private Context L;
     private Handler M;
     private final Runnable N;
     private int O;
     private boolean P;
     private int Q;
-    private String R;
+    private String mFilePathR;
     private boolean S;
     private ClipboardManager.OnPrimaryClipChangedListener T;
     private ClipData.Item U;
     private final Runnable V;
-    private g.l W;
+    private pkg_g.l W;
 
     class a extends XC_MethodHook {
 
@@ -68,7 +68,7 @@ class r extends g {
                 }
                 r.this.j0((ClipData) methodHookParam.args[this.f220a]);
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
         }
     }
@@ -84,16 +84,16 @@ class r extends g {
         }
     }
 
-    class c implements g.l.e {
+    class c implements pkg_g.l.e {
         c() {
         }
 
-        @Override // g.l.e
+        @Override // pkg_g.l.e
         public void a(Intent intent) {
             r.this.I.n4(intent);
         }
 
-        @Override // g.l.e
+        @Override // pkg_g.l.e
         public boolean b(CharSequence charSequence) {
             r.this.N(charSequence);
             return true;
@@ -135,9 +135,9 @@ class r extends g {
     }
 
     /* JADX INFO: Access modifiers changed from: private */
-    class f extends g.y {
+    class f extends pkg_g.y {
 
-        class a implements g.l.e {
+        class a implements pkg_g.l.e {
 
             /* JADX INFO: renamed from: a, reason: collision with root package name */
             final /* synthetic */ String f224a;
@@ -150,12 +150,12 @@ class r extends g {
                 this.f225b = i;
             }
 
-            @Override // g.l.e
+            @Override // pkg_g.l.e
             public void a(Intent intent) {
                 r.this.I.n4(intent);
             }
 
-            @Override // g.l.e
+            @Override // pkg_g.l.e
             public boolean b(CharSequence charSequence) {
                 if (charSequence != null && charSequence.length() > 0) {
                     String string = charSequence.toString();
@@ -186,7 +186,7 @@ class r extends g {
             r.this.I.o2(str, false);
         }
 
-        @Override // g.y
+        @Override // pkg_g.y
         protected int q(Context context) {
             if (r.this.g0() <= 0) {
                 return 0;
@@ -194,31 +194,31 @@ class r extends g {
             return r.this.G.size();
         }
 
-        @Override // g.y
+        @Override // pkg_g.y
         protected CharSequence r(int i) {
             return (CharSequence) r.this.G.get(i);
         }
 
-        @Override // g.y
+        @Override // pkg_g.y
         protected boolean s(int i) {
             return i < r.this.O;
         }
 
-        @Override // g.y
+        @Override // pkg_g.y
         protected void u(int i) {
             final String str = (String) r.this.G.get(i);
             if (str != null && str.length() > 0) {
                 r.this.M.postDelayed(new Runnable() { // from class: com.jozein.xedgepro.xposed.t
                     @Override // java.lang.Runnable
                     public final void run() {
-                        this.z.A(str);
+                        A(str);
                     }
                 }, 200L);
             }
             t3.n().t(20);
         }
 
-        @Override // g.y
+        @Override // pkg_g.y
         protected void v(int i) {
             if (i < r.this.O) {
                 r.this.G.add(r.L(r.this), (String) r.this.G.remove(i));
@@ -231,7 +231,7 @@ class r extends g {
             r.this.P = true;
         }
 
-        @Override // g.y
+        @Override // pkg_g.y
         protected void w(int i) {
             t3.n().t(20);
             String str = (String) r(i);
@@ -240,19 +240,19 @@ class r extends g {
                 r rVar = r.this;
                 a aVar = new a(str, i);
                 final r rVar2 = r.this;
-                rVar.S(str, null, aVar, new g.l.f() { // from class: com.jozein.xedgepro.xposed.s
-                    @Override // g.l.f
+                rVar.S(str, null, aVar, new pkg_g.l.f() { // from class: com.jozein.xedgepro.xposed.s
+                    @Override // pkg_g.l.f
                     public final void a() {
                         rVar2.Q();
                     }
                 });
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
                 r.this.Q();
             }
         }
 
-        @Override // g.y
+        @Override // pkg_g.y
         protected void x(int i) {
             if (i != 0) {
                 r.this.G.add(0, (String) r.this.G.remove(i));
@@ -272,33 +272,33 @@ class r extends g {
     static {
         StringBuilder sb = new StringBuilder();
         sb.append(p2.A);
-        sb.append(f.l.r ? "clipboard_pro" : "clipboard");
+        sb.append(pkg_f.l.CONST_IS_PRO ? "clipboard_pro" : "clipboard");
         Y = sb.toString();
     }
 
     /* JADX WARN: Illegal instructions before constructor call */
-    r(ClassLoader classLoader, w1 w1Var, l0 l0Var, a.p pVar) {
+    r(ClassLoader classLoader, w1 w1Var, l0 l0Var, pkg_a.p pVar) {
+        super(Build.VERSION.SDK_INT >= 21 ? "com.android.server.clipboard.ClipboardService" : "com.android.server.ClipboardService", classLoader);
         String str;
         int i = Build.VERSION.SDK_INT;
-        super(i >= 21 ? "com.android.server.clipboard.ClipboardService" : "com.android.server.ClipboardService", classLoader);
         this.G = new ArrayList(16);
         this.H = new ArrayList();
         this.N = new Runnable() { // from class: com.jozein.xedgepro.xposed.o
             @Override // java.lang.Runnable
             public final void run() {
-                this.z.n0();
+                r.this.n0();
             }
         };
         this.O = 0;
         this.P = false;
         this.Q = 0;
-        this.R = Y;
+        this.mFilePathR = Y;
         this.T = null;
         this.U = null;
         this.V = new Runnable() { // from class: com.jozein.xedgepro.xposed.p
             @Override // java.lang.Runnable
             public final void run() {
-                this.z.X();
+                r.this.X();
             }
         };
         this.W = null;
@@ -391,7 +391,7 @@ class r extends g {
     }
 
     /* JADX INFO: Access modifiers changed from: private */
-    public /* synthetic */ void W(g.l.f fVar) {
+    public /* synthetic */ void W(pkg_g.l.f fVar) {
         this.W = null;
         if (fVar != null) {
             fVar.a();
@@ -419,7 +419,7 @@ class r extends g {
                 j0(clipboardManager.getPrimaryClip());
             }
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
     }
 
@@ -467,12 +467,12 @@ class r extends g {
             }
         });
         ImageView imageView = new ImageView(this.L);
-        imageView.setImageDrawable(new g.t(resources.getDrawable(R.drawable.ic_clips_clear_all), null, 0.7f));
-        imageView.setBackground(g.a0.o(fVar.getItemColor(), i2 * 0.5f));
+        imageView.setImageDrawable(new pkg_g.t(resources.getDrawable(R.drawable.ic_clips_clear_all), null, 0.7f));
+        imageView.setBackground(pkg_g.a0.o(fVar.getItemColor(), i2 * 0.5f));
         imageView.setOnClickListener(new View.OnClickListener() { // from class: com.jozein.xedgepro.xposed.l
             @Override // android.view.View.OnClickListener
             public final void onClick(View view2) {
-                this.z.c0(frameLayout, frameLayout2, fVar, view2);
+                r.this.c0(frameLayout, frameLayout2, fVar, view2);
             }
         });
         frameLayout2.addView(imageView, new FrameLayout.LayoutParams(i2, i2, 17));
@@ -498,7 +498,7 @@ class r extends g {
         if ((!parentFile.exists() || !parentFile.canExecute()) && !parentFile.mkdir()) {
             str = X;
         }
-        this.R = str;
+        this.mFilePathR = str;
         File file3 = new File(X);
         if (file3.exists()) {
             f0(file3);
@@ -507,7 +507,7 @@ class r extends g {
 
     private void f0(File file) {
         try {
-            f.f fVar = new f.f(file, true);
+            pkg_f.f fVar = new pkg_f.f(file, true);
             if (fVar.y()) {
                 int iH = fVar.h();
                 this.O = fVar.h();
@@ -525,7 +525,7 @@ class r extends g {
             }
             fVar.m();
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
     }
 
@@ -569,7 +569,7 @@ class r extends g {
                 this.M.post(new Runnable() { // from class: com.jozein.xedgepro.xposed.q
                     @Override // java.lang.Runnable
                     public final void run() {
-                        this.z.Y(charSequenceCoerceToText);
+                        r.this.Y(charSequenceCoerceToText);
                     }
                 });
                 return;
@@ -594,11 +594,11 @@ class r extends g {
         }
         this.P = false;
         if (g0() <= 0 || this.G.size() <= 0) {
-            new File(this.R).delete();
+            new File(this.mFilePathR).delete();
             return false;
         }
         try {
-            f.f fVar = new f.f(this.R, true);
+            pkg_f.f fVar = new pkg_f.f(this.mFilePathR, true);
             fVar.j();
             fVar.d(this.G.size()).d(this.O);
             Iterator<String> it = this.G.iterator();
@@ -608,7 +608,7 @@ class r extends g {
             fVar.B();
             return true;
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
             return false;
         }
     }
@@ -620,7 +620,7 @@ class r extends g {
         this.T = new ClipboardManager.OnPrimaryClipChangedListener() { // from class: com.jozein.xedgepro.xposed.h
             @Override // android.content.ClipboardManager.OnPrimaryClipChangedListener
             public final void onPrimaryClipChanged() {
-                this.f125a.Z();
+                r.this.Z();
             }
         };
         ClipboardManager clipboardManager = (ClipboardManager) this.L.getSystemService("clipboard");
@@ -646,29 +646,29 @@ class r extends g {
     }
 
     void P(int i) {
-        g.l lVar = this.W;
+        pkg_g.l lVar = this.W;
         if (lVar != null) {
             lVar.j(i);
         }
     }
 
     void R() {
-        g.l lVar = this.W;
+        pkg_g.l lVar = this.W;
         if (lVar != null) {
             lVar.o(true);
             this.W = null;
         }
     }
 
-    void S(CharSequence charSequence, CharSequence charSequence2, g.l.e eVar, final g.l.f fVar) {
-        g.l lVar = this.W;
+    void S(CharSequence charSequence, CharSequence charSequence2, pkg_g.l.e eVar, final pkg_g.l.f fVar) {
+        pkg_g.l lVar = this.W;
         if (lVar != null) {
             lVar.o(false);
         }
-        g.l lVar2 = new g.l(new u(this.L, this.J), this.K.v(25, -16764873), eVar, new g.l.f() { // from class: com.jozein.xedgepro.xposed.n
-            @Override // g.l.f
+        pkg_g.l lVar2 = new pkg_g.l(new u(this.L, this.J), this.K.v(25, -16764873), eVar, new pkg_g.l.f() { // from class: com.jozein.xedgepro.xposed.n
+            @Override // pkg_g.l.f
             public final void a() {
-                this.f161a.W(fVar);
+                r.this.W(fVar);
             }
         });
         this.W = lVar2;
@@ -679,7 +679,7 @@ class r extends g {
     }
 
     boolean U(CharSequence charSequence) {
-        g.l lVar = this.W;
+        pkg_g.l lVar = this.W;
         return lVar != null && lVar.m(charSequence);
     }
 
@@ -693,7 +693,7 @@ class r extends g {
         try {
             e0();
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
         o0();
     }
@@ -716,16 +716,16 @@ class r extends g {
                 t3VarN.t(20);
                 return;
             }
-            g.x xVarC = g.x.c(this.L);
+            pkg_g.x xVarC = pkg_g.x.c(this.L);
             final int i = (int) (xVarC.f633a * 0.85f);
             int i2 = (int) (i * 0.75f);
             int iV = this.K.v(25, -16764873) | (-16777216);
-            final int iC = g.a0.c(iV, g.a0.r(iV) ? 16 : -16);
+            final int iC = pkg_g.a0.c(iV, pkg_g.a0.r(iV) ? 16 : -16);
             final Resources resources = p2.d(this.L).getResources();
             Drawable drawable = resources.getDrawable(R.drawable.ic_clips_add);
             Drawable drawable2 = resources.getDrawable(R.drawable.ic_clips_clear_all);
-            g.h hVarA = g.h.a();
-            if (g.a0.r(iV)) {
+            pkg_g.h hVarA = pkg_g.h.a();
+            if (pkg_g.a0.r(iV)) {
                 hVarA.b(drawable);
                 hVarA.b(drawable2);
             } else {
@@ -740,12 +740,12 @@ class r extends g {
                 }
             });
             frameLayout.setBackgroundColor(iC);
-            g.p pVar = new g.p(this.L);
+            pkg_g.p pVar = new pkg_g.p(this.L);
             pVar.setImageDrawable(drawable);
             pVar.setOnClickListener(new View.OnClickListener() { // from class: com.jozein.xedgepro.xposed.j
                 @Override // android.view.View.OnClickListener
                 public final void onClick(View view) {
-                    this.z.b0(view);
+                    r.this.b0(view);
                 }
             });
             FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(i2, i2, 8388611);
@@ -753,7 +753,7 @@ class r extends g {
             layoutParams.rightMargin = i3;
             layoutParams.leftMargin = i3;
             frameLayout.addView(pVar, layoutParams);
-            g.p pVar2 = new g.p(this.L);
+            pkg_g.p pVar2 = new pkg_g.p(this.L);
             pVar2.setImageDrawable(drawable2);
             FrameLayout.LayoutParams layoutParams2 = new FrameLayout.LayoutParams(i2, i2, 8388613);
             int i4 = xVarC.f639g;
@@ -773,7 +773,7 @@ class r extends g {
             pVar2.setOnClickListener(new View.OnClickListener() { // from class: com.jozein.xedgepro.xposed.k
                 @Override // android.view.View.OnClickListener
                 public final void onClick(View view) {
-                    this.z.d0(iC, dVar, resources, eVar, i, view);
+                    r.this.d0(iC, dVar, resources, eVar, i, view);
                 }
             });
             int iQ = eVar.q(this.L);
@@ -786,7 +786,7 @@ class r extends g {
             AnimationSet animationSet = new AnimationSet(true);
             animationSet.addAnimation(new TranslateAnimation(0.0f, 0.0f, i5 / 2.0f, 0.0f));
             animationSet.addAnimation(new AlphaAnimation(0.0f, 1.0f));
-            g.a0.z(dVar, animationSet, (long) (((long) (iQ + 1)) * 66 * 0.85f * 0.75f));
+            pkg_g.a0.z(dVar, animationSet, (long) (((long) (iQ + 1)) * 66 * 0.85f * 0.75f));
         }
     }
 

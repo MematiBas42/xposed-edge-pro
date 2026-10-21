@@ -55,7 +55,7 @@ class a {
 
     static Bundle d(l0 l0Var, int i) {
         if (i >= 0 && i <= 3) {
-            if (f.o0.d() == 0) {
+            if (pkg_f.o0.d() == 0) {
                 if (f79a == null) {
                     f79a = new Bundle[8];
                     Context contextD = p2.d(l0Var.m0());
@@ -68,7 +68,7 @@ class a {
                 if (f82d == null) {
                     f82d = new Point();
                 }
-                Point pointK = g.a0.k(l0Var.m0(), f82d);
+                Point pointK = pkg_g.a0.k(l0Var.m0(), f82d);
                 int i2 = pointK.x;
                 int i3 = pointK.y;
                 boolean z = i2 < i3;

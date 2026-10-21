@@ -23,9 +23,9 @@ class d3 implements b0.a {
     private final Paint H;
     private b I = null;
     private int J = 0;
-    private final a.p z;
+    private final pkg_a.p z;
 
-    class a extends Property<b, Float> {
+    static class a extends Property<b, Float> {
         a(Class cls, String str) {
             super(cls, str);
         }
@@ -44,7 +44,7 @@ class d3 implements b0.a {
     }
 
     /* JADX INFO: Access modifiers changed from: private */
-    class b extends View implements a.p.f, b0.b {
+    class b extends View implements pkg_a.p.TriggerModes, b0.b {
         private final float A;
         private final float B;
         private final float C;
@@ -142,7 +142,7 @@ class d3 implements b0.a {
             d3.this.B.post(new Runnable() { // from class: com.jozein.xedgepro.xposed.e3
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.z.g(f2, f3);
+                    g(f2, f3);
                 }
             });
         }
@@ -360,7 +360,7 @@ class d3 implements b0.a {
         this.B.post(new Runnable() { // from class: com.jozein.xedgepro.xposed.a3
             @Override // java.lang.Runnable
             public final void run() {
-                this.z.w(f2, f3);
+                d3.this.w(f2, f3);
             }
         });
     }
@@ -370,7 +370,7 @@ class d3 implements b0.a {
         this.B.post(new Runnable() { // from class: com.jozein.xedgepro.xposed.z2
             @Override // java.lang.Runnable
             public final void run() {
-                this.z.t();
+                d3.this.t();
             }
         });
     }
@@ -380,7 +380,7 @@ class d3 implements b0.a {
         this.B.post(new Runnable() { // from class: com.jozein.xedgepro.xposed.b3
             @Override // java.lang.Runnable
             public final void run() {
-                this.z.u(f2, f3);
+                d3.this.u(f2, f3);
             }
         });
     }
@@ -390,7 +390,7 @@ class d3 implements b0.a {
         this.B.post(new Runnable() { // from class: com.jozein.xedgepro.xposed.c3
             @Override // java.lang.Runnable
             public final void run() {
-                this.z.v(f2, f3, i);
+                d3.this.v(f2, f3, i);
             }
         });
     }

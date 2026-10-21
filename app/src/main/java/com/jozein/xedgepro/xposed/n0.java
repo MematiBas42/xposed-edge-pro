@@ -120,7 +120,7 @@ class n0 extends j2 {
         }
     }
 
-    class g extends f.f0.d {
+    class g extends pkg_f.f0.d {
 
         /* JADX INFO: renamed from: a, reason: collision with root package name */
         final IBinder f169a = new w3();
@@ -128,7 +128,7 @@ class n0 extends j2 {
         g() {
         }
 
-        @Override // f.f0.d
+        @Override // pkg_f.f0.d
         public Object a(String str, Object[] objArr) {
             str.hashCode();
             if (str.equals("asBinder")) {
@@ -138,7 +138,7 @@ class n0 extends j2 {
                 n0.this.A0(((Integer) objArr[0]).intValue());
                 return null;
             }
-            f.v.c("IRotationWatcher." + str);
+            pkg_f.v.c("IRotationWatcher." + str);
             return null;
         }
     }
@@ -289,7 +289,7 @@ class n0 extends j2 {
             try {
                 n0.this.C0((String) this.f183a.get(methodHookParam.thisObject), methodHookParam.args[0] != null);
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
         }
     }
@@ -308,7 +308,7 @@ class n0 extends j2 {
                 try {
                     n0.this.C0((String) this.f185a.get(methodHookParam.thisObject), ((Boolean) methodHookParam.args[0]).booleanValue());
                 } catch (Throwable th) {
-                    f.v.d(th);
+                    pkg_f.v.d(th);
                 }
             }
         }
@@ -347,7 +347,7 @@ class n0 extends j2 {
                     XposedHelpers.setIntField(objU, "mSystemUiVisibility", this.f188a);
                     this.f188a = -1;
                 } catch (Throwable th) {
-                    f.v.d(th);
+                    pkg_f.v.d(th);
                 }
             }
         }
@@ -365,7 +365,7 @@ class n0 extends j2 {
                     XposedHelpers.setIntField(objU, "mSystemUiVisibility", iW);
                     this.f188a = intField;
                 } catch (Throwable th) {
-                    f.v.d(th);
+                    pkg_f.v.d(th);
                     this.f188a = -1;
                 }
             }
@@ -381,9 +381,9 @@ class n0 extends j2 {
 
     /* JADX WARN: Code duplicated, block: B:74:0x01d7 A[Catch: all -> 0x01ea, TRY_LEAVE, TryCatch #5 {all -> 0x01ea, blocks: (B:72:0x01d3, B:74:0x01d7), top: B:88:0x01d3 }] */
     /* JADX WARN: Code duplicated, block: B:94:? A[RETURN, SYNTHETIC] */
-    n0(Class<?> cls, ClassLoader classLoader, w1 w1Var, a.p pVar) {
-        Class clsFindClass;
+    n0(Class<?> cls, ClassLoader classLoader, w1 w1Var, pkg_a.p pVar) {
         super(cls);
+        Class clsFindClass;
         this.J = new n3();
         this.L = false;
         this.M = false;
@@ -407,7 +407,7 @@ class n0 extends j2 {
         this.g0 = new Runnable() { // from class: com.jozein.xedgepro.xposed.m0
             @Override // java.lang.Runnable
             public final void run() {
-                this.z.m0();
+                n0.this.m0();
             }
         };
         this.H = w1Var;
@@ -544,14 +544,14 @@ class n0 extends j2 {
             y0(z);
             return;
         }
-        f.v.c("Unknown tag: " + str);
+        pkg_f.v.c("Unknown tag: " + str);
     }
 
     private void V() {
         try {
             this.I.z("watchRotation", new g(), 0);
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
     }
 
@@ -580,7 +580,7 @@ class n0 extends j2 {
         return (!this.M || this.N) ? i2 : i2 & (-134217729);
     }
 
-    private int a0(a.p pVar) {
+    private int a0(pkg_a.p pVar) {
         return pVar.J() ? pVar.u(14) : this.J.a(0);
     }
 
@@ -610,7 +610,7 @@ class n0 extends j2 {
             this.c0 = (int) resourcesB0.getDimension(identifier2);
             this.d0 = (int) resourcesB0.getDimension(identifier3);
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
     }
 
@@ -658,7 +658,7 @@ class n0 extends j2 {
             }
             this.a0 = true;
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
     }
 
@@ -672,7 +672,7 @@ class n0 extends j2 {
         try {
             d0().D(-1);
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
     }
 
@@ -754,7 +754,7 @@ class n0 extends j2 {
         String str = z ? "mStatusBar" : "mNavigationBar";
         Object objectField = XposedHelpers.getObjectField(objH, str);
         if (objectField == null) {
-            f.v.c(str + " not exists.");
+            pkg_f.v.c(str + " not exists.");
         }
         return objectField;
     }
@@ -767,7 +767,7 @@ class n0 extends j2 {
                 return new Point((rectG.left + rectG.right) / 2, (rectG.top + rectG.bottom) / 2);
             }
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
         Point pointI = this.I.I(new Point());
         pointI.x /= 2;
@@ -787,7 +787,7 @@ class n0 extends j2 {
             }
             this.I.A(obj);
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
     }
 
@@ -826,7 +826,7 @@ class n0 extends j2 {
         if (!this.a0) {
             g0();
         }
-        if (Build.VERSION.SDK_INT > 27 || f.p0.p() != 1) {
+        if (Build.VERSION.SDK_INT > 27 || pkg_f.p0.p() != 1) {
             V();
         }
     }
@@ -838,7 +838,7 @@ class n0 extends j2 {
                 return true;
             }
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
         return false;
     }
@@ -896,7 +896,7 @@ class n0 extends j2 {
                     w0(this.b0, this.c0, this.d0);
                 }
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
         }
         this.M = z;

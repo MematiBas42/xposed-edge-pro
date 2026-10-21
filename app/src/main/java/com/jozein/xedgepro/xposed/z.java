@@ -15,13 +15,13 @@ abstract class z {
     private final Runnable B = new Runnable() { // from class: com.jozein.xedgepro.xposed.y
         @Override // java.lang.Runnable
         public final void run() {
-            this.z.h();
+            h();
         }
     };
     private final Runnable C = new Runnable() { // from class: com.jozein.xedgepro.xposed.x
         @Override // java.lang.Runnable
         public final void run() {
-            this.z.i();
+            i();
         }
     };
 
@@ -43,7 +43,7 @@ abstract class z {
                 }
             }
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
         this.D = false;
     }
@@ -57,7 +57,7 @@ abstract class z {
                 }
             }
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
         this.D = false;
     }
@@ -78,7 +78,7 @@ abstract class z {
         try {
             this.z.j0(methodHookParam);
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
     }
 

@@ -62,7 +62,7 @@ class o2 {
             XposedHelpers.setObjectField(absListView, "mFlingRunnable", f197f.newInstance(absListView));
         } catch (Throwable th) {
             f196e = 0;
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
     }
 
@@ -74,12 +74,12 @@ class o2 {
         if (f196e == -1) {
             if (d(th)) {
                 f196e = 1;
-                f.v.c("MIUI system bug has occurred! Try to fix it.");
+                pkg_f.v.c("MIUI system bug has occurred! Try to fix it.");
                 Toast.makeText(this.f198a, "MIUI system bug has occurred! Try to fix it.", 1).show();
                 try {
                     new File(f195d).createNewFile();
                 } catch (Throwable th2) {
-                    f.v.d(th2);
+                    pkg_f.v.d(th2);
                 }
             } else {
                 f196e = 0;

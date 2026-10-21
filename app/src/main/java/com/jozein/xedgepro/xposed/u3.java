@@ -57,7 +57,7 @@ class u3 {
             }
             return ((WeakReference) f237c.get(layoutParamsC.token)).get();
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
             return null;
         }
     }
@@ -69,7 +69,7 @@ class u3 {
                 return str;
             }
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
         try {
             if (Build.VERSION.SDK_INT >= 30) {
@@ -85,31 +85,46 @@ class u3 {
             }
             return null;
         } catch (Throwable th2) {
-            f.v.d(th2);
+            pkg_f.v.d(th2);
             return null;
         }
     }
 
     static WindowManager.LayoutParams c(Object obj) {
-        if (f235a == null) {
-            f235a = XposedHelpers.findField(f(obj), "mAttrs");
+        try {
+            if (f235a == null) {
+                f235a = XposedHelpers.findField(f(obj), "mAttrs");
+            }
+            return (WindowManager.LayoutParams) f235a.get(obj);
+        } catch (Throwable th) {
+            p2.sneakyThrow(th);
+            return null;
         }
-        return (WindowManager.LayoutParams) f235a.get(obj);
     }
 
     static int d(Object obj) {
-        if (f240f == null) {
-            f240f = XposedHelpers.findMethodExact(f(obj), "getDisplayId", new Class[0]);
+        try {
+            if (f240f == null) {
+                f240f = XposedHelpers.findMethodExact(f(obj), "getDisplayId", new Class[0]);
+            }
+            return ((Integer) f240f.invoke(obj, new Object[0])).intValue();
+        } catch (Throwable th) {
+            p2.sneakyThrow(th);
+            return 0;
         }
-        return ((Integer) f240f.invoke(obj, new Object[0])).intValue();
     }
 
-    static Region e(Object obj, Region region) throws IllegalAccessException, InvocationTargetException {
-        if (j == null) {
-            j = XposedHelpers.findMethodExact(f(obj), "getTouchableRegion", new Class[]{Region.class});
+    static Region e(Object obj, Region region) {
+        try {
+            if (j == null) {
+                j = XposedHelpers.findMethodExact(f(obj), "getTouchableRegion", new Class[]{Region.class});
+            }
+            j.invoke(obj, region);
+            return region;
+        } catch (Throwable th) {
+            p2.sneakyThrow(th);
+            return region;
         }
-        j.invoke(obj, region);
-        return region;
     }
 
     private static Class<?> f(Object obj) {
@@ -124,37 +139,52 @@ class u3 {
     }
 
     static Rect g(Object obj, Rect rect) {
-        if (Build.VERSION.SDK_INT >= 31) {
-            if (f241g == null) {
-                f241g = XposedHelpers.findMethodExact(f(obj), "getFrame", new Class[0]);
+        try {
+            if (Build.VERSION.SDK_INT >= 31) {
+                if (f241g == null) {
+                    f241g = XposedHelpers.findMethodExact(f(obj), "getFrame", new Class[0]);
+                }
+                return (Rect) f241g.invoke(obj, new Object[0]);
             }
-            return (Rect) f241g.invoke(obj, new Object[0]);
+            if (h == null) {
+                Class<?> clsF = f(obj);
+                h = XposedHelpers.findMethodExact(clsF, "getContentFrameLw", new Class[0]);
+                i = XposedHelpers.findMethodExact(clsF, "getGivenContentInsetsLw", new Class[0]);
+            }
+            Rect rect2 = (Rect) h.invoke(obj, new Object[0]);
+            Rect rect3 = (Rect) i.invoke(obj, new Object[0]);
+            rect.left = rect2.left + rect3.left;
+            rect.top = rect2.top + rect3.top;
+            rect.right = rect2.right + rect3.right;
+            rect.bottom = rect2.bottom + rect3.bottom;
+            return rect;
+        } catch (Throwable th) {
+            p2.sneakyThrow(th);
+            return rect;
         }
-        if (h == null) {
-            Class<?> clsF = f(obj);
-            h = XposedHelpers.findMethodExact(clsF, "getContentFrameLw", new Class[0]);
-            i = XposedHelpers.findMethodExact(clsF, "getGivenContentInsetsLw", new Class[0]);
-        }
-        Rect rect2 = (Rect) h.invoke(obj, new Object[0]);
-        Rect rect3 = (Rect) i.invoke(obj, new Object[0]);
-        rect.left = rect2.left + rect3.left;
-        rect.top = rect2.top + rect3.top;
-        rect.right = rect2.right + rect3.right;
-        rect.bottom = rect2.bottom + rect3.bottom;
-        return rect;
     }
 
     static boolean h(Object obj) {
-        if (f238d == null) {
-            f238d = XposedHelpers.findMethodExact(f(obj), "isFocused", new Class[0]);
+        try {
+            if (f238d == null) {
+                f238d = XposedHelpers.findMethodExact(f(obj), "isFocused", new Class[0]);
+            }
+            return ((Boolean) f238d.invoke(obj, new Object[0])).booleanValue();
+        } catch (Throwable th) {
+            p2.sneakyThrow(th);
+            return false;
         }
-        return ((Boolean) f238d.invoke(obj, new Object[0])).booleanValue();
     }
 
     static boolean i(Object obj) {
-        if (f239e == null) {
-            f239e = XposedHelpers.findMethodExact(f(obj), "isVisibleNow", new Class[0]);
+        try {
+            if (f239e == null) {
+                f239e = XposedHelpers.findMethodExact(f(obj), "isVisibleNow", new Class[0]);
+            }
+            return ((Boolean) f239e.invoke(obj, new Object[0])).booleanValue();
+        } catch (Throwable th) {
+            p2.sneakyThrow(th);
+            return false;
         }
-        return ((Boolean) f239e.invoke(obj, new Object[0])).booleanValue();
     }
 }

@@ -1,14 +1,14 @@
 package com.jozein.xedgepro.service;
 
-import a.b;
+import pkg_a.b;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.widget.Toast;
 import com.jozein.xedgepro.R;
-import f.h0;
-import f.l;
-import f.m;
-import f.n0;
+import pkg_f.h0;
+import pkg_f.l;
+import pkg_f.m;
+import pkg_f.n0;
 
 /* JADX INFO: loaded from: classes.dex */
 public class ServiceTorch extends com.jozein.xedgepro.service.a {
@@ -18,19 +18,19 @@ public class ServiceTorch extends com.jozein.xedgepro.service.a {
         a() {
         }
 
-        @Override // f.n0.b
+        @Override // pkg_f.n0.b
         public void a() {
             ServiceTorch.this.stopSelf();
         }
 
-        @Override // f.n0.b
+        @Override // pkg_f.n0.b
         public void b() {
         }
     }
 
     public static Intent f(b.l3 l3Var, boolean z, boolean z2) {
         Intent intent = new Intent();
-        intent.setComponent(new ComponentName(l.j, ServiceTorch.class.getName()));
+        intent.setComponent(new ComponentName(pkg_f.l.CONST_PKG, ServiceTorch.class.getName()));
         new m(intent).j().f(l3Var).d(z ? 1 : 0).d(z2 ? 1 : 0).l();
         return intent;
     }

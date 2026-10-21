@@ -21,18 +21,18 @@ class z0 extends p2 {
     }
 
     z0(ClassLoader classLoader) {
-        if (f.o0.m() != 0 || f.f0.u(classLoader)) {
+        if (pkg_f.o0.m() != 0 || pkg_f.f0.u(classLoader)) {
             return;
         }
         try {
             XposedHelpers.findAndHookMethod(Application.class, "onCreate", new Object[]{new a()});
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
     }
 
     void h(Application application) {
-        Application.OnProvideAssistDataListener onProvideAssistDataListenerP = f.f0.p();
+        Application.OnProvideAssistDataListener onProvideAssistDataListenerP = pkg_f.f0.p();
         if (onProvideAssistDataListenerP != null) {
             application.registerOnProvideAssistDataListener(onProvideAssistDataListenerP);
             application.unregisterOnProvideAssistDataListener(onProvideAssistDataListenerP);

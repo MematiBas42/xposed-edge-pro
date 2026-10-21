@@ -1,9 +1,9 @@
 package com.jozein.xedgepro.service;
 
-import a.b;
-import a.p;
-import a.t;
-import a.u;
+import pkg_a.b;
+import pkg_a.p;
+import pkg_a.t;
+import pkg_a.u;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -12,9 +12,9 @@ import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
 import com.jozein.xedgepro.R;
 import com.jozein.xedgepro.ui.ActivityMain;
-import f.l;
-import f.v;
-import g.a0;
+import pkg_f.l;
+import pkg_f.v;
+import pkg_g.a0;
 
 /* JADX INFO: loaded from: classes.dex */
 public abstract class SuperTileService extends TileService {
@@ -64,7 +64,7 @@ public abstract class SuperTileService extends TileService {
 
     private Icon b(b.d dVar) {
         int i;
-        return (dVar.B() || !((i = dVar.K.z) == 0 || i == 1)) ? Icon.createWithBitmap(a0.a(dVar, this)) : Icon.createWithResource(l.j, R.drawable.ic_launcher);
+        return (dVar.B() || !((i = dVar.K.z) == 0 || i == 1)) ? Icon.createWithBitmap(a0.a(dVar, this)) : Icon.createWithResource(pkg_f.l.CONST_PKG, R.drawable.ic_launcher);
     }
 
     private CharSequence c(b.d dVar) {
@@ -72,7 +72,7 @@ public abstract class SuperTileService extends TileService {
         if (!dVar.C() && ((i = dVar.K.z) == 0 || i == 1)) {
             PackageManager packageManager = getPackageManager();
             try {
-                return packageManager.getServiceInfo(new ComponentName(l.j, getClass().getName()), 786432).loadLabel(packageManager);
+                return packageManager.getServiceInfo(new ComponentName(pkg_f.l.CONST_PKG, getClass().getName()), 786432).loadLabel(packageManager);
             } catch (Throwable th) {
                 v.d(th);
             }
@@ -93,27 +93,34 @@ public abstract class SuperTileService extends TileService {
         if (i == 0 || i == 1) {
             return false;
         }
-        if (i != 73 && i != 97) {
-            switch (i) {
-                case 29:
-                case 30:
-                case 31:
-                case 32:
-                case 33:
-                    break;
-                case 34:
-                    if (E == null) {
-                        return p.q(this, 1);
-                    }
-                    return E.h(i, true);
-                case 35:
-                    if (E == null) {
-                        return p.q(this, 0);
-                    }
-                    return E.h(i, true);
-                default:
-                    return true;
+        if (i == 73 || i == 97) {
+            if (E != null) {
+                return E.h(i, true);
             }
+            return true;
+        }
+        switch (i) {
+            case 29:
+            case 30:
+            case 31:
+            case 32:
+            case 33:
+                if (E != null) {
+                    return E.h(i, true);
+                }
+                return true;
+            case 34:
+                if (E == null) {
+                    return p.q(this, 1);
+                }
+                return E.h(i, true);
+            case 35:
+                if (E == null) {
+                    return p.q(this, 0);
+                }
+                return E.h(i, true);
+            default:
+                return true;
         }
     }
 
@@ -180,7 +187,7 @@ public abstract class SuperTileService extends TileService {
             int i = this.B.K.z;
             if (i == 0 || i == 1) {
                 Intent intent = new Intent("android.intent.action.MAIN");
-                intent.setComponent(new ComponentName(l.j, ActivityMain.class.getName()));
+                intent.setComponent(new ComponentName(pkg_f.l.CONST_PKG, ActivityMain.class.getName()));
                 intent.setFlags(268435456);
                 intent.putExtra("clicked", 7);
                 try {
@@ -251,9 +258,9 @@ public abstract class SuperTileService extends TileService {
                 return;
             }
             E.j(this.z, bVarX.z, new t.c() { // from class: b.d
-                @Override // a.t.c
+                @Override // pkg_a.t.c
                 public final void a(boolean z) {
-                    this.f60a.e(z);
+                    SuperTileService.this.e(z);
                 }
             });
         } catch (Throwable th) {

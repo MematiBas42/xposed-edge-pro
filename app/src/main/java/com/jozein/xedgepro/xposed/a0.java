@@ -8,7 +8,7 @@ import de.robv.android.xposed.XC_MethodHook;
 
 /* JADX INFO: loaded from: classes.dex */
 class a0 extends z {
-    private final a.p F;
+    private final pkg_a.p F;
     private final w1 G;
     private XC_MethodHook.MethodHookParam H;
     private XC_MethodHook.MethodHookParam I;
@@ -48,7 +48,7 @@ class a0 extends z {
     }
 
     private boolean A(XC_MethodHook.MethodHookParam methodHookParam, KeyEvent keyEvent) {
-        a.b bVarQ = q(keyEvent.getKeyCode(), 2);
+        pkg_a.b bVarQ = q(keyEvent.getKeyCode(), 2);
         if (bVarQ.z != 0) {
             this.J = true;
             this.H = null;
@@ -98,21 +98,21 @@ class a0 extends z {
         return x(methodHookParam, keyEvent);
     }
 
-    private a.b D(int i) {
+    private pkg_a.b D(int i) {
         return this.G.y4(this.F.j(i, 1), true);
     }
 
-    private void p(a.b bVar) {
+    private void p(pkg_a.b bVar) {
         if (bVar.z != 86) {
             this.G.u3(bVar);
             return;
         }
-        w1.w0 w0VarF2 = this.G.f2((a.b.i3) bVar);
+        w1.w0 w0VarF2 = this.G.f2((pkg_a.b.i3) bVar);
         this.S = w0VarF2;
         w0VarF2.a();
     }
 
-    private a.b q(int i, int i2) {
+    private pkg_a.b q(int i, int i2) {
         return this.G.y4(this.F.j(i, i2), false);
     }
 
@@ -121,7 +121,7 @@ class a0 extends z {
     }
 
     private XC_MethodHook.MethodHookParam s(XC_MethodHook.MethodHookParam methodHookParam) {
-        if (z.E) {
+        if (com.jozein.xedgepro.xposed.z.E) {
             Object[] objArr = methodHookParam.args;
             objArr[0] = new KeyEvent((KeyEvent) objArr[0]);
         }
@@ -129,7 +129,7 @@ class a0 extends z {
     }
 
     private boolean t(XC_MethodHook.MethodHookParam methodHookParam) {
-        if (!z.E) {
+        if (!com.jozein.xedgepro.xposed.z.E) {
             return false;
         }
         g(s(methodHookParam));
@@ -137,7 +137,7 @@ class a0 extends z {
     }
 
     private void u() {
-        a.b bVarQ = q(((KeyEvent) this.H.args[0]).getKeyCode(), 0);
+        pkg_a.b bVarQ = q(((KeyEvent) this.H.args[0]).getKeyCode(), 0);
         if (bVarQ.z == 0) {
             g(this.H);
             g(this.I);
@@ -157,7 +157,7 @@ class a0 extends z {
             this.G.b1(this.R + 200);
             return true;
         }
-        a.b bVarQ = q(keyCode, 0);
+        pkg_a.b bVarQ = q(keyCode, 0);
         if (bVarQ.z != 0) {
             this.H = null;
             this.I = null;
@@ -173,7 +173,7 @@ class a0 extends z {
     }
 
     private boolean w(XC_MethodHook.MethodHookParam methodHookParam, KeyEvent keyEvent) {
-        a.b bVarQ = q(keyEvent.getKeyCode(), 1);
+        pkg_a.b bVarQ = q(keyEvent.getKeyCode(), 1);
         if (bVarQ.z != 0) {
             this.K = true;
             this.J = true;
@@ -206,7 +206,7 @@ class a0 extends z {
         }
         this.P = keyEvent.getEventTime();
         this.H = s(methodHookParam);
-        this.L = z.E;
+        this.L = com.jozein.xedgepro.xposed.z.E;
         this.K = true;
         this.J = false;
         long jU = this.F.u(13);
@@ -241,13 +241,13 @@ class a0 extends z {
         this.G.u1();
         this.K = true;
         this.J = true;
-        Intent intent = new Intent(a.b.s0.L);
-        intent.setPackage(f.l.j);
-        new f.m(intent).j().d(this.N).l();
+        Intent intent = new Intent(pkg_a.b.s0.L);
+        intent.setPackage(pkg_f.l.CONST_PKG);
+        new pkg_f.m(intent).j().d(this.N).l();
         try {
             this.G.R1().W(intent, 0);
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
         return true;
     }
@@ -296,7 +296,7 @@ class a0 extends z {
 
     @Override // com.jozein.xedgepro.xposed.z
     protected void f() {
-        a.b bVarQ = q(((KeyEvent) this.H.args[0]).getKeyCode(), 2);
+        pkg_a.b bVarQ = q(((KeyEvent) this.H.args[0]).getKeyCode(), 2);
         if (bVarQ.z == 0) {
             XC_MethodHook.MethodHookParam methodHookParam = this.H;
             if (methodHookParam != null) {

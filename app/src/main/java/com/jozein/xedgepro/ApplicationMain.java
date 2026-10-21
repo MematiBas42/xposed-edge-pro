@@ -1,15 +1,15 @@
 package com.jozein.xedgepro;
 
-import a.e;
-import a.f;
-import a.j;
-import a.k;
-import a.m;
-import a.s;
-import a.u;
-import a.w;
-import a.x;
-import a.z;
+import pkg_a.e;
+import pkg_a.AppTriggerManager;
+import pkg_a.j;
+import pkg_a.k;
+import pkg_a.m;
+import pkg_a.s;
+import pkg_a.u;
+import pkg_a.w;
+import pkg_a.x;
+import pkg_a.z;
 import android.app.Activity;
 import android.app.Application;
 import android.content.BroadcastReceiver;
@@ -22,14 +22,14 @@ import android.graphics.drawable.Icon;
 import android.os.Build;
 import android.os.Bundle;
 import com.jozein.xedgepro.ui.ActivityMain;
-import f.f0;
-import f.h0;
-import f.l;
-import f.l0;
-import f.p0;
-import f.q;
-import f.q0;
-import f.v;
+import pkg_f.f0;
+import pkg_f.h0;
+import pkg_f.l;
+import pkg_f.l0;
+import pkg_f.p0;
+import pkg_f.q;
+import pkg_f.q0;
+import pkg_f.v;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -49,7 +49,7 @@ public class ApplicationMain extends Application implements l {
         a() {
         }
 
-        @Override // a.z.b
+        @Override // pkg_a.z.b
         public void a(boolean z) {
             boolean unused = ApplicationMain.B = true;
             if (ApplicationMain.this.A != null) {
@@ -60,7 +60,7 @@ public class ApplicationMain extends Application implements l {
             }
         }
 
-        @Override // a.z.b
+        @Override // pkg_a.z.b
         public void b(boolean z) {
             boolean unused = ApplicationMain.B = true;
             if (ApplicationMain.this.A != null) {
@@ -78,12 +78,12 @@ public class ApplicationMain extends Application implements l {
 
         /* JADX INFO: Access modifiers changed from: private */
         public static /* synthetic */ void b() {
-            f.g();
-            s.f.h();
-            a.b.f0.A();
-            a.b.k2.A();
+            AppTriggerManager.g();
+            pkg_a.s.f.h();
+            pkg_a.b.f0.A();
+            pkg_a.b.k2.A();
             e.A();
-            a.b.v0.d();
+            pkg_a.b.v0.d();
         }
 
         @Override // android.app.Application.ActivityLifecycleCallbacks
@@ -96,7 +96,7 @@ public class ApplicationMain extends Application implements l {
                 try {
                     ApplicationMain.this.unregisterActivityLifecycleCallbacks(this);
                 } catch (Throwable th) {
-                    v.d(th);
+                    pkg_f.v.d(th);
                 }
                 h0.a().post(new Runnable() { // from class: com.jozein.xedgepro.a
                     @Override // java.lang.Runnable
@@ -144,17 +144,17 @@ public class ApplicationMain extends Application implements l {
                     String unused2 = ApplicationMain.D = intent.getStringExtra("build_time");
                     String unused3 = ApplicationMain.E = intent.getStringExtra("time");
                     if (intent.getBooleanExtra("send_files", false)) {
-                        j.h(context);
+                        pkg_a.j.h(context);
                     }
                     ApplicationMain.this.unregisterReceiver(this);
                 } catch (Throwable th) {
-                    v.d(th);
+                    pkg_f.v.d(th);
                 }
             }
         }
     }
 
-    private ShortcutInfo f(String str, a.b bVar, int i, int i2) {
+    private ShortcutInfo f(String str, pkg_a.b bVar, int i, int i2) {
         Intent intentK = l0.k(bVar);
         CharSequence charSequenceN = bVar.n(this);
         return new ShortcutInfo.Builder(this, str).setIntent(intentK).setLongLabel(charSequenceN).setShortLabel(charSequenceN).setIcon(Icon.createWithResource(this, i)).setRank(i2).build();
@@ -184,12 +184,12 @@ public class ApplicationMain extends Application implements l {
         boolean zE0 = z.e0();
         z.w0();
         if (zE0) {
-            a.b.s0.B(this, 25);
+            pkg_a.b.s0.B(this, 25);
         }
-        a.b.v0.a();
+        pkg_a.b.v0.a();
         z zVar = new z();
         this.z = zVar;
-        w.a(zVar, this);
+        pkg_a.w.a(zVar, this);
         registerActivityLifecycleCallbacks(new b());
     }
 
@@ -198,8 +198,8 @@ public class ApplicationMain extends Application implements l {
     }
 
     private void m() {
-        registerReceiver(new c(), new IntentFilter(a.b.s0.N));
-        a.b.s0.B(this, 17);
+        registerReceiver(new c(), new IntentFilter(pkg_a.b.s0.N));
+        pkg_a.b.s0.B(this, 17);
     }
 
     private static boolean p() {
@@ -213,7 +213,7 @@ public class ApplicationMain extends Application implements l {
             Map map = (Map) declaredField.get(null);
             Field declaredField2 = Class.forName("de.robv.android.xposed.XposedBridge$CopyOnWriteSortedSet", false, systemClassLoader).getDeclaredField("elements");
             declaredField2.setAccessible(true);
-            String str = l.j + '.';
+            String str = pkg_f.l.CONST_PKG + '.';
             if (map != null) {
                 synchronized (map) {
                     Iterator it = map.values().iterator();
@@ -227,7 +227,7 @@ public class ApplicationMain extends Application implements l {
                 }
             }
         } catch (Throwable th) {
-            v.d(th);
+            pkg_f.v.d(th);
         }
         return false;
     }
@@ -240,16 +240,16 @@ public class ApplicationMain extends Application implements l {
                 ShortcutInfo shortcutInfo = dynamicShortcuts.get(0);
                 String id = shortcutInfo.getId();
                 CharSequence shortLabel = shortcutInfo.getShortLabel();
-                if ("gesture_control".equals(id) && new a.b.p0(0).n(this).equals(shortLabel)) {
+                if ("gesture_control".equals(id) && new pkg_a.b.p0(0).n(this).equals(shortLabel)) {
                     return;
                 }
-                if ("key_control".equals(id) && new a.b.e1(0).n(this).equals(shortLabel)) {
+                if ("key_control".equals(id) && new pkg_a.b.e1(0).n(this).equals(shortLabel)) {
                     return;
                 }
             }
             ArrayList arrayList = new ArrayList();
-            arrayList.add(f("gesture_control", new a.b.p0(0), R.drawable.ic_shortcut_toggle_gesture, 1));
-            arrayList.add(f("key_control", new a.b.e1(0), R.drawable.ic_shortcut_toggle_key, 0));
+            arrayList.add(f("gesture_control", new pkg_a.b.p0(0), R.drawable.ic_shortcut_toggle_gesture, 1));
+            arrayList.add(f("key_control", new pkg_a.b.e1(0), R.drawable.ic_shortcut_toggle_key, 0));
             shortcutManager.addDynamicShortcuts(arrayList);
         }
     }
@@ -269,25 +269,25 @@ public class ApplicationMain extends Application implements l {
     }
 
     public void n() {
-        q.b();
+        pkg_f.q.b();
         if (Build.VERSION.SDK_INT >= 24) {
-            u.j();
+            pkg_a.u.j();
         }
-        m.c();
+        pkg_a.m.c();
         e.D();
-        x.l();
-        a.b.v0.f();
+        pkg_a.x.l();
+        pkg_a.b.v0.f();
         this.z.g();
         this.z.L();
-        w.a(this.z, this);
-        a.v.a.h();
-        k.k();
-        f.l();
-        s.f.k();
-        a.b.f0.B();
-        a.b.k2.B();
-        a.b.y0.K();
-        v.c("Settings reloaded.");
+        pkg_a.w.a(this.z, this);
+        pkg_a.v.VarManager.h();
+        pkg_a.k.k();
+        AppTriggerManager.l();
+        pkg_a.s.f.k();
+        pkg_a.b.f0.B();
+        pkg_a.b.k2.B();
+        pkg_a.b.y0.K();
+        pkg_f.v.c("Settings reloaded.");
     }
 
     public void o(z.b bVar) {
@@ -297,14 +297,14 @@ public class ApplicationMain extends Application implements l {
     @Override // android.app.Application
     public void onCreate() {
         k();
-        f.z.K(this);
+        pkg_f.z.K(this);
         super.onCreate();
         this.z.y0(this, new a());
         m();
         try {
             q();
         } catch (Throwable th) {
-            v.d(th);
+            pkg_f.v.d(th);
         }
     }
 

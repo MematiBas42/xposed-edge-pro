@@ -24,7 +24,7 @@ class g3 extends p2 {
                     return objCallStaticMethod;
                 }
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
         }
         return n("activity");
@@ -40,7 +40,7 @@ class g3 extends p2 {
                 return objCallStaticMethod;
             }
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
         return n("activity");
     }
@@ -52,7 +52,7 @@ class g3 extends p2 {
                 return objCallStaticMethod;
             }
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
         return n("package");
     }
@@ -122,7 +122,7 @@ class g3 extends p2 {
                     return objT;
                 }
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
             try {
                 Object objCallStaticMethod = XposedHelpers.callStaticMethod(XposedHelpers.findClass("android.view.WindowManagerGlobal", p2.c()), "getWindowManagerService", new Object[0]);
@@ -130,7 +130,7 @@ class g3 extends p2 {
                     return objCallStaticMethod;
                 }
             } catch (Throwable th2) {
-                f.v.d(th2);
+                pkg_f.v.d(th2);
             }
         }
         return n("window");

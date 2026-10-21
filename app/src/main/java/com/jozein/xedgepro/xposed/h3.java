@@ -12,24 +12,24 @@ class h3 {
 
     static class a {
         static int a(ContentResolver contentResolver, String str, int i) {
-            int iD = f.o0.d();
+            int iD = pkg_f.o0.d();
             if (iD != 0) {
                 try {
                     return ((Integer) XposedHelpers.callStaticMethod(Settings.Global.class, "getIntForUser", new Object[]{contentResolver, str, Integer.valueOf(i), Integer.valueOf(iD)})).intValue();
                 } catch (Throwable th) {
-                    f.v.d(th);
+                    pkg_f.v.d(th);
                 }
             }
             return Settings.Global.getInt(contentResolver, str, i);
         }
 
         static boolean b(ContentResolver contentResolver, String str, int i) {
-            int iD = f.o0.d();
+            int iD = pkg_f.o0.d();
             if (iD != 0) {
                 try {
                     return ((Boolean) XposedHelpers.callStaticMethod(Settings.Global.class, "putIntForUser", new Object[]{contentResolver, str, Integer.valueOf(i), Integer.valueOf(iD)})).booleanValue();
                 } catch (Throwable th) {
-                    f.v.d(th);
+                    pkg_f.v.d(th);
                 }
             }
             return Settings.Global.putInt(contentResolver, str, i);
@@ -38,24 +38,24 @@ class h3 {
 
     static class b {
         static int a(ContentResolver contentResolver, String str, int i) {
-            int iD = f.o0.d();
+            int iD = pkg_f.o0.d();
             if (iD != 0) {
                 try {
                     return ((Integer) XposedHelpers.callStaticMethod(Settings.Secure.class, "getIntForUser", new Object[]{contentResolver, str, Integer.valueOf(i), Integer.valueOf(iD)})).intValue();
                 } catch (Throwable th) {
-                    f.v.d(th);
+                    pkg_f.v.d(th);
                 }
             }
             return Settings.Secure.getInt(contentResolver, str, i);
         }
 
         static boolean b(ContentResolver contentResolver, String str, int i) {
-            int iD = f.o0.d();
+            int iD = pkg_f.o0.d();
             if (iD != 0) {
                 try {
                     return ((Boolean) XposedHelpers.callStaticMethod(Settings.Secure.class, "putIntForUser", new Object[]{contentResolver, str, Integer.valueOf(i), Integer.valueOf(iD)})).booleanValue();
                 } catch (Throwable th) {
-                    f.v.d(th);
+                    pkg_f.v.d(th);
                 }
             }
             return Settings.Secure.putInt(contentResolver, str, i);
@@ -64,24 +64,24 @@ class h3 {
 
     static class c {
         static int a(ContentResolver contentResolver, String str, int i) {
-            int iD = f.o0.d();
+            int iD = pkg_f.o0.d();
             if (iD != 0) {
                 try {
                     return ((Integer) XposedHelpers.callStaticMethod(Settings.System.class, "getIntForUser", new Object[]{contentResolver, str, Integer.valueOf(i), Integer.valueOf(iD)})).intValue();
                 } catch (Throwable th) {
-                    f.v.d(th);
+                    pkg_f.v.d(th);
                 }
             }
             return Settings.System.getInt(contentResolver, str, i);
         }
 
         static boolean b(ContentResolver contentResolver, String str, int i) {
-            int iD = f.o0.d();
+            int iD = pkg_f.o0.d();
             if (iD != 0) {
                 try {
                     return ((Boolean) XposedHelpers.callStaticMethod(Settings.System.class, "putIntForUser", new Object[]{contentResolver, str, Integer.valueOf(i), Integer.valueOf(iD)})).booleanValue();
                 } catch (Throwable th) {
-                    f.v.d(th);
+                    pkg_f.v.d(th);
                 }
             }
             return Settings.System.putInt(contentResolver, str, i);
@@ -91,7 +91,7 @@ class h3 {
     static void a(ContentResolver contentResolver, Uri uri, ContentObserver contentObserver) {
         Uri uri2;
         Throwable th;
-        if (f.o0.d() != 0) {
+        if (pkg_f.o0.d() != 0) {
             try {
                 uri2 = (Uri) XposedHelpers.callStaticMethod(ContentProvider.class, "getUriWithoutUserId", new Object[]{uri});
                 try {
@@ -99,7 +99,7 @@ class h3 {
                     return;
                 } catch (Throwable th2) {
                     th = th2;
-                    f.v.d(th);
+                    pkg_f.v.d(th);
                     uri = uri2;
                     contentResolver.notifyChange(uri, contentObserver);
                 }

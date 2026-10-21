@@ -31,7 +31,11 @@ import java.util.Objects;
 
 /* JADX INFO: loaded from: classes.dex */
 class l0 extends j2 {
-    private final a.p H;
+    @SuppressWarnings("unchecked")
+    static <E extends Throwable> void sneakyThrow(Throwable e) throws E {
+        throw (E) e;
+    }
+    private final pkg_a.p H;
     private final w1 I;
     private final v J;
     final q2 K;
@@ -61,7 +65,7 @@ class l0 extends j2 {
     private Method i0;
     private Object j0;
     private Object k0;
-    private boolean l0;
+    private boolean mIsL0;
 
     class a extends XC_MethodHook {
         a() {
@@ -91,12 +95,12 @@ class l0 extends j2 {
 
         b(int i) {
             super(i);
-            this.f136a = new ComponentName(f.l.j, ActivityPerformAction.class.getName());
+            this.f136a = new ComponentName(pkg_f.l.CONST_PKG, ActivityPerformAction.class.getName());
             this.f137b = -1;
         }
 
         protected void beforeHookedMethod(XC_MethodHook.MethodHookParam methodHookParam) {
-            a.b bVarJ;
+            pkg_a.b bVarJ;
             int i;
             if (!l0.this.T) {
                 if (Build.VERSION.SDK_INT < 29) {
@@ -126,13 +130,13 @@ class l0 extends j2 {
                     }
                 }
                 Intent intent = (Intent) methodHookParam.args[this.f137b];
-                if (!this.f136a.equals(intent.getComponent()) || (i = (bVarJ = f.l0.j(intent)).z) == 0 || i == 1) {
+                if (!this.f136a.equals(intent.getComponent()) || (i = (bVarJ = pkg_f.l0.j(intent)).z) == 0 || i == 1) {
                     return;
                 }
                 l0.this.I.u3(bVarJ);
                 methodHookParam.setResult(4);
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
         }
     }
@@ -158,7 +162,7 @@ class l0 extends j2 {
                     int iIntValue3 = ((Integer) objArr[2]).intValue();
                     if (!l0.this.S && iIntValue2 > 1000) {
                         l0.this.S = true;
-                        f.v.c("Invalid user id: " + iIntValue2);
+                        pkg_f.v.c("Invalid user id: " + iIntValue2);
                     }
                     if (l0.this.S) {
                         iIntValue2 = l0.this.z0(iIntValue3);
@@ -170,7 +174,7 @@ class l0 extends j2 {
                     }
                 }
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
         }
     }
@@ -214,10 +218,10 @@ class l0 extends j2 {
     private static final class e {
 
         /* JADX INFO: renamed from: a, reason: collision with root package name */
-        private final Map<String, f.t> f140a;
+        private final Map<String, pkg_f.t> f140a;
 
         /* JADX INFO: renamed from: b, reason: collision with root package name */
-        private final SparseArray<Map<String, f.t>> f141b;
+        private final SparseArray<Map<String, pkg_f.t>> f141b;
 
         private e() {
             this.f140a = new HashMap();
@@ -228,11 +232,11 @@ class l0 extends j2 {
             this();
         }
 
-        private Map<String, f.t> d(int i) {
+        private Map<String, pkg_f.t> d(int i) {
             if (i == 0) {
                 return this.f140a;
             }
-            Map<String, f.t> map = this.f141b.get(i);
+            Map<String, pkg_f.t> map = this.f141b.get(i);
             if (map != null) {
                 return map;
             }
@@ -246,8 +250,8 @@ class l0 extends j2 {
         }
 
         synchronized int b(String str, int i) {
-            Map<String, f.t> mapD = d(i);
-            f.t tVar = mapD.get(str);
+            Map<String, pkg_f.t> mapD = d(i);
+            pkg_f.t tVar = mapD.get(str);
             if (tVar != null) {
                 int i2 = tVar.f485a - 1;
                 tVar.f485a = i2;
@@ -257,21 +261,21 @@ class l0 extends j2 {
                 mapD.remove(str);
                 return 0;
             }
-            f.v.c("Removing package not added! " + str + "(" + i + ").");
+            pkg_f.v.c("Removing package not added! " + str + "(" + i + ").");
             return 0;
         }
 
         synchronized int c(String str, int i) {
-            f.t tVar;
+            pkg_f.t tVar;
             tVar = d(i).get(str);
             return tVar != null ? tVar.f485a : 0;
         }
 
         synchronized int e(String str, int i) {
-            Map<String, f.t> mapD = d(i);
-            f.t tVar = mapD.get(str);
+            Map<String, pkg_f.t> mapD = d(i);
+            pkg_f.t tVar = mapD.get(str);
             if (tVar == null) {
-                mapD.put(str, new f.t(1));
+                mapD.put(str, new pkg_f.t(1));
                 return 1;
             }
             int i2 = tVar.f485a + 1;
@@ -280,7 +284,7 @@ class l0 extends j2 {
         }
     }
 
-    static class f extends f.c0.b {
+    static class f extends pkg_f.c0.b {
 
         /* JADX INFO: renamed from: g, reason: collision with root package name */
         private final l0 f142g;
@@ -307,7 +311,7 @@ class l0 extends j2 {
         }
 
         f(l0 l0Var, String str, int i) {
-            super(f.c0.c(str, i));
+            super(pkg_f.c0.c(str, i));
             this.f142g = l0Var;
             this.i = null;
             this.h = null;
@@ -316,17 +320,17 @@ class l0 extends j2 {
         static f D(l0 l0Var, Object obj) {
             int iG = com.jozein.xedgepro.xposed.b.g(obj);
             Intent intentC = com.jozein.xedgepro.xposed.b.c(obj);
-            return new f(l0Var, obj, f.c0.c(f.c0.f(intentC), iG), intentC);
+            return new f(l0Var, obj, pkg_f.c0.c(pkg_f.c0.f(intentC), iG), intentC);
         }
 
         void A() {
-            int[] iArrE = f.o0.e(this.f142g.L);
+            int[] iArrE = pkg_f.o0.e(this.f142g.L);
             String strI = i();
             int iK = k();
             for (int i : iArrE) {
                 if (i != iK && !this.f142g.K.t(strI, i)) {
                     this.f142g.K.q(strI, i);
-                    this.f142g.I.G4(strI + f.c0.z + i + ") installed");
+                    this.f142g.I.G4(strI + pkg_f.c0.z + i + ") installed");
                     return;
                 }
             }
@@ -343,7 +347,7 @@ class l0 extends j2 {
                 }
                 return this.f142g.o0().equals(i());
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
                 return false;
             }
         }
@@ -378,35 +382,35 @@ class l0 extends j2 {
         void H() {
             String strI = i();
             Intent intent = new Intent("android.intent.action.VIEW", Uri.parse("market://details?id=" + strI));
-            if (f.l.w.equals(strI)) {
+            if (pkg_f.l.CONST_INSTALLER.equals(strI)) {
                 intent.setPackage("com.android.vending");
             }
             try {
-                this.f142g.q1(intent, false, null, f.o0.d());
+                this.f142g.q1(intent, false, null, pkg_f.o0.d());
             } catch (Throwable th) {
-                f.v.c(th.toString());
+                pkg_f.v.c(th.toString());
                 try {
-                    this.f142g.q1(new Intent("android.intent.action.VIEW", Uri.parse("http://play.google.com/store/apps/details?id=" + strI)), false, null, f.o0.d());
+                    this.f142g.q1(new Intent("android.intent.action.VIEW", Uri.parse("http://play.google.com/store/apps/details?id=" + strI)), false, null, pkg_f.o0.d());
                 } catch (Throwable th2) {
-                    f.v.d(th2);
+                    pkg_f.v.d(th2);
                 }
             }
         }
 
-        a.b q() {
+        pkg_a.b q() {
             ComponentName componentNameX = x();
             if (componentNameX == null) {
                 return null;
             }
-            return l() ? new a.b.f(componentNameX.getPackageName(), componentNameX.getClassName(), k()) : new a.b.e(componentNameX.getPackageName(), componentNameX.getClassName());
+            return l() ? new pkg_a.b.f_launch(componentNameX.getPackageName(), componentNameX.getClassName(), k()) : new pkg_a.b.e(componentNameX.getPackageName(), componentNameX.getClassName());
         }
 
-        a.b r() {
+        pkg_a.b r() {
             Intent intentY = y();
             if (intentY == null) {
                 return null;
             }
-            return l() ? new a.b.h(intentY, k()) : new a.b.g(intentY);
+            return l() ? new pkg_a.b.h(intentY, k()) : new pkg_a.b.g(intentY);
         }
 
         boolean s() {
@@ -440,7 +444,7 @@ class l0 extends j2 {
             if (runningTaskInfo != null) {
                 this.f142g.f0(runningTaskInfo);
             } else {
-                f.v.d(new RuntimeException("Finish activity with out an activity info."));
+                pkg_f.v.d(new RuntimeException("Finish activity with out an activity info."));
             }
         }
 
@@ -462,7 +466,7 @@ class l0 extends j2 {
                 try {
                     this.k = com.jozein.xedgepro.xposed.b.c(obj);
                 } catch (Throwable th) {
-                    f.v.d(th);
+                    pkg_f.v.d(th);
                 }
             }
             return this.k;
@@ -476,7 +480,7 @@ class l0 extends j2 {
                 }
                 return null;
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
                 return null;
             }
         }
@@ -521,7 +525,7 @@ class l0 extends j2 {
             return arrayList;
         }
 
-        synchronized void d(f.c0.c cVar, int i) {
+        synchronized void d(pkg_f.c0.c cVar, int i) {
             for (int size = this.f143a.size() - 1; size >= 0; size--) {
                 d dVar = this.f143a.get(size);
                 if (dVar.A == i) {
@@ -539,10 +543,10 @@ class l0 extends j2 {
             }
         }
 
-        synchronized void f(f.c0.c cVar, int[] iArr) {
+        synchronized void f(pkg_f.c0.c cVar, int[] iArr) {
             for (int size = this.f143a.size() - 1; size >= 0; size--) {
                 d dVar = this.f143a.get(size);
-                if (f.p0.a(iArr, dVar.A) >= 0) {
+                if (pkg_f.p0.a(iArr, dVar.A) >= 0) {
                     cVar.a(dVar.z, dVar.A);
                 }
             }
@@ -551,7 +555,7 @@ class l0 extends j2 {
         synchronized void g(List<d> list, int[] iArr) {
             for (int size = this.f143a.size() - 1; size >= 0; size--) {
                 d dVar = this.f143a.get(size);
-                if (f.p0.a(iArr, dVar.A) >= 0) {
+                if (pkg_f.p0.a(iArr, dVar.A) >= 0) {
                     list.add(dVar);
                 }
             }
@@ -586,8 +590,8 @@ class l0 extends j2 {
             }
 
             protected void afterHookedMethod(XC_MethodHook.MethodHookParam methodHookParam) {
-                if (!l0.this.l0) {
-                    l0.this.l0 = true;
+                if (!l0.this.mIsL0) {
+                    l0.this.mIsL0 = true;
                 }
                 l0.this.e1(methodHookParam.thisObject);
             }
@@ -604,12 +608,13 @@ class l0 extends j2 {
                     p(Build.VERSION.SDK_INT >= 26 ? "createWindowContainer" : "putInHistory", new b());
                     return true;
                 } catch (Throwable th) {
-                    f.v.d(th);
+                    pkg_f.v.d(th);
                     unhookP.unhook();
                     return false;
                 }
             } catch (Throwable th2) {
                 p2.g(th2);
+                return false;
             }
         }
     }
@@ -621,7 +626,7 @@ class l0 extends j2 {
             }
 
             protected void afterHookedMethod(XC_MethodHook.MethodHookParam methodHookParam) {
-                if (l0.this.l0) {
+                if (l0.this.mIsL0) {
                     return;
                 }
                 l0.this.c1(methodHookParam.args[0]);
@@ -633,7 +638,7 @@ class l0 extends j2 {
             }
 
             protected void afterHookedMethod(XC_MethodHook.MethodHookParam methodHookParam) {
-                if (l0.this.l0) {
+                if (l0.this.mIsL0) {
                     return;
                 }
                 l0.this.e1(methodHookParam.args[0]);
@@ -660,18 +665,18 @@ class l0 extends j2 {
                     o("startActivityLocked", bVar);
                     return true;
                 } catch (Throwable th) {
-                    f.v.d(th);
+                    pkg_f.v.d(th);
                     unhookO.unhook();
                     return false;
                 }
             } catch (Throwable th2) {
-                f.v.d(th2);
+                pkg_f.v.d(th2);
                 return false;
             }
         }
     }
 
-    static class j extends f.c0.f {
+    static class j extends pkg_f.c0.f {
         private final l0 i;
 
         j(l0 l0Var, ActivityManager.RunningTaskInfo runningTaskInfo, int i) {
@@ -688,7 +693,7 @@ class l0 extends j2 {
         }
     }
 
-    l0(ClassLoader classLoader, a.p pVar, w1 w1Var, v vVar, boolean z) {
+    l0(ClassLoader classLoader, pkg_a.p pVar, w1 w1Var, v vVar, boolean z) {
         super("com.android.server.am.ActivityManagerService", classLoader);
         a aVar = null;
         this.L = null;
@@ -705,13 +710,13 @@ class l0 extends j2 {
         this.Y = new Comparator() { // from class: com.jozein.xedgepro.xposed.k0
             @Override // java.util.Comparator
             public final int compare(Object obj, Object obj2) {
-                return l0.L0((ActivityManager.RunningTaskInfo) obj, (ActivityManager.RunningTaskInfo) obj2);
+                return com.jozein.xedgepro.xposed.l0.L0((ActivityManager.RunningTaskInfo) obj, (ActivityManager.RunningTaskInfo) obj2);
             }
         };
         this.Z = new Comparator() { // from class: com.jozein.xedgepro.xposed.j0
             @Override // java.util.Comparator
             public final int compare(Object obj, Object obj2) {
-                return l0.M0((ActivityManager.RunningTaskInfo) obj, (ActivityManager.RunningTaskInfo) obj2);
+                return com.jozein.xedgepro.xposed.l0.M0((ActivityManager.RunningTaskInfo) obj, (ActivityManager.RunningTaskInfo) obj2);
             }
         };
         this.a0 = null;
@@ -725,7 +730,7 @@ class l0 extends j2 {
         this.i0 = null;
         this.j0 = null;
         this.k0 = null;
-        this.l0 = false;
+        this.mIsL0 = false;
         this.H = pVar;
         this.I = w1Var;
         this.J = vVar;
@@ -765,7 +770,7 @@ class l0 extends j2 {
         XposedHelpers.findAndHookMethod(EventLog.class, "writeEvent", new Object[]{Integer.TYPE, Object[].class, new c()});
     }
 
-    private boolean E0(f.o0.a aVar, ActivityManager.RunningTaskInfo runningTaskInfo) {
+    private boolean E0(pkg_f.o0.a aVar, ActivityManager.RunningTaskInfo runningTaskInfo) {
         return aVar.b() || aVar.a(A0(runningTaskInfo));
     }
 
@@ -779,7 +784,7 @@ class l0 extends j2 {
                 this.W.invoke(v(), str, Integer.valueOf(i2));
                 return;
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
         }
         j0().killBackgroundProcesses(str);
@@ -808,7 +813,7 @@ class l0 extends j2 {
             q1(intent, true, bundle, i2);
             this.O.a(str, i2);
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
             this.K.v(str, i2, false);
         }
     }
@@ -827,7 +832,7 @@ class l0 extends j2 {
         }
         List<String> listM = this.K.m();
         ActivityManager.RunningTaskInfo runningTaskInfo = listW0.get(0);
-        f.o0.a aVarF = f.o0.f(this.L);
+        pkg_f.o0.a aVarF = pkg_f.o0.f(this.L);
         if (listM.contains(runningTaskInfo.baseActivity.getPackageName())) {
             for (int i2 = 1; i2 < size; i2++) {
                 ActivityManager.RunningTaskInfo runningTaskInfo2 = listW0.get(i2);
@@ -953,7 +958,6 @@ class l0 extends j2 {
         } catch (Throwable unused2) {
             return null;
         }
-        return null;
     }
 
     private void b1(final String str, final int i2) {
@@ -962,7 +966,7 @@ class l0 extends j2 {
             this.M.postDelayed(new Runnable() { // from class: com.jozein.xedgepro.xposed.i0
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.z.N0(str, i2);
+                    l0.this.N0(str, i2);
                 }
             }, 1000L);
         }
@@ -972,7 +976,7 @@ class l0 extends j2 {
         try {
             return p3.e(V(i2));
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
             return -1;
         }
     }
@@ -1020,7 +1024,7 @@ class l0 extends j2 {
             try {
                 this.j0 = u("mActivityTaskManager");
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
                 this.j0 = g3.j();
             }
         }
@@ -1057,13 +1061,13 @@ class l0 extends j2 {
                     arrayList.add(runningTaskInfo);
                 }
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
         }
         return arrayList;
     }
 
-    private void r1(Intent intent, int i2, Bundle bundle, int i3) throws IllegalAccessException, InvocationTargetException {
+    private void r1(Intent intent, int i2, Bundle bundle, int i3) {
         Object objR;
         String strFlattenToShortString;
         String type = intent.getType();
@@ -1076,13 +1080,18 @@ class l0 extends j2 {
             } catch (Throwable unused) {
             }
         }
-        if (Build.VERSION.SDK_INT >= 21) {
-            if (this.V == null) {
-                this.V = XposedHelpers.findMethodBestMatch(m(), "startActivityAsUser", new Object[]{null, null, intent, type, null, null, 0, Integer.valueOf(i2), null, bundle, Integer.valueOf(i3)});
+        try {
+            if (Build.VERSION.SDK_INT >= 21) {
+                if (this.V == null) {
+                    this.V = XposedHelpers.findMethodBestMatch(m(), "startActivityAsUser", new Object[]{null, null, intent, type, null, null, 0, Integer.valueOf(i2), null, bundle, Integer.valueOf(i3)});
+                }
+                objR = this.V.invoke(v(), null, null, intent, type, null, null, 0, Integer.valueOf(i2), null, bundle, Integer.valueOf(i3));
+            } else {
+                objR = r("startActivityAsUser", null, null, intent, type, null, null, 0, Integer.valueOf(i2), null, null, bundle, Integer.valueOf(i3));
             }
-            objR = this.V.invoke(v(), null, null, intent, type, null, null, 0, Integer.valueOf(i2), null, bundle, Integer.valueOf(i3));
-        } else {
-            objR = r("startActivityAsUser", null, null, intent, type, null, null, 0, Integer.valueOf(i2), null, null, bundle, Integer.valueOf(i3));
+        } catch (Throwable th) {
+            sneakyThrow(th);
+            return;
         }
         int iIntValue = ((Integer) objR).intValue();
         if (iIntValue == 0 || iIntValue == 1 || iIntValue == 2 || iIntValue == 3 || iIntValue == 4) {
@@ -1110,21 +1119,22 @@ class l0 extends j2 {
         return this.g0;
     }
 
-    private void u1(final String str, Intent intent, final Bundle bundle, final int i2) throws PackageManager.NameNotFoundException {
+    private void u1(final String str, Intent intent, final Bundle bundle, final int i2) {
         this.K.v(str, i2, true);
         if (intent == null) {
             try {
-                intent = f.c0.g(str, i2);
+                intent = pkg_f.c0.g(str, i2);
             } catch (PackageManager.NameNotFoundException e2) {
                 this.K.v(str, i2, false);
-                throw e2;
+                sneakyThrow(e2);
+                return;
             }
         }
         final Intent intent2 = intent;
         this.M.postDelayed(new Runnable() { // from class: com.jozein.xedgepro.xposed.h0
             @Override // java.lang.Runnable
             public final void run() {
-                this.z.O0(intent2, bundle, i2, str);
+                l0.this.O0(intent2, bundle, i2, str);
             }
         }, 250L);
     }
@@ -1151,7 +1161,8 @@ class l0 extends j2 {
             }
             return null;
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
+            return null;
         }
     }
 
@@ -1203,7 +1214,7 @@ class l0 extends j2 {
         try {
             return new Intent(p3.a(V(runningTaskInfo.id)));
         } catch (Throwable th) {
-            f.v.c(th.toString());
+            pkg_f.v.c(th.toString());
             return new Intent().setComponent(runningTaskInfo.baseActivity);
         }
     }
@@ -1211,7 +1222,7 @@ class l0 extends j2 {
     boolean F0(String str) {
         for (ActivityManager.RunningServiceInfo runningServiceInfo : j0().getRunningServices(100)) {
             if (str == null) {
-                if (f.l.j.equals(runningServiceInfo.service.getPackageName()) && runningServiceInfo.started) {
+                if (pkg_f.l.CONST_PKG.equals(runningServiceInfo.service.getPackageName()) && runningServiceInfo.started) {
                     return true;
                 }
             } else if (str.equals(runningServiceInfo.service.getClassName())) {
@@ -1233,7 +1244,7 @@ class l0 extends j2 {
             }
             return runningTaskInfoP0.numActivities == 1 && this.K.n().equals(runningTaskInfoP0.baseActivity.getPackageName());
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
             return false;
         }
     }
@@ -1291,7 +1302,7 @@ class l0 extends j2 {
             i2 = 0;
         }
         Bundle bundleD = com.jozein.xedgepro.xposed.a.d(this, i2);
-        f.o0.a aVarF = f.o0.f(this.L);
+        pkg_f.o0.a aVarF = pkg_f.o0.f(this.L);
         for (int i3 = 1; i3 < size; i3++) {
             ActivityManager.RunningTaskInfo runningTaskInfo = listW0.get(i3);
             if (!listM.contains(runningTaskInfo.baseActivity.getPackageName()) && E0(aVarF, runningTaskInfo) && X0(runningTaskInfo, bundleD)) {
@@ -1304,14 +1315,14 @@ class l0 extends j2 {
         try {
             return ((Boolean) r("moveActivityTaskToBack", com.jozein.xedgepro.xposed.b.a(v1(i2)), Boolean.TRUE)).booleanValue();
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
             return false;
         }
     }
 
-    void U(f.c0.c cVar) {
-        int[] iArrE = f.o0.e(this.L);
-        if (f.o0.k(iArrE)) {
+    void U(pkg_f.c0.c cVar) {
+        int[] iArrE = pkg_f.o0.e(this.L);
+        if (pkg_f.o0.k(iArrE)) {
             this.O.d(cVar, this.Q);
         } else {
             this.O.f(cVar, iArrE);
@@ -1322,38 +1333,43 @@ class l0 extends j2 {
         Object objInvoke;
         Object objInvoke2;
         Object objInvoke3;
-        int i3 = Build.VERSION.SDK_INT;
-        if (i3 >= 29) {
-            Object objT0 = t0();
+        try {
+            int i3 = Build.VERSION.SDK_INT;
+            if (i3 >= 29) {
+                Object objT0 = t0();
+                if (this.h0 == null) {
+                    Class<?> cls = objT0.getClass();
+                    Class cls2 = Integer.TYPE;
+                    this.h0 = XposedHelpers.findMethodExact(cls, "anyTaskForId", new Class[]{cls2, cls2});
+                }
+                synchronized (y0()) {
+                    objInvoke3 = this.h0.invoke(objT0, Integer.valueOf(i2), 0);
+                }
+                return objInvoke3;
+            }
+            if (i3 < 21) {
+                if (this.e0 == null) {
+                    this.e0 = XposedHelpers.findMethodExact(m(), "recentTaskForIdLocked", new Class[]{Integer.TYPE});
+                }
+                synchronized (y0()) {
+                    objInvoke = this.e0.invoke(v(), Integer.valueOf(i2));
+                }
+                return objInvoke;
+            }
+            if (this.f0 == null) {
+                this.f0 = XposedHelpers.getObjectField(v(), "mStackSupervisor");
+            }
             if (this.h0 == null) {
-                Class<?> cls = objT0.getClass();
-                Class cls2 = Integer.TYPE;
-                this.h0 = XposedHelpers.findMethodExact(cls, "anyTaskForId", new Class[]{cls2, cls2});
+                this.h0 = p2.b(this.f0.getClass(), "anyTaskForIdLocked", Integer.TYPE);
             }
             synchronized (y0()) {
-                objInvoke3 = this.h0.invoke(objT0, Integer.valueOf(i2), 0);
+                objInvoke2 = this.h0.invoke(this.f0, Integer.valueOf(i2));
             }
-            return objInvoke3;
+            return objInvoke2;
+        } catch (Throwable th) {
+            sneakyThrow(th);
+            return null;
         }
-        if (i3 < 21) {
-            if (this.e0 == null) {
-                this.e0 = XposedHelpers.findMethodExact(m(), "recentTaskForIdLocked", new Class[]{Integer.TYPE});
-            }
-            synchronized (y0()) {
-                objInvoke = this.e0.invoke(v(), Integer.valueOf(i2));
-            }
-            return objInvoke;
-        }
-        if (this.f0 == null) {
-            this.f0 = XposedHelpers.getObjectField(v(), "mStackSupervisor");
-        }
-        if (this.h0 == null) {
-            this.h0 = p2.b(this.f0.getClass(), "anyTaskForIdLocked", Integer.TYPE);
-        }
-        synchronized (y0()) {
-            objInvoke2 = this.h0.invoke(this.f0, Integer.valueOf(i2));
-        }
-        return objInvoke2;
     }
 
     void W(Intent intent, int i2) {
@@ -1370,26 +1386,28 @@ class l0 extends j2 {
                     return;
                 }
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
         }
         try {
             j0().moveTaskToFront(i2, 2, bundle);
         } catch (Throwable th2) {
-            f.v.d(th2);
+            pkg_f.v.d(th2);
         }
     }
 
-    void X(Intent intent, boolean z, boolean z2, int i2) throws Throwable {
+    void X(Intent intent, boolean z, boolean z2, int i2) {
         try {
             Z(intent, z, z2, i2);
-        } catch (InvocationTargetException e2) {
-            throw e2.getTargetException();
         } catch (Throwable th) {
-            f.v.c(th.toString());
+            if (th instanceof InvocationTargetException) {
+                sneakyThrow(((InvocationTargetException) th).getTargetException());
+                return;
+            }
+            pkg_f.v.c(th.toString());
             if (z) {
                 Context context = this.L;
-                UserHandle userHandleQ = f.o0.q(i2);
+                UserHandle userHandleQ = pkg_f.o0.q(i2);
                 if (z2) {
                     context.sendStickyOrderedBroadcastAsUser(intent, userHandleQ, null, null, -1, null, null);
                     return;
@@ -1399,7 +1417,7 @@ class l0 extends j2 {
                 }
             }
             Context context2 = this.L;
-            UserHandle userHandleQ2 = f.o0.q(i2);
+            UserHandle userHandleQ2 = pkg_f.o0.q(i2);
             if (z2) {
                 context2.sendStickyBroadcastAsUser(intent, userHandleQ2);
             } else {
@@ -1429,14 +1447,14 @@ class l0 extends j2 {
                     }
                 }
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
         }
         try {
             j0().moveTaskToFront(runningTaskInfo.id, 2, bundle);
             return true;
         } catch (Throwable th2) {
-            f.v.d(th2);
+            pkg_f.v.d(th2);
             return false;
         }
     }
@@ -1461,14 +1479,14 @@ class l0 extends j2 {
             r("killAllBackgroundProcesses", new Object[0]);
             z = true;
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
             z = false;
         }
         if (!z) {
             for (ActivityManager.RunningAppProcessInfo runningAppProcessInfo : activityManagerJ0.getRunningAppProcesses()) {
                 int i2 = runningAppProcessInfo.uid;
                 if (i2 >= 10000 && i2 <= 19999 && runningAppProcessInfo.importance > 200 && !runningAppProcessInfo.processName.equals("com.android.systemui") && !runningAppProcessInfo.processName.equals("android") && runningAppProcessInfo.pkgList != null) {
-                    int iH = f.o0.h(runningAppProcessInfo.uid);
+                    int iH = pkg_f.o0.h(runningAppProcessInfo.uid);
                     for (String str : runningAppProcessInfo.pkgList) {
                         K0(str, iH);
                     }
@@ -1505,7 +1523,7 @@ class l0 extends j2 {
         }
     }
 
-    void f0(ActivityManager.RunningTaskInfo runningTaskInfo) throws IllegalAccessException, InvocationTargetException {
+    void f0(ActivityManager.RunningTaskInfo runningTaskInfo) {
         if (runningTaskInfo.numActivities != 1) {
             try {
                 Object objV1 = v1(runningTaskInfo.id);
@@ -1514,7 +1532,7 @@ class l0 extends j2 {
                     return;
                 }
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
         }
         j1(runningTaskInfo.id);
@@ -1572,14 +1590,18 @@ class l0 extends j2 {
         return this.R;
     }
 
-    void j1(int i2) throws IllegalAccessException, InvocationTargetException {
-        if (this.X == null) {
-            this.X = i("removeTask");
-        }
-        if (Build.VERSION.SDK_INT >= 21) {
-            this.X.invoke(v(), Integer.valueOf(i2));
-        } else {
-            this.X.invoke(v(), Integer.valueOf(i2), 0);
+    void j1(int i2) {
+        try {
+            if (this.X == null) {
+                this.X = i("removeTask");
+            }
+            if (Build.VERSION.SDK_INT >= 21) {
+                this.X.invoke(v(), Integer.valueOf(i2));
+            } else {
+                this.X.invoke(v(), Integer.valueOf(i2), 0);
+            }
+        } catch (Throwable th) {
+            sneakyThrow(th);
         }
     }
 
@@ -1588,7 +1610,7 @@ class l0 extends j2 {
         List<String> listM = this.K.m();
         int size = listW0.size();
         ArrayList arrayList = new ArrayList(size);
-        f.o0.a aVarF = f.o0.f(this.L);
+        pkg_f.o0.a aVarF = pkg_f.o0.f(this.L);
         for (int i2 = 1; i2 < size; i2++) {
             ActivityManager.RunningTaskInfo runningTaskInfo = listW0.get(i2);
             if (!listM.contains(runningTaskInfo.baseActivity.getPackageName())) {
@@ -1597,7 +1619,7 @@ class l0 extends j2 {
                     try {
                         arrayList.add(new j(this, runningTaskInfo, iA0));
                     } catch (Throwable th) {
-                        f.v.c(th.toString());
+                        pkg_f.v.c(th.toString());
                     }
                 }
             }
@@ -1627,7 +1649,8 @@ class l0 extends j2 {
             }
             return true;
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
+            return false;
         }
     }
 
@@ -1659,12 +1682,12 @@ class l0 extends j2 {
     }
 
     void o1(Intent intent, Bundle bundle, int i2, boolean z) {
-        String strF = f.c0.f(intent);
+        String strF = pkg_f.c0.f(intent);
         if (strF == null || this.K.r(strF, i2)) {
             q1(intent, z, bundle, i2);
             return;
         }
-        if (f.c0.x(intent, 0, i2) != null) {
+        if (pkg_f.c0.x(intent, 0, i2) != null) {
             try {
                 q1(intent, z, bundle, i2);
                 return;
@@ -1694,7 +1717,7 @@ class l0 extends j2 {
         if (i2 == 0) {
             contextCreateDisplayContext.startActivity(intent, bundleF);
         } else {
-            XposedHelpers.callMethod(contextCreateDisplayContext, "startActivityAsUser", new Object[]{intent, bundleF, f.o0.q(i2)});
+            XposedHelpers.callMethod(contextCreateDisplayContext, "startActivityAsUser", new Object[]{intent, bundleF, pkg_f.o0.q(i2)});
         }
     }
 
@@ -1725,18 +1748,22 @@ class l0 extends j2 {
             if (i2 == 0) {
                 context.startActivity(intent, bundle);
             } else {
-                XposedHelpers.callMethod(context, "startActivityAsUser", new Object[]{intent, bundle, f.o0.q(i2)});
+                XposedHelpers.callMethod(context, "startActivityAsUser", new Object[]{intent, bundle, pkg_f.o0.q(i2)});
             }
         }
     }
 
     void s1(String str, Bundle bundle, int i2) {
         if (this.K.r(str, i2)) {
-            q1(f.c0.g(str, i2), true, bundle, i2);
+            try {
+                q1(pkg_f.c0.g(str, i2), true, bundle, i2);
+            } catch (Throwable th) {
+                sneakyThrow(th);
+            }
             return;
         }
         try {
-            q1(f.c0.g(str, i2), true, bundle, i2);
+            q1(pkg_f.c0.g(str, i2), true, bundle, i2);
         } catch (Throwable unused) {
             u1(str, null, bundle, i2);
         }
@@ -1746,21 +1773,21 @@ class l0 extends j2 {
         try {
             q1(new Intent("android.settings.APPLICATION_DETAILS_SETTINGS", Uri.fromParts("package", str, null)).putExtra("userId", i2), false, null, i2);
         } catch (Throwable th) {
-            f.v.c(th.toString());
+            pkg_f.v.c(th.toString());
             if (i2 != this.Q) {
                 try {
                     q1(new Intent("miui.intent.action.APP_MANAGER_APPLICATION_DETAIL").putExtra("package_name", str).putExtra("miui.intent.extra.USER_ID", i2), false, null, this.Q);
                 } catch (Throwable th2) {
-                    f.v.c(th2.toString());
+                    pkg_f.v.c(th2.toString());
                 }
             }
         }
     }
 
     List<f> u0() {
-        int[] iArrE = f.o0.e(this.L);
+        int[] iArrE = pkg_f.o0.e(this.L);
         ArrayList arrayList = new ArrayList();
-        if (f.o0.k(iArrE)) {
+        if (pkg_f.o0.k(iArrE)) {
             this.O.e(arrayList, this.Q);
         } else {
             this.O.g(arrayList, iArrE);

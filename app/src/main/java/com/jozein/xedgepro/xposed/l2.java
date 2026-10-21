@@ -50,7 +50,7 @@ class l2 extends p2 {
         }
     }
 
-    class b extends f.g0 {
+    class b extends pkg_f.g0 {
         final /* synthetic */ q3.a D;
         final /* synthetic */ int E;
         final /* synthetic */ int F;
@@ -65,7 +65,7 @@ class l2 extends p2 {
             this.G = context;
         }
 
-        @Override // f.g0
+        @Override // pkg_f.g0
         protected boolean a(int i) {
             if (!this.D.C.isAttachedToWindow()) {
                 return false;
@@ -82,14 +82,14 @@ class l2 extends p2 {
             return false;
         }
 
-        @Override // f.g0
+        @Override // pkg_f.g0
         protected void b() {
             l2.m(this.G, false);
         }
     }
 
     static {
-        E = f.l.r ? 1.2321E-6f : 1.234321E-6f;
+        E = pkg_f.l.CONST_IS_PRO ? 1.2321E-6f : 1.234321E-6f;
     }
 
     l2(ClassLoader classLoader) {
@@ -107,7 +107,7 @@ class l2 extends p2 {
         view.post(new Runnable() { // from class: com.jozein.xedgepro.xposed.k2
             @Override // java.lang.Runnable
             public final void run() {
-                this.z.n(view, rawX, rawY);
+                n(view, rawX, rawY);
             }
         });
     }
@@ -152,7 +152,7 @@ class l2 extends p2 {
                 try {
                     if (accessibilityManager == null || !accessibilityManager.isEnabled()) {
                         m(context, true);
-                        new b(f.h0.d(), 3, 150L, aVarE, i, i2, context).e();
+                        new b(pkg_f.h0.d(), 3, 150L, aVarE, i, i2, context).e();
                         return;
                     } else {
                         q3.a aVarG = q3.g(aVarE, i, i2);
@@ -162,7 +162,7 @@ class l2 extends p2 {
                         }
                     }
                 } catch (Throwable th) {
-                    f.v.d(th);
+                    pkg_f.v.d(th);
                 }
             }
         }
@@ -171,6 +171,6 @@ class l2 extends p2 {
 
     /* JADX INFO: Access modifiers changed from: private */
     public void o(Context context, CharSequence charSequence) {
-        a.b.s0.G(context, 20, q3.c(charSequence));
+        pkg_a.b.s0.G(context, 20, q3.c(charSequence));
     }
 }

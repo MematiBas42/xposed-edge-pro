@@ -27,8 +27,16 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
+
+    testOptions {
+        unitTests {
+            isReturnDefaultValues = true
+        }
+    }
 }
 
 dependencies {
     compileOnly(files("libs/xposed-api-82.jar"))
+    testImplementation(files("libs/xposed-api-82.jar"))
+    testImplementation("junit:junit:4.13.2")
 }

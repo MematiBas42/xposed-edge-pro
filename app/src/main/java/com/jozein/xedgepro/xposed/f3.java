@@ -43,17 +43,22 @@ class f3 {
                 }
                 return i;
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
         }
         return 0;
     }
 
     static int b(ActivityManager.RunningTaskInfo runningTaskInfo) {
-        if (f117g == null) {
-            f117g = XposedHelpers.findField(ActivityManager.RunningTaskInfo.class, "stackId");
+        try {
+            if (f117g == null) {
+                f117g = XposedHelpers.findField(ActivityManager.RunningTaskInfo.class, "stackId");
+            }
+            return f117g.getInt(runningTaskInfo);
+        } catch (Throwable th) {
+            p2.sneakyThrow(th);
+            return 0;
         }
-        return f117g.getInt(runningTaskInfo);
     }
 
     static int c(ActivityManager.RunningTaskInfo runningTaskInfo) {
@@ -64,10 +69,10 @@ class f3 {
                 }
                 return f112b.getInt(runningTaskInfo);
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
         }
-        return f.o0.d();
+        return pkg_f.o0.d();
     }
 
     static int d(ActivityManager.RunningTaskInfo runningTaskInfo) {
@@ -93,7 +98,8 @@ class f3 {
             }
             return 0;
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
+            return 0;
         }
     }
 
@@ -105,7 +111,7 @@ class f3 {
             }
             return i >= 24 && b(runningTaskInfo) == 4;
         } catch (Throwable th) {
-            f.v.c(th.toString());
+            pkg_f.v.c(th.toString());
         }
         return false;
     }
@@ -122,7 +128,7 @@ class f3 {
             }
             return iD == 3 || iD == 4;
         } catch (Throwable th) {
-            f.v.c(th.toString());
+            pkg_f.v.c(th.toString());
         }
         return false;
     }

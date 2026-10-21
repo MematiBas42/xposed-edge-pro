@@ -21,7 +21,7 @@ class v3 extends AccessibilityService {
     private final Object B;
     private final w1 z;
 
-    class a extends XC_MethodHook {
+    static class a extends XC_MethodHook {
         a() {
         }
 
@@ -30,13 +30,13 @@ class v3 extends AccessibilityService {
                 try {
                     methodHookParam.args[0] = Boolean.TRUE;
                 } catch (Throwable th) {
-                    f.v.d(th);
+                    pkg_f.v.d(th);
                 }
             }
         }
     }
 
-    class b extends XC_MethodHook {
+    static class b extends XC_MethodHook {
         b() {
         }
 
@@ -48,13 +48,13 @@ class v3 extends AccessibilityService {
                         methodHookParam.setResult(Integer.valueOf(iIntValue | 1));
                     }
                 } catch (Throwable th) {
-                    f.v.d(th);
+                    pkg_f.v.d(th);
                 }
             }
         }
     }
 
-    class c extends f.g0 {
+    class c extends pkg_f.g0 {
         private boolean D;
         private boolean E;
         final /* synthetic */ float F;
@@ -71,7 +71,7 @@ class v3 extends AccessibilityService {
             this.E = false;
         }
 
-        @Override // f.g0
+        @Override // pkg_f.g0
         protected boolean a(int i) {
             AccessibilityNodeInfo rootInActiveWindow = v3.this.getRootInActiveWindow();
             if (rootInActiveWindow == null) {
@@ -92,12 +92,12 @@ class v3 extends AccessibilityService {
             return false;
         }
 
-        @Override // f.g0
+        @Override // pkg_f.g0
         protected void b() {
             try {
                 v3.this.i(false);
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
             if (this.E) {
                 return;
@@ -137,7 +137,7 @@ class v3 extends AccessibilityService {
             }
             return objCallMethod;
         } catch (Throwable th2) {
-            f.v.d(th2);
+            pkg_f.v.d(th2);
             return g3.h();
         }
     }
@@ -183,7 +183,7 @@ class v3 extends AccessibilityService {
                 gVar.o(str, bVar);
                 D = true;
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
         }
     }
@@ -195,7 +195,7 @@ class v3 extends AccessibilityService {
         try {
             return u3.h(this.z.g2().Q(f2, f3));
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
             return true;
         }
     }
@@ -211,7 +211,7 @@ class v3 extends AccessibilityService {
             int i = fieldFindField.getInt(objectField);
             fieldFindField.setInt(objectField, z ? i | 2 : i & (-3));
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
     }
 
@@ -246,7 +246,7 @@ class v3 extends AccessibilityService {
                 dVar.a(true, aVarF != null ? aVarF.b() : null);
             }
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
             dVar.a(false, null);
         }
     }

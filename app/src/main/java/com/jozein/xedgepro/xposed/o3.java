@@ -24,6 +24,10 @@ class o3 {
         if (methodArr[4] == null) {
             methodArr[4] = a("set", String.class);
         }
-        methodArr[4].invoke(null, str, str2);
+        try {
+            methodArr[4].invoke(null, str, str2);
+        } catch (Throwable th) {
+            p2.sneakyThrow(th);
+        }
     }
 }

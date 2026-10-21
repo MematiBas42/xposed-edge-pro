@@ -15,11 +15,11 @@ import java.io.File;
 /* JADX INFO: loaded from: classes.dex */
 public class HookMain extends p2 implements IXposedHookZygoteInit, IXposedHookLoadPackage {
     private static boolean J;
-    private a.p E;
-    private a.k F;
-    private a.f G;
-    private a.s.e H;
-    private a.v I;
+    private pkg_a.p E;
+    private pkg_a.k F;
+    private pkg_a.AppTriggerManager G;
+    private pkg_a.s.e H;
+    private pkg_a.v I;
 
     private void h(ClassLoader classLoader) {
         if (J) {
@@ -32,7 +32,7 @@ public class HookMain extends p2 implements IXposedHookZygoteInit, IXposedHookLo
 
     private void i(ClassLoader classLoader) {
         if (new File("/data/system_de/disable_xedge").exists()) {
-            f.v.c("Found file /data/system_de/disable_xedge, disable hook!!!");
+            pkg_f.v.c("Found file /data/system_de/disable_xedge, disable hook!!!");
             return;
         }
         l();
@@ -53,26 +53,26 @@ public class HookMain extends p2 implements IXposedHookZygoteInit, IXposedHookLo
         if (Build.VERSION.SDK_INT >= 21) {
             x3.l();
             try {
-                String str = f.l.l;
-                if ((f.r.k(str) & 1) == 0) {
+                String str = pkg_f.l.CONST_FILES;
+                if ((pkg_f.r.k(str) & 1) == 0) {
                     if (SELinuxHelper.isSELinuxEnforced() || Process.myUid() != 0) {
                         p2.f(str + " not executable!");
                     } else {
-                        f.v.c(new File(str).setExecutable(true, false) ? "Set app data folder executable." : "Failed to set app data folder executable.");
+                        pkg_f.v.c(new File(str).setExecutable(true, false) ? "Set app data folder executable." : "Failed to set app data folder executable.");
                     }
                 }
             } catch (Throwable th) {
                 p2.g(th);
             }
         }
-        this.E = new a.p();
-        this.F = a.k.h();
-        this.G = a.f.g();
-        this.H = new a.s.e();
-        this.I = new a.v();
-        a.b.f0.A();
-        a.b.k2.A();
-        a.b.y0.L();
+        this.E = new pkg_a.p();
+        this.F = pkg_a.k.h();
+        this.G = pkg_a.AppTriggerManager.g();
+        this.H = new pkg_a.s.e();
+        this.I = new pkg_a.v();
+        pkg_a.b.f0.A();
+        pkg_a.b.k2.A();
+        pkg_a.b.y0.L();
     }
 
     private boolean k() {
@@ -88,16 +88,16 @@ public class HookMain extends p2 implements IXposedHookZygoteInit, IXposedHookLo
 
     private void l() {
         if (this.E == null) {
-            f.v.c("---------------------------------------- Starting " + f.l.x + " ----------------------------------------");
+            pkg_f.v.c("---------------------------------------- Starting " + pkg_f.l.CONST_APP_TAG + " ----------------------------------------");
         }
     }
 
     private void m() {
         String str;
-        f.v.a();
+        pkg_f.v.a();
         StringBuilder sb = new StringBuilder(256);
-        sb.append(f.l.u);
-        int iP = f.p0.p();
+        sb.append(pkg_f.l.CONST_TAG);
+        int iP = pkg_f.p0.p();
         if (iP == 1) {
             str = ". ";
         } else if (iP != 2) {
@@ -133,7 +133,7 @@ public class HookMain extends p2 implements IXposedHookZygoteInit, IXposedHookLo
         try {
             if (Build.VERSION.SDK_INT >= 21 && "android".equals(loadPackageParam.packageName)) {
                 i(loadPackageParam.classLoader);
-            } else if (f.l.j.equals(loadPackageParam.packageName)) {
+            } else if (pkg_f.l.CONST_PKG.equals(loadPackageParam.packageName)) {
                 new z0(loadPackageParam.classLoader);
             }
         } catch (Throwable th) {

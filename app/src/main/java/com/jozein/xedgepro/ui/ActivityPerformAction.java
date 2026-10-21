@@ -1,7 +1,7 @@
 package com.jozein.xedgepro.ui;
 
-import a.b;
-import a.j;
+import pkg_a.b;
+import pkg_a.j;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
@@ -10,10 +10,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import com.jozein.xedgepro.ApplicationMain;
 import com.jozein.xedgepro.service.BinderService;
-import f.l;
-import f.l0;
-import f.o0;
-import f.v;
+import pkg_f.l;
+import pkg_f.l0;
+import pkg_f.o0;
+import pkg_f.v;
 
 /* JADX INFO: loaded from: classes.dex */
 public class ActivityPerformAction extends Activity {
@@ -42,7 +42,7 @@ public class ActivityPerformAction extends Activity {
                         }
                         switch (i) {
                             case 113:
-                                b.f fVar = (b.f) bVar;
+                                b.f_launch fVar = (b.f_launch) bVar;
                                 if (fVar.M == o0.m()) {
                                     d(context, fVar.K, fVar.L);
                                     return;
@@ -110,7 +110,7 @@ public class ActivityPerformAction extends Activity {
         super.onCreate(bundle);
         Intent intent = getIntent();
         try {
-            if (!l.r && j.z.equals(intent.getAction())) {
+            if (!pkg_f.l.CONST_IS_PRO && j.z.equals(intent.getAction())) {
                 j.c(getApplicationContext());
             } else if (!BinderService.u(this, intent)) {
                 b bVarJ = l0.j(intent);

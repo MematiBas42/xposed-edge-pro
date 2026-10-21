@@ -13,7 +13,7 @@ import de.robv.android.xposed.XposedHelpers;
 import java.lang.reflect.Field;
 
 /* JADX INFO: loaded from: classes.dex */
-class t3 implements f.l {
+class t3 implements pkg_f.l {
     private static Field C;
     static final boolean D;
     private static final t3 E;
@@ -28,9 +28,9 @@ class t3 implements f.l {
         private final boolean z;
 
         a(Context context, boolean z, boolean z2) {
+            super(context);
             WindowManager.LayoutParams layoutParams;
             String str;
-            super(context);
             this.z = z;
             int i = Build.VERSION.SDK_INT;
             if (i >= 29) {
@@ -43,12 +43,12 @@ class t3 implements f.l {
                     layoutParams.softInputMode = 51;
                     setFocusableInTouchMode(true);
                 }
-                g.a0.b(layoutParams, "Popup:t");
+                pkg_g.a0.b(layoutParams, "Popup:t");
                 if (t3.F != null) {
                     t3.F.a();
                 }
             } else {
-                layoutParams = new WindowManager.LayoutParams(2015, R.drawable.ic_media_route_connecting_light_21_mtrl, 1);
+                layoutParams = new WindowManager.LayoutParams(2015, 0x1080518, 1);
                 if (i >= 28) {
                     layoutParams.layoutInDisplayCutoutMode = 1;
                     if (i >= 30) {
@@ -62,7 +62,7 @@ class t3 implements f.l {
                 } else {
                     str = "Popup";
                 }
-                g.a0.b(layoutParams, str);
+                pkg_g.a0.b(layoutParams, str);
                 t3.i(layoutParams, i2);
             }
             windowManager.addView(this, layoutParams);
@@ -83,7 +83,7 @@ class t3 implements f.l {
                     try {
                         ((c) childAt).a();
                     } catch (Throwable th) {
-                        f.v.d(th);
+                        pkg_f.v.d(th);
                     }
                 }
             }
@@ -101,14 +101,14 @@ class t3 implements f.l {
                 } else if (t3VarN.z == this) {
                     t3VarN.z = null;
                 } else {
-                    f.v.c("Removing unknown container.");
+                    pkg_f.v.c("Removing unknown container.");
                 }
                 if (!this.z || t3.F == null) {
                     return;
                 }
                 t3.F.b();
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
         }
 
@@ -119,7 +119,7 @@ class t3 implements f.l {
                 try {
                     ((c) view).a();
                 } catch (Throwable th) {
-                    f.v.d(th);
+                    pkg_f.v.d(th);
                 }
             }
         }
@@ -185,7 +185,7 @@ class t3 implements f.l {
             postDelayed(new Runnable() { // from class: com.jozein.xedgepro.xposed.s3
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.z.e(viewD);
+                    e(viewD);
                 }
             }, j);
             return true;
@@ -248,7 +248,7 @@ class t3 implements f.l {
             }
             C.setInt(layoutParams, i | C.getInt(layoutParams));
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
     }
 
@@ -260,7 +260,7 @@ class t3 implements f.l {
                 this.B = null;
             }
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
     }
 
@@ -337,7 +337,7 @@ class t3 implements f.l {
             m(view.getContext(), i).b(view, layoutParams, i);
             return true;
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
             return false;
         }
     }

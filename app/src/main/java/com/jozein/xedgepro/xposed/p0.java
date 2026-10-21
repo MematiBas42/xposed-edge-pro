@@ -86,7 +86,7 @@ class p0 extends j2 {
         try {
             XposedHelpers.callMethod(u("mMenuController"), "showInputMethodMenu", new Object[]{Boolean.TRUE, 0});
         } catch (Throwable th) {
-            f.v.c(th.toString());
+            pkg_f.v.c(th.toString());
             Message message = new Message();
             message.what = 1;
             message.arg1 = 1;
@@ -94,7 +94,7 @@ class p0 extends j2 {
             try {
                 ((Handler.Callback) v()).handleMessage(message);
             } catch (Throwable th2) {
-                f.v.d(th2);
+                pkg_f.v.d(th2);
             }
         }
     }
@@ -104,7 +104,7 @@ class p0 extends j2 {
             try {
                 r("setInputMethodLocked", str, Integer.valueOf(i));
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
         }
     }
@@ -137,7 +137,7 @@ class p0 extends j2 {
         } catch (b unused) {
             return true;
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
             return false;
         }
     }
@@ -157,7 +157,7 @@ class p0 extends j2 {
                 return true;
             } catch (b unused) {
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
                 return false;
             }
         }
@@ -176,7 +176,7 @@ class p0 extends j2 {
         } catch (b unused) {
             return true;
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
             return false;
         }
     }
@@ -187,7 +187,7 @@ class p0 extends j2 {
             ((Handler) u("mHandler")).post(new Runnable() { // from class: com.jozein.xedgepro.xposed.o0
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.z.M();
+                    p0.this.M();
                 }
             });
             return;
@@ -225,18 +225,18 @@ class p0 extends j2 {
                 return;
             }
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
         InputMethodManager inputMethodManager = (InputMethodManager) this.H.T1().getSystemService("input_method");
         if (inputMethodManager == null) {
             return;
         }
-        int iD = f.o0.d();
+        int iD = pkg_f.o0.d();
         if (iD != 0) {
             try {
                 enabledInputMethodList = (List) XposedHelpers.callMethod(inputMethodManager, "getEnabledInputMethodListAsUser", new Object[]{Integer.valueOf(iD)});
             } catch (Throwable th2) {
-                f.v.d(th2);
+                pkg_f.v.d(th2);
             }
         }
         if (enabledInputMethodList == null) {
@@ -247,7 +247,7 @@ class p0 extends j2 {
             if (size > 0) {
                 return;
             }
-            f.v.c("No IME.");
+            pkg_f.v.c("No IME.");
         } else {
             String strG = G();
             String id = enabledInputMethodList.get(0).getId();
@@ -264,7 +264,7 @@ class p0 extends j2 {
         try {
             objectField = Build.VERSION.SDK_INT >= 29 ? XposedHelpers.getObjectField(g3.q("com.android.server.inputmethod.InputMethodManagerInternal"), "mService") : this.H.g2().u("mInputMethodManager");
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
             objectField = null;
         }
         return objectField != null ? objectField : g3.m();

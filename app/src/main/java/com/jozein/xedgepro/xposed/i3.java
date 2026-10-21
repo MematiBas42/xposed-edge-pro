@@ -10,12 +10,12 @@ import android.os.Handler;
 import android.telephony.TelephonyManager;
 
 /* JADX INFO: loaded from: classes.dex */
-class i3 implements a.p.g {
+class i3 implements pkg_a.p.g {
     private static final String[] r = {"android.intent.action.BOOT_COMPLETED", "android.intent.action.SCREEN_ON", "android.intent.action.SCREEN_OFF", "android.intent.action.USER_PRESENT", "android.intent.action.BATTERY_CHANGED", "android.intent.action.BATTERY_LOW", "android.intent.action.BATTERY_OKAY", "android.intent.action.ACTION_POWER_CONNECTED", "android.intent.action.ACTION_POWER_DISCONNECTED", "android.net.wifi.STATE_CHANGE", "android.net.conn.CONNECTIVITY_CHANGE", "android.intent.action.AIRPLANE_MODE", "android.intent.action.HEADSET_PLUG", "android.hardware.usb.action.USB_STATE", "android.intent.action.REBOOT", "android.intent.action.ACTION_SHUTDOWN", "android.intent.action.TIME_SET", "android.intent.action.TIMEZONE_CHANGED", "android.intent.action.USER_SWITCHED"};
     private static final String[] s = {"android.provider.Telephony.SMS_RECEIVED", "android.intent.action.NEW_OUTGOING_CALL", "android.intent.action.PHONE_STATE"};
 
     /* JADX INFO: renamed from: c, reason: collision with root package name */
-    private final a.p f129c;
+    private final pkg_a.p f129c;
 
     /* JADX INFO: renamed from: d, reason: collision with root package name */
     private final w1 f130d;
@@ -67,7 +67,7 @@ class i3 implements a.p.g {
                     case "android.intent.action.BATTERY_CHANGED":
                         if (i3.this.f133g == 0) {
                             i3.this.f133g = intent.getIntExtra("scale", 0);
-                            i3.this.h = f.p0.m("config_lowBatteryWarningLevel", 15);
+                            i3.this.h = pkg_f.p0.m("config_lowBatteryWarningLevel", 15);
                         }
                         int intExtra = intent.getIntExtra("level", i3.this.f132f);
                         if (intExtra != i3.this.f132f) {
@@ -122,14 +122,10 @@ class i3 implements a.p.g {
                         String stringExtra = intent.getStringExtra("state");
                         if (TelephonyManager.EXTRA_STATE_RINGING.equals(stringExtra)) {
                             i3.this.U(3);
-                            break;
+                        } else if (!TelephonyManager.EXTRA_STATE_OFFHOOK.equals(stringExtra)) {
+                            i3.this.U(0);
                         } else {
-                            if (!TelephonyManager.EXTRA_STATE_OFFHOOK.equals(stringExtra)) {
-                                i3.this.U(0);
-                            } else {
-                                i3.this.U(1);
-                            }
-                            break;
+                            i3.this.U(1);
                         }
                         break;
                     case "android.intent.action.PRECISE_CALL_STATE":
@@ -157,23 +153,23 @@ class i3 implements a.p.g {
                         }
                         break;
                     default:
-                        f.v.c("Unhandled action: " + action);
+                        pkg_f.v.c("Unhandled action: " + action);
                         break;
                 }
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
         }
     }
 
-    i3(a.p pVar, w1 w1Var, Context context, Handler handler) {
+    i3(pkg_a.p pVar, w1 w1Var, Context context, Handler handler) {
         this.f129c = pVar;
         this.f130d = w1Var;
         this.f131e = context;
         try {
             L(context, handler);
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
     }
 
@@ -188,9 +184,9 @@ class i3 implements a.p.g {
 
     /* JADX INFO: Access modifiers changed from: private */
     public void K(int i) {
-        a.b bVarK;
+        pkg_a.b bVarK;
         int i2;
-        if (!f.l.r || (i2 = (bVarK = this.f129c.k(i)).z) == 1 || i2 == 0) {
+        if (!pkg_f.l.CONST_IS_PRO || (i2 = (bVarK = this.f129c.k(i)).z) == 1 || i2 == 0) {
             return;
         }
         this.f130d.w3(bVarK);
@@ -202,7 +198,7 @@ class i3 implements a.p.g {
         for (String str : r) {
             intentFilter.addAction(str);
         }
-        if (f.l.r) {
+        if (pkg_f.l.CONST_IS_PRO) {
             for (String str2 : s) {
                 intentFilter.addAction(str2);
             }
@@ -210,7 +206,7 @@ class i3 implements a.p.g {
                 intentFilter.addAction("android.intent.action.PRECISE_CALL_STATE");
             }
         }
-        f.c0.w(context, new a(), intentFilter, handler);
+        pkg_f.c0.w(context, new a(), intentFilter, handler);
     }
 
     /* JADX INFO: Access modifiers changed from: private */
@@ -297,50 +293,44 @@ class i3 implements a.p.g {
 
     /* JADX INFO: Access modifiers changed from: private */
     public void U(int i) {
-        int i2;
-        int i3;
-        if (i != 1) {
-            if (i == 2) {
-                int i4 = this.q;
-                if (i4 != 3) {
-                    if (i4 != 6) {
-                        return;
-                    }
-                    this.q = 7;
-                    i2 = 27;
-                }
-            } else if (i != 3) {
-                if (i != 6) {
-                    int i5 = this.q;
-                    if (i5 != 3 && i5 != 4) {
-                        i3 = (i5 == 6 || i5 == 7) ? 28 : 25;
-                        this.q = 0;
-                        return;
-                    }
-                    K(i3);
-                    this.q = 0;
-                    return;
-                }
-                if (this.q == 6) {
-                    return;
-                }
-                this.q = 6;
-                i2 = 26;
-            } else {
-                if (this.q == 3) {
-                    return;
-                }
-                this.q = 3;
-                i2 = 23;
+        if (i == 1) {
+            if (this.q == 3) {
+                this.q = 4;
+                K(24);
             }
-            K(i2);
             return;
         }
-        if (this.q != 3) {
+        if (i == 2) {
+            if (this.q == 3) {
+                this.q = 4;
+                K(24);
+            } else if (this.q == 6) {
+                this.q = 7;
+                K(27);
+            }
             return;
         }
-        this.q = 4;
-        K(24);
+        if (i == 3) {
+            if (this.q != 3) {
+                this.q = 3;
+                K(23);
+            }
+            return;
+        }
+        if (i == 6) {
+            if (this.q != 6) {
+                this.q = 6;
+                K(26);
+            }
+            return;
+        }
+        int q = this.q;
+        if (q == 3 || q == 4) {
+            K(25);
+        } else if (q == 6 || q == 7) {
+            K(28);
+        }
+        this.q = 0;
     }
 
     boolean A() {

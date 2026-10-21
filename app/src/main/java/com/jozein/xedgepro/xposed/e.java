@@ -30,7 +30,7 @@ class e {
     private final Runnable f95e = new Runnable() { // from class: com.jozein.xedgepro.xposed.d
         @Override // java.lang.Runnable
         public final void run() {
-            this.z.h();
+            e.this.h();
         }
     };
 
@@ -42,7 +42,7 @@ class e {
             this.f93c = (AudioManager) w1Var.T1().getSystemService("audio");
             this.f94d = XposedHelpers.callStaticMethod(AudioManager.class, "getService", new Object[0]);
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
     }
 
@@ -99,7 +99,7 @@ class e {
         if (Build.VERSION.SDK_INT < 21 || g()) {
             return;
         }
-        int iD = f.o0.d();
+        int iD = pkg_f.o0.d();
         try {
             MediaSessionManager mediaSessionManager = (MediaSessionManager) this.f91a.T1().getSystemService("media_session");
             List<MediaController> activeSessions = iD == 0 ? mediaSessionManager.getActiveSessions(null) : (List) XposedHelpers.callMethod(mediaSessionManager, "getActiveSessionsForUser", (Class[]) null, new Object[]{Integer.valueOf(iD)});
@@ -123,7 +123,7 @@ class e {
                 l0VarR1.Y(intent2);
             }
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
     }
 

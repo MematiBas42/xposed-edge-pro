@@ -9,17 +9,22 @@ class c {
     /* JADX INFO: renamed from: a, reason: collision with root package name */
     private static Field f90a;
 
-    static int a(Object obj) throws IllegalAccessException {
+    static int a(Object obj) {
         if (!v.f242f) {
             return 0;
         }
-        if (f90a == null) {
-            f90a = XposedHelpers.findField(obj.getClass(), "mDisplayId");
-        }
-        int i = f90a.getInt(obj);
-        if (i == -1) {
+        try {
+            if (f90a == null) {
+                f90a = XposedHelpers.findField(obj.getClass(), "mDisplayId");
+            }
+            int i = f90a.getInt(obj);
+            if (i == -1) {
+                return 0;
+            }
+            return i;
+        } catch (Throwable th) {
+            p2.sneakyThrow(th);
             return 0;
         }
-        return i;
     }
 }

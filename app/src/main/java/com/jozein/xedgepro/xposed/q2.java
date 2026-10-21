@@ -72,19 +72,17 @@ class q2 extends p2 {
                     String str2 = (String) objArr2[1];
                     int i2 = this.f210a;
                     if (i2 < 0 || objArr2[i2] == null) {
-                        f.z.k0(str, str2, f.o0.h(((Bundle) objArr2[2]).getInt("android.intent.extra.UID", 0)));
+                        pkg_f.z.k0(str, str2, pkg_f.o0.h(((Bundle) objArr2[2]).getInt("android.intent.extra.UID", 0)));
                     } else {
-                        f.z.l0(str, str2, (int[]) objArr2[i2]);
+                        pkg_f.z.l0(str, str2, (int[]) objArr2[i2]);
                     }
                 }
             } catch (ClassCastException e2) {
-                e = e2;
                 this.f211b = true;
-                f.z.m0(false);
-                f.v.d(e);
+                pkg_f.z.m0(false);
+                pkg_f.v.d(e2);
             } catch (Throwable th) {
-                e = th;
-                f.v.d(e);
+                pkg_f.v.d(th);
             }
         }
     }
@@ -100,7 +98,7 @@ class q2 extends p2 {
         }
         try {
             new j2("com.android.server.pm.PackageManagerService", classLoader).o("sendPackageBroadcast", new a());
-            f.z.m0(true);
+            pkg_f.z.m0(true);
         } catch (Throwable th) {
             p2.g(th);
         }
@@ -129,7 +127,7 @@ class q2 extends p2 {
 
     boolean i(String str, int i) {
         String strO;
-        if ((i == 0 && f.l.j.equals(str)) || "android".equals(str) || "com.android.systemui".equals(str)) {
+        if ((i == 0 && pkg_f.l.CONST_PKG.equals(str)) || "android".equals(str) || "com.android.systemui".equals(str)) {
             return false;
         }
         if (Build.VERSION.SDK_INT < 28 || (strO = o()) == null || !strO.equals(str)) {
@@ -144,13 +142,13 @@ class q2 extends p2 {
 
     String k(String str, boolean z) {
         try {
-            ResolveInfo resolveInfoX = f.c0.x(new Intent("android.intent.action.MAIN").addCategory(str), (!z || Build.VERSION.SDK_INT < 24) ? 65536 : 1048576, f.o0.d());
+            ResolveInfo resolveInfoX = pkg_f.c0.x(new Intent("android.intent.action.MAIN").addCategory(str), (!z || Build.VERSION.SDK_INT < 24) ? 65536 : 1048576, pkg_f.o0.d());
             if (resolveInfoX != null) {
                 return resolveInfoX.activityInfo.packageName;
             }
             return null;
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
             return null;
         }
     }
@@ -183,11 +181,11 @@ class q2 extends p2 {
     }
 
     boolean r(String str, int i) {
-        return f.c0.c(str, i).enabled;
+        return pkg_f.c0.c(str, i).enabled;
     }
 
     boolean t(String str, int i) {
-        return f.z.K(this.F).V(str, i);
+        return pkg_f.z.K(this.F).V(str, i);
     }
 
     public void u(String str, int i, boolean z) throws IllegalAccessException, InvocationTargetException {
@@ -209,18 +207,18 @@ class q2 extends p2 {
         try {
             u(str, i, z);
         } catch (Throwable th) {
-            f.v.c(th.toString());
+            pkg_f.v.c(th.toString());
         }
     }
 
     void w() {
         this.E = true;
-        f.z.K(this.F);
+        pkg_f.z.K(this.F);
         if (Build.VERSION.SDK_INT < 24) {
             try {
-                f.c0.y(l());
+                pkg_f.c0.y(l());
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
         }
     }

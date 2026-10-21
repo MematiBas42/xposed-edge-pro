@@ -23,12 +23,12 @@ abstract class r2 extends FrameLayout implements t3.c {
     private final FrameLayout.LayoutParams C;
     private final FrameLayout.LayoutParams D;
     private final FrameLayout.LayoutParams E;
-    private final g.r F;
+    private final pkg_g.r F;
     private final d G;
     private final int[] H;
     private final int I;
     private final int J;
-    private final g.h K;
+    private final pkg_g.h K;
     private int L;
     private int M;
     private final Resources z;
@@ -68,7 +68,7 @@ abstract class r2 extends FrameLayout implements t3.c {
             this.z = imageView;
             imageView.setImageDrawable(drawable);
             addView(imageView, r2.this.B);
-            setBackground(g.a0.l());
+            setBackground(pkg_g.a0.l());
             setOnClickListener(this);
         }
     }
@@ -91,7 +91,7 @@ abstract class r2 extends FrameLayout implements t3.c {
                 try {
                     c.this.a((b) view, this.C);
                 } catch (Throwable th) {
-                    f.v.d(th);
+                    pkg_f.v.d(th);
                 }
             }
         }
@@ -119,9 +119,9 @@ abstract class r2 extends FrameLayout implements t3.c {
         private final b B;
         private final b C;
         private final b D;
-        private c E;
-        private c F;
-        private c G;
+        private r2.c E;
+        private r2.c F;
+        private r2.c G;
         private boolean H;
         private boolean I;
         private int J;
@@ -143,16 +143,16 @@ abstract class r2 extends FrameLayout implements t3.c {
                     d.this.m();
                     d.this.o();
                 } catch (Throwable th) {
-                    f.v.d(th);
+                    pkg_f.v.d(th);
                 }
             }
         }
 
-        class b extends b {
+        class b_sub extends r2.b {
             final /* synthetic */ r2 B;
 
             /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-            b(Context context, Drawable drawable, r2 r2Var) {
+            b_sub(Context context, Drawable drawable, r2 r2Var) {
                 super(context, drawable);
                 this.B = r2Var;
             }
@@ -164,7 +164,7 @@ abstract class r2 extends FrameLayout implements t3.c {
                     d.this.m();
                     d.this.o();
                 } catch (Throwable th) {
-                    f.v.d(th);
+                    pkg_f.v.d(th);
                 }
             }
         }
@@ -172,7 +172,7 @@ abstract class r2 extends FrameLayout implements t3.c {
         class c extends b {
             final /* synthetic */ r2 B;
 
-            class a extends c {
+            class a extends r2.c {
                 final /* synthetic */ Drawable[] A;
 
                 /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
@@ -218,7 +218,7 @@ abstract class r2 extends FrameLayout implements t3.c {
                     d dVar = d.this;
                     r2.this.addView(dVar.E, r2.this.C);
                 } catch (Throwable th) {
-                    f.v.d(th);
+                    pkg_f.v.d(th);
                 }
             }
         }
@@ -227,8 +227,7 @@ abstract class r2 extends FrameLayout implements t3.c {
         class C0003d extends b {
             final /* synthetic */ r2 B;
 
-            /* JADX INFO: renamed from: com.jozein.xedgepro.xposed.r2$d$d$a */
-            class a extends c {
+            class a extends r2.c {
                 a(Context context, Drawable[] drawableArr) {
                     super(context, drawableArr);
                 }
@@ -273,7 +272,7 @@ abstract class r2 extends FrameLayout implements t3.c {
                     d dVar2 = d.this;
                     r2.this.addView(dVar2.F, r2.this.D);
                 } catch (Throwable th) {
-                    f.v.d(th);
+                    pkg_f.v.d(th);
                 }
             }
         }
@@ -283,7 +282,7 @@ abstract class r2 extends FrameLayout implements t3.c {
             boolean C;
             final /* synthetic */ r2 D;
 
-            class a extends c {
+            class a extends r2.c {
                 a(Context context, Drawable[] drawableArr) {
                     super(context, drawableArr);
                 }
@@ -325,7 +324,7 @@ abstract class r2 extends FrameLayout implements t3.c {
                         }
                         postDelayed(dVar, 500L);
                     } catch (Throwable th) {
-                        f.v.d(th);
+                        pkg_f.v.d(th);
                     }
                 }
             }
@@ -353,7 +352,7 @@ abstract class r2 extends FrameLayout implements t3.c {
                     }
                     int length = this.B.length;
                     Drawable[] drawableArr = new Drawable[length];
-                    g.h hVarA = g.h.a();
+                    pkg_g.h hVarA = pkg_g.h.a();
                     for (int i = 0; i < length; i++) {
                         Drawable drawableU = r2.this.u(this.B[i]);
                         hVarA.e(drawableU, r2.this.J);
@@ -363,7 +362,7 @@ abstract class r2 extends FrameLayout implements t3.c {
                     d dVar = d.this;
                     r2.this.addView(dVar.G, r2.this.E);
                 } catch (Throwable th) {
-                    f.v.d(th);
+                    pkg_f.v.d(th);
                 }
             }
         }
@@ -382,7 +381,7 @@ abstract class r2 extends FrameLayout implements t3.c {
                 try {
                     d.this.l();
                 } catch (Throwable th) {
-                    f.v.d(th);
+                    pkg_f.v.d(th);
                 }
             }
         }
@@ -399,7 +398,7 @@ abstract class r2 extends FrameLayout implements t3.c {
             a aVar = new a(context, r2.this.t(R.drawable.ic_painter_undo), r2.this);
             this.z = aVar;
             addView(aVar, r2.this.A);
-            b bVar = new b(context, r2.this.t(R.drawable.ic_painter_redo), r2.this);
+            b_sub bVar = new b_sub(context, r2.this.t(R.drawable.ic_painter_redo), r2.this);
             this.A = bVar;
             addView(bVar, r2.this.A);
             c cVar = new c(context, r2.this.u(r2.P[r2.this.L]), r2.this);
@@ -417,15 +416,15 @@ abstract class r2 extends FrameLayout implements t3.c {
 
         /* JADX INFO: Access modifiers changed from: private */
         public void m() {
-            c cVar = this.E;
+            r2.c cVar = this.E;
             if (cVar != null) {
                 cVar.setVisibility(4);
             }
-            c cVar2 = this.F;
+            r2.c cVar2 = this.F;
             if (cVar2 != null) {
                 cVar2.setVisibility(4);
             }
-            c cVar3 = this.G;
+            r2.c cVar3 = this.G;
             if (cVar3 != null) {
                 cVar3.setVisibility(4);
             }
@@ -442,7 +441,7 @@ abstract class r2 extends FrameLayout implements t3.c {
         }
 
         public void o() {
-            g.h hVarA = g.h.a();
+            pkg_g.h hVarA = pkg_g.h.a();
             boolean zH = r2.this.F.h();
             if (zH != this.H) {
                 this.H = zH;
@@ -471,7 +470,7 @@ abstract class r2 extends FrameLayout implements t3.c {
                 try {
                     r2.this.v(i);
                 } catch (Throwable th) {
-                    f.v.d(th);
+                    pkg_f.v.d(th);
                 }
             }
         }
@@ -479,23 +478,23 @@ abstract class r2 extends FrameLayout implements t3.c {
 
     public r2(Context context, Resources resources, int[] iArr, int i, boolean z) {
         super(context);
-        this.K = g.h.a();
+        this.K = pkg_g.h.a();
         this.L = 0;
         this.M = 0;
         this.z = resources;
         this.I = i;
-        this.J = g.a0.r(i) ? 0 : -16777216;
+        this.J = pkg_g.a0.r(i) ? 0 : -16777216;
         if (iArr == null || iArr.length == 0) {
             this.H = new int[]{-24576};
         } else {
             this.H = iArr;
         }
-        g.x xVarB = g.x.b(context);
+        pkg_g.x xVarB = pkg_g.x.b(context);
         int i2 = (int) (xVarB.f633a * 0.7f);
         int i3 = (int) (xVarB.f634b * 0.7f);
         this.A = new LinearLayout.LayoutParams(i2, i2);
         this.B = new FrameLayout.LayoutParams(i3, i3, 17);
-        g.r rVar = new g.r(context, this.H);
+        pkg_g.r rVar = new pkg_g.r(context, this.H);
         this.F = rVar;
         rVar.l(N[0], 0, O[0]);
         rVar.setOnTouchListener(new a());
@@ -542,7 +541,7 @@ abstract class r2 extends FrameLayout implements t3.c {
     protected abstract void v(int i);
 
     void w(View view) {
-        g.a0.w(view, this.I, this.A.height * 0.1f);
+        pkg_g.a0.w(view, this.I, this.A.height * 0.1f);
     }
 
     protected abstract void x(boolean z);

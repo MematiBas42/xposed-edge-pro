@@ -39,12 +39,12 @@ class m2 extends j2 {
             try {
                 m2.this.S();
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
         }
     }
 
-    class b extends f.f0.d {
+    class b extends pkg_f.f0.d {
 
         /* JADX INFO: renamed from: a, reason: collision with root package name */
         private Method f153a = null;
@@ -53,15 +53,20 @@ class m2 extends j2 {
         }
 
         private Object b() {
-            if (this.f153a == null) {
-                this.f153a = m2.this.k("getFocusedWindow", new Class[0]);
+            try {
+                if (this.f153a == null) {
+                    this.f153a = m2.this.k("getFocusedWindow", new Class[0]);
+                }
+                return this.f153a.invoke(m2.this.v(), new Object[0]);
+            } catch (Throwable th) {
+                p2.sneakyThrow(th);
+                return null;
             }
-            return this.f153a.invoke(m2.this.v(), new Object[0]);
         }
 
         /* JADX WARN: Code duplicated, block: B:27:0x0012 A[EXC_TOP_SPLITTER, PHI: r4
           0x0012: PHI (r4v3 java.lang.Object) = (r4v2 java.lang.Object), (r4v6 java.lang.Object) binds: [B:3:0x0007, B:5:0x0010] A[DONT_GENERATE, DONT_INLINE], SYNTHETIC] */
-        @Override // f.f0.d
+        @Override // pkg_f.f0.d
         protected Object a(String str, Object[] objArr) {
             Object objB;
             Object obj = null;
@@ -75,7 +80,7 @@ class m2 extends j2 {
                         try {
                             objB = m2.this.J().c();
                         } catch (Throwable th) {
-                            f.v.d(th);
+                            pkg_f.v.d(th);
                             objB = b();
                             if (objB != null && v.f242f) {
                                 try {
@@ -84,13 +89,13 @@ class m2 extends j2 {
                                         return obj;
                                     }
                                 } catch (Throwable th2) {
-                                    f.v.d(th2);
+                                    pkg_f.v.d(th2);
                                 }
                             }
                         }
                         m2.this.T(objB);
                     } catch (Throwable th3) {
-                        f.v.d(th3);
+                        pkg_f.v.d(th3);
                     }
                 }
             }
@@ -120,7 +125,7 @@ class m2 extends j2 {
                 try {
                     this.f155a = m2.this.r("getDefaultDisplayContentLocked", new Object[0]);
                 } catch (Throwable th) {
-                    f.v.d(th);
+                    pkg_f.v.d(th);
                 }
             }
         }
@@ -148,16 +153,21 @@ class m2 extends j2 {
                         return obj;
                     }
                 } catch (Throwable th) {
-                    f.v.d(th);
+                    pkg_f.v.d(th);
                 }
             }
             if (this.f159e == null) {
                 this.f159e = p2.b(this.f155a.getClass(), "findFocusedWindow", new Class[0]);
             }
-            synchronized (m2.this.P()) {
-                objInvoke = this.f159e.invoke(this.f155a, new Object[0]);
+            try {
+                synchronized (m2.this.P()) {
+                    objInvoke = this.f159e.invoke(this.f155a, new Object[0]);
+                }
+                return objInvoke;
+            } catch (Throwable th) {
+                p2.sneakyThrow(th);
+                return null;
             }
-            return objInvoke;
         }
 
         Object d(float f2, float f3) {
@@ -173,7 +183,7 @@ class m2 extends j2 {
                 }
                 return objInvoke;
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
                 return null;
             }
         }
@@ -225,7 +235,7 @@ class m2 extends j2 {
                 try {
                     r("freezeDisplayRotation", 0, Integer.valueOf(i), "XEdgePro");
                 } catch (Throwable th3) {
-                    f.v.d(th3);
+                    pkg_f.v.d(th3);
                 }
             }
         }
@@ -247,10 +257,15 @@ class m2 extends j2 {
         if (Build.VERSION.SDK_INT < 28) {
             return null;
         }
-        if (this.O == null) {
-            this.O = i("getCurrentImeTouchRegion");
+        try {
+            if (this.O == null) {
+                this.O = i("getCurrentImeTouchRegion");
+            }
+            return (Region) this.O.invoke(v(), new Object[0]);
+        } catch (Throwable th) {
+            p2.sneakyThrow(th);
+            return null;
         }
-        return (Region) this.O.invoke(v(), new Object[0]);
     }
 
     Object G() {
@@ -281,7 +296,7 @@ class m2 extends j2 {
                     return obj;
                 }
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
         }
         try {
@@ -291,7 +306,7 @@ class m2 extends j2 {
             }
             return null;
         } catch (Throwable th2) {
-            f.v.d(th2);
+            pkg_f.v.d(th2);
             return null;
         }
     }
@@ -311,7 +326,7 @@ class m2 extends j2 {
         try {
             return J().c();
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
             return null;
         }
     }
@@ -324,10 +339,15 @@ class m2 extends j2 {
         if (Build.VERSION.SDK_INT < 26) {
             return t("mRotation");
         }
-        if (this.N == null) {
-            this.N = k("getDefaultDisplayRotation", new Class[0]);
+        try {
+            if (this.N == null) {
+                this.N = k("getDefaultDisplayRotation", new Class[0]);
+            }
+            return ((Integer) this.N.invoke(v(), new Object[0])).intValue();
+        } catch (Throwable th) {
+            p2.sneakyThrow(th);
+            return 0;
         }
-        return ((Integer) this.N.invoke(v(), new Object[0])).intValue();
     }
 
     Object Q(float f2, float f3) {
@@ -372,7 +392,7 @@ class m2 extends j2 {
                 this.H.f3(str2, null);
             }
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
     }
 
@@ -382,7 +402,7 @@ class m2 extends j2 {
             this.H.T1().getContentResolver().registerContentObserver(Settings.Global.getUriFor("display_size_forced"), true, aVar);
             S();
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
     }
 
@@ -390,7 +410,7 @@ class m2 extends j2 {
         try {
             r("reboot", Boolean.FALSE);
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
     }
 
@@ -402,10 +422,10 @@ class m2 extends j2 {
         try {
             z("addWindowChangeListener", new b(), new Object[0]);
             if (Build.VERSION.SDK_INT < 31) {
-                f.v.c("Setup WindowChangeListener");
+                pkg_f.v.c("Setup WindowChangeListener");
             }
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
     }
 
@@ -413,7 +433,7 @@ class m2 extends j2 {
         try {
             r("shutdown", Boolean.FALSE);
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
     }
 
@@ -427,7 +447,7 @@ class m2 extends j2 {
                     return objU;
                 }
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
             try {
                 Object objU2 = this.H.u("mWindowManagerFuncs");
@@ -435,7 +455,7 @@ class m2 extends j2 {
                     return objU2;
                 }
             } catch (Throwable th2) {
-                f.v.d(th2);
+                pkg_f.v.d(th2);
             }
         }
         return g3.u();

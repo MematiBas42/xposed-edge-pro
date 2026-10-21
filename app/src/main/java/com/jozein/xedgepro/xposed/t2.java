@@ -23,7 +23,7 @@ import android.widget.TextView;
 class t2 {
 
     /* JADX INFO: renamed from: a, reason: collision with root package name */
-    private final a.p f228a;
+    private final pkg_a.p f228a;
 
     /* JADX INFO: renamed from: b, reason: collision with root package name */
     private final Context f229b;
@@ -113,7 +113,7 @@ class t2 {
             try {
                 count = eVar.getCount();
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
             this.A = new Drawable[count];
             this.B = z ? new CharSequence[count] : null;
@@ -126,7 +126,7 @@ class t2 {
                     t2.this.j();
                     this.z.f();
                 } catch (Throwable th) {
-                    f.v.d(th);
+                    pkg_f.v.d(th);
                 }
             }
         }
@@ -158,7 +158,7 @@ class t2 {
                         this.B[i] = this.z.d(i);
                     }
                 } catch (Throwable th) {
-                    f.v.d(th);
+                    pkg_f.v.d(th);
                 }
             }
             if (view == null) {
@@ -180,7 +180,7 @@ class t2 {
             try {
                 this.z.e(i, view);
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
             t2.this.j();
         }
@@ -193,7 +193,7 @@ class t2 {
                     return true;
                 }
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
             t2.this.j();
             return false;
@@ -249,7 +249,7 @@ class t2 {
     }
 
     private void k() {
-        g.x xVarB = g.x.b(this.f229b);
+        pkg_g.x xVarB = pkg_g.x.b(this.f229b);
         float fV = this.f228a.v(28, 100) / 100.0f;
         int i = (int) ((xVarB.f633a * fV) + 0.5f);
         this.f230c = i;
@@ -291,21 +291,21 @@ class t2 {
         FrameLayout.LayoutParams layoutParams;
         long j;
         AnimationSet animationSet;
-        FrameLayout.LayoutParams layoutParams2;
-        TranslateAnimation translateAnimation;
+        FrameLayout.LayoutParams layoutParams2 = null;
+        TranslateAnimation translateAnimation = null;
         t3 t3VarN = t3.n();
         t3VarN.t(18);
         k();
         int iV = this.f228a.v(i == 2 ? 33 : 2, -16764873);
-        this.l = g.a0.r(iV) ? -1 : -16777216;
+        this.l = pkg_g.a0.r(iV) ? -1 : -16777216;
         boolean zA = eVar.a();
         c cVar = new c(eVar, zA);
         a aVar = new a(this.f229b, cVar);
         o2 o2Var = new o2(this.f229b, 18);
         final b bVar = new b(this.f229b, o2Var);
         o2Var.a(bVar);
-        bVar.setSelector(g.a0.l());
-        Point pointN = g.a0.n(this.f229b, new Point());
+        bVar.setSelector(pkg_g.a0.l());
+        Point pointN = pkg_g.a0.n(this.f229b, new Point());
         int i4 = i2 > 0 ? i2 : pointN.x / this.f230c;
         bVar.setNumColumns(i4);
         this.k = i3;
@@ -317,7 +317,7 @@ class t2 {
         } else {
             f2 = (i == 3 || i == 4) ? this.f232e * 0.5f : 0.0f;
         }
-        g.a0.w(aVar, iV, f2);
+        pkg_g.a0.w(aVar, iV, f2);
         aVar.addView(bVar, new FrameLayout.LayoutParams(-1, -1));
         TranslateAnimation translateAnimation2 = null;
         long j2 = 200;
@@ -337,7 +337,7 @@ class t2 {
             if (i != 2) {
                 if (i == 3) {
                     int length2 = (zA ? this.f231d : this.f230c) * cVar.A.length;
-                    int iP = g.a0.p();
+                    int iP = pkg_g.a0.p();
                     if (length2 == 0) {
                         length2 = zA ? this.f231d : this.f230c;
                     } else {
@@ -350,10 +350,10 @@ class t2 {
                     layoutParams2.leftMargin = iP;
                     translateAnimation = new TranslateAnimation(((-iP) - this.f230c) / 2.0f, 0.0f, 0.0f, 0.0f);
                 } else if (i != 4) {
-                    layoutParams = new FrameLayout.LayoutParams(-2, -2, 17);
+                    layoutParams2 = new FrameLayout.LayoutParams(-2, -2, 17);
                 } else {
                     int length3 = (zA ? this.f231d : this.f230c) * cVar.A.length;
-                    int iP2 = g.a0.p();
+                    int iP2 = pkg_g.a0.p();
                     if (length3 == 0) {
                         length3 = zA ? this.f231d : this.f230c;
                     } else {
@@ -375,7 +375,7 @@ class t2 {
                 if (translateAnimation2 != null) {
                     animationSet.addAnimation(translateAnimation2);
                 }
-                g.a0.z(aVar, animationSet, j);
+                pkg_g.a0.z(aVar, animationSet, j);
             }
             int length4 = ((cVar.A.length + i4) - 1) / i4;
             int i9 = pointN.x >= pointN.y ? 2 : 3;
@@ -391,7 +391,7 @@ class t2 {
             bVar.post(new Runnable() { // from class: com.jozein.xedgepro.xposed.s2
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.z.m(bVar);
+                    t2.this.m(bVar);
                 }
             });
             layoutParams = layoutParams3;
@@ -404,7 +404,7 @@ class t2 {
         if (translateAnimation2 != null) {
             animationSet.addAnimation(translateAnimation2);
         }
-        g.a0.z(aVar, animationSet, j);
+        pkg_g.a0.z(aVar, animationSet, j);
     }
 
     void o(e eVar, int i) {

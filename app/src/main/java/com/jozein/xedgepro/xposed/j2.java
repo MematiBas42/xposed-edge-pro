@@ -9,6 +9,7 @@ import java.lang.reflect.Proxy;
 
 /* JADX INFO: loaded from: classes.dex */
 class j2 extends g {
+
     private volatile Object G;
 
     j2(Class<?> cls) {
@@ -34,7 +35,12 @@ class j2 extends g {
     }
 
     final Object r(String str, Object... objArr) {
-        return XposedHelpers.findMethodBestMatch(m(), str, objArr).invoke(v(), objArr);
+        try {
+            return XposedHelpers.findMethodBestMatch(m(), str, objArr).invoke(v(), objArr);
+        } catch (Throwable th) {
+            sneakyThrow(th);
+            return null;
+        }
     }
 
     boolean s(Object obj) {
@@ -46,7 +52,7 @@ class j2 extends g {
         sb.append(obj != null ? obj.getClass().getName() : "null");
         sb.append(" not instance of ");
         sb.append(m().getName());
-        f.v.d(new RuntimeException(sb.toString()));
+        pkg_f.v.d(new RuntimeException(sb.toString()));
         return false;
     }
 
@@ -69,7 +75,12 @@ class j2 extends g {
     }
 
     final Object w(Member member, Object[] objArr) {
-        return XposedBridge.invokeOriginalMethod(member, v(), objArr);
+        try {
+            return XposedBridge.invokeOriginalMethod(member, v(), objArr);
+        } catch (Throwable th) {
+            sneakyThrow(th);
+            return null;
+        }
     }
 
     protected Object x() {
@@ -80,7 +91,7 @@ class j2 extends g {
         return this.G;
     }
 
-    final void z(String str, f.f0.d dVar, Object... objArr) throws IllegalAccessException, InvocationTargetException {
+    final void z(String str, pkg_f.f0.d dVar, Object... objArr) throws IllegalAccessException, InvocationTargetException {
         Method methodI = i(str);
         Class<?> cls = methodI.getParameterTypes()[0];
         Object objNewProxyInstance = Proxy.newProxyInstance(cls.getClassLoader(), new Class[]{cls}, dVar);

@@ -1,9 +1,9 @@
 package com.jozein.xedgepro.service;
 
-import a.b;
-import a.e;
-import a.g;
-import a.j;
+import pkg_a.b;
+import pkg_a.e;
+import pkg_a.g;
+import pkg_a.j;
 import android.app.Service;
 import android.content.ComponentName;
 import android.content.Context;
@@ -18,21 +18,21 @@ import android.widget.Toast;
 import com.jozein.xedgepro.R;
 import com.jozein.xedgepro.service.BinderService;
 import com.jozein.xedgepro.ui.ActivityPerformAction;
-import f.h0;
-import f.i0;
-import f.l;
-import f.m;
-import f.o;
-import f.o0;
-import f.q;
-import f.v;
+import pkg_f.h0;
+import pkg_f.i0;
+import pkg_f.l;
+import pkg_f.m;
+import pkg_f.o;
+import pkg_f.o0;
+import pkg_f.q;
+import pkg_f.v;
 import java.util.ArrayList;
 import java.util.List;
 
 /* JADX INFO: loaded from: classes.dex */
 public class BinderService extends Service implements l {
-    private static final String z = l.k + "REMOTE_ACCESS";
-    public static final String A = l.j + ".action.COMMIT";
+    private static final String z = pkg_f.l.CONST_PREFIX + "REMOTE_ACCESS";
+    public static final String A = pkg_f.l.CONST_PKG + ".action.COMMIT";
     private static final Parcelable B = Bundle.EMPTY;
     private static int C = 0;
     private static boolean D = false;
@@ -48,25 +48,25 @@ public class BinderService extends Service implements l {
             if (iE <= 0 || iE == Process.myUid()) {
                 return;
             }
-            b.s0.A(binderService, "BinderService running on uid " + Process.myUid() + ", but package uid " + iE + ".");
+            pkg_a.b.s0.A(binderService, "BinderService running on uid " + Process.myUid() + ", but package uid " + iE + ".");
         }
 
         public static boolean g(Context context, ServiceConnection serviceConnection) {
             Intent intent = new Intent(BinderService.z);
-            String str = l.j;
+            String str = pkg_f.l.CONST_PKG;
             intent.setComponent(new ComponentName(str, BinderService.class.getName()));
             intent.setPackage(str);
             intent.addFlags(32);
             return context.bindService(intent, serviceConnection, 1);
         }
 
-        @Override // a.g
+        @Override // pkg_a.g
         public Parcelable a(String str) {
             q.b bVar = new q.b(str);
             return new o(str, bVar.f(), bVar.d() ? bVar.j() : null);
         }
 
-        @Override // a.g
+        @Override // pkg_a.g
         public void b(final String str, final Parcelable parcelable) {
             final Context applicationContext = this.f76c.getApplicationContext();
             byte b2 = -1;
@@ -106,7 +106,7 @@ public class BinderService extends Service implements l {
     }
 
     public static void C(Context context, Intent intent) {
-        intent.setComponent(new ComponentName(l.j, ActivityPerformAction.class.getName()));
+        intent.setComponent(new ComponentName(pkg_f.l.CONST_PKG, ActivityPerformAction.class.getName()));
         intent.setFlags(402653184);
         try {
             context.startActivity(intent);
@@ -146,7 +146,7 @@ public class BinderService extends Service implements l {
     }
 
     private static Intent H(String str, Parcelable parcelable) {
-        return new Intent(A).setPackage(l.j).putExtra("action", str).putExtra("data", parcelable);
+        return new Intent(A).setPackage(pkg_f.l.CONST_PKG).putExtra("action", str).putExtra("data", parcelable);
     }
 
     private static Intent I(Pair<String, Parcelable>[] pairArr) {
@@ -159,7 +159,7 @@ public class BinderService extends Service implements l {
             strArr[i] = (String) pairArr[i].first;
             parcelableArr[i] = (Parcelable) pairArr[i].second;
         }
-        return new Intent(A).setPackage(l.j).putExtra("actions", strArr).putExtra("data", parcelableArr);
+        return new Intent(A).setPackage(pkg_f.l.CONST_PKG).putExtra("actions", strArr).putExtra("data", parcelableArr);
     }
 
     /* JADX INFO: Access modifiers changed from: package-private */
@@ -214,7 +214,7 @@ public class BinderService extends Service implements l {
         }
     }
 
-    public static void m(Context context, boolean z2, ArrayList<g.q> arrayList) {
+    public static void m(Context context, boolean z2, ArrayList<pkg_g.q> arrayList) {
         if (!w(arrayList)) {
             v.c("Invalid gesture!");
             return;
@@ -242,7 +242,7 @@ public class BinderService extends Service implements l {
             int iH = mVar.h();
             ArrayList arrayList2 = new ArrayList(iH);
             for (int i = 0; i < iH; i++) {
-                arrayList2.add(new g.q(mVar));
+                arrayList2.add(new pkg_g.q(mVar));
             }
             arrayList = arrayList2;
         }
@@ -253,7 +253,7 @@ public class BinderService extends Service implements l {
         }
         b.y0.O(context, arrayList, bundle.getBoolean("landscape", context.getResources().getConfiguration().orientation == 2));
         G(context, R.string.saved);
-        context.sendBroadcast(new Intent(b.y0.K).setPackage(l.j));
+        context.sendBroadcast(new Intent(b.y0.K).setPackage(pkg_f.l.CONST_PKG));
     }
 
     /* JADX INFO: Access modifiers changed from: private */
@@ -283,10 +283,8 @@ public class BinderService extends Service implements l {
             default:
                 if (!j.D.equals(str)) {
                     v.c("Unknown action: " + str);
-                    break;
                 } else {
                     A(context);
-                    break;
                 }
                 break;
         }
@@ -317,7 +315,7 @@ public class BinderService extends Service implements l {
 
     private static boolean t(Context context, String str, Parcelable parcelable) {
         Intent intentH = H(str, parcelable);
-        intentH.setComponent(new ComponentName(l.j, AdapterService.class.getName()));
+        intentH.setComponent(new ComponentName(pkg_f.l.CONST_PKG, AdapterService.class.getName()));
         return com.jozein.xedgepro.service.a.e(context, intentH);
     }
 
@@ -353,7 +351,7 @@ public class BinderService extends Service implements l {
         return m.n(bundle);
     }
 
-    private static boolean w(List<g.q> list) {
+    private static boolean w(List<pkg_g.q> list) {
         int size;
         return list != null && (size = list.size()) > 1 && (list.get(0).A & 255) == 0 && (list.get(size - 1).A & 255) == 1;
     }

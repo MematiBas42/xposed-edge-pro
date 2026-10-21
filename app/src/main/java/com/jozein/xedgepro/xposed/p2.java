@@ -7,9 +7,14 @@ import de.robv.android.xposed.XposedHelpers;
 import java.lang.reflect.Method;
 
 /* JADX INFO: loaded from: classes.dex */
-class p2 implements f.l {
+class p2 implements pkg_f.l {
+
+    @SuppressWarnings("unchecked")
+    static <E extends Throwable> void sneakyThrow(Throwable e) throws E {
+        throw (E) e;
+    }
     static final String A = Environment.getDataDirectory() + "/system/xedge/";
-    private static final String B = '[' + f.l.x + ']';
+    private static final String B = '[' + pkg_f.l.CONST_APP_TAG + ']';
     private static Context C;
     private static ClassLoader D;
     static final String z;
@@ -20,7 +25,7 @@ class p2 implements f.l {
         try {
             str = System.getenv("ANDROID_CACHE");
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
             str = null;
         }
         if (str != null) {
@@ -41,15 +46,20 @@ class p2 implements f.l {
         NoSuchMethodError noSuchMethodError = null;
         do {
             try {
-                return XposedHelpers.findMethodBestMatch(superclass, str, objArr).invoke(obj, objArr);
-            } catch (NoSuchMethodError e2) {
-                if (noSuchMethodError == null) {
-                    noSuchMethodError = e2;
+                try {
+                    return XposedHelpers.findMethodBestMatch(superclass, str, objArr).invoke(obj, objArr);
+                } catch (NoSuchMethodError e2) {
+                    if (noSuchMethodError == null) {
+                        noSuchMethodError = e2;
+                    }
+                    superclass = superclass.getSuperclass();
+                    if (superclass == Object.class) {
+                        throw noSuchMethodError;
+                    }
                 }
-                superclass = superclass.getSuperclass();
-                if (superclass == Object.class) {
-                    throw noSuchMethodError;
-                }
+            } catch (Throwable th) {
+                sneakyThrow(th);
+                return null;
             }
         } while (superclass != null);
         throw noSuchMethodError;
@@ -83,9 +93,9 @@ class p2 implements f.l {
             e(context.getClassLoader());
         }
         try {
-            C = context.createPackageContext(f.l.j, 2);
+            C = context.createPackageContext(pkg_f.l.CONST_PKG, 2);
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
         return C;
     }
@@ -96,12 +106,12 @@ class p2 implements f.l {
 
     static void f(String str) {
         XposedBridge.log(B + ' ' + str);
-        f.v.f(str);
+        pkg_f.v.f(str);
     }
 
     static void g(Throwable th) {
         String str = th.getClass().getName() + ": " + th.getMessage();
         XposedBridge.log(B + ' ' + str);
-        f.v.f(str);
+        pkg_f.v.f(str);
     }
 }

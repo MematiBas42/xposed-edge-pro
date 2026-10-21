@@ -12,9 +12,9 @@ import android.graphics.drawable.Icon;
 import android.os.Build;
 import android.os.IBinder;
 import com.jozein.xedgepro.R;
-import f.l;
-import f.v;
-import f.w;
+import pkg_f.l;
+import pkg_f.v;
+import pkg_f.w;
 
 /* JADX INFO: loaded from: classes.dex */
 public abstract class a extends Service implements l {
@@ -42,7 +42,7 @@ public abstract class a extends Service implements l {
 
     static {
         StringBuilder sb = new StringBuilder();
-        String str = l.k;
+        String str = pkg_f.l.CONST_PREFIX;
         sb.append(str);
         sb.append("STOP_SELF");
         B = sb.toString();
@@ -53,14 +53,14 @@ public abstract class a extends Service implements l {
 
     private w b() {
         if (D == null) {
-            String string = getString(l.y);
+            String string = getString(pkg_f.l.CONST_APP_NAME);
             D = w.a(string, string);
         }
         return D;
     }
 
     public static boolean e(Context context, Intent intent) {
-        intent.setPackage(l.j);
+        intent.setPackage(pkg_f.l.CONST_PKG);
         intent.addFlags(32);
         return (Build.VERSION.SDK_INT >= 26 ? context.startForegroundService(intent) : context.startService(intent)) != null;
     }
@@ -72,10 +72,10 @@ public abstract class a extends Service implements l {
         this.z = true;
         try {
             Notification.Builder builderB = b().c(0).d(w.A).b(this);
-            builderB.setContentTitle(getText(l.y)).setContentText(charSequence).setSmallIcon(i > 0 ? i : R.drawable.ic_launcher);
+            builderB.setContentTitle(getText(pkg_f.l.CONST_APP_NAME)).setContentText(charSequence).setSmallIcon(i > 0 ? i : R.drawable.ic_launcher);
             if (i > 0) {
                 if (Build.VERSION.SDK_INT >= 23) {
-                    builderB.setLargeIcon(Icon.createWithResource(l.j, i));
+                    builderB.setLargeIcon(Icon.createWithResource(pkg_f.l.CONST_PKG, i));
                 } else {
                     builderB.setLargeIcon(BitmapFactory.decodeResource(getResources(), i));
                 }

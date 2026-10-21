@@ -19,7 +19,7 @@ class y2 implements b0.a {
     private static final Property<b, Float> J = new a(Float.class, "setAnimateProgress");
     private final Context A;
     private final Handler B;
-    private final a.p C;
+    private final pkg_a.p C;
     private final w1 D;
     private final Paint E;
     private final Paint F;
@@ -27,13 +27,13 @@ class y2 implements b0.a {
     private final Runnable H = new Runnable() { // from class: com.jozein.xedgepro.xposed.u2
         @Override // java.lang.Runnable
         public final void run() {
-            this.z.q();
+            y2.this.q();
         }
     };
     private b I = null;
     private final Context z;
 
-    class a extends Property<b, Float> {
+    static class a extends Property<b, Float> {
         a(Class cls, String str) {
             super(cls, str);
         }
@@ -93,7 +93,7 @@ class y2 implements b0.a {
             } else {
                 this.K = 100.0f;
             }
-            float fM = (g.a0.m(y2.this.z) * y2.this.C.v(26, 100)) / 100.0f;
+            float fM = (pkg_g.a0.m(y2.this.z) * y2.this.C.v(26, 100)) / 100.0f;
             int i4 = (int) ((0.4f * fM) + 0.5f);
             int i5 = i4 / 2;
             int i6 = (int) ((i4 * 0.23f) + 0.5f);
@@ -255,16 +255,16 @@ class y2 implements b0.a {
             Drawable[] drawableArr = this.C;
             if (drawableArr != null) {
                 for (Drawable drawable : drawableArr) {
-                    if (drawable instanceof g.g) {
-                        ((g.g) drawable).c();
+                    if (drawable instanceof pkg_g.g) {
+                        ((pkg_g.g) drawable).c();
                     }
                 }
             }
             Drawable[] drawableArr2 = this.D;
             if (drawableArr2 != null) {
                 for (Drawable drawable2 : drawableArr2) {
-                    if (drawable2 instanceof g.g) {
-                        ((g.g) drawable2).c();
+                    if (drawable2 instanceof pkg_g.g) {
+                        ((pkg_g.g) drawable2).c();
                     }
                 }
             }
@@ -356,7 +356,7 @@ class y2 implements b0.a {
             if (z) {
                 i2 += 6;
             }
-            a.b bVarL = y2.this.C.l(this.z, i2);
+            pkg_a.b bVarL = y2.this.C.l(this.z, i2);
             int i3 = bVarL.z;
             if (i3 == 0 || i3 == 1) {
                 return;
@@ -413,12 +413,12 @@ class y2 implements b0.a {
             try {
                 b(canvas);
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
         }
     }
 
-    y2(a.p pVar, w1 w1Var, Context context, Handler handler) {
+    y2(pkg_a.p pVar, w1 w1Var, Context context, Handler handler) {
         this.C = pVar;
         this.D = w1Var;
         this.B = handler;
@@ -461,12 +461,12 @@ class y2 implements b0.a {
         if (iV2 == -1) {
             iV2 = 0;
         }
-        g.h hVarA = g.h.a();
+        pkg_g.h hVarA = pkg_g.h.a();
         Drawable[] drawableArr = new Drawable[6];
         Drawable[] drawableArr2 = new Drawable[6];
         int i3 = -1;
         for (int i4 = 0; i4 < 6; i4++) {
-            a.b bVarL = this.C.l(i, i4);
+            pkg_a.b bVarL = this.C.l(i, i4);
             int i5 = bVarL.z;
             if (i5 != 0 && i5 != 1) {
                 Drawable drawableM = bVarL.m(this.A);
@@ -474,7 +474,7 @@ class y2 implements b0.a {
                 drawableArr[i4] = drawableM;
                 i3 = i4;
             }
-            a.b bVarL2 = this.C.l(i, i4 + 6);
+            pkg_a.b bVarL2 = this.C.l(i, i4 + 6);
             int i6 = bVarL2.z;
             if (i6 != 0 && i6 != 1) {
                 Drawable drawableM2 = bVarL2.m(this.A);
@@ -506,7 +506,7 @@ class y2 implements b0.a {
         this.B.post(new Runnable() { // from class: com.jozein.xedgepro.xposed.v2
             @Override // java.lang.Runnable
             public final void run() {
-                this.z.t(f2, f3);
+                y2.this.t(f2, f3);
             }
         });
     }
@@ -521,7 +521,7 @@ class y2 implements b0.a {
         this.B.post(new Runnable() { // from class: com.jozein.xedgepro.xposed.w2
             @Override // java.lang.Runnable
             public final void run() {
-                this.z.r(f2, f3);
+                y2.this.r(f2, f3);
             }
         });
     }
@@ -531,7 +531,7 @@ class y2 implements b0.a {
         this.B.post(new Runnable() { // from class: com.jozein.xedgepro.xposed.x2
             @Override // java.lang.Runnable
             public final void run() {
-                this.z.s(i, f2, f3);
+                y2.this.s(i, f2, f3);
             }
         });
     }

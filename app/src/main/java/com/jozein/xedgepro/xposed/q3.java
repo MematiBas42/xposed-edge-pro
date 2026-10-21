@@ -112,7 +112,7 @@ class q3 {
 
     private static void d(AccessibilityNodeInfo accessibilityNodeInfo, List<a> list) {
         if (accessibilityNodeInfo == null) {
-            f.v.c("node == null");
+            pkg_f.v.c("node == null");
             return;
         }
         int i = 0;
@@ -175,7 +175,7 @@ class q3 {
 
     private static void h(View view, int i, int i2, List<a> list) {
         if (view == null) {
-            f.v.c("view == null");
+            pkg_f.v.c("view == null");
             return;
         }
         f214b++;
@@ -217,7 +217,7 @@ class q3 {
                             return;
                         }
                     } catch (Throwable th) {
-                        f.v.c(th.toString());
+                        pkg_f.v.c(th.toString());
                     }
                 }
                 d(view.createAccessibilityNodeInfo(), list);
@@ -249,7 +249,7 @@ class q3 {
     private static void j(AccessibilityNodeProvider accessibilityNodeProvider, AccessibilityNodeInfo accessibilityNodeInfo, int i, int i2, List<a> list) {
         long jLongValue;
         if (accessibilityNodeInfo == null) {
-            f.v.c("node == null");
+            pkg_f.v.c("node == null");
             return;
         }
         f214b++;
@@ -264,19 +264,24 @@ class q3 {
                 }
                 SparseLongArray sparseLongArray = null;
                 for (int i3 = childCount - 1; i3 >= 0; i3--) {
-                    if (Build.VERSION.SDK_INT >= 21) {
-                        if (f216d == null) {
-                            f216d = XposedHelpers.findMethodExact(AccessibilityNodeInfo.class, "getChildId", new Class[]{Integer.TYPE});
-                        }
-                        jLongValue = ((Long) f216d.invoke(accessibilityNodeInfo, Integer.valueOf(i3))).longValue();
-                    } else {
-                        if (sparseLongArray == null) {
-                            if (f217e == null) {
-                                f217e = XposedHelpers.findMethodExact(AccessibilityNodeInfo.class, "getChildNodeIds", new Class[0]);
+                    try {
+                        if (Build.VERSION.SDK_INT >= 21) {
+                            if (f216d == null) {
+                                f216d = XposedHelpers.findMethodExact(AccessibilityNodeInfo.class, "getChildId", new Class[]{Integer.TYPE});
                             }
-                            sparseLongArray = (SparseLongArray) f217e.invoke(accessibilityNodeInfo, new Object[0]);
+                            jLongValue = ((Long) f216d.invoke(accessibilityNodeInfo, Integer.valueOf(i3))).longValue();
+                        } else {
+                            if (sparseLongArray == null) {
+                                if (f217e == null) {
+                                    f217e = XposedHelpers.findMethodExact(AccessibilityNodeInfo.class, "getChildNodeIds", new Class[0]);
+                                }
+                                sparseLongArray = (SparseLongArray) f217e.invoke(accessibilityNodeInfo, new Object[0]);
+                            }
+                            jLongValue = sparseLongArray.get(i3);
                         }
-                        jLongValue = sparseLongArray.get(i3);
+                    } catch (Throwable th) {
+                        p2.sneakyThrow(th);
+                        return;
                     }
                     j(accessibilityNodeProvider, accessibilityNodeProvider.createAccessibilityNodeInfo((int) (jLongValue >> 32)), i, i2, list);
                 }
@@ -286,7 +291,7 @@ class q3 {
 
     private static boolean k(int i, int i2, Rect rect) {
         if (f218f <= 0) {
-            float fJ = g.a0.j();
+            float fJ = pkg_g.a0.j();
             f219g = (int) (fJ / 10.0f);
             f218f = (int) (fJ / 80.0f);
         }

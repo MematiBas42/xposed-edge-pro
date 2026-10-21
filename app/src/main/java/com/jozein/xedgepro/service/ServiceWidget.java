@@ -3,17 +3,17 @@ package com.jozein.xedgepro.service;
 import android.content.ComponentName;
 import android.content.Intent;
 import com.jozein.xedgepro.R;
-import f.l;
-import g.b0;
+import pkg_f.l;
+import pkg_g.b0;
 
 /* JADX INFO: loaded from: classes.dex */
 public class ServiceWidget extends a {
-    private static final String G = l.k + "WIDGET";
+    private static final String G = pkg_f.l.CONST_PREFIX + "WIDGET";
     private b0 F;
 
     public static Intent f(int i, int i2) {
         Intent intent = new Intent(G);
-        intent.setComponent(new ComponentName(l.j, ServiceWidget.class.getName()));
+        intent.setComponent(new ComponentName(pkg_f.l.CONST_PKG, ServiceWidget.class.getName()));
         intent.putExtra("widget_id", i);
         intent.putExtra("dismiss_delay", i2);
         return intent;
@@ -41,7 +41,7 @@ public class ServiceWidget extends a {
         b0Var.r(new Runnable() { // from class: b.c
             @Override // java.lang.Runnable
             public final void run() {
-                this.z.stopSelf();
+                ServiceWidget.this.stopSelf();
             }
         });
     }

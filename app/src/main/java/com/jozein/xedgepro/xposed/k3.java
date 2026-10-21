@@ -21,7 +21,7 @@ class k3 extends j2 {
     }
 
     void C(String str) {
-        B(new ComponentName(f.l.j, str));
+        B(new ComponentName(pkg_f.l.CONST_PKG, str));
     }
 
     boolean D() {
@@ -29,7 +29,7 @@ class k3 extends j2 {
             r("expandNotificationsPanel", new Object[0]);
             return true;
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
             return false;
         }
     }
@@ -46,7 +46,7 @@ class k3 extends j2 {
             r("expandSettingsPanel", new Object[0]);
             return true;
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
             return false;
         }
     }
@@ -59,6 +59,6 @@ class k3 extends j2 {
     }
 
     void G(String str) {
-        F(new ComponentName(f.l.j, str));
+        F(new ComponentName(pkg_f.l.CONST_PKG, str));
     }
 }

@@ -15,7 +15,7 @@ class i2 extends p2 {
         a() {
         }
 
-        protected void beforeHookedMethod(XC_MethodHook.MethodHookParam methodHookParam) {
+        protected void beforeHookedMethod(XC_MethodHook.MethodHookParam methodHookParam) throws Throwable {
             float axisValue = ((MotionEvent) methodHookParam.args[0]).getAxisValue(9);
             if (axisValue == 100000.0f || axisValue == -100000.0f) {
                 ScrollView scrollView = (ScrollView) methodHookParam.thisObject;
@@ -33,7 +33,7 @@ class i2 extends p2 {
         b() {
         }
 
-        protected void beforeHookedMethod(XC_MethodHook.MethodHookParam methodHookParam) {
+        protected void beforeHookedMethod(XC_MethodHook.MethodHookParam methodHookParam) throws Throwable {
             float axisValue = ((MotionEvent) methodHookParam.args[0]).getAxisValue(9);
             if (axisValue == 100000.0f || axisValue == -100000.0f) {
                 AbsListView absListView = (AbsListView) methodHookParam.thisObject;
@@ -60,7 +60,7 @@ class i2 extends p2 {
             return 0;
         }
 
-        protected void beforeHookedMethod(XC_MethodHook.MethodHookParam methodHookParam) {
+        protected void beforeHookedMethod(XC_MethodHook.MethodHookParam methodHookParam) throws Throwable {
             float axisValue = ((MotionEvent) methodHookParam.args[0]).getAxisValue(9);
             if (axisValue == 100000.0f || axisValue == -100000.0f) {
                 WebView webView = (WebView) methodHookParam.thisObject;

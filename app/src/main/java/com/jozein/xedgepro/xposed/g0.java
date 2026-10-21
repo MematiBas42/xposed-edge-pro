@@ -26,7 +26,7 @@ class g0 {
     private boolean f123f = false;
 
     /* JADX INFO: renamed from: g, reason: collision with root package name */
-    private final ArrayList<g.q> f124g = new ArrayList<>(256);
+    private final ArrayList<pkg_g.q> f124g = new ArrayList<>(256);
 
     g0(w1 w1Var) {
         this.f118a = w1Var;
@@ -37,7 +37,7 @@ class g0 {
         int actionMasked = motionEvent.getActionMasked();
         if (!this.f120c) {
             if (actionMasked != 0) {
-                f.v.d(new IllegalStateException("Recording MotionEvent while not downed!"));
+                pkg_f.v.d(new IllegalStateException("Recording MotionEvent while not downed!"));
                 return;
             }
             this.f120c = true;
@@ -49,7 +49,7 @@ class g0 {
                 this.f119b.i();
             }
         }
-        g.q qVar = new g.q(motionEvent, this.f122e);
+        pkg_g.q qVar = new pkg_g.q(motionEvent, this.f122e);
         this.f124g.add(qVar);
         if (this.f121d) {
             this.f119b.d(qVar);
@@ -68,7 +68,7 @@ class g0 {
                 try {
                     BinderService.m(this.f118a.T1(), this.f123f, this.f124g);
                 } catch (Throwable th) {
-                    f.v.d(th);
+                    pkg_f.v.d(th);
                 }
             }
             this.f124g.clear();

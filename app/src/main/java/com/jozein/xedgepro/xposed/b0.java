@@ -8,11 +8,11 @@ import android.view.ViewConfiguration;
 import de.robv.android.xposed.XC_MethodHook;
 
 /* JADX INFO: loaded from: classes.dex */
-class b0 extends z implements a.p.b {
+class b0 extends z implements pkg_a.p.EdgeRegions {
     private static final float n0 = -((float) Math.tan(0.8726646259971648d));
     private final MotionEvent.PointerProperties[] F;
     private final MotionEvent.PointerCoords[] G;
-    private final a.p H;
+    private final pkg_a.p H;
     private final w1 I;
     private final m2 J;
     private final Point K;
@@ -166,7 +166,7 @@ class b0 extends z implements a.p.b {
     }
 
     private XC_MethodHook.MethodHookParam D(XC_MethodHook.MethodHookParam methodHookParam) {
-        if (z.E) {
+        if (com.jozein.xedgepro.xposed.z.E) {
             Object[] objArr = methodHookParam.args;
             MotionEvent motionEvent = (MotionEvent) objArr[0];
             objArr[0] = MotionEvent.obtain(motionEvent);
@@ -176,7 +176,7 @@ class b0 extends z implements a.p.b {
     }
 
     private boolean E(XC_MethodHook.MethodHookParam methodHookParam) {
-        if (!z.E) {
+        if (!com.jozein.xedgepro.xposed.z.E) {
             return false;
         }
         g(D(methodHookParam));
@@ -214,7 +214,7 @@ class b0 extends z implements a.p.b {
             return false;
         }
         this.b0 = true;
-        this.c0 = z.E;
+        this.c0 = com.jozein.xedgepro.xposed.z.E;
         this.U = D(methodHookParam);
         long jU = this.H.u(11);
         this.Q = jU;
@@ -231,7 +231,7 @@ class b0 extends z implements a.p.b {
     }
 
     private boolean H(XC_MethodHook.MethodHookParam methodHookParam, MotionEvent motionEvent) {
-        a.b bVarW = w(this.Z);
+        pkg_a.b bVarW = w(this.Z);
         if (bVarW.z == 0) {
             this.b0 = false;
             XC_MethodHook.MethodHookParam methodHookParam2 = this.U;
@@ -250,7 +250,7 @@ class b0 extends z implements a.p.b {
         int i = bVarW.z;
         if (i != 1 && i != 51 && i != 68 && i != 106) {
             if (i == 107) {
-                bVarW = ((a.b.h3) bVarW).I[v(this.Z)];
+                bVarW = ((pkg_a.b.h3) bVarW).I[v(this.Z)];
             }
             N(bVarW, u(this.Z));
         }
@@ -326,7 +326,7 @@ class b0 extends z implements a.p.b {
                 return G(methodHookParam, motionEvent);
             }
             if (eventTime2 < this.R) {
-                a.b bVarW = w(1);
+                pkg_a.b bVarW = w(1);
                 if (bVarW.z == 0) {
                     g(this.U);
                     g(this.V);
@@ -355,7 +355,7 @@ class b0 extends z implements a.p.b {
     }
 
     private void L() {
-        a.b bVarW = w(0);
+        pkg_a.b bVarW = w(0);
         if (bVarW.z == 0) {
             g(this.U);
             g(this.V);
@@ -412,7 +412,7 @@ class b0 extends z implements a.p.b {
             l(this.R);
             return true;
         }
-        a.b bVarW = w(0);
+        pkg_a.b bVarW = w(0);
         if (bVarW.z == 0) {
             g(this.U);
             this.U = null;
@@ -430,7 +430,7 @@ class b0 extends z implements a.p.b {
         return true;
     }
 
-    private void N(a.b bVar, int i) {
+    private void N(pkg_a.b bVar, int i) {
         if (bVar.z != 65537) {
             this.I.v3(bVar, i, null);
         } else {
@@ -438,7 +438,7 @@ class b0 extends z implements a.p.b {
         }
     }
 
-    private a.b O(int i) {
+    private pkg_a.b O(int i) {
         return x(i, true);
     }
 
@@ -482,7 +482,7 @@ class b0 extends z implements a.p.b {
     /* JADX WARN: Code duplicated, block: B:34:0x008d A[Catch: all -> 0x00a8, TryCatch #1 {all -> 0x00a8, blocks: (B:3:0x0003, B:21:0x004a, B:18:0x001f, B:20:0x0023, B:28:0x0076, B:32:0x0087, B:37:0x009b, B:34:0x008d, B:36:0x0096, B:23:0x0050, B:24:0x005a, B:25:0x005d, B:26:0x0066, B:27:0x006f, B:38:0x00a5), top: B:51:0x0003 }] */
     /* JADX WARN: Code duplicated, block: B:35:0x0093  */
     /* JADX WARN: Code duplicated, block: B:36:0x0096 A[Catch: all -> 0x00a8, TryCatch #1 {all -> 0x00a8, blocks: (B:3:0x0003, B:21:0x004a, B:18:0x001f, B:20:0x0023, B:28:0x0076, B:32:0x0087, B:37:0x009b, B:34:0x008d, B:36:0x0096, B:23:0x0050, B:24:0x005a, B:25:0x005d, B:26:0x0066, B:27:0x006f, B:38:0x00a5), top: B:51:0x0003 }] */
-    private void s(a.b bVar, int i, int i2, long j) {
+    private void s(pkg_a.b bVar, int i, int i2, long j) {
         a aVarZ1;
         int i3;
         int i4;
@@ -497,18 +497,18 @@ class b0 extends z implements a.p.b {
             if (i7 == 51) {
                 aVarZ1 = this.I.Z1();
             } else if (i7 == 68) {
-                aVarZ1 = this.I.S1((a.b.z2) bVar);
+                aVarZ1 = this.I.S1((pkg_a.b.z2) bVar);
             } else {
                 if (i7 != 86) {
                     if (i7 != 106) {
-                        if (i7 == 107 && f.l.r) {
-                            this.f0 = new m3((a.b.h3) bVar, this.I, v(i2), this.H.v(29, 300), this.O, this.H.o(40));
+                        if (i7 == 107 && pkg_f.l.CONST_IS_PRO) {
+                            this.f0 = new m3((pkg_a.b.h3) bVar, this.I, v(i2), this.H.v(29, 300), this.O, this.H.o(40));
                         }
                         this.f0 = null;
                         N(bVar, i);
                         return;
                     }
-                    aVarZ1 = this.I.a2(((a.b.q0) bVar).I);
+                    aVarZ1 = this.I.a2(((pkg_a.b.q0) bVar).I);
                     i3 = (int) this.W;
                     i4 = (int) this.X;
                     i5 = this.Y;
@@ -549,7 +549,7 @@ class b0 extends z implements a.p.b {
                     }
                     this.f0.e(i6, i3, i4, j);
                 }
-                aVarZ1 = this.I.f2((a.b.i3) bVar);
+                aVarZ1 = this.I.f2((pkg_a.b.i3) bVar);
             }
             this.f0 = aVarZ1;
             i3 = (int) this.W;
@@ -592,7 +592,7 @@ class b0 extends z implements a.p.b {
             }
             this.f0.e(i6, i3, i4, j);
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
             try {
                 a aVar = this.f0;
                 if (aVar != null) {
@@ -600,7 +600,7 @@ class b0 extends z implements a.p.b {
                     this.f0 = null;
                 }
             } catch (Throwable th2) {
-                f.v.d(th2);
+                pkg_f.v.d(th2);
             }
         }
     }
@@ -618,7 +618,7 @@ class b0 extends z implements a.p.b {
             }
             this.f0 = null;
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
     }
 
@@ -648,18 +648,18 @@ class b0 extends z implements a.p.b {
         return 3;
     }
 
-    private a.b w(int i) {
+    private pkg_a.b w(int i) {
         return x(i, false);
     }
 
-    private a.b x(int i, boolean z) {
+    private pkg_a.b x(int i, boolean z) {
         int i2 = this.Y;
         if (i2 == -2) {
-            return i == 0 ? new a.b.f3() : a.b.e();
+            return i == 0 ? new pkg_a.b.f3() : pkg_a.b.e();
         }
-        a.b bVarY4 = this.H.s(i2) ? this.I.y4(this.H.i(this.Y, i), z) : a.b.e();
+        pkg_a.b bVarY4 = this.H.s(i2) ? this.I.y4(this.H.i(this.Y, i), z) : pkg_a.b.e();
         if (bVarY4.z == 0) {
-            int iH = a.p.h(this.Y);
+            int iH = pkg_a.p.h(this.Y);
             if (this.H.s(iH)) {
                 return this.I.y4(this.H.i(iH, i), z);
             }
@@ -800,7 +800,7 @@ class b0 extends z implements a.p.b {
 
     @Override // com.jozein.xedgepro.xposed.z
     protected void f() {
-        a.b bVarW = w(2);
+        pkg_a.b bVarW = w(2);
         if (bVarW.z == 0) {
             this.b0 = false;
             g(this.U);
@@ -834,7 +834,7 @@ class b0 extends z implements a.p.b {
                 ((MotionEvent) methodHookParam.args[0]).recycle();
             }
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
         this.f0 = null;
         this.U = null;

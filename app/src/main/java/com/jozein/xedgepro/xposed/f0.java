@@ -13,7 +13,7 @@ class f0 {
     private final Handler f107b;
 
     /* JADX INFO: renamed from: c, reason: collision with root package name */
-    private g.r f108c = null;
+    private pkg_g.r f108c = null;
 
     /* JADX INFO: renamed from: d, reason: collision with root package name */
     private final int f109d;
@@ -29,8 +29,8 @@ class f0 {
     }
 
     /* JADX INFO: Access modifiers changed from: private */
-    public /* synthetic */ void f(g.q qVar) {
-        g.r rVar = this.f108c;
+    public /* synthetic */ void f(pkg_g.q qVar) {
+        pkg_g.r rVar = this.f108c;
         if (rVar != null) {
             rVar.e(qVar);
         }
@@ -45,18 +45,18 @@ class f0 {
     /* JADX INFO: Access modifiers changed from: private */
     public /* synthetic */ void h() {
         if (this.f108c == null) {
-            g.r rVar = new g.r(this.f106a, this.f109d);
+            pkg_g.r rVar = new pkg_g.r(this.f106a, this.f109d);
             this.f108c = rVar;
             rVar.l(1, 0, false);
             t3.n().j(this.f108c, this.f110e);
         }
     }
 
-    public void d(final g.q qVar) {
+    public void d(final pkg_g.q qVar) {
         this.f107b.post(new Runnable() { // from class: com.jozein.xedgepro.xposed.e0
             @Override // java.lang.Runnable
             public final void run() {
-                this.z.f(qVar);
+                f(qVar);
             }
         });
     }
@@ -65,7 +65,7 @@ class f0 {
         this.f107b.post(new Runnable() { // from class: com.jozein.xedgepro.xposed.c0
             @Override // java.lang.Runnable
             public final void run() {
-                this.z.g();
+                g();
             }
         });
     }
@@ -74,7 +74,7 @@ class f0 {
         this.f107b.post(new Runnable() { // from class: com.jozein.xedgepro.xposed.d0
             @Override // java.lang.Runnable
             public final void run() {
-                this.z.h();
+                h();
             }
         });
     }

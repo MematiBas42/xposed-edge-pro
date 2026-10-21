@@ -82,7 +82,7 @@ class v {
             list.clear();
             this.f248e = iArr;
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
     }
 
@@ -108,7 +108,7 @@ class v {
                 c().registerDisplayListener(aVar, this.f244a.U1());
                 this.f247d = aVar;
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
         }
     }

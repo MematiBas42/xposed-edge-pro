@@ -1,27 +1,27 @@
 package com.jozein.xedgepro.ui;
 
-import a.b;
+import pkg_a.b;
 import android.os.Bundle;
 import android.view.View;
-import d.d;
-import e.j0;
-import f.l0;
-import f.v;
+import pkg_d.d;
+import pkg_e.j0;
+import pkg_f.l0;
+import pkg_f.v;
 
 /* JADX INFO: loaded from: classes.dex */
 public class ActivityShortcut extends j0 {
 
     public static class a extends d {
-        @Override // e.j0.c
+        @Override // pkg_e.j0.c
         protected void A() {
         }
 
-        @Override // e.j0.c
+        @Override // pkg_e.j0.c
         protected void U(Bundle bundle) {
             ((ActivityShortcut) getActivity()).A(bundle);
         }
 
-        @Override // e.j0.c
+        @Override // pkg_e.j0.c
         protected void z(View view) {
         }
     }
@@ -29,7 +29,7 @@ public class ActivityShortcut extends j0 {
     public void A(Bundle bundle) {
         String str;
         if (bundle != null) {
-            b bVar = (b) bundle.getParcelable("result");
+            pkg_a.b bVar = (pkg_a.b) bundle.getParcelable("result");
             if (bVar == null) {
                 str = "Result action: null!";
             } else {
@@ -43,7 +43,7 @@ public class ActivityShortcut extends j0 {
         finish();
     }
 
-    @Override // e.j0
+    @Override // pkg_e.j0
     protected j0.c v() {
         return new a().G1(3);
     }

@@ -30,7 +30,7 @@ class n2 {
             ArrayList<String> arrayListB = b();
             return (String[]) arrayListB.toArray(new String[arrayListB.size()]);
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
             try {
                 List<WifiConfiguration> configuredNetworks = ((WifiManager) context.getSystemService("wifi")).getConfiguredNetworks();
                 int size = configuredNetworks.size();
@@ -40,119 +40,86 @@ class n2 {
                 }
                 return strArr;
             } catch (Throwable th2) {
-                f.v.d(th2);
+                pkg_f.v.d(th2);
                 return null;
             }
         }
     }
 
     private static ArrayList<String> b() throws Throwable {
-        InputStreamReader inputStreamReader;
-        FileInputStream fileInputStream;
         String strDecode;
         String text;
         int i = Build.VERSION.SDK_INT;
-        BufferedReader bufferedReader = null;
-        FileInputStream fileInputStream2 = null;
-        bufferedReader = null;
-        bufferedReader = null;
         if (i >= 26) {
             StringBuilder sb = new StringBuilder();
             sb.append(Environment.getDataDirectory());
             sb.append(i > 29 ? "/misc/apexdata/com.android.wifi/WifiConfigStore.xml" : "/misc/wifi/WifiConfigStore.xml");
             File file = new File(sb.toString());
             XmlPullParser xmlPullParserNewPullParser = Xml.newPullParser();
+            FileInputStream fileInputStream3 = new FileInputStream(file);
             try {
-                FileInputStream fileInputStream3 = new FileInputStream(file);
-                try {
-                    xmlPullParserNewPullParser.setInput(fileInputStream3, "UTF-8");
-                    ArrayList<String> arrayList = new ArrayList<>();
-                    String attributeValue = null;
-                    for (int eventType = xmlPullParserNewPullParser.getEventType(); eventType != 1; eventType = xmlPullParserNewPullParser.next()) {
-                        if (eventType == 0 || eventType == 2) {
-                            if (xmlPullParserNewPullParser.getAttributeCount() > 0) {
-                                attributeValue = xmlPullParserNewPullParser.getAttributeValue(0);
-                            }
-                        } else if (eventType == 3) {
-                            attributeValue = null;
-                        } else if (eventType == 4 && "SSID".equals(attributeValue) && (text = xmlPullParserNewPullParser.getText()) != null) {
-                            arrayList.add(f(text.trim()));
+                xmlPullParserNewPullParser.setInput(fileInputStream3, "UTF-8");
+                ArrayList<String> arrayList = new ArrayList<>();
+                String attributeValue = null;
+                for (int eventType = xmlPullParserNewPullParser.getEventType(); eventType != 1; eventType = xmlPullParserNewPullParser.next()) {
+                    if (eventType == 0 || eventType == 2) {
+                        if (xmlPullParserNewPullParser.getAttributeCount() > 0) {
+                            attributeValue = xmlPullParserNewPullParser.getAttributeValue(0);
                         }
+                    } else if (eventType == 3) {
+                        attributeValue = null;
+                    } else if (eventType == 4 && "SSID".equals(attributeValue) && (text = xmlPullParserNewPullParser.getText()) != null) {
+                        arrayList.add(f(text.trim()));
                     }
-                    fileInputStream3.close();
-                    return arrayList;
-                } catch (Throwable th) {
-                    th = th;
-                    fileInputStream2 = fileInputStream3;
-                    if (fileInputStream2 != null) {
-                        fileInputStream2.close();
-                    }
-                    throw th;
                 }
-            } catch (Throwable th2) {
-                th = th2;
+                fileInputStream3.close();
+                return arrayList;
+            } finally {
+                fileInputStream3.close();
             }
         } else {
+            FileInputStream fileInputStream = new FileInputStream(new File(Environment.getDataDirectory() + "/misc/wifi/wpa_supplicant.conf"));
             try {
-                fileInputStream = new FileInputStream(new File(Environment.getDataDirectory() + "/misc/wifi/wpa_supplicant.conf"));
+                InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
                 try {
-                    inputStreamReader = new InputStreamReader(fileInputStream);
+                    BufferedReader bufferedReader2 = new BufferedReader(inputStreamReader);
                     try {
-                        BufferedReader bufferedReader2 = new BufferedReader(inputStreamReader);
-                        try {
-                            ArrayList<String> arrayList2 = new ArrayList<>();
-                            while (true) {
-                                String line = bufferedReader2.readLine();
-                                if (line == null) {
-                                    bufferedReader2.close();
-                                    inputStreamReader.close();
-                                    fileInputStream.close();
-                                    return arrayList2;
-                                }
-                                String strTrim = line.trim();
-                                if (strTrim.startsWith("ssid=")) {
-                                    if (strTrim.charAt(5) == '\"') {
-                                        strDecode = strTrim.substring(6, strTrim.length() - 1);
-                                    } else {
-                                        StringBuilder sb2 = new StringBuilder();
-                                        String strSubstring = strTrim.substring(5);
-                                        int length = strSubstring.length();
-                                        for (int i2 = 0; i2 < length; i2++) {
-                                            if (i2 % 2 == 0) {
-                                                sb2.append('%');
-                                            }
-                                            sb2.append(strSubstring.charAt(i2));
-                                        }
-                                        strDecode = Uri.decode(sb2.toString());
-                                    }
-                                    arrayList2.add(strDecode);
-                                }
-                            }
-                        } catch (Throwable th3) {
-                            th = th3;
-                            bufferedReader = bufferedReader2;
-                            if (bufferedReader != null) {
-                                bufferedReader.close();
-                            }
-                            if (inputStreamReader != null) {
+                        ArrayList<String> arrayList2 = new ArrayList<>();
+                        while (true) {
+                            String line = bufferedReader2.readLine();
+                            if (line == null) {
+                                bufferedReader2.close();
                                 inputStreamReader.close();
-                            }
-                            if (fileInputStream != null) {
                                 fileInputStream.close();
+                                return arrayList2;
                             }
-                            throw th;
+                            String strTrim = line.trim();
+                            if (strTrim.startsWith("ssid=")) {
+                                if (strTrim.charAt(5) == '"') {
+                                    strDecode = strTrim.substring(6, strTrim.length() - 1);
+                                } else {
+                                    StringBuilder sb2 = new StringBuilder();
+                                    String strSubstring = strTrim.substring(5);
+                                    int length = strSubstring.length();
+                                    for (int i2 = 0; i2 < length; i2++) {
+                                        if (i2 % 2 == 0) {
+                                            sb2.append('%');
+                                        }
+                                        sb2.append(strSubstring.charAt(i2));
+                                    }
+                                    strDecode = Uri.decode(sb2.toString());
+                                }
+                                arrayList2.add(strDecode);
+                            }
                         }
-                    } catch (Throwable th4) {
-                        th = th4;
+                    } finally {
+                        bufferedReader2.close();
                     }
-                } catch (Throwable th5) {
-                    th = th5;
-                    inputStreamReader = null;
+                } finally {
+                    inputStreamReader.close();
                 }
-            } catch (Throwable th6) {
-                th = th6;
-                inputStreamReader = null;
-                fileInputStream = null;
+            } finally {
+                fileInputStream.close();
             }
         }
     }
@@ -165,7 +132,7 @@ class n2 {
                 XposedHelpers.callMethod(appOpsManager, "setMode", new Object[]{Integer.valueOf(i), Integer.valueOf(applicationInfo.uid), str, Integer.valueOf(i2)});
             }
         } catch (Throwable th) {
-            f.v.d(th);
+            pkg_f.v.d(th);
         }
     }
 
@@ -182,11 +149,11 @@ class n2 {
             c(context, str, 70, i);
             c(context, str, 76, i);
             if (i2 >= 30) {
-                if (f.p0.q(context, str, "android.permission.QUERY_ALL_PACKAGES")) {
+                if (pkg_f.p0.q(context, str, "android.permission.QUERY_ALL_PACKAGES")) {
                     c(context, str, 91, i);
                 }
-                if (f.p0.q(context, str, "android.permission.MANAGE_EXTERNAL_STORAGE")) {
-                    c(context, f.l.j, 92, i);
+                if (pkg_f.p0.q(context, str, "android.permission.MANAGE_EXTERNAL_STORAGE")) {
+                    c(context, pkg_f.l.CONST_PKG, 92, i);
                 }
             }
         }
@@ -218,7 +185,7 @@ class n2 {
                     }
                 }
             } catch (Throwable th) {
-                f.v.d(th);
+                pkg_f.v.d(th);
             }
         }
     }
