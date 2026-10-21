@@ -10,8 +10,17 @@ android {
         applicationId = "com.jozein.xedgepro"
         minSdk = 21
         targetSdk = 35
-        versionCode = 801
+        versionCode = 82
         versionName = "8.0.1"
+    }
+
+    signingConfigs {
+        create("release") {
+            storeFile = file("${rootDir}/keystore/release.jks")
+            storePassword = "xedgepro"
+            keyAlias = "xedgepro"
+            keyPassword = "xedgepro"
+        }
     }
 
     buildTypes {
@@ -20,6 +29,7 @@ android {
         }
         release {
             isMinifyEnabled = false
+            signingConfig = signingConfigs.getByName("release")
         }
     }
 
