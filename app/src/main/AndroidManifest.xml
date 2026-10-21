@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.FLASHLIGHT"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"/>
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false"/>
+    <uses-feature android:name="android.software.leanback" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera" android:required="false"/>
+    <application android:allowBackup="true" android:banner="@mipmap/ic_launcher" android:icon="@mipmap/ic_launcher" android:label="@string/app_name_pro" android:name="com.jozein.xedgepro.ApplicationMain" android:requestLegacyExternalStorage="true" android:resizeableActivity="true" android:supportsRtl="false" android:theme="@style/AppThemeAuto">
+        <activity android:exported="true" android:launchMode="singleTask" android:name="com.jozein.xedgepro.ui.ActivityMain" android:resizeableActivity="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:exported="true" android:label="@string/shortcut_name_pro" android:name="com.jozein.xedgepro.ui.ActivityShortcut" android:noHistory="true" android:resizeableActivity="true">
+            <intent-filter>
+                <action android:name="android.intent.action.CREATE_SHORTCUT"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:exported="true" android:launchMode="standard" android:name="com.jozein.xedgepro.ui.ActivityPerformAction" android:noHistory="true" android:theme="@android:style/Theme.NoDisplay"/>
+        <service android:name="com.jozein.xedgepro.service.ServiceTorch"/>
+        <service android:name="com.jozein.xedgepro.service.ServiceWidget"/>
+        <service android:exported="true" android:name="com.jozein.xedgepro.service.AdapterService"/>
+        <service android:exported="true" android:name="com.jozein.xedgepro.service.BinderService"/>
+        <service android:exported="true" android:icon="@drawable/ic_launcher" android:label="@string/tile_1" android:name="com.jozein.xedgepro.service.SuperTileService$Tile1" android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE"/>
+            </intent-filter>
+        </service>
+        <service android:exported="true" android:icon="@drawable/ic_launcher" android:label="@string/tile_2" android:name="com.jozein.xedgepro.service.SuperTileService$Tile2" android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE"/>
+            </intent-filter>
+        </service>
+        <service android:exported="true" android:icon="@drawable/ic_launcher" android:label="@string/tile_3" android:name="com.jozein.xedgepro.service.SuperTileService$Tile3" android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE"/>
+            </intent-filter>
+        </service>
+        <service android:exported="true" android:icon="@drawable/ic_launcher" android:label="@string/tile_4" android:name="com.jozein.xedgepro.service.SuperTileService$Tile4" android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE"/>
+            </intent-filter>
+        </service>
+        <service android:exported="true" android:icon="@drawable/ic_launcher" android:label="@string/tile_5" android:name="com.jozein.xedgepro.service.SuperTileService$Tile5" android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE"/>
+            </intent-filter>
+        </service>
+        <service android:exported="true" android:icon="@drawable/ic_launcher" android:label="@string/tile_6" android:name="com.jozein.xedgepro.service.SuperTileService$Tile6" android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE"/>
+            </intent-filter>
+        </service>
+        <service android:exported="true" android:icon="@drawable/ic_launcher" android:label="@string/tile_7" android:name="com.jozein.xedgepro.service.SuperTileService$Tile7" android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE"/>
+            </intent-filter>
+        </service>
+        <service android:exported="true" android:icon="@drawable/ic_launcher" android:label="@string/tile_8" android:name="com.jozein.xedgepro.service.SuperTileService$Tile8" android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE"/>
+            </intent-filter>
+        </service>
+        <service android:exported="true" android:icon="@drawable/ic_launcher" android:label="@string/tile_9" android:name="com.jozein.xedgepro.service.SuperTileService$Tile9" android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE"/>
+            </intent-filter>
+        </service>
+        <service android:exported="true" android:icon="@drawable/ic_launcher" android:label="@string/tile_10" android:name="com.jozein.xedgepro.service.SuperTileService$Tile10" android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE"/>
+            </intent-filter>
+        </service>
+        <service android:exported="true" android:icon="@drawable/ic_launcher" android:label="@string/tile_11" android:name="com.jozein.xedgepro.service.SuperTileService$Tile11" android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE"/>
+            </intent-filter>
+        </service>
+        <service android:exported="true" android:icon="@drawable/ic_launcher" android:label="@string/tile_12" android:name="com.jozein.xedgepro.service.SuperTileService$Tile12" android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE"/>
+            </intent-filter>
+        </service>
+        <meta-data android:name="xposedmodule" android:value="true"/>
+        <meta-data android:name="xposedminversion" android:value="54"/>
+        <meta-data android:name="xposeddescription" android:value="@string/description"/>
+        <meta-data android:name="xposedscope" android:resource="@array/xposed_scope"/>
+    </application>
+</manifest>
