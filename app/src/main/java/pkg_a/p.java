@@ -478,12 +478,9 @@ public class p extends r {
                 break;
             case 7:
                 if (!(sVar instanceof pkg_f.m)) {
-                    while (true) {
-                        int[] iArr = this.L;
-                        if (i2 < iArr.length) {
-                            iArr[i2] = sVar.h();
-                            i2++;
-                        }
+                    while (i2 < this.L.length) {
+                        this.L[i2] = sVar.h();
+                        i2++;
                     }
                 } else {
                     int iH = sVar.h();

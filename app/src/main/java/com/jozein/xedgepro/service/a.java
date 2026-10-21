@@ -105,7 +105,7 @@ public abstract class a extends Service implements l {
     @Override // android.app.Service
     public void onCreate() {
         super.onCreate();
-        registerReceiver(this.A, new IntentFilter(C));
+        registerReceiver(this.A, new IntentFilter(C), 2);
         if (this.z || Build.VERSION.SDK_INT < 26) {
             return;
         }

@@ -198,7 +198,7 @@ public class ApplicationMain extends Application implements l {
     }
 
     private void m() {
-        registerReceiver(new c(), new IntentFilter(pkg_a.b.s0.N));
+        registerReceiver(new c(), new IntentFilter(pkg_a.b.s0.N), 2);
         pkg_a.b.s0.B(this, 17);
     }
 

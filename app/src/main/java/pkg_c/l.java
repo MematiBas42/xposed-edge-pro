@@ -90,7 +90,7 @@ public class l extends j0.b {
         super.onResume();
         if (ApplicationMain.isModuleActivated()) {
             this.C = new b();
-            getActivity().registerReceiver(this.C, new IntentFilter(pkg_a.b.s0.L));
+            getActivity().registerReceiver(this.C, new IntentFilter(pkg_a.b.s0.L), 2);
             pkg_a.b.s0.B(c(), 4);
         }
     }

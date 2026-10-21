@@ -9,7 +9,7 @@ android {
     defaultConfig {
         applicationId = "com.jozein.xedgepro"
         minSdk = 21
-        targetSdk = 35
+        targetSdk = 31
         versionCode = 82
         versionName = "8.0.1"
     }
@@ -42,6 +42,10 @@ android {
         unitTests {
             isReturnDefaultValues = true
         }
+    }
+
+    lint {
+        disable += "ExpiredTargetSdkVersion"
     }
 }
 

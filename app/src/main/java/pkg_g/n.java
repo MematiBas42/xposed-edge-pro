@@ -112,17 +112,12 @@ public class n extends i {
         int i7 = (i4 - i2) / i5;
         for (int i8 = 0; i8 < this.f564f; i8++) {
             int i9 = (i7 * i8) + i2;
-            int i10 = 0;
-            while (true) {
-                int i11 = this.f564f;
-                if (i10 < i11) {
-                    int i12 = (i11 * i8) + i10;
-                    Drawable[] drawableArr = this.f563e;
-                    if (i12 < drawableArr.length && (drawable = drawableArr[i12]) != null) {
-                        int i13 = (i6 * i10) + i;
-                        drawable.setBounds(i13, i9, i13 + i6, i9 + i7);
-                    }
-                    i10++;
+            for (int i10 = 0; i10 < this.f564f; i10++) {
+                int i12 = (this.f564f * i8) + i10;
+                Drawable[] drawableArr = this.f563e;
+                if (i12 < drawableArr.length && (drawable = drawableArr[i12]) != null) {
+                    int i13 = (i6 * i10) + i;
+                    drawable.setBounds(i13, i9, i13 + i6, i9 + i7);
                 }
             }
         }

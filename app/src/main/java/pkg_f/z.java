@@ -228,7 +228,7 @@ public abstract class z {
                 application = (Application) context;
             }
             application.registerActivityLifecycleCallbacks(new a());
-            application.registerReceiver(new C0010b(), new IntentFilter(g.f506f), null, x0());
+            application.registerReceiver(new C0010b(), new IntentFilter(g.f506f), null, x0(), 2);
         }
 
         private h G0(int i) {
