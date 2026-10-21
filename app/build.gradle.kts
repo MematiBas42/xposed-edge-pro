@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId = "com.jozein.xedgepro"
-        minSdk = 21
+        minSdk = 19
         targetSdk = 31
         versionCode = 82
         versionName = "8.0.1"

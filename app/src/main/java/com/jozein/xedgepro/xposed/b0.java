@@ -176,11 +176,11 @@ class b0 extends z implements pkg_a.p.EdgeRegions {
     }
 
     private boolean E(XC_MethodHook.MethodHookParam methodHookParam) {
-        if (!com.jozein.xedgepro.xposed.z.E) {
-            return false;
+        if (com.jozein.xedgepro.xposed.z.E) {
+            g(D(methodHookParam));
+            return true;
         }
-        g(D(methodHookParam));
-        return true;
+        return false;
     }
 
     private boolean F(MotionEvent motionEvent) {
@@ -298,15 +298,15 @@ class b0 extends z implements pkg_a.p.EdgeRegions {
     }
 
     private boolean J(XC_MethodHook.MethodHookParam methodHookParam, MotionEvent motionEvent) {
-        if (this.Z != 0) {
-            return F(motionEvent);
+        if (this.Z == 0) {
+            o();
+            this.b0 = false;
+            this.a0 = false;
+            g(this.U);
+            this.U = null;
+            return E(methodHookParam);
         }
-        o();
-        this.b0 = false;
-        this.a0 = false;
-        g(this.U);
-        this.U = null;
-        return E(methodHookParam);
+        return F(motionEvent);
     }
 
     private boolean K(XC_MethodHook.MethodHookParam methodHookParam, MotionEvent motionEvent) {
@@ -363,70 +363,69 @@ class b0 extends z implements pkg_a.p.EdgeRegions {
             this.a0 = false;
             this.U = null;
             this.V = null;
-            return;
+        } else {
+            this.b0 = true;
+            this.a0 = true;
+            XC_MethodHook.MethodHookParam methodHookParam = this.U;
+            if (methodHookParam != null) {
+                ((MotionEvent) methodHookParam.args[0]).recycle();
+                this.U = null;
+            }
+            XC_MethodHook.MethodHookParam methodHookParam2 = this.V;
+            if (methodHookParam2 != null) {
+                ((MotionEvent) methodHookParam2.args[0]).recycle();
+                this.V = null;
+            }
+            N(bVarW, -1);
         }
-        this.b0 = true;
-        this.a0 = true;
-        XC_MethodHook.MethodHookParam methodHookParam = this.U;
-        if (methodHookParam != null) {
-            ((MotionEvent) methodHookParam.args[0]).recycle();
-            this.U = null;
-        }
-        XC_MethodHook.MethodHookParam methodHookParam2 = this.V;
-        if (methodHookParam2 != null) {
-            ((MotionEvent) methodHookParam2.args[0]).recycle();
-            this.V = null;
-        }
-        N(bVarW, -1);
     }
 
     private boolean M(XC_MethodHook.MethodHookParam methodHookParam, MotionEvent motionEvent) {
         int iC = C(this.W, this.X, motionEvent.getRawX(), motionEvent.getRawY());
-        int i = this.Z;
-        if (i != 0) {
-            if (i == iC && A(motionEvent)) {
-                return H(methodHookParam, motionEvent);
+        if (iC == 0) {
+            o();
+            if (this.Z == 0) {
+                if (motionEvent.getEventTime() - motionEvent.getDownTime() >= this.Q) {
+                    this.Z = 2;
+                    return H(methodHookParam, motionEvent);
+                }
+                if (O(1).z != 0) {
+                    this.V = D(methodHookParam);
+                    l(this.R);
+                    return true;
+                }
+                pkg_a.b bVarW = w(0);
+                if (bVarW.z == 0) {
+                    g(this.U);
+                    this.U = null;
+                    this.b0 = false;
+                    return E(methodHookParam);
+                }
+                motionEvent.recycle();
+                XC_MethodHook.MethodHookParam methodHookParam3 = this.U;
+                if (methodHookParam3 != null) {
+                    ((MotionEvent) methodHookParam3.args[0]).recycle();
+                    this.U = null;
+                }
+                this.V = null;
+                N(bVarW, -1);
+                return true;
             }
-            this.b0 = false;
-            motionEvent.recycle();
-            XC_MethodHook.MethodHookParam methodHookParam2 = this.U;
-            if (methodHookParam2 != null) {
-                ((MotionEvent) methodHookParam2.args[0]).recycle();
-                this.U = null;
-            }
-            return true;
-        }
-        o();
-        if (iC != 0) {
             if (this.c0) {
                 return E(methodHookParam);
             }
             return false;
         }
-        if (motionEvent.getEventTime() - motionEvent.getDownTime() >= this.Q) {
-            this.Z = 2;
+        if (this.Z == iC && A(motionEvent)) {
             return H(methodHookParam, motionEvent);
         }
-        if (O(1).z != 0) {
-            this.V = D(methodHookParam);
-            l(this.R);
-            return true;
-        }
-        pkg_a.b bVarW = w(0);
-        if (bVarW.z == 0) {
-            g(this.U);
-            this.U = null;
-            this.b0 = false;
-            return E(methodHookParam);
-        }
+        this.b0 = false;
         motionEvent.recycle();
-        XC_MethodHook.MethodHookParam methodHookParam3 = this.U;
-        if (methodHookParam3 != null) {
-            ((MotionEvent) methodHookParam3.args[0]).recycle();
+        XC_MethodHook.MethodHookParam methodHookParam2 = this.U;
+        if (methodHookParam2 != null) {
+            ((MotionEvent) methodHookParam2.args[0]).recycle();
             this.U = null;
         }
-        this.V = null;
-        N(bVarW, -1);
         return true;
     }
 
@@ -475,122 +474,69 @@ class b0 extends z implements pkg_a.p.EdgeRegions {
         }
     }
 
-    /* JADX WARN: Code duplicated, block: B:30:0x0083  */
-    /* JADX WARN: Code duplicated, block: B:31:0x0085 A[DONT_INVERT] */
-    /* JADX WARN: Code duplicated, block: B:32:0x0087 A[Catch: all -> 0x00a8, TryCatch #1 {all -> 0x00a8, blocks: (B:3:0x0003, B:21:0x004a, B:18:0x001f, B:20:0x0023, B:28:0x0076, B:32:0x0087, B:37:0x009b, B:34:0x008d, B:36:0x0096, B:23:0x0050, B:24:0x005a, B:25:0x005d, B:26:0x0066, B:27:0x006f, B:38:0x00a5), top: B:51:0x0003 }] */
-    /* JADX WARN: Code duplicated, block: B:33:0x008a  */
-    /* JADX WARN: Code duplicated, block: B:34:0x008d A[Catch: all -> 0x00a8, TryCatch #1 {all -> 0x00a8, blocks: (B:3:0x0003, B:21:0x004a, B:18:0x001f, B:20:0x0023, B:28:0x0076, B:32:0x0087, B:37:0x009b, B:34:0x008d, B:36:0x0096, B:23:0x0050, B:24:0x005a, B:25:0x005d, B:26:0x0066, B:27:0x006f, B:38:0x00a5), top: B:51:0x0003 }] */
-    /* JADX WARN: Code duplicated, block: B:35:0x0093  */
-    /* JADX WARN: Code duplicated, block: B:36:0x0096 A[Catch: all -> 0x00a8, TryCatch #1 {all -> 0x00a8, blocks: (B:3:0x0003, B:21:0x004a, B:18:0x001f, B:20:0x0023, B:28:0x0076, B:32:0x0087, B:37:0x009b, B:34:0x008d, B:36:0x0096, B:23:0x0050, B:24:0x005a, B:25:0x005d, B:26:0x0066, B:27:0x006f, B:38:0x00a5), top: B:51:0x0003 }] */
     private void s(pkg_a.b bVar, int i, int i2, long j) {
-        a aVarZ1;
-        int i3;
-        int i4;
-        int i5;
-        int i6;
         try {
-            int i7 = bVar.z;
-            if (i7 == 0 || i7 == 1) {
+            int iZ = bVar.z;
+            if (iZ == 0 || iZ == 1) {
                 this.f0 = null;
                 return;
             }
-            if (i7 == 51) {
-                aVarZ1 = this.I.Z1();
-            } else if (i7 == 68) {
-                aVarZ1 = this.I.S1((pkg_a.b.z2) bVar);
+            if (iZ == 51) {
+                this.f0 = this.I.Z1();
+            } else if (iZ == 68) {
+                this.f0 = this.I.S1((pkg_a.b.z2) bVar);
+            } else if (iZ == 86) {
+                this.f0 = this.I.f2((pkg_a.b.i3) bVar);
+            } else if (iZ == 106) {
+                this.f0 = this.I.a2(((pkg_a.b.q0) bVar).I);
+            } else if (iZ == 107 && pkg_f.l.CONST_IS_PRO) {
+                this.f0 = new m3((pkg_a.b.h3) bVar, this.I, v(i2), this.H.v(29, 300), this.O, this.H.o(40));
             } else {
-                if (i7 != 86) {
-                    if (i7 != 106) {
-                        if (i7 == 107 && pkg_f.l.CONST_IS_PRO) {
-                            this.f0 = new m3((pkg_a.b.h3) bVar, this.I, v(i2), this.H.v(29, 300), this.O, this.H.o(40));
-                        }
-                        this.f0 = null;
-                        N(bVar, i);
-                        return;
-                    }
-                    aVarZ1 = this.I.a2(((pkg_a.b.q0) bVar).I);
-                    i3 = (int) this.W;
-                    i4 = (int) this.X;
-                    i5 = this.Y;
-                    if (i5 == 1) {
-                        i3 = this.K.x;
-                        i6 = 1;
-                    } else if (i5 == 2) {
-                        i4 = 0;
-                        i6 = 2;
-                    } else if (i5 != 3) {
-                        switch (i5) {
-                            case 7:
-                            case 8:
-                            case 9:
-                                i3 = this.K.x;
-                                i6 = 1;
-                                break;
-                            case 10:
-                            case 11:
-                            case 12:
-                                i4 = 0;
-                                i6 = 2;
-                                break;
-                            case 13:
-                            case 14:
-                            case 15:
-                                i4 = this.K.y;
-                                i6 = 3;
-                                break;
-                            default:
-                                i3 = 0;
-                                i6 = 0;
-                                break;
-                        }
-                    } else {
-                        i4 = this.K.y;
-                        i6 = 3;
-                    }
-                    this.f0.e(i6, i3, i4, j);
-                }
-                aVarZ1 = this.I.f2((pkg_a.b.i3) bVar);
+                this.f0 = null;
+                N(bVar, i);
+                return;
             }
-            this.f0 = aVarZ1;
-            i3 = (int) this.W;
-            i4 = (int) this.X;
-            i5 = this.Y;
-            if (i5 == 1) {
-                i3 = this.K.x;
-                i6 = 1;
-            } else if (i5 == 2) {
-                i4 = 0;
-                i6 = 2;
-            } else if (i5 != 3) {
-                switch (i5) {
+
+            int iRawX = (int) this.W;
+            int iRawY = (int) this.X;
+            int iMode = 0;
+            int iY = this.Y;
+            if (iY == 1) {
+                iRawX = this.K.x;
+                iMode = 1;
+            } else if (iY == 2) {
+                iRawY = 0;
+                iMode = 2;
+            } else if (iY == 3) {
+                iRawY = this.K.y;
+                iMode = 3;
+            } else {
+                switch (iY) {
                     case 7:
                     case 8:
                     case 9:
-                        i3 = this.K.x;
-                        i6 = 1;
+                        iRawX = this.K.x;
+                        iMode = 1;
                         break;
                     case 10:
                     case 11:
                     case 12:
-                        i4 = 0;
-                        i6 = 2;
+                        iRawY = 0;
+                        iMode = 2;
                         break;
                     case 13:
                     case 14:
                     case 15:
-                        i4 = this.K.y;
-                        i6 = 3;
+                        iRawY = this.K.y;
+                        iMode = 3;
                         break;
                     default:
-                        i3 = 0;
-                        i6 = 0;
+                        iRawX = 0;
+                        iMode = 0;
                         break;
                 }
-            } else {
-                i4 = this.K.y;
-                i6 = 3;
             }
-            this.f0.e(i6, i3, i4, j);
+            this.f0.e(iMode, iRawX, iRawY, j);
         } catch (Throwable th) {
             pkg_f.v.d(th);
             try {
@@ -607,16 +553,17 @@ class b0 extends z implements pkg_a.p.EdgeRegions {
 
     private void t(int i, MotionEvent motionEvent) {
         try {
-            if (i == 1) {
-                this.f0.b((int) motionEvent.getRawX(), (int) motionEvent.getRawY(), motionEvent.getEventTime());
-            } else {
+            if (i != 1) {
                 if (i != 3) {
                     this.f0.d((int) motionEvent.getRawX(), (int) motionEvent.getRawY(), motionEvent.getEventTime());
-                    return;
+                } else {
+                    this.f0.c();
+                    this.f0 = null;
                 }
-                this.f0.c();
+            } else {
+                this.f0.b((int) motionEvent.getRawX(), (int) motionEvent.getRawY(), motionEvent.getEventTime());
+                this.f0 = null;
             }
-            this.f0 = null;
         } catch (Throwable th) {
             pkg_f.v.d(th);
         }
@@ -629,10 +576,13 @@ class b0 extends z implements pkg_a.p.EdgeRegions {
         if (i == 4) {
             return 0;
         }
-        if (i != 5) {
-            return i != 6 ? -1 : 2;
+        if (i == 5) {
+            return 3;
         }
-        return 3;
+        if (i == 6) {
+            return 2;
+        }
+        return -1;
     }
 
     private static int v(int i) {
@@ -642,10 +592,13 @@ class b0 extends z implements pkg_a.p.EdgeRegions {
         if (i == 4) {
             return 2;
         }
-        if (i != 5) {
-            return i != 6 ? 0 : 4;
+        if (i == 5) {
+            return 3;
         }
-        return 3;
+        if (i == 6) {
+            return 4;
+        }
+        return 0;
     }
 
     private pkg_a.b w(int i) {
@@ -731,64 +684,63 @@ class b0 extends z implements pkg_a.p.EdgeRegions {
                 this.k0 = true;
             } else {
                 zM = this.V == null ? G(methodHookParam, motionEvent) : K(methodHookParam, motionEvent);
+                return (zM || !this.c0) ? zM : E(methodHookParam);
             }
             this.I.I3();
             T(methodHookParam, motionEvent);
-            zM = true;
-        } else {
-            if (this.j0) {
-                T(methodHookParam, motionEvent);
-                if (actionMasked != 1) {
-                    if (actionMasked != 2) {
-                        if (actionMasked == 3) {
-                            r();
-                        } else if (actionMasked == 5) {
-                            this.k0 = true;
-                        }
-                    } else if (!this.k0) {
-                        float rawX = motionEvent.getRawX() - this.W;
-                        float rawY2 = motionEvent.getRawY() - this.X;
-                        float scaledTouchSlop = ViewConfiguration.get(this.I.T1()).getScaledTouchSlop();
-                        if ((rawX * rawX) + (rawY2 * rawY2) > scaledTouchSlop * scaledTouchSlop) {
-                            this.k0 = true;
-                        }
+            return true;
+        } else if (this.j0) {
+            T(methodHookParam, motionEvent);
+            if (actionMasked != 1) {
+                if (actionMasked != 2) {
+                    if (actionMasked == 3) {
+                        r();
+                    } else if (actionMasked == 5) {
+                        this.k0 = true;
                     }
-                } else if (this.k0) {
-                    r();
-                } else {
-                    this.I.w4(ViewConfiguration.getDoubleTapTimeout());
-                }
-            } else if (this.b0) {
-                if (this.a0) {
-                    if (this.f0 != null) {
-                        t(actionMasked, motionEvent);
-                    }
-                    motionEvent.recycle();
-                } else {
-                    switch (actionMasked) {
-                        case 1:
-                            this.b0 = false;
-                            this.a0 = false;
-                            zM = M(methodHookParam, motionEvent);
-                            break;
-                        case 2:
-                            zM = I(methodHookParam, motionEvent);
-                            break;
-                        case 3:
-                            this.b0 = false;
-                        case 4:
-                        case 6:
-                            zM = F(motionEvent);
-                            break;
-                        case 5:
-                            zM = J(methodHookParam, motionEvent);
-                            break;
-                        default:
-                            return false;
+                } else if (!this.k0) {
+                    float rawX = motionEvent.getRawX() - this.W;
+                    float rawY2 = motionEvent.getRawY() - this.X;
+                    float scaledTouchSlop = ViewConfiguration.get(this.I.T1()).getScaledTouchSlop();
+                    if ((rawX * rawX) + (rawY2 * rawY2) > scaledTouchSlop * scaledTouchSlop) {
+                        this.k0 = true;
                     }
                 }
+            } else if (!this.k0) {
+                this.I.w4(ViewConfiguration.getDoubleTapTimeout());
+            } else {
+                r();
             }
-            zM = true;
+            return true;
+        } else if (this.b0) {
+            if (this.a0) {
+                if (this.f0 != null) {
+                    t(actionMasked, motionEvent);
+                }
+                motionEvent.recycle();
+                return true;
+            }
+            switch (actionMasked) {
+                case 1:
+                    this.b0 = false;
+                    this.a0 = false;
+                    zM = M(methodHookParam, motionEvent);
+                    break;
+                case 2:
+                    zM = I(methodHookParam, motionEvent);
+                    break;
+                case 3:
+                    this.b0 = false;
+                case 4:
+                case 6:
+                    zM = F(motionEvent);
+                    break;
+                case 5:
+                    zM = J(methodHookParam, motionEvent);
+                    break;
+                default:
+                    return false;
+            }
         }
         return (zM || !this.c0) ? zM : E(methodHookParam);
     }
@@ -805,16 +757,16 @@ class b0 extends z implements pkg_a.p.EdgeRegions {
             this.b0 = false;
             g(this.U);
             this.U = null;
-            return;
+        } else {
+            this.a0 = true;
+            this.b0 = true;
+            XC_MethodHook.MethodHookParam methodHookParam = this.U;
+            if (methodHookParam != null) {
+                ((MotionEvent) methodHookParam.args[0]).recycle();
+                this.U = null;
+            }
+            s(bVarW, -1, 2, SystemClock.uptimeMillis());
         }
-        this.a0 = true;
-        this.b0 = true;
-        XC_MethodHook.MethodHookParam methodHookParam = this.U;
-        if (methodHookParam != null) {
-            ((MotionEvent) methodHookParam.args[0]).recycle();
-            this.U = null;
-        }
-        s(bVarW, -1, 2, SystemClock.uptimeMillis());
     }
 
     void p() {

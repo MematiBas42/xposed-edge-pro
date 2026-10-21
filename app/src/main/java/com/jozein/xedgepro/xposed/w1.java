@@ -1036,7 +1036,7 @@ class w1 extends j2 {
         private final int D;
         private final boolean z;
 
-        private m0(boolean z, int i) {
+        m0(boolean z, int i) {
             super(w1.this.a0);
             Paint paint = new Paint(1);
             this.A = paint;
@@ -1047,10 +1047,6 @@ class w1 extends j2 {
             paint.setColor(2147454720);
             paint2.setColor(2130739111);
             this.D = i;
-        }
-
-        /* synthetic */ m0(w1 w1Var, boolean z, int i, k kVar) {
-            this(z, i);
         }
 
         @Override // android.view.View
@@ -2742,32 +2738,32 @@ class w1 extends j2 {
 
     private void D1(pkg_a.b.i3 i3Var) {
         int i2 = i3Var.I;
-        if (i2 == 0) {
-            e1(i3Var.J);
-            return;
-        }
-        if (i2 == 1) {
-            d1(i3Var.J);
-            return;
-        }
-        if (i2 == 13) {
-            float fV = this.H.v(17, 100) / 100.0f;
-            if (!i3Var.J) {
-                fV = -fV;
+        if (i2 != 0) {
+            if (i2 != 1) {
+                if (i2 != 13) {
+                    if (i2 != 14) {
+                        int i3 = i2 - 3;
+                        int i4 = 4;
+                        if (this.f0 && i3 <= 4) {
+                            i4 = 5;
+                        }
+                        this.V.a(i3, i3Var.J ? 1 : -1, i4);
+                    } else {
+                        V2(i3Var.J);
+                    }
+                } else {
+                    float fV = this.H.v(17, 100) / 100.0f;
+                    if (!i3Var.J) {
+                        fV = -fV;
+                    }
+                    M3(fV);
+                }
+            } else {
+                d1(i3Var.J);
             }
-            M3(fV);
-            return;
+        } else {
+            e1(i3Var.J);
         }
-        if (i2 == 14) {
-            V2(i3Var.J);
-            return;
-        }
-        int i3 = i2 - 3;
-        int i4 = 4;
-        if (this.f0 && i3 <= 4) {
-            i4 = 5;
-        }
-        this.V.a(i3, i3Var.J ? 1 : -1, i4);
     }
 
     /* JADX INFO: Access modifiers changed from: private */
@@ -3763,49 +3759,41 @@ class w1 extends j2 {
 
     private void c1(pkg_a.b.i iVar) {
         int i2 = iVar.I;
-        if (i2 == 0) {
+        if (i2 != 0) {
+            if (i2 != 1) {
+                int i5 = i2 - 3;
+                int i6 = (this.f0 && i5 <= 4) ? 5 : 4;
+                int i7 = iVar.J;
+                if (i7 == -2) {
+                    this.V.a(i5, -1, i6);
+                } else if (i7 == -1) {
+                    this.V.a(i5, 1, i6);
+                } else {
+                    this.V.k(i5, i7, i6);
+                }
+            } else {
+                int i4 = iVar.J;
+                if (i4 == -2) {
+                    d1(false);
+                } else if (i4 == -1) {
+                    d1(true);
+                } else {
+                    R3(i4);
+                }
+            }
+        } else {
             int i3 = iVar.J;
             if (i3 == -2) {
                 e1(false);
-                return;
-            }
-            if (i3 == -1) {
+            } else if (i3 == -1) {
                 e1(true);
-                return;
-            }
-            this.H.c0(this.a0, i3 >= 1 ? i3 : 1);
-            View view = this.K0;
-            if (view != null) {
-                view.setBackgroundColor(this.H.B());
-                return;
-            }
-            return;
-        }
-        if (i2 == 1) {
-            int i4 = iVar.J;
-            if (i4 == -2) {
-                d1(false);
-                return;
-            } else if (i4 != -1) {
-                R3(i4);
-                return;
             } else {
-                d1(true);
-                return;
+                this.H.c0(this.a0, i3 < 1 ? 1 : i3);
+                View view = this.K0;
+                if (view != null) {
+                    view.setBackgroundColor(this.H.B());
+                }
             }
-        }
-        int i5 = i2 - 3;
-        int i6 = 4;
-        if (this.f0 && i5 <= 4) {
-            i6 = 5;
-        }
-        int i7 = iVar.J;
-        if (i7 == -2) {
-            this.V.a(i5, -1, i6);
-        } else if (i7 != -1) {
-            this.V.k(i5, i7, i6);
-        } else {
-            this.V.a(i5, 1, i6);
         }
     }
 
@@ -4815,8 +4803,7 @@ class w1 extends j2 {
     }
 
     /* JADX INFO: Access modifiers changed from: private */
-    /* JADX INFO: renamed from: x3, reason: merged with bridge method [inline-methods] */
-    public void G2(pkg_a.b bVar, int i2, Bundle bundle) {
+    public void x3(pkg_a.b bVar, int i2, Bundle bundle) {
         String string;
         if (g1(bVar)) {
             try {
@@ -5444,74 +5431,74 @@ class w1 extends j2 {
         switch (i2) {
             case 0:
                 layoutParams = new FrameLayout.LayoutParams(i3, i5, 19);
-                m0Var = new m0(this, true, 0, null);
+                m0Var = new m0(true, 0);
                 break;
             case 1:
                 layoutParams = new FrameLayout.LayoutParams(i3, i5, 21);
-                m0Var = new m0(this, true, 0, null);
+                m0Var = new m0(true, 0);
                 break;
             case 2:
                 layoutParams = new FrameLayout.LayoutParams(i6, i4, 49);
-                m0Var = new m0(this, false, 0, null);
+                m0Var = new m0(false, 0);
                 break;
             case 3:
                 layoutParams = new FrameLayout.LayoutParams(i6, i4, 81);
-                m0Var = new m0(this, false, 0, null);
+                m0Var = new m0(false, 0);
                 break;
             case 4:
                 layoutParams = new FrameLayout.LayoutParams(i3, i5, 19);
-                m0Var = new m0(this, true, 1, null);
+                m0Var = new m0(true, 1);
                 break;
             case 5:
                 layoutParams = new FrameLayout.LayoutParams(i3, i5, 19);
-                m0Var = new m0(this, true, 2, null);
+                m0Var = new m0(true, 2);
                 break;
             case 6:
                 layoutParams = new FrameLayout.LayoutParams(i3, i5, 19);
-                m0Var = new m0(this, true, 4, null);
+                m0Var = new m0(true, 4);
                 break;
             case 7:
                 layoutParams = new FrameLayout.LayoutParams(i3, i5, 21);
-                m0Var = new m0(this, true, 1, null);
+                m0Var = new m0(true, 1);
                 break;
             case 8:
                 layoutParams = new FrameLayout.LayoutParams(i3, i5, 21);
-                m0Var = new m0(this, true, 2, null);
+                m0Var = new m0(true, 2);
                 break;
             case 9:
                 layoutParams = new FrameLayout.LayoutParams(i3, i5, 21);
-                m0Var = new m0(this, true, 4, null);
+                m0Var = new m0(true, 4);
                 break;
             case 10:
                 layoutParams = new FrameLayout.LayoutParams(i6, i4, 49);
-                m0Var = new m0(this, false, 1, null);
+                m0Var = new m0(false, 1);
                 break;
             case 11:
                 layoutParams = new FrameLayout.LayoutParams(i6, i4, 49);
-                m0Var = new m0(this, false, 2, null);
+                m0Var = new m0(false, 2);
                 break;
             case 12:
                 layoutParams = new FrameLayout.LayoutParams(i6, i4, 49);
-                m0Var = new m0(this, false, 4, null);
+                m0Var = new m0(false, 4);
                 break;
             case 13:
                 layoutParams = new FrameLayout.LayoutParams(i6, i4, 81);
-                m0Var = new m0(this, false, 1, null);
+                m0Var = new m0(false, 1);
                 break;
             case 14:
                 layoutParams = new FrameLayout.LayoutParams(i6, i4, 81);
-                m0Var = new m0(this, false, 2, null);
+                m0Var = new m0(false, 2);
                 break;
             case 15:
                 layoutParams = new FrameLayout.LayoutParams(i6, i4, 81);
-                m0Var = new m0(this, false, 4, null);
+                m0Var = new m0(false, 4);
                 break;
             default:
-                frameLayout.addView(new m0(this, true, 7, null), new FrameLayout.LayoutParams(i3, i5, 19));
-                frameLayout.addView(new m0(this, true, 7, null), new FrameLayout.LayoutParams(i3, i5, 21));
-                frameLayout.addView(new m0(this, false, 7, null), new FrameLayout.LayoutParams(i6, i4, 49));
+                frameLayout.addView(new m0(true, 7), new FrameLayout.LayoutParams(i3, i5, 19));
+                frameLayout.addView(new m0(true, 7), new FrameLayout.LayoutParams(i3, i5, 21));
+                frameLayout.addView(new m0(false, 7), new FrameLayout.LayoutParams(i6, i4, 49));
                 layoutParams = new FrameLayout.LayoutParams(i6, i4, 81);
-                m0Var = new m0(this, false, 7, null);
+                m0Var = new m0(false, 7);
                 break;
         }
         frameLayout.addView(m0Var, layoutParams);
@@ -5897,7 +5884,7 @@ class w1 extends j2 {
         this.c0.postDelayed(new Runnable() { // from class: com.jozein.xedgepro.xposed.h1
             @Override // java.lang.Runnable
             public final void run() {
-                w1.this.G2(bVar, i2, bundle);
+                w1.this.x3(bVar, i2, bundle);
             }
         }, 0L);
     }
@@ -5907,7 +5894,7 @@ class w1 extends j2 {
     }
 
     void w3(pkg_a.b bVar) {
-        G2(bVar, -1, null);
+        x3(bVar, -1, null);
     }
 
     void w4(long j2) {

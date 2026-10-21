@@ -22,12 +22,11 @@ public class HookMain extends p2 implements IXposedHookZygoteInit, IXposedHookLo
     private pkg_a.v I;
 
     private void h(ClassLoader classLoader) {
-        if (J) {
-            return;
+        if (!J) {
+            J = true;
+            new i2();
+            new l2(classLoader);
         }
-        J = true;
-        new i2();
-        new l2(classLoader);
     }
 
     private void i(ClassLoader classLoader) {
@@ -76,14 +75,13 @@ public class HookMain extends p2 implements IXposedHookZygoteInit, IXposedHookLo
     }
 
     private boolean k() {
-        if (Build.VERSION.SDK_INT < 21) {
-            return false;
+        if (Build.VERSION.SDK_INT >= 21) {
+            try {
+                return SELinuxHelper.isSELinuxEnforced();
+            } catch (Throwable unused) {
+            }
         }
-        try {
-            return SELinuxHelper.isSELinuxEnforced();
-        } catch (Throwable unused) {
-            return false;
-        }
+        return false;
     }
 
     private void l() {

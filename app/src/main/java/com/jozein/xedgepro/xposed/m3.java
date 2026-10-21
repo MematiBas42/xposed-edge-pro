@@ -128,8 +128,7 @@ class m3 implements Runnable, b0.a {
     }
 
     /* JADX INFO: Access modifiers changed from: private */
-    /* JADX INFO: renamed from: j, reason: merged with bridge method [inline-methods] */
-    public void i(int i) {
+    public void j(int i) {
         if (this.O) {
             return;
         }
@@ -155,13 +154,13 @@ class m3 implements Runnable, b0.a {
 
     private void k(final int i) {
         if (!this.H) {
-            i(i);
+            j(i);
         } else {
             this.B.removeCallbacks(this);
             this.B.post(new Runnable() { // from class: com.jozein.xedgepro.xposed.l3
                 @Override // java.lang.Runnable
                 public final void run() {
-                    m3.this.i(i);
+                    m3.this.j(i);
                 }
             });
         }
@@ -228,7 +227,7 @@ class m3 implements Runnable, b0.a {
         }
         long j = this.N;
         if (j == this.P) {
-            i(0);
+            j(0);
         } else {
             this.P = j;
             this.B.postAtTime(this, j + this.D);

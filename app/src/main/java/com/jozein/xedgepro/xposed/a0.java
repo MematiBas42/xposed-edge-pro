@@ -103,13 +103,13 @@ class a0 extends z {
     }
 
     private void p(pkg_a.b bVar) {
-        if (bVar.z != 86) {
+        if (bVar.z == 86) {
+            w1.w0 w0VarF2 = this.G.f2((pkg_a.b.i3) bVar);
+            this.S = w0VarF2;
+            w0VarF2.a();
+        } else {
             this.G.u3(bVar);
-            return;
         }
-        w1.w0 w0VarF2 = this.G.f2((pkg_a.b.i3) bVar);
-        this.S = w0VarF2;
-        w0VarF2.a();
     }
 
     private pkg_a.b q(int i, int i2) {
@@ -174,21 +174,21 @@ class a0 extends z {
 
     private boolean w(XC_MethodHook.MethodHookParam methodHookParam, KeyEvent keyEvent) {
         pkg_a.b bVarQ = q(keyEvent.getKeyCode(), 1);
-        if (bVarQ.z != 0) {
-            this.K = true;
-            this.J = true;
+        if (bVarQ.z == 0) {
+            g(this.H);
+            g(this.I);
+            this.K = false;
+            this.J = false;
             this.H = null;
             this.I = null;
-            p(bVarQ);
-            return true;
+            return false;
         }
-        g(this.H);
-        g(this.I);
-        this.K = false;
-        this.J = false;
+        this.K = true;
+        this.J = true;
         this.H = null;
         this.I = null;
-        return false;
+        p(bVarQ);
+        return true;
     }
 
     private boolean x(XC_MethodHook.MethodHookParam methodHookParam, KeyEvent keyEvent) {

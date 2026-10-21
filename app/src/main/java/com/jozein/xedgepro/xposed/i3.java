@@ -183,7 +183,8 @@ class i3 implements pkg_a.p.g {
     }
 
     /* JADX INFO: Access modifiers changed from: private */
-    public void K(int i) {
+    /* JADX INFO: Access modifiers changed from: private */
+    private void K(int i) {
         pkg_a.b bVarK;
         int i2;
         if (!pkg_f.l.CONST_IS_PRO || (i2 = (bVarK = this.f129c.k(i)).z) == 1 || i2 == 0) {
@@ -292,15 +293,14 @@ class i3 implements pkg_a.p.g {
     }
 
     /* JADX INFO: Access modifiers changed from: private */
-    public void U(int i) {
+    private void U(int i) {
+        int kVal;
         if (i == 1) {
             if (this.q == 3) {
                 this.q = 4;
                 K(24);
             }
-            return;
-        }
-        if (i == 2) {
+        } else if (i == 2) {
             if (this.q == 3) {
                 this.q = 4;
                 K(24);
@@ -308,29 +308,29 @@ class i3 implements pkg_a.p.g {
                 this.q = 7;
                 K(27);
             }
-            return;
-        }
-        if (i == 3) {
+        } else if (i == 3) {
             if (this.q != 3) {
                 this.q = 3;
                 K(23);
             }
-            return;
-        }
-        if (i == 6) {
+        } else if (i == 6) {
             if (this.q != 6) {
                 this.q = 6;
                 K(26);
             }
-            return;
+        } else {
+            int q = this.q;
+            if (q == 3 || q == 4) {
+                kVal = 25;
+            } else if (q == 6 || q == 7) {
+                kVal = 28;
+            } else {
+                this.q = 0;
+                return;
+            }
+            K(kVal);
+            this.q = 0;
         }
-        int q = this.q;
-        if (q == 3 || q == 4) {
-            K(25);
-        } else if (q == 6 || q == 7) {
-            K(28);
-        }
-        this.q = 0;
     }
 
     boolean A() {

@@ -22,19 +22,19 @@ public class w1 extends c implements pkg_d.d.a {
 
     @Override // pkg_d.c
     protected void C1(Bundle bundle, int i) {
-        if (i != 1) {
+        if (i == 1) {
+            Context contextF = f();
+            pkg_a.b bVar = (pkg_a.b) bundle.getParcelable("result");
+            if (bVar != null) {
+                int iE0 = E0();
+                int iF0 = F0();
+                this.M.l0(contextF, 3, iE0, iF0, bVar);
+                pkg_e.j.g gVar = (pkg_e.j.g) K0(iF0);
+                gVar.setSubText(bVar.n(contextF));
+                gVar.setImageDrawable(D0(bVar));
+            }
+        } else {
             pkg_f.v.c("Unknown code: " + i);
-            return;
-        }
-        Context contextF = f();
-        pkg_a.b bVar = (pkg_a.b) bundle.getParcelable("result");
-        if (bVar != null) {
-            int iE0 = E0();
-            int iF0 = F0();
-            this.M.l0(contextF, 3, iE0, iF0, bVar);
-            pkg_e.j.g gVar = (pkg_e.j.g) K0(iF0);
-            gVar.setSubText(bVar.n(contextF));
-            gVar.setImageDrawable(D0(bVar));
         }
     }
 

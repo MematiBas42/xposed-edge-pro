@@ -93,35 +93,20 @@ public abstract class SuperTileService extends TileService {
         if (i == 0 || i == 1) {
             return false;
         }
-        if (i == 73 || i == 97) {
-            if (E != null) {
-                return E.h(i, true);
+        if (i == 34) {
+            if (E == null) {
+                return p.q(this, 1);
             }
+        } else if (i == 35) {
+            if (E == null) {
+                return p.q(this, 0);
+            }
+        } else if (i != 73 && i != 97 && (i < 29 || i > 33)) {
+            return true;
+        } else if (E == null) {
             return true;
         }
-        switch (i) {
-            case 29:
-            case 30:
-            case 31:
-            case 32:
-            case 33:
-                if (E != null) {
-                    return E.h(i, true);
-                }
-                return true;
-            case 34:
-                if (E == null) {
-                    return p.q(this, 1);
-                }
-                return E.h(i, true);
-            case 35:
-                if (E == null) {
-                    return p.q(this, 0);
-                }
-                return E.h(i, true);
-            default:
-                return true;
-        }
+        return E.h(i, true);
     }
 
     /* JADX INFO: Access modifiers changed from: private */

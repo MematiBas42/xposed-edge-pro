@@ -503,15 +503,16 @@ class y0 extends j2 {
 
     private void u0(InputEvent inputEvent, int i, int i2) {
         int iB = this.M.b(inputEvent, i, i2);
-        if (iB != 0) {
-            if (iB == 1) {
-                throw new SecurityException("Input event injection permission denied!");
-            }
-            if (iB == 3) {
-                throw new RuntimeException("Input event injection timed out!");
-            }
-            throw new RuntimeException("Input event injection failed!");
+        if (iB == 0) {
+            return;
         }
+        if (iB != 1) {
+            if (iB != 3) {
+                throw new RuntimeException("Input event injection failed!");
+            }
+            throw new RuntimeException("Input event injection timed out!");
+        }
+        throw new SecurityException("Input event injection permission denied!");
     }
 
     private void z0(boolean z) {
@@ -523,12 +524,12 @@ class y0 extends j2 {
                 p2.g(th);
                 objU = null;
             }
-            if (objU == null) {
-                this.M.d(z);
-            } else {
+            if (objU != null) {
                 synchronized (objU) {
                     this.M.d(z);
                 }
+            } else {
+                this.M.d(z);
             }
         } catch (Throwable th2) {
             pkg_f.v.d(th2);
@@ -562,7 +563,10 @@ class y0 extends j2 {
 
     void T(XC_MethodHook.MethodHookParam methodHookParam, KeyEvent keyEvent) {
         a0 a0Var = this.K;
-        if (a0Var != null && a0Var.j(methodHookParam, keyEvent)) {
+        if (a0Var == null) {
+            return;
+        }
+        if (a0Var.j(methodHookParam, keyEvent)) {
             methodHookParam.setResult(Boolean.FALSE);
             this.H.p5();
         }
@@ -570,7 +574,6 @@ class y0 extends j2 {
 
     void U(XC_MethodHook.MethodHookParam methodHookParam, MotionEvent motionEvent) {
         int iIntValue;
-        g0 g0Var;
         if (this.L == null || motionEvent.getDownTime() == 0) {
             return;
         }
@@ -589,79 +592,73 @@ class y0 extends j2 {
             }
         }
         int actionMasked = motionEvent.getActionMasked();
-        if (actionMasked == 0) {
-            int deviceId = motionEvent.getDeviceId();
-            int buttonState = motionEvent.getButtonState();
-            int i = this.Z;
-            if ((i < 0 || deviceId == i) && (buttonState == 0 || buttonState == 1)) {
-                this.Z = deviceId;
-                if (this.L.k(methodHookParam, motionEvent)) {
-                    methodHookParam.setResult(Boolean.FALSE);
-                    this.H.p5();
-                }
-                if (this.U) {
-                    if (this.V == null) {
-                        this.V = new g0(this.H);
+        if (actionMasked != 0) {
+            if (actionMasked != 1) {
+                if (actionMasked != 2) {
+                    if (actionMasked == 3) {
+                        if (this.Z == motionEvent.getDeviceId()) {
+                            this.Z = -1;
+                            if (this.L.k(methodHookParam, motionEvent)) {
+                                methodHookParam.setResult(Boolean.FALSE);
+                                this.H.p5();
+                            }
+                            S(true);
+                        }
+                        return;
+                    } else if (actionMasked != 5 && actionMasked != 6) {
+                        return;
                     }
-                    g0Var = this.V;
-                    this.W = g0Var;
-                    g0Var.a(motionEvent);
                 }
-            } else {
-                this.Z = -1;
-                this.L.p();
+                if (this.Z == motionEvent.getDeviceId()) {
+                    if (this.L.k(methodHookParam, motionEvent)) {
+                        methodHookParam.setResult(Boolean.FALSE);
+                        this.H.p5();
+                    }
+                    if (this.W != null) {
+                        this.W.a(motionEvent);
+                    }
+                }
+                return;
             }
-            S(false);
-            return;
-        }
-        if (actionMasked == 1) {
             if (this.Z == motionEvent.getDeviceId()) {
                 this.Z = -1;
                 if (this.L.k(methodHookParam, motionEvent)) {
                     methodHookParam.setResult(Boolean.FALSE);
                     this.H.p5();
                 }
-                g0 g0Var2 = this.W;
-                if (g0Var2 != null) {
-                    g0Var2.a(motionEvent);
-                    if (this.U) {
-                        return;
+                if (this.W != null) {
+                    this.W.a(motionEvent);
+                    if (!this.U) {
+                        S(false);
                     }
-                    S(false);
-                    return;
                 }
-                return;
             }
             return;
         }
-        if (actionMasked != 2) {
-            if (actionMasked == 3) {
-                if (this.Z == motionEvent.getDeviceId()) {
-                    this.Z = -1;
-                    if (this.L.k(methodHookParam, motionEvent)) {
-                        methodHookParam.setResult(Boolean.FALSE);
-                        this.H.p5();
-                    }
-                    S(true);
-                    return;
-                }
-                return;
-            }
-            if (actionMasked != 5 && actionMasked != 6) {
-                return;
-            }
-        }
-        if (this.Z == motionEvent.getDeviceId()) {
+        int deviceId = motionEvent.getDeviceId();
+        int buttonState = motionEvent.getButtonState();
+        int i = this.Z;
+        if ((i < 0 || deviceId == i) && (buttonState == 0 || buttonState == 1)) {
+            this.Z = deviceId;
             if (this.L.k(methodHookParam, motionEvent)) {
                 methodHookParam.setResult(Boolean.FALSE);
                 this.H.p5();
             }
-            g0Var = this.W;
-            if (g0Var == null) {
+            if (this.U) {
+                if (this.V == null) {
+                    this.V = new g0(this.H);
+                }
+                g0 g0Var = this.V;
+                this.W = g0Var;
+                g0Var.a(motionEvent);
                 return;
             }
-            g0Var.a(motionEvent);
+            S(false);
+            return;
         }
+        this.Z = -1;
+        this.L.p();
+        S(false);
     }
 
     b0 V() {
@@ -766,32 +763,33 @@ class y0 extends j2 {
         if (str == null || str.length() == 0) {
             return true;
         }
-        final KeyEvent[] events = KeyCharacterMap.load(-1).getEvents(str.toCharArray());
-        if (events == null) {
-            return false;
+        KeyEvent[] events = KeyCharacterMap.load(-1).getEvents(str.toCharArray());
+        if (events != null) {
+            final KeyEvent[] fEvents = events;
+            Q(new Runnable() { // from class: com.jozein.xedgepro.xposed.x0
+                @Override // java.lang.Runnable
+                public final void run() {
+                    s0(fEvents);
+                }
+            });
+            return true;
         }
-        Q(new Runnable() { // from class: com.jozein.xedgepro.xposed.x0
-            @Override // java.lang.Runnable
-            public final void run() {
-                s0(events);
-            }
-        });
-        return true;
+        return false;
     }
 
     void j0(XC_MethodHook.MethodHookParam methodHookParam) throws IllegalAccessException, InvocationTargetException {
         if (this.N) {
             w(methodHookParam.method, methodHookParam.args);
-            return;
-        }
-        Object[] objArr = methodHookParam.args;
-        InputEvent inputEvent = (InputEvent) objArr[0];
-        int iIntValue = ((Integer) objArr[1]).intValue();
-        c cVar = this.P;
-        if (cVar != null) {
-            cVar.a(inputEvent, iIntValue);
         } else {
-            u0(inputEvent, 0, iIntValue | 67108864);
+            Object[] objArr = methodHookParam.args;
+            InputEvent inputEvent = (InputEvent) objArr[0];
+            int iIntValue = ((Integer) objArr[1]).intValue();
+            c cVar = this.P;
+            if (cVar != null) {
+                cVar.a(inputEvent, iIntValue);
+            } else {
+                u0(inputEvent, 0, iIntValue | 67108864);
+            }
         }
     }
 
@@ -800,13 +798,14 @@ class y0 extends j2 {
     }
 
     void v0(Context context) {
-        AccessibilityManager accessibilityManager;
         this.O = true;
         P();
-        if (Build.VERSION.SDK_INT < 26 || (accessibilityManager = (AccessibilityManager) context.getSystemService("accessibility")) == null) {
-            return;
+        if (Build.VERSION.SDK_INT >= 26) {
+            AccessibilityManager accessibilityManager = (AccessibilityManager) context.getSystemService("accessibility");
+            if (accessibilityManager != null) {
+                accessibilityManager.addAccessibilityStateChangeListener(new b(accessibilityManager));
+            }
         }
-        accessibilityManager.addAccessibilityStateChangeListener(new b(accessibilityManager));
     }
 
     void w0() {

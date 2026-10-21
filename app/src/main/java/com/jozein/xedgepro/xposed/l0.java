@@ -862,7 +862,8 @@ class l0 extends j2 {
         if (Build.VERSION.SDK_INT >= 31) {
             V0(runningTaskInfo.taskId, i2);
         } else {
-            p1(D0(runningTaskInfo), bundle, A0(runningTaskInfo), i2);
+            int iA0 = A0(runningTaskInfo);
+            p1(D0(runningTaskInfo), bundle, iA0, i2);
         }
     }
 
@@ -870,7 +871,8 @@ class l0 extends j2 {
         if (Build.VERSION.SDK_INT >= 31) {
             V0(p3.d(obj), i2);
         } else {
-            p1(new Intent(p3.a(obj)), bundle, p3.e(obj), i2);
+            int iE = p3.e(obj);
+            p1(new Intent(p3.a(obj)), bundle, iE, i2);
         }
     }
 
