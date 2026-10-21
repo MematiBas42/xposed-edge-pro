@@ -1,0 +1,633 @@
+{
+  "timestamp": "2026-10-21 23:42:42",
+  "device": {},
+  "subsystems": {
+    "0_Preflight": {
+      "total": 4,
+      "passed": 4,
+      "failed": 0,
+      "tests": [
+        {
+          "test_name": "Root Yetkisi (uid 0)",
+          "passed": true,
+          "target_class": "RootAccess",
+          "target_method": "getUid",
+          "details": "UID: 0"
+        },
+        {
+          "test_name": "system_server Kanca Haritas\u0131",
+          "passed": true,
+          "target_class": "com.jozein.xedgepro.xposed.HookMain",
+          "target_method": "handleLoadPackage",
+          "details": "PID: 2031, Map: 784277b000-78427b8000 r--s 0008b000 fd:27 121436            "
+        },
+        {
+          "test_name": "Fail-Safe Supap Yolu (/data/system_de)",
+          "passed": true,
+          "target_class": "com.jozein.xedgepro.xposed.HookMain",
+          "target_method": "j",
+          "details": "Durum: OK"
+        },
+        {
+          "test_name": "Ekran Uyan\u0131kl\u0131k Durumu",
+          "passed": true,
+          "target_class": "PowerManager",
+          "target_method": "mWakefulness",
+          "details": "Durum: mWakefulness=Awake"
+        }
+      ]
+    },
+    "Subsystem_1_Touch": {
+      "total": 17,
+      "passed": 0,
+      "failed": 17,
+      "tests": [
+        {
+          "test_name": "Kenar Jest B\u00f6lgesi [Sol_Ust] (0,300 -> 300,300)",
+          "passed": false,
+          "target_class": "com.jozein.xedgepro.xposed.b0",
+          "target_method": "filterInputEvent",
+          "details": "Mod: mode - UNKNOWN\ngrep: Input: No such file or directory\ngrep: Mapper: No such file or directory\ngrep: [A-Z]*: No such file or directory\nFailed to write while dumping service input: Broken pipe",
+          "error": "Stuck pointer tespit edildi: grep: grep: pointer: No such file or directory\ndevice:: No such file or directory\ngrep: {}: No such file or directory\nFailed to write while dumping service input: Broken pipe"
+        },
+        {
+          "test_name": "Kenar Jest B\u00f6lgesi [Sol_Orta] (0,1170 -> 300,1170)",
+          "passed": false,
+          "target_class": "com.jozein.xedgepro.xposed.b0",
+          "target_method": "filterInputEvent",
+          "details": "Mod: mode - UNKNOWN\ngrep: Input: No such file or directory\ngrep: Mapper: No such file or directory\ngrep: [A-Z]*: No such file or directory\nFailed to write while dumping service input: Broken pipe",
+          "error": "Stuck pointer tespit edildi: grep: pointer: No such file or directory\ngrep: device:: No such file or directory\ngrep: {}: No such file or directory\nFailed to write while dumping service input: Broken pipe"
+        },
+        {
+          "test_name": "Kenar Jest B\u00f6lgesi [Sol_Alt] (0,2000 -> 300,2000)",
+          "passed": false,
+          "target_class": "com.jozein.xedgepro.xposed.b0",
+          "target_method": "filterInputEvent",
+          "details": "Mod: mode - UNKNOWN\ngrep: Input: No such file or directory\ngrep: Mapper: No such file or directory\ngrep: [A-Z]*: No such file or directory\nFailed to write while dumping service input: Broken pipe",
+          "error": "Stuck pointer tespit edildi: grep: pointer: No such file or directory\ngrep: device:: No such file or directory\ngrep: {}: No such file or directory\nFailed to write while dumping service input: Broken pipe"
+        },
+        {
+          "test_name": "Kenar Jest B\u00f6lgesi [Sol_Tam] (0,1000 -> 400,1000)",
+          "passed": false,
+          "target_class": "com.jozein.xedgepro.xposed.b0",
+          "target_method": "filterInputEvent",
+          "details": "Mod: mode - UNKNOWN\ngrep: Input: No such file or directory\ngrep: Mapper: No such file or directory\ngrep: [A-Z]*: No such file or directory\nFailed to write while dumping service input: Broken pipe",
+          "error": "Stuck pointer tespit edildi: grep: pointer: No such file or directory\ngrep: device:: No such file or directory\ngrep: {}: No such file or directory\nFailed to write while dumping service input: Broken pipe"
+        },
+        {
+          "test_name": "Kenar Jest B\u00f6lgesi [Sag_Ust] (1080,300 -> 780,300)",
+          "passed": false,
+          "target_class": "com.jozein.xedgepro.xposed.b0",
+          "target_method": "filterInputEvent",
+          "details": "Mod: mode - UNKNOWN\ngrep: Input: No such file or directory\ngrep: Mapper: No such file or directory\ngrep: [A-Z]*: No such file or directory\nFailed to write while dumping service input: Broken pipe",
+          "error": "Stuck pointer tespit edildi: grep: grep: device:: No such file or directory\ngrep: {}: No such file or directory\npointer: No such file or directory\nFailed to write while dumping service input: Broken pipe"
+        },
+        {
+          "test_name": "Kenar Jest B\u00f6lgesi [Sag_Orta] (1080,1170 -> 780,1170)",
+          "passed": false,
+          "target_class": "com.jozein.xedgepro.xposed.b0",
+          "target_method": "filterInputEvent",
+          "details": "Mod: mode - UNKNOWN\ngrep: Input: No such file or directory\ngrep: Mapper: No such file or directory\nFailed to write while dumping service grep: [A-Z]*: No such file or directory\ninput: Broken pipe",
+          "error": "Stuck pointer tespit edildi: grep: pointer: No such file or directory\ngrep: device:: No such file or directory\ngrep: {}: No such file or directory\nFailed to write while dumping service input: Broken pipe"
+        },
+        {
+          "test_name": "Kenar Jest B\u00f6lgesi [Sag_Alt] (1080,2000 -> 780,2000)",
+          "passed": false,
+          "target_class": "com.jozein.xedgepro.xposed.b0",
+          "target_method": "filterInputEvent",
+          "details": "Mod: mode - UNKNOWN\ngrep: Input: No such file or directory\ngrep: Mapper: No such file or directory\ngrep: [A-Z]*: No such file or directory\nFailed to write while dumping service input: Broken pipe",
+          "error": "Stuck pointer tespit edildi: grep: grep: pointer: No such file or directory\ndevice:: No such file or directory\ngrep: {}: No such file or directory\nFailed to write while dumping service input: Broken pipe"
+        },
+        {
+          "test_name": "Kenar Jest B\u00f6lgesi [Sag_Tam] (1080,1000 -> 680,1000)",
+          "passed": false,
+          "target_class": "com.jozein.xedgepro.xposed.b0",
+          "target_method": "filterInputEvent",
+          "details": "Mod: mode - UNKNOWN\ngrep: Input: No such file or directory\ngrep: Mapper: No such file or directory\ngrep: [A-Z]*: No such file or directory\nFailed to write while dumping service input: Broken pipe",
+          "error": "Stuck pointer tespit edildi: grep: grep: pointer: No such file or directory\ndevice:: No such file or directory\ngrep: {}: No such file or directory\nFailed to write while dumping service input: Broken pipe"
+        },
+        {
+          "test_name": "Kenar Jest B\u00f6lgesi [Ust_Sol] (200,0 -> 200,400)",
+          "passed": false,
+          "target_class": "com.jozein.xedgepro.xposed.b0",
+          "target_method": "filterInputEvent",
+          "details": "Mod: mode - UNKNOWN\ngrep: Input: No such file or directory\ngrep: Mapper: No such file or directory\ngrep: [A-Z]*: No such file or directory\nFailed to write while dumping service input: Broken pipe",
+          "error": "Stuck pointer tespit edildi: grep: grep: pointer: No such file or directory\ndevice:: No such file or directory\ngrep: {}: No such file or directory\nFailed to write while dumping service input: Broken pipe"
+        },
+        {
+          "test_name": "Kenar Jest B\u00f6lgesi [Ust_Orta] (540,0 -> 540,400)",
+          "passed": false,
+          "target_class": "com.jozein.xedgepro.xposed.b0",
+          "target_method": "filterInputEvent",
+          "details": "Mod: mode - UNKNOWN\ngrep: Input: No such file or directory\ngrep: Mapper: No such file or directory\ngrep: [A-Z]*: No such file or directory\nFailed to write while dumping service input: Broken pipe",
+          "error": "Stuck pointer tespit edildi: grep: grep: pointer: No such file or directory\ndevice:: No such file or directory\ngrep: {}: No such file or directory\nFailed to write while dumping service input: Broken pipe"
+        },
+        {
+          "test_name": "Kenar Jest B\u00f6lgesi [Ust_Sag] (900,0 -> 900,400)",
+          "passed": false,
+          "target_class": "com.jozein.xedgepro.xposed.b0",
+          "target_method": "filterInputEvent",
+          "details": "Mod: mode - UNKNOWN\ngrep: Input: No such file or directory\ngrep: Mapper: No such file or directory\ngrep: [A-Z]*: No such file or directory\nFailed to write while dumping service input: Broken pipe",
+          "error": "Stuck pointer tespit edildi: grep: grep: pointer: No such file or directory\ndevice:: No such file or directory\ngrep: {}: No such file or directory\nFailed to write while dumping service input: Broken pipe"
+        },
+        {
+          "test_name": "Kenar Jest B\u00f6lgesi [Ust_Tam] (540,0 -> 540,500)",
+          "passed": false,
+          "target_class": "com.jozein.xedgepro.xposed.b0",
+          "target_method": "filterInputEvent",
+          "details": "Mod: mode - UNKNOWN\ngrep: Input: No such file or directory\ngrep: Mapper: No such file or directory\ngrep: [A-Z]*: No such file or directory\nFailed to write while dumping service input: Broken pipe",
+          "error": "Stuck pointer tespit edildi: grep: grep: pointer: No such file or directory\ndevice:: No such file or directory\ngrep: {}: No such file or directory\nFailed to write while dumping service input: Broken pipe"
+        },
+        {
+          "test_name": "Kenar Jest B\u00f6lgesi [Alt_Sol] (200,2340 -> 200,1940)",
+          "passed": false,
+          "target_class": "com.jozein.xedgepro.xposed.b0",
+          "target_method": "filterInputEvent",
+          "details": "Mod: mode - UNKNOWN\ngrep: Input: No such file or directory\ngrep: Mapper: No such file or directory\ngrep: [A-Z]*: No such file or directory\nFailed to write while dumping service input: Broken pipe",
+          "error": "Stuck pointer tespit edildi: grep: device:: No such file or directory\ngrep: {}: No such file or directory\ngrep: pointer: No such file or directory\nFailed to write while dumping service input: Broken pipe"
+        },
+        {
+          "test_name": "Kenar Jest B\u00f6lgesi [Alt_Orta] (540,2340 -> 540,1940)",
+          "passed": false,
+          "target_class": "com.jozein.xedgepro.xposed.b0",
+          "target_method": "filterInputEvent",
+          "details": "Mod: mode - UNKNOWN\ngrep: Input: No such file or directory\ngrep: Mapper: No such file or directory\ngrep: [A-Z]*: No such file or directory\nFailed to write while dumping service input: Broken pipe",
+          "error": "Stuck pointer tespit edildi: grep: device:: No such file or directory\ngrep: {}: No such file or directory\ngrep: pointer: No such file or directory\nFailed to write while dumping service input: Broken pipe"
+        },
+        {
+          "test_name": "Kenar Jest B\u00f6lgesi [Alt_Sag] (900,2340 -> 900,1940)",
+          "passed": false,
+          "target_class": "com.jozein.xedgepro.xposed.b0",
+          "target_method": "filterInputEvent",
+          "details": "Mod: mode - UNKNOWN\ngrep: Input: No such file or directory\ngrep: Mapper: No such file or directory\ngrep: [A-Z]*: No such file or directory\nFailed to write while dumping service input: Broken pipe",
+          "error": "Stuck pointer tespit edildi: grep: device:: No such file or directory\ngrep: {}: No such file or directory\ngrep: pointer: No such file or directory\nFailed to write while dumping service input: Broken pipe"
+        },
+        {
+          "test_name": "Kenar Jest B\u00f6lgesi [Alt_Tam] (540,2340 -> 540,1840)",
+          "passed": false,
+          "target_class": "com.jozein.xedgepro.xposed.b0",
+          "target_method": "filterInputEvent",
+          "details": "Mod: mode - UNKNOWN\ngrep: Input: No such file or directory\ngrep: Mapper: No such file or directory\ngrep: [A-Z]*: No such file or directory\nFailed to write while dumping service input: Broken pipe",
+          "error": "Stuck pointer tespit edildi: grep: pointer: No such file or directory\ngrep: device:: No such file or directory\ngrep: {}: No such file or directory\nFailed to write while dumping service input: Broken pipe"
+        },
+        {
+          "test_name": "H\u0131zl\u0131 Ard\u0131\u015f\u0131k Dokunma Stres Testi (Rapid Tap Recovery)",
+          "passed": false,
+          "target_class": "com.jozein.xedgepro.xposed.b0",
+          "target_method": "a",
+          "details": "Stuck pointer: grep: device:: No such file or directory\ngrep: {}: No such file or directory\ngrep: pointer: No such file or directory\nFailed to write while dumping service input: Broken pipe",
+          "error": "Rapid tap sonras\u0131 pointer as\u0131l\u0131 kald\u0131: grep: device:: No such file or directory\ngrep: {}: No such file or directory\ngrep: pointer: No such file or directory\nFailed to write while dumping service input: Broken pipe"
+        }
+      ]
+    },
+    "Subsystem_2_Keys": {
+      "total": 6,
+      "passed": 0,
+      "failed": 6,
+      "tests": [
+        {
+          "test_name": "Tu\u015f Kancas\u0131 \u0130letimi [Volume_Up (keycode 24)]",
+          "passed": false,
+          "target_class": "com.jozein.xedgepro.xposed.w1",
+          "target_method": "x3",
+          "details": "Crash log: sh: NullPointerException | grep -i xedge || true: inaccessible or not found",
+          "error": "Tu\u015f bas\u0131m\u0131 kancas\u0131nda istisna: sh: NullPointerException | grep -i xedge || true: inaccessible or not found"
+        },
+        {
+          "test_name": "Tu\u015f Kancas\u0131 \u0130letimi [Volume_Down (keycode 25)]",
+          "passed": false,
+          "target_class": "com.jozein.xedgepro.xposed.w1",
+          "target_method": "x3",
+          "details": "Crash log: sh: NullPointerException | grep -i xedge || true: inaccessible or not found",
+          "error": "Tu\u015f bas\u0131m\u0131 kancas\u0131nda istisna: sh: NullPointerException | grep -i xedge || true: inaccessible or not found"
+        },
+        {
+          "test_name": "Tu\u015f Kancas\u0131 \u0130letimi [Back (keycode 4)]",
+          "passed": false,
+          "target_class": "com.jozein.xedgepro.xposed.w1",
+          "target_method": "x3",
+          "details": "Crash log: sh: NullPointerException | grep -i xedge || true: inaccessible or not found",
+          "error": "Tu\u015f bas\u0131m\u0131 kancas\u0131nda istisna: sh: NullPointerException | grep -i xedge || true: inaccessible or not found"
+        },
+        {
+          "test_name": "Tu\u015f Kancas\u0131 \u0130letimi [App_Switch (keycode 187)]",
+          "passed": false,
+          "target_class": "com.jozein.xedgepro.xposed.w1",
+          "target_method": "x3",
+          "details": "Crash log: sh: NullPointerException | grep -i xedge || true: inaccessible or not found",
+          "error": "Tu\u015f bas\u0131m\u0131 kancas\u0131nda istisna: sh: NullPointerException | grep -i xedge || true: inaccessible or not found"
+        },
+        {
+          "test_name": "Tu\u015f Kancas\u0131 \u0130letimi [Menu (keycode 82)]",
+          "passed": false,
+          "target_class": "com.jozein.xedgepro.xposed.w1",
+          "target_method": "x3",
+          "details": "Crash log: sh: NullPointerException | grep -i xedge || true: inaccessible or not found",
+          "error": "Tu\u015f bas\u0131m\u0131 kancas\u0131nda istisna: sh: NullPointerException | grep -i xedge || true: inaccessible or not found"
+        },
+        {
+          "test_name": "Tu\u015f Kancas\u0131 \u0130letimi [Headset_Hook (keycode 79)]",
+          "passed": false,
+          "target_class": "com.jozein.xedgepro.xposed.w1",
+          "target_method": "x3",
+          "details": "Crash log: sh: NullPointerException | grep -i xedge || true: inaccessible or not found",
+          "error": "Tu\u015f bas\u0131m\u0131 kancas\u0131nda istisna: sh: NullPointerException | grep -i xedge || true: inaccessible or not found"
+        }
+      ]
+    },
+    "Subsystem_2_Actions": {
+      "total": 3,
+      "passed": 2,
+      "failed": 1,
+      "tests": [
+        {
+          "test_name": "ActivityPerformAction \u0130le Eylem Tetikleme (Action 2: Back)",
+          "passed": true,
+          "target_class": "com.jozein.xedgepro.ui.ActivityPerformAction",
+          "target_method": "onCreate",
+          "details": "\u00c7\u0131kt\u0131: OK"
+        },
+        {
+          "test_name": "Ekran D\u00f6nd\u00fcrme / Rotation Fallback Haz\u0131rl\u0131\u011f\u0131 (Patch 7)",
+          "passed": false,
+          "target_class": "com.jozein.xedgepro.xposed.m2",
+          "target_method": "D",
+          "details": "Mevcut Rotasyon: ",
+          "error": "Rotasyon bilgisi okunamad\u0131"
+        },
+        {
+          "test_name": "Ses Denetim API (Patch 6 Volume Alias Fallback)",
+          "passed": true,
+          "target_class": "com.jozein.xedgepro.xposed.e",
+          "target_method": "f",
+          "details": "Ses D\u00fczeyi Bilgisi: [V] will control stream=3 (STREAM_MUSIC)"
+        }
+      ]
+    },
+    "Subsystem_3_Triggers": {
+      "total": 5,
+      "passed": 5,
+      "failed": 0,
+      "tests": [
+        {
+          "test_name": "BATTERY_CHANGED Yay\u0131n \u0130letimi",
+          "passed": true,
+          "target_class": "pkg_a.p",
+          "target_method": "onReceive",
+          "details": "Sonu\u00e7: Broadcasting: Intent { act=android.intent.action.BATTERY_CHA"
+        },
+        {
+          "test_name": "ACTION_POWER_CONNECTED Yay\u0131n \u0130letimi",
+          "passed": true,
+          "target_class": "pkg_a.p",
+          "target_method": "onReceive",
+          "details": "Sonu\u00e7: Broadcasting: Intent { act=android.intent.action.ACTION_POWE"
+        },
+        {
+          "test_name": "SCREEN_ON Yay\u0131n \u0130letimi",
+          "passed": true,
+          "target_class": "pkg_a.p",
+          "target_method": "onReceive",
+          "details": "Sonu\u00e7: Broadcasting: Intent { act=android.intent.action.SCREEN_ON f"
+        },
+        {
+          "test_name": "\u00d6n Plan Uygulama Ge\u00e7i\u015f Alg\u0131lama (AppTriggerManager)",
+          "passed": true,
+          "target_class": "pkg_a.AppTriggerManager",
+          "target_method": "onForegroundAppChanged",
+          "details": "Mevcut Odak: mCurrentFocus=Window{21ef42b u0 com.android.settings/com.and"
+        },
+        {
+          "test_name": "Transient Bars / Tam Ekran Dinleyici B\u00fct\u00fcnl\u00fc\u011f\u00fc",
+          "passed": true,
+          "target_class": "com.jozein.xedgepro.xposed.n0",
+          "target_method": "B0",
+          "details": "Log: sh: Transient || true: inaccessible or not found"
+        }
+      ]
+    },
+    "Subsystem_4_IPC": {
+      "total": 3,
+      "passed": 0,
+      "failed": 3,
+      "tests": [
+        {
+          "test_name": "AIDL Root IPC Servisi Bildirimi (BinderService)",
+          "passed": false,
+          "target_class": "com.jozein.xedgepro.b",
+          "target_method": "asBinder",
+          "details": "Servis: ",
+          "error": "BinderService AndroidManifest'te bulunamad\u0131!"
+        },
+        {
+          "test_name": "12 Adet Quick Settings Karosu (SuperTileService$Tile1..12)",
+          "passed": false,
+          "target_class": "com.jozein.xedgepro.SuperTileService",
+          "target_method": "onClick",
+          "details": "Bulunan karo servisi: 0/12",
+          "error": "Eksik karo servisi: 0/12"
+        },
+        {
+          "test_name": "Fener Servisi Bildirimi (ServiceTorch)",
+          "passed": false,
+          "target_class": "com.jozein.xedgepro.ServiceTorch",
+          "target_method": "onStartCommand",
+          "details": "Servis: ",
+          "error": "ServiceTorch bulunamad\u0131!"
+        }
+      ]
+    },
+    "Subsystem_5_UI": {
+      "total": 5,
+      "passed": 2,
+      "failed": 3,
+      "tests": [
+        {
+          "test_name": "Direct Boot DE Yap\u0131land\u0131rma Dosyas\u0131 (/prefs/prefs)",
+          "passed": true,
+          "target_class": "pkg_f.s",
+          "target_method": "g",
+          "details": "Dosya: -rw-r--r-- 1 u0_a243 u0_a243 239 2026-10-21 21:41 /data/user_de/0/com.jozein.xedgepro/prefs/prefs"
+        },
+        {
+          "test_name": "Ana Aray\u00fcz Ya\u015fam D\u00f6ng\u00fcs\u00fc ve Pencere Oda\u011f\u0131 (ActivityMain)",
+          "passed": true,
+          "target_class": "com.jozein.xedgepro.ui.ActivityMain",
+          "target_method": "onCreate",
+          "details": "Mevcut Odak: mCurrentFocus=Window{bac5c52 u0 com.jozein.xedgepro/com.jozein.xedgepr"
+        },
+        {
+          "test_name": "Eylem Se\u00e7im Aray\u00fcz\u00fc (ActivitySelectAction)",
+          "passed": false,
+          "target_class": "com.jozein.xedgepro.ui.ActivitySelectAction",
+          "target_method": "onCreate",
+          "details": "Mevcut Odak: mCurrentFocus=Window{bac5c52 u0 com.jozein.xedgepro/com.jozein.xedgepr",
+          "error": "ActivitySelectAction a\u00e7\u0131lamad\u0131!"
+        },
+        {
+          "test_name": "Uygulama Liste Aray\u00fcz\u00fc (ActivityAppList)",
+          "passed": false,
+          "target_class": "com.jozein.xedgepro.ui.ActivityAppList",
+          "target_method": "onCreate",
+          "details": "Mevcut Odak: mCurrentFocus=Window{21ef42b u0 com.android.settings/com.android.setti",
+          "error": "ActivityAppList a\u00e7\u0131lamad\u0131!"
+        },
+        {
+          "test_name": "\u00c7al\u0131\u015fma Zaman\u0131 Crash / ANR S\u0131f\u0131r Hata Do\u011frulamas\u0131",
+          "passed": false,
+          "target_class": "com.jozein.xedgepro",
+          "target_method": "ApplicationLifecycle",
+          "details": "Crash: grep: EXCEPTION: No such file or directory",
+          "error": "Uygulamada \u00e7\u00f6kme tespit edildi: grep: EXCEPTION: No such file or directory"
+        }
+      ]
+    }
+  },
+  "total_tests": 43,
+  "passed": 13,
+  "failed": 30,
+  "warnings": 0,
+  "pinpointed_errors": [
+    {
+      "subsystem": "Subsystem_1_Touch",
+      "test": "Kenar Jest B\u00f6lgesi [Sol_Ust] (0,300 -> 300,300)",
+      "target_class": "com.jozein.xedgepro.xposed.b0",
+      "target_method": "filterInputEvent",
+      "error": "Stuck pointer tespit edildi: grep: grep: pointer: No such file or directory\ndevice:: No such file or directory\ngrep: {}: No such file or directory\nFailed to write while dumping service input: Broken pipe",
+      "details": "Mod: mode - UNKNOWN\ngrep: Input: No such file or directory\ngrep: Mapper: No such file or directory\ngrep: [A-Z]*: No such file or directory\nFailed to write while dumping service input: Broken pipe"
+    },
+    {
+      "subsystem": "Subsystem_1_Touch",
+      "test": "Kenar Jest B\u00f6lgesi [Sol_Orta] (0,1170 -> 300,1170)",
+      "target_class": "com.jozein.xedgepro.xposed.b0",
+      "target_method": "filterInputEvent",
+      "error": "Stuck pointer tespit edildi: grep: pointer: No such file or directory\ngrep: device:: No such file or directory\ngrep: {}: No such file or directory\nFailed to write while dumping service input: Broken pipe",
+      "details": "Mod: mode - UNKNOWN\ngrep: Input: No such file or directory\ngrep: Mapper: No such file or directory\ngrep: [A-Z]*: No such file or directory\nFailed to write while dumping service input: Broken pipe"
+    },
+    {
+      "subsystem": "Subsystem_1_Touch",
+      "test": "Kenar Jest B\u00f6lgesi [Sol_Alt] (0,2000 -> 300,2000)",
+      "target_class": "com.jozein.xedgepro.xposed.b0",
+      "target_method": "filterInputEvent",
+      "error": "Stuck pointer tespit edildi: grep: pointer: No such file or directory\ngrep: device:: No such file or directory\ngrep: {}: No such file or directory\nFailed to write while dumping service input: Broken pipe",
+      "details": "Mod: mode - UNKNOWN\ngrep: Input: No such file or directory\ngrep: Mapper: No such file or directory\ngrep: [A-Z]*: No such file or directory\nFailed to write while dumping service input: Broken pipe"
+    },
+    {
+      "subsystem": "Subsystem_1_Touch",
+      "test": "Kenar Jest B\u00f6lgesi [Sol_Tam] (0,1000 -> 400,1000)",
+      "target_class": "com.jozein.xedgepro.xposed.b0",
+      "target_method": "filterInputEvent",
+      "error": "Stuck pointer tespit edildi: grep: pointer: No such file or directory\ngrep: device:: No such file or directory\ngrep: {}: No such file or directory\nFailed to write while dumping service input: Broken pipe",
+      "details": "Mod: mode - UNKNOWN\ngrep: Input: No such file or directory\ngrep: Mapper: No such file or directory\ngrep: [A-Z]*: No such file or directory\nFailed to write while dumping service input: Broken pipe"
+    },
+    {
+      "subsystem": "Subsystem_1_Touch",
+      "test": "Kenar Jest B\u00f6lgesi [Sag_Ust] (1080,300 -> 780,300)",
+      "target_class": "com.jozein.xedgepro.xposed.b0",
+      "target_method": "filterInputEvent",
+      "error": "Stuck pointer tespit edildi: grep: grep: device:: No such file or directory\ngrep: {}: No such file or directory\npointer: No such file or directory\nFailed to write while dumping service input: Broken pipe",
+      "details": "Mod: mode - UNKNOWN\ngrep: Input: No such file or directory\ngrep: Mapper: No such file or directory\ngrep: [A-Z]*: No such file or directory\nFailed to write while dumping service input: Broken pipe"
+    },
+    {
+      "subsystem": "Subsystem_1_Touch",
+      "test": "Kenar Jest B\u00f6lgesi [Sag_Orta] (1080,1170 -> 780,1170)",
+      "target_class": "com.jozein.xedgepro.xposed.b0",
+      "target_method": "filterInputEvent",
+      "error": "Stuck pointer tespit edildi: grep: pointer: No such file or directory\ngrep: device:: No such file or directory\ngrep: {}: No such file or directory\nFailed to write while dumping service input: Broken pipe",
+      "details": "Mod: mode - UNKNOWN\ngrep: Input: No such file or directory\ngrep: Mapper: No such file or directory\nFailed to write while dumping service grep: [A-Z]*: No such file or directory\ninput: Broken pipe"
+    },
+    {
+      "subsystem": "Subsystem_1_Touch",
+      "test": "Kenar Jest B\u00f6lgesi [Sag_Alt] (1080,2000 -> 780,2000)",
+      "target_class": "com.jozein.xedgepro.xposed.b0",
+      "target_method": "filterInputEvent",
+      "error": "Stuck pointer tespit edildi: grep: grep: pointer: No such file or directory\ndevice:: No such file or directory\ngrep: {}: No such file or directory\nFailed to write while dumping service input: Broken pipe",
+      "details": "Mod: mode - UNKNOWN\ngrep: Input: No such file or directory\ngrep: Mapper: No such file or directory\ngrep: [A-Z]*: No such file or directory\nFailed to write while dumping service input: Broken pipe"
+    },
+    {
+      "subsystem": "Subsystem_1_Touch",
+      "test": "Kenar Jest B\u00f6lgesi [Sag_Tam] (1080,1000 -> 680,1000)",
+      "target_class": "com.jozein.xedgepro.xposed.b0",
+      "target_method": "filterInputEvent",
+      "error": "Stuck pointer tespit edildi: grep: grep: pointer: No such file or directory\ndevice:: No such file or directory\ngrep: {}: No such file or directory\nFailed to write while dumping service input: Broken pipe",
+      "details": "Mod: mode - UNKNOWN\ngrep: Input: No such file or directory\ngrep: Mapper: No such file or directory\ngrep: [A-Z]*: No such file or directory\nFailed to write while dumping service input: Broken pipe"
+    },
+    {
+      "subsystem": "Subsystem_1_Touch",
+      "test": "Kenar Jest B\u00f6lgesi [Ust_Sol] (200,0 -> 200,400)",
+      "target_class": "com.jozein.xedgepro.xposed.b0",
+      "target_method": "filterInputEvent",
+      "error": "Stuck pointer tespit edildi: grep: grep: pointer: No such file or directory\ndevice:: No such file or directory\ngrep: {}: No such file or directory\nFailed to write while dumping service input: Broken pipe",
+      "details": "Mod: mode - UNKNOWN\ngrep: Input: No such file or directory\ngrep: Mapper: No such file or directory\ngrep: [A-Z]*: No such file or directory\nFailed to write while dumping service input: Broken pipe"
+    },
+    {
+      "subsystem": "Subsystem_1_Touch",
+      "test": "Kenar Jest B\u00f6lgesi [Ust_Orta] (540,0 -> 540,400)",
+      "target_class": "com.jozein.xedgepro.xposed.b0",
+      "target_method": "filterInputEvent",
+      "error": "Stuck pointer tespit edildi: grep: grep: pointer: No such file or directory\ndevice:: No such file or directory\ngrep: {}: No such file or directory\nFailed to write while dumping service input: Broken pipe",
+      "details": "Mod: mode - UNKNOWN\ngrep: Input: No such file or directory\ngrep: Mapper: No such file or directory\ngrep: [A-Z]*: No such file or directory\nFailed to write while dumping service input: Broken pipe"
+    },
+    {
+      "subsystem": "Subsystem_1_Touch",
+      "test": "Kenar Jest B\u00f6lgesi [Ust_Sag] (900,0 -> 900,400)",
+      "target_class": "com.jozein.xedgepro.xposed.b0",
+      "target_method": "filterInputEvent",
+      "error": "Stuck pointer tespit edildi: grep: grep: pointer: No such file or directory\ndevice:: No such file or directory\ngrep: {}: No such file or directory\nFailed to write while dumping service input: Broken pipe",
+      "details": "Mod: mode - UNKNOWN\ngrep: Input: No such file or directory\ngrep: Mapper: No such file or directory\ngrep: [A-Z]*: No such file or directory\nFailed to write while dumping service input: Broken pipe"
+    },
+    {
+      "subsystem": "Subsystem_1_Touch",
+      "test": "Kenar Jest B\u00f6lgesi [Ust_Tam] (540,0 -> 540,500)",
+      "target_class": "com.jozein.xedgepro.xposed.b0",
+      "target_method": "filterInputEvent",
+      "error": "Stuck pointer tespit edildi: grep: grep: pointer: No such file or directory\ndevice:: No such file or directory\ngrep: {}: No such file or directory\nFailed to write while dumping service input: Broken pipe",
+      "details": "Mod: mode - UNKNOWN\ngrep: Input: No such file or directory\ngrep: Mapper: No such file or directory\ngrep: [A-Z]*: No such file or directory\nFailed to write while dumping service input: Broken pipe"
+    },
+    {
+      "subsystem": "Subsystem_1_Touch",
+      "test": "Kenar Jest B\u00f6lgesi [Alt_Sol] (200,2340 -> 200,1940)",
+      "target_class": "com.jozein.xedgepro.xposed.b0",
+      "target_method": "filterInputEvent",
+      "error": "Stuck pointer tespit edildi: grep: device:: No such file or directory\ngrep: {}: No such file or directory\ngrep: pointer: No such file or directory\nFailed to write while dumping service input: Broken pipe",
+      "details": "Mod: mode - UNKNOWN\ngrep: Input: No such file or directory\ngrep: Mapper: No such file or directory\ngrep: [A-Z]*: No such file or directory\nFailed to write while dumping service input: Broken pipe"
+    },
+    {
+      "subsystem": "Subsystem_1_Touch",
+      "test": "Kenar Jest B\u00f6lgesi [Alt_Orta] (540,2340 -> 540,1940)",
+      "target_class": "com.jozein.xedgepro.xposed.b0",
+      "target_method": "filterInputEvent",
+      "error": "Stuck pointer tespit edildi: grep: device:: No such file or directory\ngrep: {}: No such file or directory\ngrep: pointer: No such file or directory\nFailed to write while dumping service input: Broken pipe",
+      "details": "Mod: mode - UNKNOWN\ngrep: Input: No such file or directory\ngrep: Mapper: No such file or directory\ngrep: [A-Z]*: No such file or directory\nFailed to write while dumping service input: Broken pipe"
+    },
+    {
+      "subsystem": "Subsystem_1_Touch",
+      "test": "Kenar Jest B\u00f6lgesi [Alt_Sag] (900,2340 -> 900,1940)",
+      "target_class": "com.jozein.xedgepro.xposed.b0",
+      "target_method": "filterInputEvent",
+      "error": "Stuck pointer tespit edildi: grep: device:: No such file or directory\ngrep: {}: No such file or directory\ngrep: pointer: No such file or directory\nFailed to write while dumping service input: Broken pipe",
+      "details": "Mod: mode - UNKNOWN\ngrep: Input: No such file or directory\ngrep: Mapper: No such file or directory\ngrep: [A-Z]*: No such file or directory\nFailed to write while dumping service input: Broken pipe"
+    },
+    {
+      "subsystem": "Subsystem_1_Touch",
+      "test": "Kenar Jest B\u00f6lgesi [Alt_Tam] (540,2340 -> 540,1840)",
+      "target_class": "com.jozein.xedgepro.xposed.b0",
+      "target_method": "filterInputEvent",
+      "error": "Stuck pointer tespit edildi: grep: pointer: No such file or directory\ngrep: device:: No such file or directory\ngrep: {}: No such file or directory\nFailed to write while dumping service input: Broken pipe",
+      "details": "Mod: mode - UNKNOWN\ngrep: Input: No such file or directory\ngrep: Mapper: No such file or directory\ngrep: [A-Z]*: No such file or directory\nFailed to write while dumping service input: Broken pipe"
+    },
+    {
+      "subsystem": "Subsystem_1_Touch",
+      "test": "H\u0131zl\u0131 Ard\u0131\u015f\u0131k Dokunma Stres Testi (Rapid Tap Recovery)",
+      "target_class": "com.jozein.xedgepro.xposed.b0",
+      "target_method": "a",
+      "error": "Rapid tap sonras\u0131 pointer as\u0131l\u0131 kald\u0131: grep: device:: No such file or directory\ngrep: {}: No such file or directory\ngrep: pointer: No such file or directory\nFailed to write while dumping service input: Broken pipe",
+      "details": "Stuck pointer: grep: device:: No such file or directory\ngrep: {}: No such file or directory\ngrep: pointer: No such file or directory\nFailed to write while dumping service input: Broken pipe"
+    },
+    {
+      "subsystem": "Subsystem_2_Keys",
+      "test": "Tu\u015f Kancas\u0131 \u0130letimi [Volume_Up (keycode 24)]",
+      "target_class": "com.jozein.xedgepro.xposed.w1",
+      "target_method": "x3",
+      "error": "Tu\u015f bas\u0131m\u0131 kancas\u0131nda istisna: sh: NullPointerException | grep -i xedge || true: inaccessible or not found",
+      "details": "Crash log: sh: NullPointerException | grep -i xedge || true: inaccessible or not found"
+    },
+    {
+      "subsystem": "Subsystem_2_Keys",
+      "test": "Tu\u015f Kancas\u0131 \u0130letimi [Volume_Down (keycode 25)]",
+      "target_class": "com.jozein.xedgepro.xposed.w1",
+      "target_method": "x3",
+      "error": "Tu\u015f bas\u0131m\u0131 kancas\u0131nda istisna: sh: NullPointerException | grep -i xedge || true: inaccessible or not found",
+      "details": "Crash log: sh: NullPointerException | grep -i xedge || true: inaccessible or not found"
+    },
+    {
+      "subsystem": "Subsystem_2_Keys",
+      "test": "Tu\u015f Kancas\u0131 \u0130letimi [Back (keycode 4)]",
+      "target_class": "com.jozein.xedgepro.xposed.w1",
+      "target_method": "x3",
+      "error": "Tu\u015f bas\u0131m\u0131 kancas\u0131nda istisna: sh: NullPointerException | grep -i xedge || true: inaccessible or not found",
+      "details": "Crash log: sh: NullPointerException | grep -i xedge || true: inaccessible or not found"
+    },
+    {
+      "subsystem": "Subsystem_2_Keys",
+      "test": "Tu\u015f Kancas\u0131 \u0130letimi [App_Switch (keycode 187)]",
+      "target_class": "com.jozein.xedgepro.xposed.w1",
+      "target_method": "x3",
+      "error": "Tu\u015f bas\u0131m\u0131 kancas\u0131nda istisna: sh: NullPointerException | grep -i xedge || true: inaccessible or not found",
+      "details": "Crash log: sh: NullPointerException | grep -i xedge || true: inaccessible or not found"
+    },
+    {
+      "subsystem": "Subsystem_2_Keys",
+      "test": "Tu\u015f Kancas\u0131 \u0130letimi [Menu (keycode 82)]",
+      "target_class": "com.jozein.xedgepro.xposed.w1",
+      "target_method": "x3",
+      "error": "Tu\u015f bas\u0131m\u0131 kancas\u0131nda istisna: sh: NullPointerException | grep -i xedge || true: inaccessible or not found",
+      "details": "Crash log: sh: NullPointerException | grep -i xedge || true: inaccessible or not found"
+    },
+    {
+      "subsystem": "Subsystem_2_Keys",
+      "test": "Tu\u015f Kancas\u0131 \u0130letimi [Headset_Hook (keycode 79)]",
+      "target_class": "com.jozein.xedgepro.xposed.w1",
+      "target_method": "x3",
+      "error": "Tu\u015f bas\u0131m\u0131 kancas\u0131nda istisna: sh: NullPointerException | grep -i xedge || true: inaccessible or not found",
+      "details": "Crash log: sh: NullPointerException | grep -i xedge || true: inaccessible or not found"
+    },
+    {
+      "subsystem": "Subsystem_2_Actions",
+      "test": "Ekran D\u00f6nd\u00fcrme / Rotation Fallback Haz\u0131rl\u0131\u011f\u0131 (Patch 7)",
+      "target_class": "com.jozein.xedgepro.xposed.m2",
+      "target_method": "D",
+      "error": "Rotasyon bilgisi okunamad\u0131",
+      "details": "Mevcut Rotasyon: "
+    },
+    {
+      "subsystem": "Subsystem_4_IPC",
+      "test": "AIDL Root IPC Servisi Bildirimi (BinderService)",
+      "target_class": "com.jozein.xedgepro.b",
+      "target_method": "asBinder",
+      "error": "BinderService AndroidManifest'te bulunamad\u0131!",
+      "details": "Servis: "
+    },
+    {
+      "subsystem": "Subsystem_4_IPC",
+      "test": "12 Adet Quick Settings Karosu (SuperTileService$Tile1..12)",
+      "target_class": "com.jozein.xedgepro.SuperTileService",
+      "target_method": "onClick",
+      "error": "Eksik karo servisi: 0/12",
+      "details": "Bulunan karo servisi: 0/12"
+    },
+    {
+      "subsystem": "Subsystem_4_IPC",
+      "test": "Fener Servisi Bildirimi (ServiceTorch)",
+      "target_class": "com.jozein.xedgepro.ServiceTorch",
+      "target_method": "onStartCommand",
+      "error": "ServiceTorch bulunamad\u0131!",
+      "details": "Servis: "
+    },
+    {
+      "subsystem": "Subsystem_5_UI",
+      "test": "Eylem Se\u00e7im Aray\u00fcz\u00fc (ActivitySelectAction)",
+      "target_class": "com.jozein.xedgepro.ui.ActivitySelectAction",
+      "target_method": "onCreate",
+      "error": "ActivitySelectAction a\u00e7\u0131lamad\u0131!",
+      "details": "Mevcut Odak: mCurrentFocus=Window{bac5c52 u0 com.jozein.xedgepro/com.jozein.xedgepr"
+    },
+    {
+      "subsystem": "Subsystem_5_UI",
+      "test": "Uygulama Liste Aray\u00fcz\u00fc (ActivityAppList)",
+      "target_class": "com.jozein.xedgepro.ui.ActivityAppList",
+      "target_method": "onCreate",
+      "error": "ActivityAppList a\u00e7\u0131lamad\u0131!",
+      "details": "Mevcut Odak: mCurrentFocus=Window{21ef42b u0 com.android.settings/com.android.setti"
+    },
+    {
+      "subsystem": "Subsystem_5_UI",
+      "test": "\u00c7al\u0131\u015fma Zaman\u0131 Crash / ANR S\u0131f\u0131r Hata Do\u011frulamas\u0131",
+      "target_class": "com.jozein.xedgepro",
+      "target_method": "ApplicationLifecycle",
+      "error": "Uygulamada \u00e7\u00f6kme tespit edildi: grep: EXCEPTION: No such file or directory",
+      "details": "Crash: grep: EXCEPTION: No such file or directory"
+    }
+  ],
+  "elapsed_seconds": 191.58
+}
