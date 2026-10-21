@@ -2,3 +2,5 @@
 build/
 app/build/
 *.apk
+__pycache__/
+*.pyc
