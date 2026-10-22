@@ -42,13 +42,15 @@ def verify(built_apk_path, built_smali_dir):
         "Patch 5 (Partial Screenshot Intent Dispatch)": False,
         "Patch 6 (Audio Volume Alias Fallback [0..11])": False,
         "Patch 7 (3-Stage freezeRotation Fallback)": False,
-        "Patch 8 (AccessibilityService performGlobalAction 9)": False
+        "Patch 8 (AccessibilityService performGlobalAction 9)": False,
+        "Patch 9 (Modern Android IMMS Cascading Adapter)": False
     }
 
     n0_java = open("/home/ubuntu/projects/xposed-edge-pro/app/src/main/java/com/jozein/xedgepro/xposed/n0.java").read()
     w1_java = open("/home/ubuntu/projects/xposed-edge-pro/app/src/main/java/com/jozein/xedgepro/xposed/w1.java").read()
     e_java = open("/home/ubuntu/projects/xposed-edge-pro/app/src/main/java/com/jozein/xedgepro/xposed/e.java").read()
     m2_java = open("/home/ubuntu/projects/xposed-edge-pro/app/src/main/java/com/jozein/xedgepro/xposed/m2.java").read()
+    p0_java = open("/home/ubuntu/projects/xposed-edge-pro/app/src/main/java/com/jozein/xedgepro/xposed/p0.java").read()
 
     if "hookAllMethods" in n0_java and "updateVisibility" in n0_java:
         patches["Patch 1 (Type Mapping & hookAllMethods)"] = True
@@ -66,6 +68,8 @@ def verify(built_apk_path, built_smali_dir):
         patches["Patch 7 (3-Stage freezeRotation Fallback)"] = True
     if "performGlobalAction(9)" in w1_java:
         patches["Patch 8 (AccessibilityService performGlobalAction 9)"] = True
+    if "getUserDataCompat" in p0_java and "hideInputMethod" in p0_java and "showInputMethodPickerFromSystem" in p0_java:
+        patches["Patch 9 (Modern Android IMMS Cascading Adapter)"] = True
 
     for p_name, p_ok in patches.items():
         status = "VERIFIED (100%) ✓" if p_ok else "FAILED ✗"
