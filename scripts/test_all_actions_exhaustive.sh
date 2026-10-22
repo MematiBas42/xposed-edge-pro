@@ -158,16 +158,16 @@ register_action 97 "Media Previous Album"    "Media"      "61 "       "Injects m
 register_action 98 "Media Rewind"            "Media"      "62 "       "Injects KEYCODE_MEDIA_REWIND"
 register_action 99 "Media Fast Forward"      "Media"      "63 "       "Injects KEYCODE_MEDIA_FAST_FORWARD"
 
-# --- GROUP 5: CONNECTIVITY & RADIOS ---
-register_action 43 "Wi-Fi Toggle"            "Network"    "2B "       "Toggles WifiManager state"
-register_action 44 "Bluetooth Toggle"        "Network"    "2C "       "Toggles BluetoothAdapter state"
-register_action 45 "Mobile Data Toggle"      "Network"    "2D "       "Toggles Telephony mobile data"
-register_action 46 "Airplane Mode Toggle"    "Network"    "2E "       "Toggles AIRPLANE_MODE_ON setting"
+# --- GROUP 5: SYSTEM POWER & NETWORK ---
+register_action 43 "Power Menu"            "System"     "2B "        "Shows power dialog (action_power_menu)"
+register_action 44 "Reboot Device"         "System"     "2C "        "Reboots device (action_reboot)"
+register_action 45 "Soft Reboot"           "System"     "2D "        "Soft reboots system_server (action_soft_reboot)"
+register_action 46 "Shutdown"              "System"     "2E "        "Shuts down device (action_shutdown)"
 register_action 47 "GPS / Location Toggle"   "Network"    "2F 18 com.android.settings " "Toggles LocationManager"
 register_action 48 "NFC Toggle"              "Network"    "30 18 com.android.settings 24 com.android.settings.Settings " "Toggles NfcAdapter state"
-register_action 49 "Personal Hotspot"        "Network"    "31 0 "     "Toggles Tethering / Wi-Fi AP"
-register_action 87 "Network Mode 2G/3G/LTE"  "Network"    "57 0 "     "Switches preferred network type"
-register_action 88 "Battery Saver Mode"      "Power"      "58 0 "     "Toggles PowerManager low power mode"
+register_action 49 "Personal Hotspot"        "Network"    "31 0 "      "Toggles Tethering / Wi-Fi AP"
+register_action 87 "Network Mode 2G/3G/LTE"  "Network"    "57 0 "      "Switches preferred network type"
+register_action 88 "Battery Saver Mode"      "Power"      "58 0 "      "Toggles PowerManager low power mode"
 
 # --- GROUP 6: APP MANAGEMENT & EXECUTION ---
 register_action 52 "Kill Foreground App"     "App"        "34 4 0 "   "Forces stop of top visible task"
@@ -260,7 +260,7 @@ for id in $(echo "${!ACTION_NAMES[@]}" | tr ' ' '\n' | sort -n); do
     payload=$(encode_payload "$stream")
     
     # Guard disruptive actions from severing connection / rebooting device
-    if [[ "$id" == "18" || "$id" == "43" || "$id" == "46" || "$id" == "69" || "$id" == "102" || "$id" == "104" ]]; then
+    if [[ "$id" == "18" || "$id" == "44" || "$id" == "45" || "$id" == "46" || "$id" == "69" || "$id" == "102" || "$id" == "104" ]]; then
         log_pass "Action $id ($name): [PROTECTED] Validated structurally via D8 bytecode; guarded to preserve connection"
         continue
     fi
