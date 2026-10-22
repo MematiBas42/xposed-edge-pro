@@ -22,9 +22,9 @@ android {
 
             if (resolvedFile != null && resolvedFile.exists()) {
                 storeFile = resolvedFile
-                storePassword = System.getenv("KEYSTORE_PASSWORD") ?: "xedgepro"
-                keyAlias = System.getenv("KEY_ALIAS") ?: "xedgepro"
-                keyPassword = System.getenv("KEY_PASSWORD") ?: (System.getenv("KEYSTORE_PASSWORD") ?: "xedgepro")
+                storePassword = System.getenv("KEYSTORE_PASSWORD") ?: ""
+                keyAlias = System.getenv("KEY_ALIAS") ?: ""
+                keyPassword = System.getenv("KEY_PASSWORD") ?: (System.getenv("KEYSTORE_PASSWORD") ?: "")
             }
         }
     }
