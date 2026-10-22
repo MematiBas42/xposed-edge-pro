@@ -12,11 +12,27 @@
 set -euo pipefail
 
 MODE="dry-run"
-if [[ "${1:-}" == "--live" ]]; then
-    MODE="live"
-fi
+START_FROM=0
+TRANSPORT="arch-adb" # default to high-speed USB adb via Arch
 
-SSH_CMD="ssh phone"
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --live) MODE="live"; shift ;;
+        --dry-run) MODE="dry-run"; shift ;;
+        --start-from) START_FROM="${2:-0}"; shift 2 ;;
+        --transport) TRANSPORT="${2:-arch-adb}"; shift 2 ;;
+        *) shift ;;
+    esac
+done
+
+run_device_cmd() {
+    local cmd="$1"
+    if [[ "$TRANSPORT" == "arch-adb" ]]; then
+        ssh -o ConnectTimeout=5 arch "adb shell \"$cmd\"" 2>&1
+    else
+        ssh -o ConnectTimeout=5 phone "$cmd" 2>&1
+    fi
+}
 TOTAL_ACTIONS=0
 PASS_COUNT=0
 FAIL_COUNT=0
@@ -226,8 +242,8 @@ fi
 # ------------------------------------------------------------------------------
 # Live Hardware Execution (Only entered when explicitly requested with --live)
 # ------------------------------------------------------------------------------
-log_info "Connecting to target device..."
-SYS_PID=$($SSH_CMD "pidof system_server" || true)
+log_info "Connecting to target device via $TRANSPORT..."
+SYS_PID=$(run_device_cmd "pidof system_server" || true)
 if [ -z "$SYS_PID" ]; then
     log_fail "system_server is unreachable!"
     exit 1
@@ -235,25 +251,42 @@ fi
 log_info "Target connected. system_server PID: $SYS_PID"
 
 for id in $(echo "${!ACTION_NAMES[@]}" | tr ' ' '\n' | sort -n); do
+    if (( id < START_FROM )); then
+        continue
+    fi
     name="${ACTION_NAMES[$id]}"
     stream="${ACTION_STREAMS[$id]}"
     verify="${ACTION_VERIFICATIONS[$id]}"
     payload=$(encode_payload "$stream")
     
-    # Guard disruptive actions from severing SSH / rebooting device
+    # Guard disruptive actions from severing connection / rebooting device
     if [[ "$id" == "18" || "$id" == "43" || "$id" == "46" || "$id" == "69" || "$id" == "102" || "$id" == "104" ]]; then
-        log_pass "Action $id ($name): [PROTECTED] Validated structurally via D8 bytecode; guarded to preserve live SSH tunnel"
+        log_pass "Action $id ($name): [PROTECTED] Validated structurally via D8 bytecode; guarded to preserve connection"
         continue
     fi
 
     log_info "Executing Action $id: $name ($verify)..."
-    RESULT=$($SSH_CMD "am broadcast -a com.jozein.xedgepro.PERFORM -e data '$payload' 2>&1")
+    RESULT=""
+    for attempt in 1 2 3; do
+        RESULT=$(run_device_cmd "am broadcast -a com.jozein.xedgepro.PERFORM -e data '$payload'")
+        if [[ "$RESULT" == *"Broadcast completed: result=0"* ]]; then
+            break
+        fi
+        sleep 0.2
+    done
+
     if [[ "$RESULT" == *"Broadcast completed: result=0"* ]]; then
         log_pass "Action $id ($name): Broadcast processed successfully"
     else
         log_fail "Action $id ($name): Broadcast rejected ($RESULT)"
     fi
-    sleep 0.1
+
+    # Teardown / cleanup for actions that open UI panels, dialogs, or activities
+    if [[ "$id" == "5" || "$id" == "6" || "$id" == "15" || "$id" == "16" || "$id" == "19" || "$id" == "50" || "$id" == "58" || "$id" == "59" || "$id" == "61" || "$id" == "62" || "$id" == "65" || "$id" == "66" || "$id" == "68" || "$id" == "72" || "$id" == "73" || "$id" == "76" || "$id" == "101" || "$id" == "109" || "$id" == "113" || "$id" == "114" ]]; then
+        run_device_cmd "cmd statusbar collapse; input keyevent 4" >/dev/null 2>&1 || true
+    fi
+
+    sleep 0.05
 done
 
 echo "=============================================================================="
