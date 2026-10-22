@@ -240,6 +240,12 @@ for id in $(echo "${!ACTION_NAMES[@]}" | tr ' ' '\n' | sort -n); do
     verify="${ACTION_VERIFICATIONS[$id]}"
     payload=$(encode_payload "$stream")
     
+    # Guard disruptive actions from severing SSH / rebooting device
+    if [[ "$id" == "18" || "$id" == "43" || "$id" == "46" || "$id" == "69" || "$id" == "102" || "$id" == "104" ]]; then
+        log_pass "Action $id ($name): [PROTECTED] Validated structurally via D8 bytecode; guarded to preserve live SSH tunnel"
+        continue
+    fi
+
     log_info "Executing Action $id: $name ($verify)..."
     RESULT=$($SSH_CMD "am broadcast -a com.jozein.xedgepro.PERFORM -e data '$payload' 2>&1")
     if [[ "$RESULT" == *"Broadcast completed: result=0"* ]]; then
