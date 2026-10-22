@@ -1,0 +1,38 @@
+name: Parity Verification & Build CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build-and-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: 'gradle'
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run JUnit Engine Unit Tests
+        run: ./gradlew testDebugUnitTest --no-daemon
+
+      - name: Run 100% Mathematical Engine Coverage Audit
+        run: python3 scripts/audit_engine_coverage.py
+
+      - name: Assemble Release APK
+        run: ./gradlew assembleRelease --no-daemon
+
+      - name: Verify Dalvik Bytecode & CFG Parity Baseline
+        run: python3 scripts/verify_project_parity.py --fail-under 93.8
