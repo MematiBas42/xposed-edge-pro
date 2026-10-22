@@ -74,24 +74,27 @@ jobs:
           $BUILD_TOOLS_DIR/zipalign -c -v 4 app/build/outputs/apk/release/app-release.apk || true
           $BUILD_TOOLS_DIR/apksigner verify --verbose app/build/outputs/apk/release/app-release.apk
           cd app/build/outputs/apk/release
-          sha256sum app-release.apk > app-release.apk.sha256
-          echo "APK SHA256 Checksum: $(cat app-release.apk.sha256)"
+          TAG_OR_VER="${GITHUB_REF_NAME:-v8.0.1}"
+          cp app-release.apk "XposedEdgePro-${TAG_OR_VER}.apk"
+          sha256sum "XposedEdgePro-${TAG_OR_VER}.apk" > "XposedEdgePro-${TAG_OR_VER}.apk.sha256"
+          rm -f app-release.apk app-release.apk.sha256
+          echo "APK SHA256 Checksum: $(cat XposedEdgePro-${TAG_OR_VER}.apk.sha256)"
 
       - name: Upload Release APK Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: xposed-edge-pro-v8.0.1-release
+          name: xposed-edge-pro-release-apk
           path: |
-            app/build/outputs/apk/release/app-release.apk
-            app/build/outputs/apk/release/app-release.apk.sha256
+            app/build/outputs/apk/release/XposedEdgePro-*.apk
+            app/build/outputs/apk/release/XposedEdgePro-*.apk.sha256
 
       - name: Publish GitHub Release (on tag)
         if: startsWith(github.ref, 'refs/tags/v')
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            app/build/outputs/apk/release/app-release.apk
-            app/build/outputs/apk/release/app-release.apk.sha256
+            app/build/outputs/apk/release/XposedEdgePro-*.apk
+            app/build/outputs/apk/release/XposedEdgePro-*.apk.sha256
           name: "Xposed Edge Pro ${{ github.ref_name }} (Android 16/17 Modernization)"
           body: |
             ## Xposed Edge Pro Release ${{ github.ref_name }}
@@ -106,6 +109,6 @@ jobs:
             - **Pre-signed & Aligned:** Signed with v1 + v2 schemes and 4-byte zipaligned.
 
             ### Checksums
-            Verify your download against `app-release.apk.sha256`.
+            Verify your download against `XposedEdgePro-${{ github.ref_name }}.apk.sha256`.
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
