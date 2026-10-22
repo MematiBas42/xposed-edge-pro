@@ -173,6 +173,14 @@ app/src/main/java/
 
 ---
 
-## 7. License
+## 7. Acknowledgements & Credits
+
+This open-source modernization builds upon and acknowledges foundational reverse-engineering and patch investigations:
+- **Joe (Original Developer):** Original creator of Xposed Edge and Xposed Edge Pro (`com.jozein.xedgepro`).
+- **[trup40/XposedEdgeProPatchedforA16](https://github.com/trup40/XposedEdgeProPatchedforA16):** Pioneering Smali-level Android 14/15/16 compatibility analysis, early runtime investigations (`takeScreenshot` decoupling, partial screenshot crop helper intent, and insets discovery).
+
+---
+
+## 8. License
 
 This repository is published for reverse-engineering research, interoperability verification, and preservation of Android power-user tooling. Original assets and rights belong to their respective copyright holders.
