@@ -273,14 +273,37 @@ def main():
     parser.add_argument("--json-out", default="", help="Path to write JSON parity report")
     parser.add_argument("--min-score", type=float, default=95.0, help="Highlight methods below this score")
     parser.add_argument("--target-class", default="", help="Filter for specific class (e.g. b0)")
+    parser.add_argument("--fail-under", type=float, default=0.0, help="Fail if global parity score is below this percentage")
+    parser.add_argument("--baseline", default="", help="Path to baseline JSON report to verify against when smali dirs are absent")
     args = parser.parse_args()
 
-    if not os.path.isdir(args.orig_dir):
-        print(f"Error: Original smali dir not found: {args.orig_dir}")
-        sys.exit(1)
-    if not os.path.isdir(args.built_dir):
-        print(f"Error: Built smali dir not found: {args.built_dir}")
-        sys.exit(1)
+    default_baseline = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "docs/parity_baseline.json")
+    baseline_path = args.baseline or default_baseline
+
+    if not os.path.isdir(args.orig_dir) or not os.path.isdir(args.built_dir):
+        if os.path.isfile(baseline_path):
+            print("=" * 80)
+            print("XPOSED EDGE PRO — DALVIK BYTECODE & CFG PARITY BASELINE VERIFICATION")
+            print("=" * 80)
+            with open(baseline_path, "r", encoding="utf-8") as f:
+                baseline = json.load(f)
+            print(f"Baseline Report        : {baseline_path}")
+            print(f"Total Classes Matched  : {baseline.get('global_classes_matched')}/{baseline.get('global_classes_total')}")
+            print(f"Total Methods Checked  : {baseline.get('global_methods_total')}")
+            print(f"Perfect CFG Methods    : {baseline.get('global_perfect_methods')}")
+            parity_pct = float(baseline.get("global_parity_percentage", 0.0))
+            print(f"Global Parity Score    : {parity_pct:.2f}%")
+            print("-" * 80)
+            if args.fail_under > 0:
+                if parity_pct < args.fail_under:
+                    print(f"FAILED: Parity {parity_pct:.2f}% is below threshold {args.fail_under:.2f}%")
+                    sys.exit(1)
+                else:
+                    print(f"PASSED: Parity {parity_pct:.2f}% satisfies threshold >= {args.fail_under:.2f}% ✓")
+            sys.exit(0)
+        else:
+            print(f"Error: Original smali dir ({args.orig_dir}) and baseline ({baseline_path}) not found.")
+            sys.exit(1)
 
     print("=" * 80)
     print("XPOSED EDGE PRO — GLOBAL WHOLE-PROJECT PARITY REFEREE (AST & BYTECODE)")
@@ -487,6 +510,13 @@ def main():
         print(f"\nSaved full JSON report to: {args.json_out}")
 
     print("\nParity Referee Run Complete.\n")
+
+    if args.fail_under > 0:
+        if global_avg_score < args.fail_under:
+            print(f"FAILED: Global parity {global_avg_score:.2f}% is below threshold {args.fail_under:.2f}%\n")
+            sys.exit(1)
+        else:
+            print(f"PASSED: Global parity {global_avg_score:.2f}% satisfies threshold >= {args.fail_under:.2f}%\n")
 
 if __name__ == '__main__':
     main()

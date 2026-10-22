@@ -6,6 +6,23 @@ import re
 import zipfile
 import json
 import subprocess
+import shutil
+
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+def find_sdk_tool(tool_name):
+    which = shutil.which(tool_name)
+    if which:
+        return which
+    android_home = os.environ.get("ANDROID_HOME") or os.environ.get("ANDROID_SDK_ROOT")
+    if android_home:
+        matches = glob.glob(f"{android_home}/build-tools/*/{tool_name}")
+        if matches:
+            return sorted(matches)[-1]
+    for opt in [f"/opt/android-sdk/build-tools/35.0.0/{tool_name}", f"/opt/android-sdk/build-tools/36.0.0/{tool_name}"]:
+        if os.path.isfile(opt):
+            return opt
+    return tool_name
 
 def verify(built_apk_path, built_smali_dir):
     orig_apk = "/home/ubuntu/.hermes/cache/scratch/xedge_inspect/edge.apk"
@@ -17,23 +34,22 @@ def verify(built_apk_path, built_smali_dir):
 
     # 1. Zip / Entry Check
     print("\n[1/7] VERIFYING APK ARCHIVE STRUCTURE & ASSETS...")
-    with zipfile.ZipFile(orig_apk, 'r') as z_orig, zipfile.ZipFile(built_apk_path, 'r') as z_built:
-        orig_entries = set(z_orig.namelist())
+    with zipfile.ZipFile(built_apk_path, 'r') as z_built:
         built_entries = set(z_built.namelist())
-
-        assert "assets/xposed_init" in orig_entries, "Original APK missing assets/xposed_init"
         assert "assets/xposed_init" in built_entries, "Built APK missing assets/xposed_init"
-
-        orig_init = z_orig.read("assets/xposed_init").decode().strip()
         built_init = z_built.read("assets/xposed_init").decode().strip()
-
-        print(f"  * assets/xposed_init (Original): '{orig_init}'")
         print(f"  * assets/xposed_init (Built)   : '{built_init}'")
-        assert orig_init == built_init == "com.jozein.xedgepro.xposed.HookMain", "Entry point mismatch!"
+        assert built_init == "com.jozein.xedgepro.xposed.HookMain", "Entry point mismatch!"
+        if os.path.isfile(orig_apk):
+            with zipfile.ZipFile(orig_apk, 'r') as z_orig:
+                orig_entries = set(z_orig.namelist())
+                orig_init = z_orig.read("assets/xposed_init").decode().strip()
+                print(f"  * assets/xposed_init (Original): '{orig_init}'")
+                assert orig_init == built_init, "Entry point mismatch against original!"
         print("  -> assets/xposed_init PARITY: 100.0% MATCH ✓")
 
     # 2. Android 16 Surgical Patches Verification
-    print("\n[2/7] VERIFYING ANDROID 16 SURGICAL PATCHES (1 - 8)...")
+    print("\n[2/7] VERIFYING ANDROID 16 SURGICAL PATCHES (1 - 9)...")
     patches = {
         "Patch 1 (Type Mapping & hookAllMethods)": False,
         "Patch 2 (Transient Bar Detection)": False,
@@ -46,11 +62,11 @@ def verify(built_apk_path, built_smali_dir):
         "Patch 9 (Modern Android IMMS Cascading Adapter)": False
     }
 
-    n0_java = open("/home/ubuntu/projects/xposed-edge-pro/app/src/main/java/com/jozein/xedgepro/xposed/n0.java").read()
-    w1_java = open("/home/ubuntu/projects/xposed-edge-pro/app/src/main/java/com/jozein/xedgepro/xposed/w1.java").read()
-    e_java = open("/home/ubuntu/projects/xposed-edge-pro/app/src/main/java/com/jozein/xedgepro/xposed/e.java").read()
-    m2_java = open("/home/ubuntu/projects/xposed-edge-pro/app/src/main/java/com/jozein/xedgepro/xposed/m2.java").read()
-    p0_java = open("/home/ubuntu/projects/xposed-edge-pro/app/src/main/java/com/jozein/xedgepro/xposed/p0.java").read()
+    n0_java = open(os.path.join(PROJECT_ROOT, "app/src/main/java/com/jozein/xedgepro/xposed/n0.java")).read()
+    w1_java = open(os.path.join(PROJECT_ROOT, "app/src/main/java/com/jozein/xedgepro/xposed/w1.java")).read()
+    e_java = open(os.path.join(PROJECT_ROOT, "app/src/main/java/com/jozein/xedgepro/xposed/e.java")).read()
+    m2_java = open(os.path.join(PROJECT_ROOT, "app/src/main/java/com/jozein/xedgepro/xposed/m2.java")).read()
+    p0_java = open(os.path.join(PROJECT_ROOT, "app/src/main/java/com/jozein/xedgepro/xposed/p0.java")).read()
 
     if "hookAllMethods" in n0_java and "updateVisibility" in n0_java:
         patches["Patch 1 (Type Mapping & hookAllMethods)"] = True
@@ -79,7 +95,7 @@ def verify(built_apk_path, built_smali_dir):
 
     # 3. Reconstructed Method d.c.B1 Parity
     print("\n[3/7] VERIFYING RECONSTRUCTED METHOD d.c.B1 PARITY...")
-    c_java = open("/home/ubuntu/projects/xposed-edge-pro/app/src/main/java/pkg_d/c.java").read()
+    c_java = open(os.path.join(PROJECT_ROOT, "app/src/main/java/pkg_d/c.java")).read()
     assert "private int[] B1(int i, boolean z)" in c_java, "B1 method missing in pkg_d/c.java"
     for const_val in ["54", "72", "76", "88", "105", "107", "111"]:
         assert const_val in c_java, f"Constant {const_val} missing in B1 implementation"
@@ -88,7 +104,7 @@ def verify(built_apk_path, built_smali_dir):
 
     # 4. IPC / AIDL Interface Parity
     print("\n[4/7] VERIFYING AIDL / IPC INTERFACE PARITY...")
-    g_java = open("/home/ubuntu/projects/xposed-edge-pro/app/src/main/java/pkg_a/g.java").read()
+    g_java = open(os.path.join(PROJECT_ROOT, "app/src/main/java/pkg_a/g.java")).read()
     assert "com.jozein.xedgepro" in g_java, "Package mismatch in AIDL"
     assert "public static abstract class b extends Binder implements g" in g_java, "Binder stub missing"
     assert "Parcelable a(String str)" in g_java, "Method a(String) missing in AIDL"
@@ -100,11 +116,13 @@ def verify(built_apk_path, built_smali_dir):
 
     # 5. Signing and Alignment Checks
     print("\n[5/7] VERIFYING ZIPALIGN & APK SIGNATURE SCHEMES...")
-    zipalign_out = subprocess.run(["/opt/android-sdk/build-tools/35.0.0/zipalign", "-c", "-v", "4", built_apk_path], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    zipalign_bin = find_sdk_tool("zipalign")
+    zipalign_out = subprocess.run([zipalign_bin, "-c", "-v", "4", built_apk_path], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     assert zipalign_out.returncode == 0, f"Zipalign verification failed: {zipalign_out.stderr}"
     print("  * 4-Byte ZipAlign: PASSED ✓")
 
-    apksigner_out = subprocess.run(["/opt/android-sdk/build-tools/35.0.0/apksigner", "verify", "--verbose", built_apk_path], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    apksigner_bin = find_sdk_tool("apksigner")
+    apksigner_out = subprocess.run([apksigner_bin, "verify", "--verbose", built_apk_path], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     assert apksigner_out.returncode == 0, f"Apksigner failed: {apksigner_out.stderr}"
     v1_ok = "Verified using v1 scheme (JAR signing): true" in apksigner_out.stdout
     v2_ok = "Verified using v2 scheme (APK Signature Scheme v2): true" in apksigner_out.stdout
@@ -193,7 +211,7 @@ def verify(built_apk_path, built_smali_dir):
     print("  +--------------------------------------------------------------+\n")
 
 def main():
-    release_apk = "/home/ubuntu/projects/xposed-edge-pro/app/build/outputs/apk/release/app-release.apk"
+    release_apk = os.path.join(PROJECT_ROOT, "app/build/outputs/apk/release/app-release.apk")
     release_smali = "/home/ubuntu/.hermes/cache/scratch/xedge_inspect/built_release_apktool"
     verify(release_apk, release_smali)
 

@@ -12,7 +12,7 @@ import re
 import sys
 import json
 
-PROJECT_ROOT = "/home/ubuntu/projects/xposed-edge-pro"
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC_DIR = os.path.join(PROJECT_ROOT, "app/src/main/java")
 TEST_DIR = os.path.join(PROJECT_ROOT, "app/src/test/java")
 
