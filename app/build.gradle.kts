@@ -16,10 +16,16 @@ android {
 
     signingConfigs {
         create("release") {
-            storeFile = file("${rootDir}/keystore/release.jks")
-            storePassword = "xedgepro"
-            keyAlias = "xedgepro"
-            keyPassword = "xedgepro"
+            val envKeystore = System.getenv("KEYSTORE_FILE")?.let { file(it) }
+            val localKeystore = file("${rootDir}/keystore/release.jks").takeIf { it.exists() }
+            val resolvedFile = envKeystore ?: localKeystore
+
+            if (resolvedFile != null && resolvedFile.exists()) {
+                storeFile = resolvedFile
+                storePassword = System.getenv("KEYSTORE_PASSWORD") ?: "xedgepro"
+                keyAlias = System.getenv("KEY_ALIAS") ?: "xedgepro"
+                keyPassword = System.getenv("KEY_PASSWORD") ?: (System.getenv("KEYSTORE_PASSWORD") ?: "xedgepro")
+            }
         }
     }
 
@@ -29,7 +35,8 @@ android {
         }
         release {
             isMinifyEnabled = false
-            signingConfig = signingConfigs.getByName("release")
+            val releaseSigning = signingConfigs.getByName("release")
+            signingConfig = if (releaseSigning.storeFile != null) releaseSigning else signingConfigs.getByName("debug")
         }
     }
 

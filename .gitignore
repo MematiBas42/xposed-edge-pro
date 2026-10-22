@@ -4,3 +4,6 @@ app/build/
 *.apk
 __pycache__/
 *.pyc
+*.jks
+*.keystore
+keystore/
