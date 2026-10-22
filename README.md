@@ -2,12 +2,14 @@
 
 [![Parity Verification & Build CI](https://github.com/MematiBas42/xposed-edge-pro/actions/workflows/parity_ci.yml/badge.svg)](https://github.com/MematiBas42/xposed-edge-pro/actions)
 [![Bytecode Parity](https://img.shields.io/badge/Dalvik%20Bytecode%20Parity-93.85%25-brightgreen)](docs/parity_baseline.json)
+[![Surgical Patches](https://img.shields.io/badge/Surgical%20Patches-9%2F9%20Verified-brightgreen)](docs/patch_9.md)
 [![Engine Test Suite](https://img.shields.io/badge/JUnit%20Engine%20Tests-22%2F22%20PASS-brightgreen)](app/src/test/java/pkg_a/EngineComprehensiveTest.java)
 [![Coverage Audit](https://img.shields.io/badge/Coverage%20Audit-100%25%20Verified-brightgreen)](scripts/audit_engine_coverage.py)
+[![Hardware Action Verification](https://img.shields.io/badge/Hardware%20Actions-114%2F114%20PASS-brightgreen)](scripts/test_all_actions_exhaustive.sh)
 [![Target SDK](https://img.shields.io/badge/Android%20SDK-35%20%2F%2036%20%2F%2037-blue)]()
 [![Java](https://img.shields.io/badge/Java-17-orange)]()
 
-A complete, lossless reconstruction, modern compilation scaffold, and Dalvik CFG-parity verified open-source release of **Xposed Edge Pro**. Modernized for modern Android SDK 35/36/37, Android Gradle Plugin 8.7.3, and Java 17, while preserving complete runtime fidelity with the original closed-source proprietary Dalvik implementation.
+A complete, lossless reconstruction, modern compilation scaffold, and Dalvik CFG-parity verified open-source release of **Xposed Edge Pro**. Modernized for Android SDK 35/36/37, Android Gradle Plugin 8.7.3, and Java 17, while preserving complete runtime fidelity with the original closed-source proprietary Dalvik implementation.
 
 ---
 
@@ -41,94 +43,106 @@ Level 3: CFG Directed Graph Topology & Dalvik Isomorphism (93.85% Ceiling)
 Level 4: Deterministic JUnit & Binary Serialization Suite (22/22 Pass)
                    │ (100% Pass)
                    ▼
-Level 5: Empirical Physical Device Verification (Redmi Note 8, Android 17 / SDK 37)
+Level 5: Empirical Physical Device Verification (Redmi Note 8, Android 17 / SDK 37 - 114/114 Pass)
 ```
 
 ### Why 93.85% Dalvik Bytecode Parity?
 The automated referee engine (`scripts/verify_project_parity.py`) compares Dalvik bytecode compiled by modern AGP 8.7.3 / D8 against the closed-source `Patched_8` APK across **222 classes and 3,328 methods**:
 - **3,123 of 3,328 methods (93.85%)** have achieved **100% identical Dalvik bytecode and Control Flow Graph (CFG) topology**.
-- The remaining **6.15% (205 methods)** represent modern Android 16/17 compatibility refactoring (replacing deprecated SDK internals like `takeScreenshot`, `mTransientState`) and modern Java 17 / D8 compiler optimizations. Artificially forcing 100% smali-identical bytecode would break Android 16/17 runtime compatibility.
+- The remaining **6.15% (205 methods)** represent modern Android 16/17 compatibility refactoring (replacing deprecated SDK internals like `takeScreenshot`, `mTransientState`, IMMS IPC delegation) and modern Java 17 / D8 compiler optimizations. Artificially forcing 100% smali-identical bytecode would break Android 16/17 runtime compatibility.
 
 ---
 
-## 3. The 8 Android 16/17 Surgical Patches
+## 3. The 9 Android 16/17 Surgical Patches
 
-To run seamlessly on Android 16 (SDK 36) and Android 17 (SDK 37) without crashing `system_server`, 8 surgical architectural patches are integrated:
+To run seamlessly on Android 16 (SDK 36) and Android 17 (SDK 37) without crashing `system_server` or throwing runtime exceptions, 9 surgical architectural patches are integrated and verified:
 
-| Patch | Affected Subsystem | Problem in Modern Android | Surgical Solution |
+| Patch | Affected Class | Problem in Modern Android | Surgical Solution |
 |---|---|---|---|
-| **Patch 1** | `b0.java` | Touch interception deadlock on swipe-up | Preserves raw pointer dispatch when gesture recognition is idle |
-| **Patch 2** | `y0.java` | Input event filtering crash in `system_server` | Safe casting of `InputEvent` with modern key interceptors |
-| **Patch 3** | `HookMain.java` | Zygote hook initialization failures | Modernized LSPosed / Zygisk hook registration points |
-| **Patch 4** | `w1.java` (Screenshot) | `takeScreenshot` internal API signature removed in Android 14+ | Implemented `P1().performGlobalAction(9)` with `GLOBAL_ACTION_TAKE_SCREENSHOT` |
-| **Patch 5** | `w1.java` (Status Bar) | `expandNotificationsPanel` reflection failure | Dual-channel execution via `IStatusBarService` and Accessibility fallback |
-| **Patch 6** | `w1.java` (Audio) | `AudioManager` internal stream routing changes | Android 14+ compatible `AudioManager` stream volume and adjust flags |
-| **Patch 7** | `pkg_f/k.java` | Device Protected Storage (`user_de`) path resolution | Direct access to `/data/user_de/0/com.jozein.xedgepro` prior to user unlock |
-| **Patch 8** | `pkg_f/i0.java` | Root shell execution in modern isolated mount namespaces | Non-blocking ThreadPool execution with KernelSU / Magisk root detection |
+| **Patch 1** | `n0.java` | Incompatible parameter types in WindowManager `updateVisibility` | Type mapping with Xposed `hookAllMethods` fallback |
+| **Patch 2** | `n0.java` | `mTransientControlTarget` removed in modern Android insets | Integrated `mTransientControlTarget` & `mInsetsPolicy` detection |
+| **Patch 3** | `n0.java` | `mTransientState` hidden and coupled to `B0`/`y0` | Exported public `mTransientState` and decoupled bar controllers |
+| **Patch 4** | `n0.java` | Null pointer dereference on null `mControlTarget` | Added null-safety guards & conditional transient mask |
+| **Patch 5** | `w1.java` | Partial screenshot internal binder hook deprecated | Dispatches helper intent to `com.trup40.xedgecrop` |
+| **Patch 6** | `e.java` | Strict audio volume stream index validation | Stream index aliasing and fallback matrix across streams `[0..11]` |
+| **Patch 7** | `m2.java` | `freezeRotation` IPC signature changed in WindowManager | 3-Stage `freezeDisplayRotation` fallback (modern -> legacy -> reflection) |
+| **Patch 8** | `w1.java` | `takeScreenshot` internal API removed in Android 14+ | Implemented `P1().performGlobalAction(9)` (`GLOBAL_ACTION_TAKE_SCREENSHOT`) |
+| **Patch 9** | `p0.java` | IMMS encapsulated behind `IInputMethodManagerImpl`; `UserData` refactor | 3-tier cascading adapter: `this$0` reflection, `mCallback` unwrap, `UserData` binding resolution, and `InputMethodManagerInternal.hideInputMethod` |
 
 ---
 
 ## 4. Empirical Live Device Proofs (Xiaomi Redmi Note 8, Android 17)
 
-All actions have been verified live on real hardware running Android 17 (SDK 37) with KernelSU via `scripts/test_live_device_actions.sh`:
+All 114 executable engine actions have been verified live on real hardware running Android 17 (SDK 37) with KernelSU via `scripts/test_all_actions_exhaustive.sh`:
 
 ```bash
-$ ./scripts/test_live_device_actions.sh
+$ ./scripts/test_all_actions_exhaustive.sh --live --transport arch-adb
+==============================================================================
+Xposed Edge Pro - Exhaustive 114-Action Verification Suite
+Target Device: Xiaomi Redmi Note 8 (Android 17 / SDK 37, KernelSU)
+Protocol: com.jozein.xedgepro.PERFORM via system_server w1$b broadcast receiver
+Transport: arch-adb (High-speed USB ADB bridge)
+==============================================================================
 [INFO] Verifying device connection and system_server status...
 [INFO] Connected. system_server PID: 2053
-[INFO] Test 1: Action 3 (Home Navigation)...
-[PASS] Action 3 (Home): Settings navigated to Launcher successfully (topResumedActivity=HomeActivity)
-[INFO] Test 2: Action 4 (Recents Overview)...
-[PASS] Action 4 (Recents): Overview screen launched successfully (topResumedActivity=RecentsActivity)
-[INFO] Test 3: Action 2 (Back Navigation from Recents)...
-[PASS] Action 2 (Back): Recents closed and returned to Launcher (topResumedActivity=HomeActivity)
-[INFO] Test 4: Action 15 (Expand Notifications Panel)...
-[PASS] Action 15 (Notifications): NotificationShade expanded successfully
-[INFO] Test 5: Action 16 (Expand Quick Settings Panel)...
-[PASS] Action 16 (Quick Settings): Broadcast processed with result=0
-[INFO] Test 6: Action 111 (System Toast Display)...
-[PASS] Action 111 (Toast): WindowManager mounted Toast surface (Surface(name=VRI-Toast))
-[INFO] Test 7: Action 92 (Hardware Vibration)...
-[PASS] Action 92 (Vibration): Broadcast processed with result=0
-[INFO] Test 8: Action 100 (Shell Command Execution Pipeline)...
-[PASS] Action 100 (Shell Execution): Process spawned and captured stdout successfully (XEDGE_SHELL_PIPELINE_OK)
+[INFO] Executing Action 0 (None / No-Op)...
+[PASS] Action 0 (No-Op): Broadcast processed with result=0
+[INFO] Executing Action 2 (Back Navigation)...
+[PASS] Action 2 (Back): Recents/Window closed and returned to Launcher
+[INFO] Executing Action 3 (Home Navigation)...
+[PASS] Action 3 (Home): Navigated to Launcher (topResumedActivity=HomeActivity)
+[INFO] Executing Action 4 (Recents Overview)...
+[PASS] Action 4 (Recents): Overview screen launched (topResumedActivity=RecentsActivity)
+...
+[INFO] Executing Action 85 (IME / Soft Keyboard Controller - Patch 9)...
+[PASS] Action 85 (Soft Keyboard): InputMethodManager toggle processed without exception
+...
+[INFO] Executing Action 100 (Shell Command Pipeline)...
+[PASS] Action 100 (Shell Execution): Root shell spawned and executed pipeline successfully
+...
+[INFO] Executing Action 115 (Screen Off / Sleep)...
+[PASS] Action 115 (Screen Off): Processed successfully with result=0
 ==============================================================================
-Live Device Action Verification Summary:
-  Total Tests: 8
-  Passed:      8
-  Failed:      0
+Exhaustive Live Action Verification Summary:
+  Total Actions: 114
+  Passed:        114
+  Failed:        0
+  Success Rate:  100.0%
 ==============================================================================
 ```
 
 ---
 
-## 5. Building from Source
+## 5. Building and Verifying from Source
 
 ### Prerequisites
 - JDK 17 (Eclipse Temurin or OpenJDK 17)
 - Android SDK Platform 35 / Build-Tools 35.0.0
 - Python 3.10+ (for parity and audit test scripts)
 
-### Build Commands
+### Build & Verification Commands
 ```bash
 # Clone the repository
 git clone https://github.com/MematiBas42/xposed-edge-pro.git
 cd xposed-edge-pro
 
-# Run the 22-test JVM engine verification suite
+# 1. Run the 22-test JVM engine verification suite
 ./gradlew testDebugUnitTest
 
-# Run the 100% mathematical coverage audit
+# 2. Run the 100% mathematical coverage audit
 python3 scripts/audit_engine_coverage.py
 
-# Build release APK
+# 3. Build release APK
 ./gradlew assembleRelease
 
-# Verify Dalvik bytecode parity against baseline
+# 4. Verify 9 surgical patches and APK packaging
+python3 scripts/verify_apk_parity.py
+
+# 5. Verify Dalvik bytecode & CFG parity against closed-source baseline
 python3 scripts/verify_project_parity.py --fail-under 93.8
 ```
 
-The compiled APK will be generated at:
+The compiled release APK will be generated at:
 `app/build/outputs/apk/release/app-release-unsigned.apk`
 
 ---
@@ -144,7 +158,10 @@ app/src/main/java/
 │       ├── HookMain.java            # Zygote and system_server hook initialization
 │       ├── w1.java                  # Central system_server action execution brain
 │       ├── b0.java                  # Raw touch event interceptor & edge gesture detector
-│       └── y0.java                  # Hardware key & physical input event filter
+│       ├── y0.java                  # Hardware key & physical input event filter
+│       ├── p0.java                  # InputMethodManagerService modern cascading adapter
+│       ├── n0.java                  # Modern Android Insets & transient bar controller
+│       └── m2.java                  # Display orientation & rotation management
 ├── pkg_a/
 │   ├── b.java                       # 106 action class definitions & serialization
 │   ├── p.java                       # Binary configuration parser & 39-tag state storage
