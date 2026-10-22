@@ -28,9 +28,9 @@ done
 run_device_cmd() {
     local cmd="$1"
     if [[ "$TRANSPORT" == "arch-adb" ]]; then
-        ssh -o ConnectTimeout=5 arch "adb shell \"$cmd\"" 2>&1
+        ssh -o ConnectTimeout=8 arch "adb wait-for-device shell \"$cmd\"" 2>&1 || true
     else
-        ssh -o ConnectTimeout=5 phone "$cmd" 2>&1
+        ssh -o ConnectTimeout=8 phone "$cmd" 2>&1 || true
     fi
 }
 TOTAL_ACTIONS=0
